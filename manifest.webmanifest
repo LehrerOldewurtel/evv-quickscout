@@ -1,10 +1,1 @@
-{
-  "name": "EVV QuickScout V6.1",
-  "short_name": "EVV Scout",
-  "start_url": "./index.html",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#eef2f6",
-  "theme_color": "#111827"
-}
+{"name":"EVV QuickScout V6.2","short_name":"EVV Scout","start_url":"./index.html","scope":"./","display":"standalone","orientation":"portrait","background_color":"#eef2f6","theme_color":"#111827"}

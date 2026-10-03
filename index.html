@@ -1,7 +1,7 @@
 <!doctype html><html lang="de"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#111827">
-<link rel="manifest" href="manifest.webmanifest"><title>EVV QuickScout V6.1</title>
+<link rel="manifest" href="manifest.webmanifest"><title>EVV QuickScout V6.2</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#eef2f6;color:#111827;font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;padding-bottom:72px}
 header{position:sticky;top:0;z-index:10;background:#111827;color:white;padding:9px 11px}.score{display:flex;justify-content:space-between;font-size:25px;font-weight:900}.meta{display:flex;justify-content:space-between;font-size:12px;margin-top:3px}
@@ -38,10 +38,10 @@ var ATT={
 3:[["Michael","IV"],["Dirk","III"],["Jonas","HF"]],
 2:[["Michael","IV"],["Janik","III"],["Jonas","HF"],["Maksym","HF"]]
 };
-var REC=["Michael","Maksym","Felix"], oppName="Dürener TV III", mode="live", draft={};
+var REC_BY_ROT={1:["Jonas","Maksym","Felix"],2:["Jonas","Maksym","Felix"],3:["Jonas","Michael","Felix"],4:["Jonas","Maksym","Felix"],5:["Jonas","Maksym","Felix"],6:["Jonas","Maksym","Felix"]}, oppName="Dürener TV III", mode="live", draft={};
 var st={e:0,o:0,set:1,rot:1,serving:true,started:false,rallies:[],history:[],timeouts:[]};
 function E(x){return document.getElementById(x)} function C(x){return JSON.parse(JSON.stringify(x))}
-function pct(a,b){return b?Math.round(100*a/b):0} function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function pct(a,b){return b?Math.round(100*a/b):0} function rate(a,b){return b?pct(a,b)+"%":"–"} function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
 function toast(s){E("toast").textContent=s;E("toast").style.display="block";setTimeout(function(){E("toast").style.display="none"},850)}
 function snap(){return C({e:st.e,o:st.o,set:st.set,rot:st.rot,serving:st.serving,started:st.started,rallies:st.rallies,timeouts:st.timeouts})}
 function restore(x){st.e=x.e;st.o=x.o;st.set=x.set;st.rot=x.rot;st.serving=x.serving;st.started=x.started;st.rallies=x.rallies;st.timeouts=x.timeouts||[]}
@@ -56,6 +56,7 @@ function act(s){var a=s.split("|");
  else if(a[0]=="att"){draft.attacker=a[1];draft.zone=a[2];draft.step=3;render()}
  else if(a[0]=="ar"){var d=C(draft);d.attackResult=a[1];commit(a[2],d)}
  else if(a[0]=="srv"){if(a[1]=="ACE")commit("EVV",{kind:"Serve",server:SERVER[st.rot],serve:"ACE"});else if(a[1]=="ERR")commit("Gegner",{kind:"Serve",server:SERVER[st.rot],serve:"ERROR"});else{draft={step:2,kind:"Serve",server:SERVER[st.rot],serve:"IN"};render()}}
+ else if(a[0]=="blk"){commit("EVV",{kind:"Serve",server:draft.server||SERVER[st.rot],serve:"IN",player:a[1],action:"BLOCK",zone:a[2]})}
  else if(a[0]=="k2"){draft.player=a[1];draft.action=a[2];draft.step=3;render()}
  else if(a[0]=="win"){commit(a[1],C(draft))}
  else if(a[0]=="q"){commit(a[1],{kind:"Quick"})}
@@ -63,12 +64,12 @@ function act(s){var a=s.split("|");
 function live(){
  if(!st.started){E("flow").innerHTML="<h2>Bereit</h2><div class=small>Startart wählen.</div>";return}
  if(!st.serving){
-  if(!draft.step){var h="<h2>K1 · 1/3 Annahme</h2>";REC.forEach(function(p){h+='<div class=r><b>'+p+'</b>';["A3","A2","A1","A0"].forEach(function(q){h+=B(q,"rec|"+p+"|"+q,q=="A3"?"good":q=="A0"?"bad":"")});h+="</div>"});h+='<div class=g3>'+B("Gegner AF","q|EVV","good")+B("Quick EVV","q|EVV")+B("Quick Gegner","q|Gegner")+"</div>";E("flow").innerHTML=h}
+  if(!draft.step){var h="<h2>K1 · 1/3 Annahme</h2>";REC_BY_ROT[st.rot].forEach(function(p){h+='<div class=r><b>'+p+'</b>';["A3","A2","A1","A0"].forEach(function(q){h+=B(q,"rec|"+p+"|"+q,q=="A3"?"good":q=="A0"?"bad":"")});h+="</div>"});h+='<div class=g3>'+B("Gegner AF","q|EVV","good")+B("Quick EVV","q|EVV")+B("Quick Gegner","q|Gegner")+"</div>";E("flow").innerHTML=h}
   else if(draft.step==2){var h2="<h2>"+draft.receiver+" "+draft.reception+" → Johann</h2><div class=small>2/3 · verfügbare Angriffsoptionen R"+st.rot+"</div><div class=g2>";ATT[st.rot].forEach(function(x){h2+=B(x[0]+" · "+x[1],"att|"+x[0]+"|"+x[1],"blue")});E("flow").innerHTML=h2+"</div>"}
   else E("flow").innerHTML="<h2>"+draft.attacker+" · "+draft.zone+"</h2><div class=small>3/3 · Ergebnis</div><div class=g2>"+B("KILL","ar|KILL|EVV","good")+B("FEHLER","ar|ERROR|Gegner","bad")+B("GEBLOCKT","ar|BLOCKED|Gegner","bad")+B("WEITER +","ar|CONT+|EVV")+B("WEITER −","ar|CONT-|Gegner")+"</div>"
  }else{
   if(!draft.step)E("flow").innerHTML="<h2>K2 · "+SERVER[st.rot]+" Aufschlag</h2><div class=small>1/3 · Aufschläger automatisch aus Rotation</div><div class=g3>"+B("ASS","srv|ACE","good")+B("FEHLER","srv|ERR","bad")+B("IM SPIEL","srv|IN","blue")+"</div>";
-  else if(draft.step==2){var h3="<h2>K2 · 2/3 entscheidende Aktion</h2><div class=g2>";P.forEach(function(p){["BLOCK","ABWEHR","ANGRIFF"].forEach(function(x){h3+=B(p+" · "+x,"k2|"+p+"|"+x)})});E("flow").innerHTML=h3+"</div>"}
+  else if(draft.step==2){var fronts={1:[["Michael","IV"],["Janik","III"],["Jonas","II"]],6:[["Maksym","IV"],["Janik","III"],["Jonas","II"]],5:[["Maksym","IV"],["Dirk","III"],["Jonas","II"]],4:[["Maksym","IV"],["Dirk","III"],["Johann","II"]],3:[["Michael","IV"],["Dirk","III"],["Johann","II"]],2:[["Michael","IV"],["Janik","III"],["Johann","II"]]};var h3="<h2>K2 · 2/3 Aktion</h2><div class=small>Nur rotationsabhängig sinnvolle Optionen</div><div class=g2>";fronts[st.rot].forEach(function(x){h3+=B("BLOCK "+x[0]+" · "+x[1],"blk|"+x[0]+"|"+x[1],"good")});ATT[st.rot].forEach(function(x){h3+=B("ANGRIFF "+x[0]+" · "+x[1],"k2|"+x[0]+"|ANGRIFF")});h3+=B("ABWEHR Felix","k2|Felix|ABWEHR","blue")+B("ABWEHR Feld","k2|Feld|ABWEHR","blue");E("flow").innerHTML=h3+"</div>"}
   else E("flow").innerHTML="<h2>K2 · 3/3 Ergebnis</h2><div class=g2>"+B("EVV Punkt","win|EVV","good")+B("Gegner Punkt","win|Gegner","bad")+"</div>"
  }bind()
 }
@@ -82,7 +83,7 @@ function calc(rows){
   if(r.action=="BLOCK"&&r.winner=="EVV"){x.blocks++;if(x.p[r.player])x.p[r.player].blk++}
  });return x
 }
-function metrics(x){return '<div class=g4><div class=metric><b>'+pct(x.recPos,x.recN)+'%</b><span>Annahme +</span></div><div class=metric><b>'+pct(x.k,x.attN)+'%</b><span>Kill</span></div><div class=metric><b>'+pct(x.k1w,x.k1)+'%</b><span>K1</span></div><div class=metric><b>'+x.blocks+'</b><span>Blockpunkte</span></div></div>'}
+function metrics(x){return '<div class=g4><div class=metric><b>'+rate(x.recPos,x.recN)+'</b><span>Annahme +</span></div><div class=metric><b>'+rate(x.k,x.attN)+'</b><span>Kill</span></div><div class=metric><b>'+rate(x.k1w,x.k1)+'</b><span>K1</span></div><div class=metric><b>'+x.blocks+'</b><span>Blockpunkte</span></div></div>'}
 function stats(){var x=calc(),h="<h2>Quoten</h2>"+metrics(x)+"<h3>Angriff nach Position</h3><table><tr><th>Zone</th><th>N</th><th>Kill%</th><th>Eff.</th></tr>";
  ["IV","III","II","HF"].forEach(function(z){var a=x.z[z];h+="<tr><td>"+z+"</td><td>"+a.n+"</td><td>"+pct(a.k,a.n)+"%</td><td>"+pct(a.k-a.e-a.b,a.n)+"%</td></tr>"});h+="</table><h3>Spieler</h3><table><tr><th>Spieler</th><th>Ann+</th><th>Kill</th><th>Eff</th><th>Ass</th><th>AF</th><th>Blk</th></tr>";
  P.forEach(function(n){var p=x.p[n];h+="<tr><td>"+n+"</td><td>"+(p.rn?pct(p.rp,p.rn)+"%":"–")+"</td><td>"+(p.an?pct(p.k,p.an)+"%":"–")+"</td><td>"+(p.an?pct(p.k-p.e-p.b,p.an)+"%":"–")+"</td><td>"+p.ace+"</td><td>"+p.se+"</td><td>"+p.blk+"</td></tr>"});E("flow").innerHTML=h+"</table><p class=small>Angriffseffizienz = (Kills − Fehler − direkt geblockt) / Versuche. Block als Anzahl, solange nicht jeder Blockversuch erfasst wird.</p>"}
