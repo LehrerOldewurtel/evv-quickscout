@@ -1,0 +1,21 @@
+EVV QuickScout V7 – automatischer Kerncheck
+===============================================
+PASS  Dateien vorhanden
+PASS  index referenziert CSS
+PASS  index referenziert JS
+PASS  JavaScript Syntax
+PASS  25:17 Satzende
+PASS  25:24 kein Satzende
+PASS  26:24 Satzende
+PASS  15:10 TB Ende
+PASS  15:14 TB läuft
+PASS  16:14 TB Ende
+PASS  Rotation R5→R1
+PASS  Rotation R1→R6
+PASS  Jens im Kader
+PASS  Wechsel ersetzt Lineup
+PASS  Historische Ansicht READ ONLY
+PASS  Punktkorrektur setzt keine Rally
+PASS  Gegner Zuspielrichtung
+PASS  Feldkoordinaten
+PASS  Mindeststichprobe Gegner
