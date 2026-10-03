@@ -1,0 +1,18 @@
+EVV QuickScout V7 Voice – Loop-Selbsttest
+===========================================
+PASS  Voice Button vorhanden
+PASS  SpeechRecognition Feature Detection
+PASS  HTTPS/Secure Context Check
+PASS  Deutsch de-DE
+PASS  Bestätigung vor Wertung
+PASS  Touch-Fallback erhalten
+PASS  Annahme Sprachparser
+PASS  Kill Sprachparser
+PASS  Block Sprachparser
+PASS  Wechsel Sprachparser
+PASS  Undo Sprachparser
+PASS  JavaScript Syntax
+PASS  Satzlogik 25/2
+PASS  Tie-Break Ziel 15
+PASS  Rotation R5→R1→R6
+PASS  Jens vorhanden

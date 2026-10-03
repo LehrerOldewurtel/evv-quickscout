@@ -26,3 +26,32 @@ Wichtig:
 Die bestätigte Projekt-Rotationsfolge R5 -> R1 -> R6 ist als Regression hinterlegt.
 
 SELFTEST.txt dokumentiert die automatischen Kernprüfungen.
+
+
+V7 VOICE – iPad
+---------------
+Sprachmodus ist für Safari/iPad vorgesehen.
+Wichtig: Mikrofon-Spracherkennung benötigt einen sicheren HTTPS-Kontext. Die lokale ZIP/file://-Version bleibt vollständig per Touch bedienbar, zeigt für Sprache aber einen Hinweis.
+
+Beispielbefehle:
+- "Johann Aufschlag Ace"
+- "Johann Aufschlag Fehler"
+- "Felix Annahme A3"
+- "Jens Angriff vier Kill"
+- "Janik Block"
+- "Punkt EVV"
+- "Punkt Gegner"
+- "Undo"
+- "Wechsel Jens Jonas" (erster genannter Spieler = rein, zweiter = raus)
+
+Sicherheitsprinzip:
+Ein erkannter Sprachbefehl wird vor der Wertung sichtbar angezeigt und muss mit "Übernehmen" bestätigt werden. Touch bleibt immer als Fallback.
+
+
+V7.1 LOOP-FIX
+- Ass und Kill: einheitliche 9-Zonen-Zielwahl
+- Aufschlag IN führt direkt zur Gegnerannahme
+- K1-Angriff: keine 24 Kombinationen mehr; nur rollen-/positionsgerechte Optionen
+- Zuspieler und Libero nie als normale Angreifer
+- Zielzone wird zusätzlich zur Koordinate gespeichert
+- Voice-Ace nutzt ebenfalls die 9-Zonen-Wahl

@@ -1,0 +1,17 @@
+EVV QuickScout V7.1 – Fehlerbild/Loop-Test
+=============================================
+PASS  9-Zonen-Picker vorhanden
+PASS  Ace öffnet 9-Zonen-Picker
+PASS  Kill öffnet 9-Zonen-Picker
+PASS  Zielzone wird gespeichert
+PASS  Zuspieler als Angreifer ausgeschlossen
+PASS  Libero als Angreifer ausgeschlossen
+PASS  MB nur Mitte vorne
+PASS  Diagonal vorne Zone II
+PASS  Kein 4-Zonen-Kartesisches Produkt
+PASS  Aufschlag IN springt Gegnerannahme
+PASS  Gegnerannahme nach Aufschlag
+PASS  Voice ACE nutzt Zielzonen
+PASS  Rotation R5→R1→R6
+PASS  Satz 5 bis 15
+PASS  JavaScript Syntax
