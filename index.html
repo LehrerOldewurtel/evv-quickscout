@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-title" content="EVV Scout"><title>EVV QuickScout V5</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,-apple-system,sans-serif;background:#eef2f6;color:#111827;padding-bottom:74px}
+header{position:sticky;top:0;background:#111827;color:white;padding:10px;z-index:5}
+.score{font-size:25px;font-weight:900;display:flex;justify-content:space-between}.meta{font-size:12px;display:flex;justify-content:space-between;margin-top:4px}
+main{padding:9px;max-width:850px;margin:auto}.card{background:white;border-radius:14px;padding:12px;margin:8px 0}
+h2{font-size:18px;margin:2px 0 10px}.grid2,.grid3,.grid4{display:grid;gap:6px}.grid2{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(3,1fr)}.grid4{grid-template-columns:repeat(4,1fr)}
+button{border:0;border-radius:11px;min-height:49px;padding:7px;font-size:14px;font-weight:800;background:#e5e7eb;color:#111827}.primary{background:#111827;color:white}.good{background:#dcfce7}.bad{background:#fee2e2}.blue{background:#dbeafe}
+input{width:100%;font-size:17px;padding:10px;border:1px solid #cbd5e1;border-radius:9px;margin:4px 0 8px}label{font-size:12px;font-weight:800}
+.small{font-size:12px;color:#64748b}.hidden{display:none}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:white;padding:6px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;border-top:1px solid #cbd5e1}
+.row{display:grid;grid-template-columns:75px repeat(4,1fr);gap:4px;align-items:center;margin:5px 0}.row button{min-height:40px;font-size:12px;padding:3px}
+#toast{display:none;position:fixed;left:10px;right:10px;bottom:78px;background:#111827;color:white;padding:10px;border-radius:10px;text-align:center;z-index:9}
+</style>
+</head>
+<body>
+<header><div class="score"><span>EVV <span id="e">0</span></span><span><span id="o">0</span> <span id="oppHead">Gegner</span></span></div>
+<div class="meta"><span>Satz <b id="set">1</b> · <b id="rot">R1</b></span><span id="srv">EVV Aufschlag</span></div></header>
+<main>
+<div id="setup" class="card">
+<h2>Spiel einrichten</h2>
+<label>Gegner<input id="oppName" type="text" value="Dürener TV III"></label>
+<div class="small">EVV ist voreingetragen. Gegnernummern sind optional änderbar.</div>
+<h2 style="margin-top:12px">EVV</h2><div id="evvInputs" class="grid2"></div>
+<details><summary><b>Gegner-Spieler bearbeiten</b></summary><div id="oppInputs" class="grid2"></div></details>
+<div class="grid2"><button id="startReceive" class="primary">Start Annahme · R2</button><button id="startServe" class="primary">Start Aufschlag · R1</button></div>
+</div>
+<div class="card"><div class="tabs"><button id="tabR" class="primary">Rallye</button><button id="tabO">Gegner</button><button id="tabS">Auswertung</button></div></div>
+<div id="flow" class="card"><h2>Bereit</h2></div><div id="coach" class="card"></div>
+</main>
+<div class="bottom"><button id="undo">↶ UNDO</button><button id="fix">± Punkt</button><button id="newSet">Satz +</button></div><div id="toast"></div>
+<script>
+(function(){
+var NEXT={1:6,6:5,5:4,4:3,3:2,2:1};
+var evv=["Johann","Michael","Janik","Jonas","Maksym","Dirk","Felix","Jens"];
+var roles=["Z","AA1","MB1","D","AA2","MB2","L","Joker"];
+var opp=[];for(var i=1;i<=12;i++){opp.push("#"+i)}
+var name="Dürener TV III",mode="rally",draft={};
+var st={e:0,o:0,set:1,rot:1,serving:true,started:false,rallies:[],history:[]};
+function E(x){return document.getElementById(x)}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function cp(x){return JSON.parse(JSON.stringify(x))}
+function toast(s){E("toast").innerHTML=s;E("toast").style.display="block";setTimeout(function(){E("toast").style.display="none"},900)}
+function setup(){
+ E("oppName").value=name;var h="";
+ for(var i=0;i<evv.length;i++){h+='<label>'+roles[i]+'<input id="evv'+i+'" value="'+esc(evv[i])+'"></label>'}E("evvInputs").innerHTML=h;
+ h="";for(i=0;i<opp.length;i++){h+='<label>Gegner '+(i+1)+'<input id="opp'+i+'" value="'+esc(opp[i])+'"></label>'}E("oppInputs").innerHTML=h
+}
+function readSetup(){name=E("oppName").value||"Gegner";for(var i=0;i<evv.length;i++){evv[i]=E("evv"+i).value||evv[i]}for(i=0;i<opp.length;i++){opp[i]=E("opp"+i).value||("#"+(i+1))}}
+function start(serv){readSetup();st={e:0,o:0,set:1,rot:serv?1:2,serving:serv,started:true,rallies:[],history:[]};draft={};render()}
+function snap(){return cp({e:st.e,o:st.o,set:st.set,rot:st.rot,serving:st.serving,started:st.started,rallies:st.rallies})}
+function commit(w,data){
+ st.history.push(snap());var before=st.e+":"+st.o,rb=st.rot,sb=st.serving;
+ if(w==="EVV"){st.e++;if(!st.serving){st.serving=true;st.rot=NEXT[st.rot]}}else{st.o++;if(st.serving){st.serving=false}}
+ data=data||{};data.mode=mode;data.winner=w;data.before=before;data.after=st.e+":"+st.o;data.rotation=rb;data.servingBefore=sb;data.set=st.set;data.crunch=Math.max(st.e,st.o)>=20;st.rallies.push(data);draft={};render();toast(w+" "+before+" → "+st.e+":"+st.o)
+}
+function B(label,act,cls){return '<button class="'+(cls||"")+'" data-a="'+act+'">'+label+'</button>'}
+function bind(){var x=document.querySelectorAll("[data-a]");for(var i=0;i<x.length;i++){x[i].onclick=function(){action(this.getAttribute("data-a"))}}}
+function action(s){var a=s.split("|");if(a[0]==="rec"){if(a[2]==="A0"){commit("Gegner",{event:"Reception",receiver:a[1],reception:a[2]})}else{draft={step:2,receiver:a[1],reception:a[2]};render()}}
+else if(a[0]==="att"){draft.attacker=a[1];draft.zone=a[2];draft.step=3;render()}
+else if(a[0]==="fin"){var d=cp(draft);d.event="Attack";d.result=a[1];commit(a[2],d)}
+else if(a[0]==="quick"){commit(a[1],{event:"Quick"})}
+else if(a[0]==="serve"){if(a[1]==="ACE")commit("EVV",{event:"Serve",serve:"ACE"});else if(a[1]==="ERR")commit("Gegner",{event:"Serve",serve:"ERROR"});else{draft={step:2,event:"Serve",serve:"IN"};render()}}
+else if(a[0]==="k2"){draft.player=a[1];draft.action=a[2];draft.step=3;render()}
+else if(a[0]==="k2f"){commit(a[1],cp(draft))}
+else if(a[0]==="or"){if(a[2]==="A0"){commit("EVV",{event:"OpponentReception",receiver:opp[parseInt(a[1])],reception:"A0"})}else{draft={step:2,receiver:opp[parseInt(a[1])],reception:a[2]};render()}}
+else if(a[0]==="oa"){draft.attacker=opp[parseInt(a[1])];draft.zone=a[2];draft.step=3;render()}
+else if(a[0]==="of"){var od=cp(draft);od.event="OpponentAttack";od.direction=a[1];od.result=a[2];commit(a[3],od)}}
+function rally(){
+ if(!st.started){E("flow").innerHTML="<h2>Bereit</h2><div class='small'>Gegner prüfen, dann Start wählen.</div>";return}
+ if(!st.serving){
+  if(!draft.step){var ps=[evv[1],evv[3],evv[4],evv[6]],h="<h2>K1 · 1/3 Annahme</h2>";for(var i=0;i<ps.length;i++){h+='<div class="row"><b>'+esc(ps[i])+'</b>';var q=["A3","A2","A1","A0"];for(var j=0;j<4;j++)h+=B(q[j],"rec|"+ps[i]+"|"+q[j],q[j]=="A3"?"good":q[j]=="A0"?"bad":"");h+="</div>"}h+='<div class="grid3">'+B("Gegner AF","quick|EVV","good")+B("Quick EVV","quick|EVV")+B("Quick Gegner","quick|Gegner")+"</div>";E("flow").innerHTML=h}
+  else if(draft.step==2){var hs=[evv[1],evv[2],evv[3],evv[4],evv[5],evv[7]],h2="<h2>K1 · 2/3 Angriff</h2><div class='grid2'>";for(i=0;i<hs.length;i++){var zz=["IV","III","II","HF"];for(j=0;j<4;j++)h2+=B(esc(hs[i])+" · "+zz[j],"att|"+hs[i]+"|"+zz[j])}E("flow").innerHTML=h2+"</div>"}
+  else{E("flow").innerHTML="<h2>K1 · 3/3 Ergebnis</h2><div class='grid2'>"+B("KILL","fin|KILL|EVV","good")+B("BLOCK","fin|BLOCK|Gegner","bad")+B("FEHLER","fin|FEHLER|Gegner","bad")+B("WEITER +","fin|WEITER+|EVV","blue")+B("WEITER −","fin|WEITER-|Gegner")+"</div>"}
+ }else{
+  if(!draft.step){E("flow").innerHTML="<h2>K2 · 1/3 Aufschlag</h2><div class='grid2'>"+B("ASS","serve|ACE","good")+B("FEHLER","serve|ERR","bad")+B("IM SPIEL","serve|IN","blue")+B("Quick EVV","quick|EVV")+B("Quick Gegner","quick|Gegner")+"</div>"}
+  else if(draft.step==2){var h3="<h2>K2 · 2/3 EVV-Aktion</h2><div class='grid2'>";for(i=0;i<evv.length;i++){var aa=["BLOCK","ABWEHR","ANGRIFF","FREEBALL"];for(j=0;j<4;j++)h3+=B(esc(evv[i])+" · "+aa[j],"k2|"+evv[i]+"|"+aa[j])}E("flow").innerHTML=h3+"</div>"}
+  else E("flow").innerHTML="<h2>K2 · 3/3 Ergebnis</h2><div class='grid2'>"+B("EVV Punkt","k2f|EVV","good")+B("Gegner Punkt","k2f|Gegner","bad")+"</div>"
+ }bind()
+}
+function opponent(){
+ if(!draft.step){var h="<h2>Gegner · 1/3 Annahme</h2>";for(var i=0;i<opp.length;i++){h+='<div class="row"><b>'+esc(opp[i])+'</b>';var q=["A3","A2","A1","A0"];for(var j=0;j<4;j++)h+=B(q[j],"or|"+i+"|"+q[j],q[j]=="A0"?"bad":"");h+="</div>"}E("flow").innerHTML=h}
+ else if(draft.step==2){var h2="<h2>Gegner · 2/3 Angreifer</h2><div class='grid2'>";for(i=0;i<opp.length;i++){var z=["IV","III","II","HF"];for(j=0;j<4;j++)h2+=B(esc(opp[i])+" · "+z[j],"oa|"+i+"|"+z[j])}E("flow").innerHTML=h2+"</div>"}
+ else E("flow").innerHTML="<h2>Gegner · 3/3 Richtung</h2><div class='grid2'>"+B("LINIE · Kill","of|LINIE|KILL|Gegner","bad")+B("DIAGONAL · Kill","of|DIAGONAL|KILL|Gegner","bad")+B("KURZ · Kill","of|KURZ|KILL|Gegner","bad")+B("LINIE · Fehler","of|LINIE|FEHLER|EVV","good")+B("DIAGONAL · Fehler","of|DIAGONAL|FEHLER|EVV","good")+B("KURZ · Fehler","of|KURZ|FEHLER|EVV","good")+"</div>";
+ bind()
+}
+function stats(){var r=st.rallies,rec=0,pos=0,oppn=0;for(var i=0;i<r.length;i++){if(r[i].mode=="rally"&&r[i].reception){rec++;if(r[i].reception=="A3"||r[i].reception=="A2")pos++}if(r[i].mode=="opp")oppn++}E("flow").innerHTML="<h2>Auswertung</h2><p>Rallyes <b>"+r.length+"</b></p><p>Annahmen <b>"+rec+"</b> · positiv <b>"+(rec?Math.round(100*pos/rec):0)+"%</b></p><p>Gegnerdaten <b>"+oppn+"</b></p>"}
+function render(){E("e").innerHTML=st.e;E("o").innerHTML=st.o;E("set").innerHTML=st.set;E("rot").innerHTML="R"+st.rot;E("srv").innerHTML=st.serving?"EVV Aufschlag":"Gegner Aufschlag";E("oppHead").innerHTML=esc(name);E("setup").className=st.started?"card hidden":"card";if(mode=="rally")rally();else if(mode=="opp")opponent();else stats();E("coach").innerHTML="<h2>Match Coach</h2><div class='small'>Blockstart: DIAGONAL · Alternative: LINIE · Mitte: 1:1. Gegnerdaten erst nach mehreren Beobachtungen bewerten.</div>"}
+E("startReceive").onclick=function(){start(false)};E("startServe").onclick=function(){start(true)};
+E("tabR").onclick=function(){mode="rally";draft={};render()};E("tabO").onclick=function(){mode="opp";draft={};render()};E("tabS").onclick=function(){mode="stats";draft={};render()};
+E("undo").onclick=function(){if(!st.history.length){toast("Nichts zum Undo");return}var h=st.history.pop();st.e=h.e;st.o=h.o;st.set=h.set;st.rot=h.rot;st.serving=h.serving;st.started=h.started;st.rallies=h.rallies;draft={};render()};
+E("fix").onclick=function(){E("flow").innerHTML='<h2>Punkt korrigieren</h2><div class="grid2"><button id="ep">EVV +1</button><button id="em">EVV -1</button><button id="op">Gegner +1</button><button id="om">Gegner -1</button></div>';E("ep").onclick=function(){st.e++;render()};E("em").onclick=function(){st.e=Math.max(0,st.e-1);render()};E("op").onclick=function(){st.o++;render()};E("om").onclick=function(){st.o=Math.max(0,st.o-1);render()}};
+E("newSet").onclick=function(){st.set++;st.e=0;st.o=0;st.rot=2;st.serving=false;draft={};render();toast("Neuer Satz · Annahme R2")};
+setup();render();
+})();
+</script>
+<script>if("serviceWorker" in navigator && location.protocol.indexOf("http")===0){window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(){})})}</script></body></html>
