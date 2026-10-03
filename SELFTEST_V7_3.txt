@@ -1,0 +1,18 @@
+EVV QuickScout V7.3 – Abschluss-Selbsttest
+============================================
+PASS  Satzvorbereitung V7.3
+PASS  Gegnername bleibt gespeichert
+PASS  EVV Start-6 je Satz
+PASS  Gegneraufstellung je Satz
+PASS  K1/K2 Satzstart
+PASS  Auswertung Annahme A3/A2/A1/A0
+PASS  Aufschlag Ass/Fehler Statistik
+PASS  Angriff Kill/Fehler/geblockt
+PASS  Blockpunkte
+PASS  K1/K2 Quote
+PASS  9-Zonen bleiben
+PASS  Satzarchiv
+PASS  GitHub Pages Anleitung
+PASS  Rotation R5→R6→R1
+PASS  Johann Angriffsperre
+PASS  JavaScript Syntax

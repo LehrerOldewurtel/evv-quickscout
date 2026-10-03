@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
-const ROT_NEXT={5:1,1:6,6:5,4:3,3:2,2:4}; // confirmed project convention: R5→R1→R6
+const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}; // confirmed live-test convention: R5→R6→R1
 const roster=[
 {id:"johann",name:"Johann",role:"Z"},{id:"michael",name:"Michael",role:"AA1"},{id:"janik",name:"Janik",role:"MB1"},
 {id:"jonas",name:"Jonas",role:"D"},{id:"maksym",name:"Maksym",role:"AA2"},{id:"dirk",name:"Dirk",role:"MB2"},
@@ -40,10 +40,9 @@ function active(){return st.lineup.slice()}
 function front(){return active().slice(0,3)}
 function receivers(){return st.receiveIds.filter(id=>active().includes(id)||id===st.liberoId)}
 function attackers(){
- // Truth-based K1 options: setter and libero are excluded.
- // Front-row attackers + eligible back-row attackers, but never blindly the whole roster.
  return active().filter(id=>{
    const p=byId(id); if(!p) return false;
+   if(id==="johann") return false; // setter: never normal attacker selection
    if(id===st.liberoId || p.role==="L" || p.role==="Z") return false;
    return true;
  })
@@ -77,9 +76,16 @@ function readSetup(){
  st.rot=parseInt($("startRotation").value.slice(1),10)||1; return true
 }
 function start(serv){if(!readSetup())return;const keep=clone(st.lineup);st=fresh();st.lineup=keep;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv};$("setup").classList.add("hidden");render()}
+function currentServerId(){const idx=((st.rot-1)%6+6)%6;return st.lineup[idx]||null}
+function currentServer(){
+ if(!st.serving)return opponent.name;
+ // Rotation number indexes current service turn; preserve selected six and substitutions.
+ const idx=((st.rot-1)%6+6)%6;
+ return nm(st.lineup[idx]||"");
+}
 function renderHeader(){
  $("homeScore").textContent=st.e;$("oppScore").textContent=st.o;$("oppNameHead").textContent=opponent.name;$("setBadge").textContent=`S${st.set}${st.set===5?" · TB":""}`;$("rotationBadge").textContent=`R${st.rot}`;
- $("phase").textContent=st.serving?"K2":"K1";$("serveText").textContent=st.serving?"EVV Aufschlag":"Gegner Aufschlag";
+ $("phase").textContent=st.serving?"K2":"K1";$("serveText").textContent=st.serving?"EVV Aufschlag":"Gegner Aufschlag";$("serverText").textContent=st.serving?`Aufschlag: ${currentServer()}`:`Aufschlag: ${opponent.name}`;
  $("lineups").innerHTML=`<div class="lineup"><b>EVV · aktive Sechs</b><div class="chips">${active().map(id=>`<span class="chip">${esc(nm(id))}</span>`).join("")}</div></div><div class="lineup"><b>${esc(opponent.name)}</b><div class="chips"><span class="chip">Z ${esc(opponent.setter)}</span><span class="chip">L ${esc(opponent.libero)}</span>${opponent.receivers.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div></div>`
 }
 function renderNav(){
@@ -92,7 +98,7 @@ function bindActs(){document.querySelectorAll("[data-act]").forEach(b=>b.onclick
 function action(s){
  const a=s.split("|");
  if(a[0]==="rec"){if(a[2]==="A0")commit("Gegner",{event:"Reception",receiver:a[1],reception:a[2]});else{draft={step:2,receiver:a[1],reception:a[2]};render()}}
- else if(a[0]==="att"){draft.attacker=a[1];draft.zone=a[2];draft.step=3;render()}
+ else if(a[0]==="att"){if(a[1]==="johann"||!attackers().includes(a[1]))return toast("Dieser Spieler ist aktuell kein Angreifer");draft.attacker=a[1];draft.zone=a[2];draft.step=3;render()}
  else if(a[0]==="fin"){let d=Object.assign({},draft,{event:"Attack",result:a[1]});if(a[1]==="KILL"){pendingMark={w:a[2],data:d};courtPicker();return}commit(a[2],d)}
  else if(a[0]==="quick")commit(a[1],{event:"Quick"})
  else if(a[0]==="serve"){if(a[1]==="ACE"){nineZonePicker("ACE",{w:"EVV",data:{event:"Serve",serve:"ACE"}})}else if(a[1]==="ERR")commit("Gegner",{event:"Serve",serve:"ERROR"});else{draft={step:2,event:"Serve",serve:"IN"};tab="opponent";render()}}
@@ -128,6 +134,60 @@ function opponentTab(){
 }
 function pct(a,n){return n?Math.round(a/n*100)+"%":"–"}
 function summary(r){let rec=r.filter(x=>x.event==="Reception"),pos=rec.filter(x=>["A2","A3"].includes(x.reception)).length,k=r.filter(x=>x.event==="Attack"&&x.result==="KILL").length,ace=r.filter(x=>x.event==="Serve"&&x.serve==="ACE").length,af=r.filter(x=>x.event==="Serve"&&x.serve==="ERROR").length;return `<div class="grid4"><div><b>${r.length}</b><div class="tiny">Rallyes</div></div><div><b>${pct(pos,rec.length)}</b><div class="tiny">Annahme+ ${pos}/${rec.length}</div></div><div><b>${k}</b><div class="tiny">Kills</div></div><div><b>${ace}/${af}</b><div class="tiny">Ace/AF</div></div></div>`}
+
+function ralliesForSet(s){
+ if(s===st.set) return st.rallies.filter(r=>r.set===s);
+ const a=st.setArchive&&st.setArchive[s]; return a&&a.rallies?a.rallies:[];
+}
+function statRows(s){
+ const rr=ralliesForSet(s), ids=[...new Set(rr.flatMap(r=>[r.receiver,r.attacker,r.player,r.server]).filter(Boolean))];
+ return ids.map(id=>{
+  const rec=rr.filter(r=>r.receiver===id&&r.reception), a3=rec.filter(r=>r.reception==="A3").length,a2=rec.filter(r=>r.reception==="A2").length,a1=rec.filter(r=>r.reception==="A1").length,a0=rec.filter(r=>r.reception==="A0").length;
+  const pos=a3+a2, rq=rec.length?Math.round(pos/rec.length*100):0;
+  const srv=rr.filter(r=>r.event==="Serve"&&(r.server===id||(!r.server&&id===currentServer()))), ac=srv.filter(r=>r.serve==="ACE").length,se=srv.filter(r=>r.serve==="ERROR").length;
+  const att=rr.filter(r=>r.attacker===id&&r.event==="Attack"),kill=att.filter(r=>r.result==="KILL").length,ae=att.filter(r=>r.result==="ERROR").length,ab=att.filter(r=>r.result==="BLOCKED").length;
+  const eff=att.length?Math.round((kill-ae-ab)/att.length*100):0;
+  const bl=rr.filter(r=>r.event==="Block"&&r.player===id&&r.result==="BLOCK").length;
+  return {id,rec:rec.length,a3,a2,a1,a0,rq,srv:srv.length,ac,se,att:att.length,kill,ae,ab,eff,bl}
+ })
+}
+function fullStats(s){
+ const rr=ralliesForSet(s), rows=statRows(s);
+ const k1=rr.filter(r=>r.phase==="K1"),k2=rr.filter(r=>r.phase==="K2");
+ const win=x=>x.length?Math.round(x.filter(r=>r.winner==="EVV").length/x.length*100):0;
+ const recN=rows.reduce((a,x)=>a+x.rec,0), recPos=rows.reduce((a,x)=>a+x.a3+x.a2,0);
+ const aces=rows.reduce((a,x)=>a+x.ac,0), serr=rows.reduce((a,x)=>a+x.se,0), kills=rows.reduce((a,x)=>a+x.kill,0);
+ return `<div class="statSection"><h2>${s==="MATCH"?"MATCH":`SATZ ${s}`} · Auswertung</h2>
+ <div class="statCards"><div class="statCard"><span>K1</span><b>${win(k1)}%</b><small>n=${k1.length}</small></div><div class="statCard"><span>K2</span><b>${win(k2)}%</b><small>n=${k2.length}</small></div><div class="statCard"><span>Annahme +</span><b>${recN?Math.round(recPos/recN*100):0}%</b><small>${recPos}/${recN}</small></div><div class="statCard"><span>Aces / Fehler</span><b>${aces} / ${serr}</b><small>Aufschlag</small></div></div>
+ <h3>Annahme</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>n</th><th>A3</th><th>A2</th><th>A1</th><th>A0</th><th>+ Quote</th></tr></thead><tbody>${rows.filter(x=>x.rec).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.rec}</td><td>${x.a3}</td><td>${x.a2}</td><td>${x.a1}</td><td>${x.a0}</td><td>${x.rq}%</td></tr>`).join("")||'<tr><td colspan="7">Noch keine Annahmen</td></tr>'}</tbody></table></div>
+ <h3>Aufschlag</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>Versuche</th><th>Ass</th><th>Fehler</th></tr></thead><tbody>${rows.filter(x=>x.srv||x.ac||x.se).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.srv}</td><td>${x.ac}</td><td>${x.se}</td></tr>`).join("")||'<tr><td colspan="4">Noch keine Aufschläge erfasst</td></tr>'}</tbody></table></div>
+ <h3>Angriff / Block</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>Angr.</th><th>Kill</th><th>Fehler</th><th>geblockt</th><th>Eff.</th><th>Blockpkt.</th></tr></thead><tbody>${rows.filter(x=>x.att||x.bl).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.att}</td><td>${x.kill}</td><td>${x.ae}</td><td>${x.ab}</td><td>${x.eff}%</td><td>${x.bl}</td></tr>`).join("")||'<tr><td colspan="7">Noch keine Angriffe/Blocks</td></tr>'}</tbody></table></div>
+ <h3>Landepunkte</h3><div class="small">Die 9-Zonen-Daten bleiben zusätzlich erhalten (${rr.filter(r=>r.targetZone).length} markierte Punkte).</div></div>`
+}
+function matchStats(){
+ const old=st.set;
+ let all=[];
+ for(let s=1;s<=5;s++) all=all.concat(ralliesForSet(s));
+ // temporary aggregation independent of set archive representation
+ const backup=st.rallies; st.rallies=all;
+ const html=fullStats(st.set); st.rallies=backup;
+ return html.replace(`SATZ ${st.set} · Auswertung`,"MATCH · Auswertung")
+}
+function nextSetPrep(){
+ const next=st.set+1;
+ const oppInputs=opponent.receivers.map((r,i)=>`<label>Annahme ${i+1}<input id="nOR${i}" value="${esc(r)}"></label>`).join("");
+ modal(`<div class="setprep"><h2>Satz ${next} vorbereiten</h2><p class="small"><b>${esc(opponent.name)}</b> bleibt gespeichert. Nur Aufstellungen/Startbedingungen für den neuen Satz prüfen.</p>
+ <h3>EVV Start-6</h3><div class="grid2">${[0,1,2,3,4,5].map(i=>`<label>Position ${i+1}<select id="nP${i}">${roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${st.lineup[i]===p.id?"selected":""}>${esc(p.name)} · ${p.role}</option>`).join("")}</select></label>`).join("")}</div>
+ <h3>${esc(opponent.name)} · aktuelle Aufstellung</h3><div class="grid2"><label>Zuspieler<input id="nOZ" value="${esc(opponent.setter)}"></label><label>Libero<input id="nOL" value="${esc(opponent.libero)}"></label>${oppInputs}</div>
+ <label>Startrotation<select id="nRot">${[1,2,3,4,5,6].map(r=>`<option ${r===st.rot?"selected":""}>${r}</option>`).join("")}</select></label>
+ <div class="grid2"><button id="nK1">Gegner-Aufschlag · K1</button><button id="nK2" class="primary">EVV-Aufschlag · K2</button></div></div>`);
+ const go=serving=>{
+   const ids=[0,1,2,3,4,5].map(i=>$("nP"+i).value); if(new Set(ids).size<6)return toast("EVV Start-6: Spieler doppelt");
+   st.lineup=ids;st.rot=+$("nRot").value;st.serving=serving;opponent.setter=$("nOZ").value.trim()||opponent.setter;opponent.libero=$("nOL").value.trim()||opponent.libero;opponent.receivers=[0,1,2,3].map(i=>$("nOR"+i).value.trim()||`#${i+1}`);
+   st.set=next;st.e=0;st.o=0;st.ended=false;st.rallies=[];draft={};view="live";closeModal();render();toast(`Satz ${next} gestartet`)
+ };
+ $("nK1").onclick=()=>go(false);$("nK2").onclick=()=>go(true);
+}
 function historical(){let r=view==="match"?allRallies():(st.sets.find(s=>s.set===view)?.rallies||(view===st.set?st.rallies:[]));$("flow").innerHTML=`<div class="banner">${view==="match"?"MATCH":"Satz "+view} · READ ONLY</div>${summary(r)}`}
 function coach(){
  const r=allRallies(),last=r.slice(-5),rec=r.filter(x=>x.event==="Reception"),pos=rec.filter(x=>["A2","A3"].includes(x.reception)).length;
@@ -138,13 +198,13 @@ function coach(){
 }
 function stats(){let r=view==="match"?allRallies():view==="live"?allRallies():(st.sets.find(s=>s.set===view)?.rallies||st.rallies);$("flow").innerHTML=`<h2>Auswertung</h2>${summary(r)}<h3>EVV Kill-/Punktkarte</h3><div id="statCourt" class="court"><div class="courtHint">Landepunkte</div></div>`;setTimeout(()=>{let marks=view==="match"||view==="live"?allMarks():(st.sets.find(s=>s.set===view)?.marks||st.marks);marks.forEach(m=>{let d=document.createElement("span");d.className="mark";d.style.left=m.x*100+"%";d.style.top=m.y*100+"%";$("statCourt").appendChild(d)})},0)}
 function zoneCenter(z){
- const map={1:[.83,.83],2:[.50,.17],3:[.50,.50],4:[.17,.50],5:[.17,.83],6:[.50,.83],7:[.17,.17],8:[.50,.17],9:[.83,.17]};
- return map[z]||[.5,.5]
+ const col=(z-1)%3,row=Math.floor((z-1)/3);
+ return [(col+.5)/3,(row+.5)/3]
 }
 function nineZonePicker(kind,payload){
  pendingMark=payload;
  modal(`<h2>${kind==="ACE"?"Aufschlag-Ass":"Angriffspunkt"} · Zielzone</h2><p class="small">Gegnerfeld: eine der 9 Zielzonen antippen. Optional überspringen.</p><div class="zone9">
- ${[7,8,9,4,3,2,5,6,1].map(z=>`<button data-zone="${z}"><b>${z}</b><span>Zone ${z}</span></button>`).join("")}
+ ${[1,2,3,4,5,6,7,8,9].map(z=>`<button type="button" data-zone="${z}"><b>${z}</b><span>Zone ${z}</span></button>`).join("")}
  </div><button id="skipMark">Überspringen</button>`);
  document.querySelectorAll("[data-zone]").forEach(b=>b.onclick=()=>{
    const z=+b.dataset.zone,[x,y]=zoneCenter(z),p=pendingMark; pendingMark=null;
@@ -176,7 +236,7 @@ function render(){
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;draft={};render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
 $("undo").onclick=()=>{if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};render();toast("Letzte Rally vollständig zurückgesetzt")};
-$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{tab="coach";view="live";render()};$("nextSet").onclick=prepareNextSet;
+$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{tab="coach";view="live";render()};$("nextSet").onclick=()=>{if(!st.ended)return toast("Satz läuft noch");nextSetPrep()};
 
 // ---------- iPad/Safari voice layer ----------
 let voiceRec=null,voiceListening=false,voicePending=null;
@@ -215,7 +275,7 @@ function executeVoice(c){
  if(c.type==="quick"){commit(c.winner,{event:"VoiceQuick",voice:c.raw});return}
  if(c.type==="serve"){if(c.result==="ACE"){nineZonePicker("ACE",{w:"EVV",data:{event:"Serve",serve:"ACE",voice:c.raw}})}else commit("Gegner",{event:"Serve",serve:"ERROR",voice:c.raw});return}
  if(c.type==="reception"){if(!receivers().includes(c.player))return toast(`${nm(c.player)} ist nicht in der aktuellen Annahme`); if(c.q==="A0")commit("Gegner",{event:"Reception",receiver:c.player,reception:c.q,voice:c.raw});else{draft={step:2,receiver:c.player,reception:c.q,voice:c.raw};tab="rally";render();toast("Annahme gespeichert · Angriff weiter per Tap/Sprache")};return}
- if(c.type==="kill"){if(!active().includes(c.player))return toast(`${nm(c.player)} ist nicht auf dem Feld`);pendingMark={w:"EVV",data:{event:"Attack",attacker:c.player,zone:c.zone,result:"KILL",voice:c.raw}};courtPicker();return}
+ if(c.type==="kill"){if(!attackers().includes(c.player))return toast(`${nm(c.player)} ist aktuell kein Angreifer`);pendingMark={w:"EVV",data:{event:"Attack",attacker:c.player,zone:c.zone,result:"KILL",voice:c.raw}};courtPicker();return}
  if(c.type==="block"){if(!front().includes(c.player))return toast(`${nm(c.player)} ist aktuell nicht Vorderreihe`);commit("EVV",{event:"Block",player:c.player,result:"BLOCK",voice:c.raw});return}
  if(c.type==="sub"){
    let oi=st.lineup.indexOf(c.out);if(oi<0||st.lineup.includes(c.inn))return toast("Wechsel passt nicht zur aktiven Sechs");
@@ -236,7 +296,7 @@ function startVoiceRecognition(){
 function toggleVoice(){
  if(!SpeechAPI){modal('<h2>🎙 Sprache nicht verfügbar</h2><p>Dieser Browser stellt die Web-Spracherkennung nicht bereit. Bitte Safari auf dem iPad verwenden.</p><button id="voiceClose">OK</button>');$("voiceClose").onclick=closeModal;return}
  if(!window.isSecureContext){modal('<h2>🎙 Für Sprache HTTPS nötig</h2><p>Die lokale ZIP-Version funktioniert zum Tippen. Für Mikrofon-Spracherkennung muss QuickScout in Safari über eine sichere HTTPS-Adresse geöffnet werden.</p><button id="voiceClose">OK</button>');$("voiceClose").onclick=closeModal;return}
- voiceListening=!voiceListening;$("voiceState").textContent=voiceListening?"🎙 hört zu":"🎙 Sprache aus";$("voiceState").classList.toggle("listening",voiceListening);
+ voiceListening=!voiceListening;if($("voiceState")){$("voiceState").textContent=voiceListening?"🎙 hört zu":"🎙 Sprache aus";$("voiceState").classList.toggle("listening",voiceListening);}
  if(voiceListening){toast("Sprachmodus an · kurze Volleyball-Kommandos");startVoiceRecognition()}else{try{voiceRec&&voiceRec.abort()}catch(e){};voiceRec=null;toast("Sprachmodus aus")}
 }
 $("voiceBtn").onclick=toggleVoice;

@@ -1,0 +1,20 @@
+EVV QuickScout V7.3 – iPad / GitHub Pages
+==========================================
+
+1. Auf github.com anmelden und ein neues Repository anlegen, z. B. evv-quickscout.
+2. Repository kann PUBLIC sein. WICHTIG: QuickScout enthält nur App-Code; keine echten personenbezogenen Gegnerdaten dauerhaft in den Quellcode eintragen.
+3. Den INHALT dieses ZIP-Ordners in die oberste Ebene des Repository hochladen:
+   index.html
+   styles.css
+   app.js
+   (weitere Textdateien sind optional)
+4. GitHub: Settings > Pages.
+5. Unter "Build and deployment": Source = Deploy from a branch.
+6. Branch = main, Ordner = / (root), Save.
+7. Nach kurzer Bereitstellung zeigt GitHub Pages die HTTPS-Adresse an.
+8. Diese Adresse auf dem iPad in SAFARI öffnen.
+9. Teilen > Zum Home-Bildschirm > Hinzufügen.
+10. QuickScout künftig über das Symbol starten.
+11. Beim ersten Antippen von "Sprache" den Mikrofonzugriff erlauben.
+
+Für Sprache ist die HTTPS-Seite entscheidend; die lokale ZIP/file-Version bleibt der Touch-Fallback.

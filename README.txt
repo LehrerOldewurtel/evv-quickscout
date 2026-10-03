@@ -55,3 +55,19 @@ V7.1 LOOP-FIX
 - Zuspieler und Libero nie als normale Angreifer
 - Zielzone wird zusätzlich zur Koordinate gespeichert
 - Voice-Ace nutzt ebenfalls die 9-Zonen-Wahl
+
+
+V7.2 LIVE-TEST FIX
+- Kopfbereich und Eingabebereich zentral ausgerichtet
+- sichtbarer Sprachstatus oben entfernt
+- aktueller Aufschläger wird namentlich angezeigt
+- Johann hart aus Angreiferwahl und Voice-Kill ausgeschlossen
+- Kill/Ace Zielwahl sichtbar als echtes 3x3-Feld mit Zonen 1-9
+- Rotation nach Live-Test korrigiert: R5 -> R6 -> R1
+
+
+V7.3
+- reduzierte Satzvorbereitung für Satz 2-5
+- Gegnername bleibt, Aufstellungen können je Satz angepasst werden
+- vollständige Satzstatistik: Annahme, Aufschlag, Angriff, Block, K1/K2, Landepunkte
+- GitHub-Pages/iPad-Anleitung enthalten

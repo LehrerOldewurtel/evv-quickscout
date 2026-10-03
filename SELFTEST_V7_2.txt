@@ -1,0 +1,14 @@
+EVV QuickScout V7.2 – Live-Test Fix
+=======================================
+PASS  Header zentral
+PASS  Sprachstatus oben entfernt
+PASS  Aufschläger-Anzeige vorhanden
+PASS  Rotation R5→R6
+PASS  Rotation R6→R1
+PASS  Johann explizit ausgeschlossen
+PASS  Attack-Handler blockiert Johann
+PASS  Voice-Kill nutzt Angreiferfilter
+PASS  9 Felder explizit
+PASS  3x3 Grid explizit
+PASS  Zonen 1–9 gespeichert
+PASS  JavaScript Syntax
