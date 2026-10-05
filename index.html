@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#111827">
-<title>EVV QuickScout V7</title>
+<title>EVV QuickScout V7.6 Goldstandard</title>
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +22,7 @@
 
 <main>
 <section id="setup" class="card">
-  <h2>Spiel einrichten · V7</h2>
+  <h2>Spiel einrichten · V7.6 Goldstandard</h2>
   <div class="grid2">
     <label>Gegner<input id="oppName" value="Gegner"></label>
     <label>Gegner-Zuspieler #<input id="oppSetter" inputmode="numeric" placeholder="z. B. 7"></label>
@@ -34,7 +35,7 @@
   <div class="grid4">
     <input id="oppR1" placeholder="# A1"><input id="oppR2" placeholder="# A2"><input id="oppR3" placeholder="# A3"><input id="oppR4" placeholder="# A4">
   </div>
-  <h3>EVV Start-Sechs</h3>
+  <h3>EVV Start-Sechs</h3><label class="checkline"><input id="evvLiberoActive" type="checkbox"> EVV-Libero in Annahme aktiv (für Düren-Test AUS)</label>
   <div id="startSix" class="grid3"></div>
   <div class="grid2">
     <button id="startReceive" class="primary">Start · Gegner-Aufschlag · K1</button>
@@ -64,5 +65,6 @@
 <div id="modal" class="modal hidden"><div id="modalBox" class="modalbox"></div></div>
 <div id="toast" class="toast hidden"></div>
 <script src="app.js"></script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script>
 </body>
 </html>

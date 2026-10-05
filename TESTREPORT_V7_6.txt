@@ -1,0 +1,23 @@
+EVV QuickScout V7.6 Goldstandard – Release Gate
+Datum: 2026-10-05
+
+PASS – node --check app.js
+PASS – LOOPTEST_V7_6.py: 19/19
+PASS – alter LOOPTEST_V7_5.py: 15/15 Regression
+PASS – Chromium End-to-End:
+- K1 ohne Libero: MB auswählbar
+- Angriff aus Feldposition
+- WEITER vergibt keinen Punkt
+- lange Rallyekette über beide Mannschaften
+- EVV-Abwehr D3-D0 + erneutes Zuspiel/Angriff
+- Kill + 9-Zonen-Ziel
+- Sideout R5 -> R6
+- Ass + Zielzone + Undo atomar
+- Gegner-Libero in Annahme
+- EVV-Blockpunkt: nur Vorderreihe, Spielerzuordnung
+- Spielerstatistik sichtbar
+- Rotationsstatistik R1-R6 sichtbar
+
+Zusätzlich:
+- LocalStorage-Autosave im Code integriert; statisch geprüft. Die Sandbox blockierte direkte Browsernavigation zu localhost/file, daher Persistenz-Reload nicht als Browser-PASS gewertet.
+- Taktische Annahmeformationen R1-R6 werden nicht erfunden. Ohne Libero sind aktive Feldspieler außer Zuspieler auswählbar.

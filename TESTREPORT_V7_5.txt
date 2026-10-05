@@ -1,0 +1,21 @@
+EVV QuickScout V7.5 VideoLoop – Release Gate
+Basis: V7.4 + Satz-1-Videotest Düren
+
+Browser (Chromium, DOM-klickbasiert): PASS
+- ohne Libero: Mittelblocker in EVV-Annahme auswählbar
+- P4 wird als Angriff IV erkannt
+- WEITER/Rallye fortsetzen vergibt KEINEN Punkt
+- Gegnerabwehr -> Zuspiel -> Angriff -> EVV-Abwehr -> EVV-Zuspiel läuft weiter
+- Gegner-Libero in Annahme auswählbar
+- Gegner A0 beendet Rallye als EVV-Punkt
+- 9-Zonen-Feld zeigt NETZ/GRUNDLINIE eindeutig
+- Ass + Zielzone + Undo entfernt Punkt, Rallye, Markierung und Ass-Ereignis
+- detaillierte Statistikansicht vorhanden
+- Rotation R5 -> R6 -> R1 bestätigt
+
+Static/Syntax: PASS
+- node --check app.js
+- LOOPTEST_V7_5.py: 15/15 PASS
+
+Bewusste Grenze:
+Die vollständigen sechs EVV-Annahmeformationen mit Libero sind noch nicht als individuelle R1-R6-Muster konfiguriert. V7.5 erfasst ohne Libero alle aktiven Nicht-Zuspieler; Libero kann separat aktiviert werden. Die Feldpositions-/Angriffslogik ist rotationsbasiert.
