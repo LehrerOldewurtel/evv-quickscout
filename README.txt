@@ -71,3 +71,11 @@ V7.3
 - Gegnername bleibt, Aufstellungen können je Satz angepasst werden
 - vollständige Satzstatistik: Annahme, Aufschlag, Angriff, Block, K1/K2, Landepunkte
 - GitHub-Pages/iPad-Anleitung enthalten
+
+V7.4 Stability Loop:
+- Atomarer Undo für Rallyes mit Zielpunkt: Snapshot vor Markierung/Statistik.
+- Gegner-A0 = sofort EVV-Punkt; kein falscher Sprung zu Gegner-Zuspiel.
+- Nach abgeschlossener Rallye automatisch zurück zu Rallye/LIVE.
+- Beim Setup ermittelte EVV-Annahme bleibt beim Start erhalten.
+- Satz-Weiter-Altfehler st.ended bereinigt.
+- Rallyelog zeigt vorhandene Aktionskette aussagekräftiger.

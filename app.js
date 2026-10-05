@@ -25,14 +25,14 @@ function checkEnd(){st.setEnded=isSetWin();if(st.setEnded){const w=st.e>st.o?"EV
 function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks})}
 function restore(x){Object.assign(st,clone(x))}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
-function commit(w,data={}){
+function commit(w,data={},preSnapshot=null){
  if(st.setEnded||st.matchEnded)return toast("Satz ist beendet");
- st.rallyUndo.push(snapshot());
+ st.rallyUndo.push(preSnapshot?clone(preSnapshot):snapshot());
  const before=`${st.e}:${st.o}`,rb=st.rot,sb=st.serving;
  if(w==="EVV"){st.e++;if(!st.serving){st.serving=true;rotate()}}
  else{st.o++;if(st.serving)st.serving=false}
  data=Object.assign({},data,{winner:w,before,after:`${st.e}:${st.o}`,rotation:rb,servingBefore:sb,set:st.set});
- st.rallies.push(data);draft={};checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
+ st.rallies.push(data);draft={};tab="rally";view="live";checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
 }
 function allRallies(){return st.sets.flatMap(s=>s.rallies).concat(st.rallies)}
 function allMarks(){return st.sets.flatMap(s=>s.marks||[]).concat(st.marks)}
@@ -75,7 +75,7 @@ function readSetup(){
  opponent.receivers=[1,2,3,4].map(i=>"#"+($("oppR"+i).value.trim()||"?"));
  st.rot=parseInt($("startRotation").value.slice(1),10)||1; return true
 }
-function start(serv){if(!readSetup())return;const keep=clone(st.lineup);st=fresh();st.lineup=keep;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv};$("setup").classList.add("hidden");render()}
+function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRec=clone(st.receiveIds);st=fresh();st.lineup=keep;st.receiveIds=keepRec;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv};$("setup").classList.add("hidden");render()}
 function currentServerId(){const idx=((st.rot-1)%6+6)%6;return st.lineup[idx]||null}
 function currentServer(){
  if(!st.serving)return opponent.name;
@@ -104,7 +104,7 @@ function action(s){
  else if(a[0]==="serve"){if(a[1]==="ACE"){nineZonePicker("ACE",{w:"EVV",data:{event:"Serve",serve:"ACE"}})}else if(a[1]==="ERR")commit("Gegner",{event:"Serve",serve:"ERROR"});else{draft={step:2,event:"Serve",serve:"IN"};tab="opponent";render()}}
  else if(a[0]==="k2"){draft.player=a[1];draft.action=a[2];draft.step=3;render()}
  else if(a[0]==="k2f")commit(a[1],Object.assign({},draft,{event:draft.action||"K2"}))
- else if(a[0]==="or"){draft={step:2,event:"OpponentReception",receiver:a[1],reception:a[2]};render()}
+ else if(a[0]==="or"){if(a[2]==="A0"){commit("EVV",Object.assign({},draft,{event:"OpponentReception",receiver:a[1],reception:a[2]}));}else{draft=Object.assign({},draft,{step:2,event:"OpponentReception",receiver:a[1],reception:a[2]});render()}}
  else if(a[0]==="os"){draft.setterTarget=a[1];draft.step=3;render()}
  else if(a[0]==="of"){commit(a[2],Object.assign({},draft,{event:"OpponentAttack",result:a[1]}))}
 }
@@ -184,7 +184,7 @@ function nextSetPrep(){
  const go=serving=>{
    const ids=[0,1,2,3,4,5].map(i=>$("nP"+i).value); if(new Set(ids).size<6)return toast("EVV Start-6: Spieler doppelt");
    st.lineup=ids;st.rot=+$("nRot").value;st.serving=serving;opponent.setter=$("nOZ").value.trim()||opponent.setter;opponent.libero=$("nOL").value.trim()||opponent.libero;opponent.receivers=[0,1,2,3].map(i=>$("nOR"+i).value.trim()||`#${i+1}`);
-   st.set=next;st.e=0;st.o=0;st.ended=false;st.rallies=[];draft={};view="live";closeModal();render();toast(`Satz ${next} gestartet`)
+   st.set=next;st.e=0;st.o=0;st.setEnded=false;st.rallies=[];draft={};view="live";closeModal();render();toast(`Satz ${next} gestartet`)
  };
  $("nK1").onclick=()=>go(false);$("nK2").onclick=()=>go(true);
 }
@@ -207,9 +207,9 @@ function nineZonePicker(kind,payload){
  ${[1,2,3,4,5,6,7,8,9].map(z=>`<button type="button" data-zone="${z}"><b>${z}</b><span>Zone ${z}</span></button>`).join("")}
  </div><button id="skipMark">Überspringen</button>`);
  document.querySelectorAll("[data-zone]").forEach(b=>b.onclick=()=>{
-   const z=+b.dataset.zone,[x,y]=zoneCenter(z),p=pendingMark; pendingMark=null;
+   const z=+b.dataset.zone,[x,y]=zoneCenter(z),p=pendingMark,pre=snapshot(); pendingMark=null;
    p.data.targetZone=z;p.data.court={x,y};st.marks.push({x,y,zone:z,set:st.set,player:p.data.attacker||p.data.server||null,kind});
-   closeModal();commit(p.w,p.data)
+   closeModal();commit(p.w,p.data,pre)
  });
  $("skipMark").onclick=()=>{let p=pendingMark;pendingMark=null;closeModal();commit(p.w,p.data)}
 }
@@ -227,7 +227,8 @@ function prepareNextSet(){
  modal(`<h2>Satz ${st.set+1} starten${st.set+1===5?" · TIE-BREAK bis 15":""}</h2><label>Startrotation<select id="nsRot">${[1,2,3,4,5,6].map(n=>`<option value="${n}">R${n}</option>`).join("")}</select></label><div class="grid2"><button id="nsRec">Gegner Aufschlag · K1</button><button id="nsSrv" class="primary">EVV Aufschlag · K2</button></div>`);
  const go=serv=>{st.sets.push({set:st.set,e:st.e,o:st.o,rallies:clone(st.rallies),marks:clone(st.marks),start:st.setStart});st.set++;st.e=0;st.o=0;st.rot=+$("nsRot").value;st.serving=serv;st.setEnded=false;st.matchEnded=false;st.rallies=[];st.rallyUndo=[];st.marks=[];st.setStart={rot:st.rot,serving:serv};draft={};view="live";closeModal();render()};$("nsRec").onclick=()=>go(false);$("nsSrv").onclick=()=>go(true)
 }
-function recent(){let r=allRallies().slice(-3).reverse();$("recent").innerHTML=`<h3>Letzte Rallys</h3><div class="history">${r.length?r.map(x=>`S${x.set} · ${esc(x.after)} · ${esc(x.event||"Rally")} · ${esc(x.winner)}`).join("<br>"):"Noch keine Rally"}</div>`}
+function rallyLabel(x){let a=[];if(x.serve)a.push(`Aufschlag ${x.serve}`);if(x.receiver&&x.reception)a.push(`Annahme ${x.receiver} ${x.reception}`);if(x.setterTarget)a.push(`Zuspiel ${x.setterTarget}`);if(x.attacker)a.push(`Angriff ${nm(x.attacker)} ${x.zone||""} ${x.result||""}`.trim());else if(x.event==="OpponentAttack")a.push(`Gegnerangriff ${x.result||""}`.trim());else if(!a.length)a.push(x.event||"Rally");return a.join(" → ")}
+function recent(){let r=allRallies().slice(-3).reverse();$("recent").innerHTML=`<h3>Letzte Rallys</h3><div class="history">${r.length?r.map(x=>`S${x.set} · ${esc(x.after)} · ${esc(rallyLabel(x))} · ${esc(x.winner)}`).join("<br>"):"Noch keine Rally"}</div>`}
 function render(){
  renderHeader();renderNav();document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
  if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();
@@ -236,7 +237,7 @@ function render(){
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;draft={};render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
 $("undo").onclick=()=>{if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};render();toast("Letzte Rally vollständig zurückgesetzt")};
-$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{tab="coach";view="live";render()};$("nextSet").onclick=()=>{if(!st.ended)return toast("Satz läuft noch");nextSetPrep()};
+$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{tab="coach";view="live";render()};$("nextSet").onclick=()=>{if(!st.setEnded)return toast("Satz läuft noch");prepareNextSet()};
 
 // ---------- iPad/Safari voice layer ----------
 let voiceRec=null,voiceListening=false,voicePending=null;

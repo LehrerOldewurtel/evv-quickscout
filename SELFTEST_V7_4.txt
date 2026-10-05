@@ -1,0 +1,16 @@
+EVV QuickScout V7.4 – Stability Loop
+
+Prüfschwerpunkte:
+PASS – markierte Rallyes (ACE/KILL) sichern Snapshot VOR dem Landepunkt
+PASS – Undo kann dadurch Punkt + Rallye + Statistik + Landepunkt gemeinsam zurücksetzen
+PASS – Gegner A0 beendet Rallye sofort als EVV-Punkt
+PASS – abgeschlossene Rallye springt auf Rallye/LIVE zurück
+PASS – Setup-Annahmeformation wird beim Start nicht mehr überschrieben
+PASS – veraltete st.ended-Referenzen entfernt
+PASS – Satz-Weiter-Funktion nutzt setEnded
+PASS – 9 Zielzonen bleiben erhalten
+PASS – Zuspieler/Libero bleiben aus normalen Angriffsoptionen
+PASS – Satz 5 bleibt 15 Punkte / 2 Punkte Abstand
+PASS – Rallyelog zeigt vorhandene Aktionskette kompakter
+
+Hinweis: Syntax- und Quellcode-Regressionstests wurden ausgeführt. Ein automatisierter Chromium-E2E-Lauf wurde in dieser Laufzeitumgebung angestoßen, lieferte aber keinen verwertbaren DOM-Output; daher wird er NICHT als bestanden behauptet. Manueller Browser-Schnelltest bleibt Abnahmeinstanz.
