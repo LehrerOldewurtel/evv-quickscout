@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
-const APP_VERSION=self.EVV_VERSION||"7.7";
+const APP_VERSION=globalThis.EVV_VERSION||"7.7.1";
 const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}; // confirmed live-test convention: R5→R6→R1
 const roster=[
 {id:"johann",name:"Johann",role:"Z"},{id:"michael",name:"Michael",role:"AA1"},{id:"janik",name:"Janik",role:"MB1"},
@@ -297,7 +297,13 @@ function render(){
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
 $("undo").onclick=()=>{if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};render();toast("Letzte Rally vollständig zurückgesetzt")};
-$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{tab="coach";view="live";render()};$("nextSet").onclick=()=>{if(!st.setEnded)return toast("Satz läuft noch");prepareNextSet()};
+$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{
+ if(!st.started||view!=="live")return toast("Auszeit nur im laufenden Satz");
+ modal(`<h2>Auszeit erfassen</h2><p class="small">Spielstand ${st.e}:${st.o} · S${st.set} · R${st.rot}</p><div class="grid2"><button id="toEVV" class="primary">EVV-Auszeit</button><button id="toOpp">${esc(opponent.name)}-Auszeit</button></div><button id="toCancel">Abbrechen</button>`);
+ $("toEVV").onclick=()=>{st.events.push({type:"timeout",team:"EVV",set:st.set,score:`${st.e}:${st.o}`,rot:st.rot});closeModal();tab="coach";render();toast("EVV-Auszeit gespeichert")};
+ $("toOpp").onclick=()=>{st.events.push({type:"timeout",team:"Gegner",set:st.set,score:`${st.e}:${st.o}`,rot:st.rot});closeModal();tab="coach";render();toast("Gegner-Auszeit gespeichert")};
+ $("toCancel").onclick=closeModal;
+};$("nextSet").onclick=()=>{if(!st.setEnded)return toast("Satz läuft noch");prepareNextSet()};
 
 // ---------- iPad/Safari voice layer ----------
 let voiceRec=null,voiceListening=false,voicePending=null;

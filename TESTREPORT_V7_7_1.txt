@@ -1,0 +1,14 @@
+EVV QuickScout V7.7.1 Apple UI / Satz-2 Release
+
+Release scope:
+- V7.7 rally engine preserved
+- version.js fixed with globalThis; UI fallback V7.7.1
+- cache-busting for CSS/JS/SW
+- Apple-like visual pass
+- two liberos for both teams preserved
+- existing V7.7 local match state preserved via same storage key
+- timeout capture added for EVV/opponent with set, score, rotation
+
+Static release gate: 14/14 PASS
+JavaScript syntax: PASS
+Important: Satz 1 timeouts were not reconstructed; only future timeouts are recorded.

@@ -1,5 +1,5 @@
 importScripts('./version.js');
-const CACHE='evv-quickscout-v'+String(self.EVV_VERSION).replaceAll('.','-');
+const CACHE='evv-quickscout-v'+String(globalThis.EVV_VERSION||'7.7.1').replaceAll('.','-');
 const CORE=['./','./index.html','./styles.css','./version.js','./app.js'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).catch(()=>{}))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
