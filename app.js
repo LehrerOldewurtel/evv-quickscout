@@ -1,17 +1,18 @@
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
+const APP_VERSION=self.EVV_VERSION||"7.7";
 const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}; // confirmed live-test convention: R5→R6→R1
 const roster=[
 {id:"johann",name:"Johann",role:"Z"},{id:"michael",name:"Michael",role:"AA1"},{id:"janik",name:"Janik",role:"MB1"},
 {id:"jonas",name:"Jonas",role:"D"},{id:"maksym",name:"Maksym",role:"AA2"},{id:"dirk",name:"Dirk",role:"MB2"},
 {id:"felix",name:"Felix",role:"AA"},{id:"jens",name:"Jens",role:"D/AA"},{id:"amar",name:"Amar",role:"L"},{id:"alex",name:"Alexandra",role:"L"}];
 const byId=id=>roster.find(p=>p.id===id), nm=id=>(byId(id)||{name:id}).name;
-let opponent={name:"Gegner",setter:"#",libero:"#",receivers:["#","#","#","#"]};
-let tab="rally",view="live",draft={},pendingMark=null;
+let opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};
+let tab="rally",view="live",draft={},draftHistory=[],pendingMark=null;
 let st=fresh();
 function fresh(){return{started:false,set:1,e:0,o:0,rot:1,serving:true,setEnded:false,matchEnded:false,
-lineup:["johann","michael","janik","jonas","maksym","dirk"],receiveIds:[],liberoId:"amar",liberoActive:false,
+lineup:["johann","michael","janik","jonas","maksym","dirk"],receiveIds:[],liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,
 rallies:[],sets:[],rallyUndo:[],events:[],marks:[],setStart:null}}
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function toast(s){$("toast").textContent=s;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),1100)}
@@ -24,9 +25,9 @@ function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).l
 function checkEnd(){st.setEnded=isSetWin();if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=st.set===5||setWins(w)>=3}}
 function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks})}
 function restore(x){Object.assign(st,clone(x))}
-const STORE_KEY="evvQuickScoutV76";
+const STORE_KEY="evvQuickScoutV77";
 function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent}))}catch(e){}}
-function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});return true}}catch(e){}return false}
+function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];return true}}catch(e){}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
 function commit(w,data={},preSnapshot=null){
  if(st.setEnded||st.matchEnded)return toast("Satz ist beendet");
@@ -35,13 +36,14 @@ function commit(w,data={},preSnapshot=null){
  if(w==="EVV"){st.e++;if(!st.serving){st.serving=true;rotate()}}
  else{st.o++;if(st.serving)st.serving=false}
  data=Object.assign({},data,{winner:w,before,after:`${st.e}:${st.o}`,rotation:rb,servingBefore:sb,phase:data.phase||(sb?"K2":"K1"),set:st.set});
- st.rallies.push(data);draft={};tab="rally";view="live";checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
+ st.rallies.push(data);draft={};clearDraftHistory();tab="rally";view="live";checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
 }
 function allRallies(){return st.sets.flatMap(s=>s.rallies).concat(st.rallies)}
 function allMarks(){return st.sets.flatMap(s=>s.marks||[]).concat(st.marks)}
-function active(){return st.lineup.slice()}
+function active(){let ids=st.lineup.slice();if(st.liberoActive&&st.liberoOnCourt&&st.liberoReplacedId){ids=ids.filter(id=>id!==st.liberoReplacedId);ids.push(st.liberoOnCourt)}return ids}
 function rotationSteps(from,to){let n=0,r=from;while(r!==to&&n<6){r=ROT_NEXT[r];n++}return n}
 function courtPos(id){
+ if(st.liberoActive&&id===st.liberoOnCourt&&st.liberoReplacedId)return courtPos(st.liberoReplacedId);
  const base=st.lineup.indexOf(id)+1;if(!base)return null;
  const startRot=(st.setStart&&st.setStart.rot)||st.rot,steps=rotationSteps(startRot,st.rot);
  let pos=base;for(let i=0;i<steps;i++)pos=pos===1?6:pos-1;return pos
@@ -49,18 +51,17 @@ function courtPos(id){
 function playerAtPos(pos){return active().find(id=>courtPos(id)===pos)||null}
 function front(){return active().filter(id=>[2,3,4].includes(courtPos(id)))}
 function receivers(){
- // No hard-coded trio: in a no-libero formation every active court player except the setter can be recorded.
  let ids=active().filter(id=>{const p=byId(id);return p&&p.role!=="Z"&&p.role!=="L"});
- if(st.liberoActive&&st.liberoId&&!ids.includes(st.liberoId))ids.push(st.liberoId);
+ if(st.liberoActive&&st.liberoOnCourt&&!ids.includes(st.liberoOnCourt))ids.push(st.liberoOnCourt);
  return ids
 }
-function opponentReceivers(){return [...new Set(opponent.receivers.concat(opponent.libero&&opponent.libero!=="#?"?[opponent.libero]:[]).filter(x=>x&&x!=="#"&&x!=="#?"))]}
-function attackers(){return active().filter(id=>{const p=byId(id);return p&&p.role!=="Z"&&p.role!=="L"&&id!==st.liberoId})}
+function opponentReceivers(){return [...new Set(opponent.receivers.concat(opponent.liberos||[]).filter(x=>x&&x!=="#"&&x!=="#?"))]}
+function attackers(){return active().filter(id=>{const p=byId(id);return p&&p.role!=="Z"&&p.role!=="L"&&!st.liberoIds.includes(id)})}
 function attackOptions(){
  const z={4:"IV",3:"III",2:"II",6:"PIPE",1:"I",5:"V"};
  return attackers().map(id=>({id,zone:z[courtPos(id)]||"HF",pos:courtPos(id)}))
 }
-function attackCandidates(target){let a=attackOptions();let exact=a.filter(x=>x.zone===target);return exact.length?exact:a}
+function attackCandidates(target){return attackOptions().filter(x=>x.zone===target)}
 function setupUI(){
  $("startSix").innerHTML=st.lineup.map((id,i)=>`<label>Pos ${i+1}<select id="ss${i}">${roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${p.id===id?"selected":""}>${esc(p.name)} · ${esc(p.role)}</option>`).join("")}</select></label>`).join("")
 }
@@ -69,12 +70,12 @@ function readSetup(){
  if(new Set(ids).size!==6){toast("Start-Sechs enthält doppelte Spieler");return false}
  st.lineup=ids;
  st.receiveIds=[];
- st.liberoActive=!!($("evvLiberoActive")&&$("evvLiberoActive").checked);
- opponent.name=$("oppName").value.trim()||"Gegner";opponent.setter="#"+($("oppSetter").value.trim()||"?");opponent.libero="#"+($("oppLibero").value.trim()||"?");
+ st.liberoOnCourt=$("evvLiberoOnCourt")?$("evvLiberoOnCourt").value:"";st.liberoReplacedId=$("evvLiberoReplaces")?$("evvLiberoReplaces").value:"";st.liberoActive=!!(st.liberoOnCourt&&st.liberoReplacedId);
+ opponent.name=$("oppName").value.trim()||"Gegner";opponent.setter="#"+($("oppSetter").value.trim()||"?");opponent.liberos=[1,2].map(i=>"#"+($("oppLibero"+i).value.trim()||"?"));
  opponent.receivers=[1,2,3,4].map(i=>"#"+($("oppR"+i).value.trim()||"?"));
  st.rot=parseInt($("startRotation").value.slice(1),10)||1; return true
 }
-function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRec=clone(st.receiveIds),keepLib=st.liberoId,keepLibActive=st.liberoActive;st=fresh();st.lineup=keep;st.receiveIds=keepRec;st.liberoId=keepLib;st.liberoActive=keepLibActive;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv};$("setup").classList.add("hidden");render()}
+function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRec=clone(st.receiveIds),keepLibs=clone(st.liberoIds),keepLibOn=st.liberoOnCourt,keepLibRep=st.liberoReplacedId,keepLibActive=st.liberoActive;st=fresh();st.lineup=keep;st.receiveIds=keepRec;st.liberoIds=keepLibs;st.liberoOnCourt=keepLibOn;st.liberoReplacedId=keepLibRep;st.liberoActive=keepLibActive;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv};$("setup").classList.add("hidden");render()}
 function currentServerId(){return playerAtPos(1)}
 function currentServer(){
  if(!st.serving)return opponent.name;
@@ -84,7 +85,7 @@ function currentServer(){
 function renderHeader(){
  $("homeScore").textContent=st.e;$("oppScore").textContent=st.o;$("oppNameHead").textContent=opponent.name;$("setBadge").textContent=`S${st.set}${st.set===5?" · TB":""}`;$("rotationBadge").textContent=`R${st.rot}`;
  $("phase").textContent=st.serving?"K2":"K1";$("serveText").textContent=st.serving?"EVV Aufschlag":"Gegner Aufschlag";$("serverText").textContent=st.serving?`Aufschlag: ${currentServer()}`:`Aufschlag: ${opponent.name}`;
- $("lineups").innerHTML=`<div class="lineup"><b>EVV · aktive Sechs</b><div class="chips">${active().map(id=>`<span class="chip">${esc(nm(id))}</span>`).join("")}</div></div><div class="lineup"><b>${esc(opponent.name)}</b><div class="chips"><span class="chip">Z ${esc(opponent.setter)}</span><span class="chip">L ${esc(opponent.libero)}</span>${opponent.receivers.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div></div>`
+ $("lineups").innerHTML=`<div class="lineup"><b>EVV · aktive Sechs</b><div class="chips">${active().map(id=>`<span class="chip">${esc(nm(id))}</span>`).join("")}</div></div><div class="lineup"><b>${esc(opponent.name)}</b><div class="chips"><span class="chip">Z ${esc(opponent.setter)}</span><span class="chip">L1 ${esc((opponent.liberos||[])[0]||"–")}</span><span class="chip">L2 ${esc((opponent.liberos||[])[1]||"–")}</span>${opponent.receivers.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div></div>`
 }
 function renderNav(){
  const nums=[...st.sets.map(s=>s.set),st.set].filter((v,i,a)=>a.indexOf(v)===i);
@@ -92,19 +93,34 @@ function renderNav(){
  document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>{view=b.dataset.view==="live"||b.dataset.view==="match"?b.dataset.view:+b.dataset.view;render()})
 }
 function B(label,act,cls=""){return `<button class="${cls}" data-act="${esc(act)}">${label}</button>`}
+function flowHead(title){return `<div class="flowTitle"><button class="backBtn" data-act="back">← Zurück</button><h2>${title}</h2><span></span></div>`}
 function bindActs(){document.querySelectorAll("[data-act]").forEach(b=>b.onclick=()=>action(b.dataset.act))}
 function setLastAttackResult(result){for(let i=(draft.chain||[]).length-1;i>=0;i--){if(draft.chain[i].side==="EVV"&&draft.chain[i].type==="Attack"){draft.chain[i].result=result;break}}}
+function pushDraft(){draftHistory.push({draft:clone(draft),tab});if(draftHistory.length>30)draftHistory.shift()}
+function draftBack(){const x=draftHistory.pop();if(!x)return toast("Kein vorheriger Rallye-Schritt");draft=x.draft;tab=x.tab;render()}
+function clearDraftHistory(){draftHistory=[]}
+function secondBallPlayers(side){return side==="EVV"?active():[]}
 function action(s){
  const a=s.split("|");
+ if(a[0]==="back")return draftBack();
+ if(!["quick"].includes(a[0]))pushDraft();
  if(a[0]==="rec"){
    if(a[2]==="A0")commit("Gegner",{event:"Reception",receiver:a[1],reception:a[2],chain:[{side:"EVV",type:"Reception",player:a[1],quality:a[2]}]});
-   else{draft={step:"evvSet",phase:"K1",receiver:a[1],reception:a[2],chain:[{side:"EVV",type:"Reception",player:a[1],quality:a[2]}]};render()}
+   else{draft={step:"evvBall2",phase:"K1",receiver:a[1],reception:a[2],chain:[{side:"EVV",type:"Reception",player:a[1],quality:a[2]}]};render()}
+ }
+ else if(a[0]==="b2"){if(a[1]==="SET"){draft.step="evvSet";render()}else{draft.step="evvSecondBallPlayer";render()}}
+ else if(a[0]==="b2p"){draft.secondBallPlayer=a[1];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"SecondBall",player:a[1],position:courtPos(a[1])});draft.step="evvSecondBallResult";render()}
+ else if(a[0]==="b2r"){
+   if(a[1]==="KILL"){let d=Object.assign({},draft,{event:"SecondBall",result:"KILL",attacker:draft.secondBallPlayer});pendingMark={w:"EVV",data:d};nineZonePicker("KILL",pendingMark);return}
+   if(a[1]==="ERROR")return commit("Gegner",Object.assign({},draft,{event:"SecondBall",result:"ERROR"}));
+   draft.chain=(draft.chain||[]).concat({side:"EVV",type:"SecondBallResult",result:"CONTINUE"});draft.step="oppDefense";tab="opponent";render()
  }
  else if(a[0]==="es"){draft.setterTarget=a[1];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Set",target:a[1]});draft.step="evvAttack";render()}
  else if(a[0]==="att"){if(!attackers().includes(a[1]))return toast("Dieser Spieler ist aktuell kein Angreifer");draft.attacker=a[1];draft.zone=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Attack",player:a[1],route:a[2]});draft.step="evvAttackResult";render()}
  else if(a[0]==="fin"){
    if(a[1]==="KILL"){setLastAttackResult("KILL");let d=Object.assign({},draft,{event:"Attack",result:"KILL"});pendingMark={w:"EVV",data:d};courtPicker();return}
    if(a[1]==="ERROR"||a[1]==="BLOCKED"){setLastAttackResult(a[1]);return commit("Gegner",Object.assign({},draft,{event:"Attack",result:a[1]}));}
+   if(a[1]==="BLOCK_CONTINUE"){setLastAttackResult("BLOCK_TOUCH");draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"BlockTouch",result:"CONTINUE"});draft.step="evvDefense";tab="rally";render();return}
    // CONTINUE means rally continues; never award a point.
    setLastAttackResult("CONTINUE");draft.chain=(draft.chain||[]).concat({side:"EVV",type:"AttackResult",result:"CONTINUE"});draft.step="oppDefense";tab="opponent";render()
  }
@@ -117,35 +133,46 @@ function action(s){
  else if(a[0]==="or"){
    draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Reception",player:a[1],quality:a[2]});
    if(a[2]==="A0")commit("EVV",Object.assign({},draft,{event:"OpponentReception",receiver:a[1],reception:a[2]}));
-   else{draft=Object.assign({},draft,{step:"oppSet",event:"OpponentReception",receiver:a[1],reception:a[2]});render()}
+   else{draft=Object.assign({},draft,{step:"oppBall2",event:"OpponentReception",receiver:a[1],reception:a[2]});render()}
  }
+ else if(a[0]==="ob2"){if(a[1]==="SET"){draft.step="oppSet";render()}else{draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"SecondBall",position:a[2]||"?"});draft.step="oppSecondBallResult";render()}}
+ else if(a[0]==="ob2r"){if(a[1]==="KILL")return commit("Gegner",Object.assign({},draft,{event:"OpponentSecondBall",result:"KILL"}));if(a[1]==="ERROR")return commit("EVV",Object.assign({},draft,{event:"OpponentSecondBall",result:"ERROR"}));draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"SecondBallResult",result:"CONTINUE"});draft.step="evvDefense";tab="rally";render()}
  else if(a[0]==="os"){draft.setterTarget=a[1];draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Set",target:a[1]});draft.step="oppAttack";render()}
  else if(a[0]==="of"){
    if(a[1]==="KILL")return commit("Gegner",Object.assign({},draft,{event:"OpponentAttack",result:"KILL"}));
-   if(a[1]==="BLOCK"){draft.step="evvBlock";tab="rally";render();return}
+   if(a[1]==="BLOCK"){draft.step="evvBlockChoice";tab="rally";render();return}
    if(a[1]==="ERROR")return commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:a[1]}));
    draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"AttackResult",result:"DEFENDED"});draft.step="evvDefense";tab="rally";render()
  }
- else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});draft.step="evvSet";render()}
+ else if(a[0]==="ebc"){draft.blocker=a[1];draft.step="evvBlockResult";render()}
+ else if(a[0]==="ebr"){if(a[1]==="POINT"){draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"BLOCK"});return commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:draft.blocker}))}draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"TOUCH"});if(a[1]==="EVV"){draft.step="evvDefense";tab="rally"}else{draft.step="oppDefense";tab="opponent"}render()}
+ else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});draft.step="evvBall2";render()}
  else if(a[0]==="blk"){if(!front().includes(a[1]))return toast("Blocker steht nicht in der Vorderreihe");draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:a[1],result:"BLOCK"});commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:a[1]}))}
- else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});draft.step="oppSet";render()}
+ else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});draft.step="oppBall2";render()}
 }
 function rally(){
  if(!st.started)return $("flow").innerHTML="<h2>Bereit</h2><p>Spiel einrichten und starten.</p>";
  if(view!=="live")return historical();
  if(st.matchEnded)return $("flow").innerHTML=`<div class="banner">MATCH BEENDET</div>${summary(allRallies())}`;
  if(st.setEnded){$("flow").innerHTML=`<div class="banner">SATZ ${st.set} BEENDET · ${st.e}:${st.o}</div>${summary(st.rallies)}<button id="prep" class="primary">Nächsten Satz vorbereiten</button>`;$("prep").onclick=prepareNextSet;return}
- if(draft.step==="evvBlock"){
-   $("flow").innerHTML=`<h2>EVV · Blockpunkt durch?</h2><div class="eligibleNote">Nur aktuelle Vorderreihe P2/P3/P4.</div><div class="grid3">${front().map(id=>B(`${esc(nm(id))} · P${courtPos(id)}`,`blk|${id}`,"good")).join("")}</div>`;bindActs();return
+ if(draft.step==="evvBlockChoice"){
+   $("flow").innerHTML=flowHead("EVV · Wer blockt?")+`<div class="eligibleNote">Nur aktuelle Vorderreihe P2/P3/P4.</div><div class="grid3">${front().map(id=>B(`${esc(nm(id))} · P${courtPos(id)}`,`ebc|${id}`,"good")).join("")}</div>`;bindActs();return
+ }
+ if(draft.step==="evvBlockResult"){
+   $("flow").innerHTML=flowHead(`${esc(nm(draft.blocker))} · Block`)+`<div class="grid2">${B("BLOCKPUNKT","ebr|POINT","good")}${B("BLOCKTOUCH · Gegner weiter","ebr|OPP","blue")}${B("BLOCKTOUCH · EVV Abwehr","ebr|EVV","blue")}</div>`;bindActs();return
  }
  if(draft.step==="evvDefense"){
-   let h="<h2>EVV · Abwehrqualität</h2>";active().forEach(id=>h+=`<div class="row"><b>${esc(nm(id))}</b>${["D3","D2","D1","D0"].map(q=>B(q,`ed|${id}|${q}`,q==="D3"?"good":q==="D0"?"bad":"")).join("")}</div>`);$("flow").innerHTML=h;bindActs();return
+   let h=flowHead("EVV · Abwehrqualität");active().forEach(id=>h+=`<div class="row"><b>${esc(nm(id))}</b>${["D3","D2","D1","D0"].map(q=>B(q,`ed|${id}|${q}`,q==="D3"?"good":q==="D0"?"bad":"")).join("")}</div>`);$("flow").innerHTML=h;bindActs();return
  }
- if(draft.step==="evvSet"){$("flow").innerHTML=`<h2>EVV · Zuspiel wohin?</h2><div class="grid4">${["IV","III","II","PIPE","I","V"].map(z=>B(z,`es|${z}`)).join("")}</div>`;bindActs();return}
+ if(draft.step==="evvBall2"){$("flow").innerHTML=flowHead("EVV · 2. Ball")+`<div class="grid2">${B("ZUSPIEL","b2|SET","primary")}${B("2. BALL RÜBER","b2|OVER","blue")}</div>`;bindActs();return}
+ if(draft.step==="evvSecondBallPlayer"){$("flow").innerHTML=flowHead("EVV · Wer spielt den 2. Ball rüber?")+`<div class="grid3">${active().map(id=>B(`${esc(nm(id))} · P${courtPos(id)}`,`b2p|${id}`)).join("")}</div>`;bindActs();return}
+ if(draft.step==="evvSecondBallResult"){$("flow").innerHTML=flowHead(`${esc(nm(draft.secondBallPlayer))} · 2. Ball von P${courtPos(draft.secondBallPlayer)}`)+`<div class="grid3">${B("PUNKT","b2r|KILL","good")}${B("GEGNER VERTEIDIGT","b2r|CONTINUE","blue")}${B("FEHLER","b2r|ERROR","bad")}</div>`;bindActs();return}
+ if(draft.step==="evvSet"){
+   const opts=attackOptions();$("flow").innerHTML=flowHead("EVV · Zuspiel / Angriffsweg")+`<div class="eligibleNote">Nur rotationsrichtige Optionen: Vorderreihe P4/P3/P2, Hinterfeld P6/P1/P5.</div><div class="grid3">${opts.map(o=>B(`${o.zone} · ${esc(nm(o.id))} · P${o.pos}`,`es|${o.zone}`)).join("")}</div>`;bindActs();return}
  if(draft.step==="evvAttack"){
-   let ao=attackCandidates(draft.setterTarget);$("flow").innerHTML=`<h2>EVV · Angriff ${esc(draft.setterTarget||"")}</h2><div class="eligibleNote">Aus aktueller Feldposition berechnet. P4→IV · P3→III · P2→II · P6→Pipe.</div><div class="grid2">${ao.map(o=>B(`${esc(nm(o.id))} · ${o.zone} · P${o.pos}`,`att|${o.id}|${o.zone}`)).join("")}</div>`;bindActs();return
+   let ao=attackCandidates(draft.setterTarget);$("flow").innerHTML=flowHead(`EVV · Angriff ${esc(draft.setterTarget||"")}`)+`<div class="eligibleNote">Rotationsgebunden. Keine Ersatzspieler aus anderen Positionen.</div><div class="grid2">${ao.map(o=>B(`${esc(nm(o.id))} · ${o.zone} · P${o.pos}`,`att|${o.id}|${o.zone}`)).join("")||"<p>Keine zulässige Angriffsoption.</p>"}</div>`;bindActs();return
  }
- if(draft.step==="evvAttackResult"){$("flow").innerHTML=`<h2>EVV · Angriffsergebnis</h2><div class="grid2">${B("KILL","fin|KILL","good")}${B("FEHLER","fin|ERROR","bad")}${B("GEBLOCKT","fin|BLOCKED","bad")}${B("WEITER · Gegner verteidigt","fin|CONTINUE","blue")}</div>`;bindActs();return}
+ if(draft.step==="evvAttackResult"){$("flow").innerHTML=flowHead("EVV · Angriffsergebnis")+`<div class="grid2">${B("KILL","fin|KILL","good")}${B("FEHLER","fin|ERROR","bad")}${B("BLOCKPUNKT GEGNER","fin|BLOCKED","bad")}${B("BLOCKABPRALLER · EVV weiter","fin|BLOCK_CONTINUE","blue")}${B("GEGNER VERTEIDIGT · weiter","fin|CONTINUE","blue")}</div>`;bindActs();return}
  if(!st.serving){
    let h="<h2>K1 · Annahme</h2><div class='eligibleNote'>Alle tatsächlich aktiven Feldspieler außer Zuspieler; Mittelblocker bleibt ohne Libero auswählbar.</div>";receivers().forEach(id=>{h+=`<div class="row"><b>${esc(nm(id))} · P${courtPos(id)}</b>${["A3","A2","A1","A0"].map(q=>B(q,`rec|${id}|${q}`,q==="A3"?"good":q==="A0"?"bad":"")).join("")}</div>`});$("flow").innerHTML=h+`<div class="grid3">${B("Gegner AF","quick|EVV","good")}${B("Quick EVV","quick|EVV")}${B("Quick Gegner","quick|Gegner")}</div>`
  } else {
@@ -156,10 +183,12 @@ function rally(){
 function opponentTab(){
  if(!st.started)return $("flow").innerHTML="<h2>Gegner</h2><p>Gegnerdaten im Setup festlegen.</p>";
  if(view!=="live")return historical();
- if(draft.step==="oppDefense"){$("flow").innerHTML=`<h2>${esc(opponent.name)} · Abwehr</h2><div class="grid4">${["D3","D2","D1","D0"].map(q=>B(q,`od|${q}`,q==="D3"?"good":q==="D0"?"bad":"")).join("")}</div>`}
- else if(draft.step==="oppReception"){$("flow").innerHTML=`<h2>Gegner · Annahme nach EVV-Aufschlag</h2>${opponentReceivers().map(r=>`<div class="row"><b>${esc(r)}${r===opponent.libero?" · L":""}</b>${["A3","A2","A1","A0"].map(q=>B(q,`or|${r}|${q}`,q==="A0"?"bad":"")).join("")}</div>`).join("")}`}
- else if(draft.step==="oppSet")$("flow").innerHTML=`<h2>${esc(opponent.setter)} · Zuspiel wohin?</h2><div class="grid4">${["IV","III","II","PIPE"].map(z=>B(z,`os|${z}`)).join("")}</div>`;
- else if(draft.step==="oppAttack")$("flow").innerHTML=`<h2>Gegnerangriff ${esc(draft.setterTarget||"")}</h2><div class="grid2">${B("KILL Gegner","of|KILL","bad")}${B("EVV Block","of|BLOCK","good")}${B("Fehler Gegner","of|ERROR","good")}${B("EVV ABWEHR · Rallye weiter","of|DEFENSE","blue")}</div>`;
+ if(draft.step==="oppDefense"){$("flow").innerHTML=flowHead(`${esc(opponent.name)} · Abwehr`)+`<div class="grid4">${["D3","D2","D1","D0"].map(q=>B(q,`od|${q}`,q==="D3"?"good":q==="D0"?"bad":"")).join("")}</div>`}
+ else if(draft.step==="oppReception"){$("flow").innerHTML=flowHead("Gegner · Annahme nach EVV-Aufschlag")+opponentReceivers().map(r=>`<div class="row"><b>${esc(r)}${(opponent.liberos||[]).includes(r)?" · L":""}</b>${["A3","A2","A1","A0"].map(q=>B(q,`or|${r}|${q}`,q==="A0"?"bad":"")).join("")}</div>`).join("")}
+ else if(draft.step==="oppBall2")$("flow").innerHTML=flowHead(`${esc(opponent.name)} · 2. Ball`)+`<div class="grid2">${B("ZUSPIEL","ob2|SET","primary")}${[1,2,3,4,5,6].map(p=>B(`2. BALL RÜBER · P${p}`,`ob2|OVER|${p}`,"blue")).join("")}</div>`;
+ else if(draft.step==="oppSecondBallResult")$("flow").innerHTML=flowHead(`${esc(opponent.name)} · 2. Ball Ergebnis`)+`<div class="grid3">${B("PUNKT GEGNER","ob2r|KILL","bad")}${B("EVV ABWEHR","ob2r|CONTINUE","blue")}${B("FEHLER GEGNER","ob2r|ERROR","good")}</div>`;
+ else if(draft.step==="oppSet")$("flow").innerHTML=flowHead(`${esc(opponent.setter)} · Zuspiel wohin?`)+`<div class="grid4">${["IV","III","II","PIPE"].map(z=>B(z,`os|${z}`)).join("")}</div>`;
+ else if(draft.step==="oppAttack")$("flow").innerHTML=flowHead(`Gegnerangriff ${esc(draft.setterTarget||"")}`)+`<div class="grid2">${B("KILL Gegner","of|KILL","bad")}${B("EVV BLOCK","of|BLOCK","good")}${B("Fehler Gegner","of|ERROR","good")}${B("EVV ABWEHR · Rallye weiter","of|DEFENSE","blue")}</div>`;
  else $("flow").innerHTML="<h2>Gegner</h2><p>Rallye im Rallye-Tab starten.</p>";
  bindActs()
 }
@@ -173,17 +202,18 @@ function ralliesForSet(s){
 function statRowsFrom(rr){
  const ids=[...new Set(roster.map(p=>p.id).concat(rr.flatMap(r=>[r.receiver,r.attacker,r.player,r.server,r.blocker]).filter(Boolean)))];
  return ids.map(id=>{
-  let rec=[],srv=[],att=[],def=[],bl=0;
+  let rec=[],srv=[],att=[],def=[],second=[],bl=0;
   rr.forEach(r=>{
    const ch=r.chain||[];
-   ch.forEach(x=>{if(x.side!=="EVV")return;if(x.type==="Reception"&&x.player===id)rec.push(x);if(x.type==="Serve"&&x.player===id)srv.push(x);if(x.type==="Attack"&&x.player===id)att.push(x);if(x.type==="Defense"&&x.player===id)def.push(x);if(x.type==="Block"&&x.player===id&&x.result==="BLOCK")bl++});
+   ch.forEach(x=>{if(x.side!=="EVV")return;if(x.type==="Reception"&&x.player===id)rec.push(x);if(x.type==="Serve"&&x.player===id)srv.push(x);if(x.type==="Attack"&&x.player===id)att.push(x);if(x.type==="Defense"&&x.player===id)def.push(x);if(x.type==="SecondBall"&&x.player===id)second.push(x);if(x.type==="Block"&&x.player===id&&x.result==="BLOCK")bl++});
    if(!ch.length){if(r.receiver===id&&r.reception)rec.push({quality:r.reception});if(r.event==="Serve"&&r.server===id)srv.push({result:r.serve});if(r.event==="Attack"&&r.attacker===id)att.push({result:r.result});if(r.defender===id&&r.defense)def.push({quality:r.defense});if(r.blocker===id&&r.result==="BLOCK")bl++}
   });
   const q=x=>x.quality||x.reception,a3=rec.filter(x=>q(x)==="A3").length,a2=rec.filter(x=>q(x)==="A2").length,a1=rec.filter(x=>q(x)==="A1").length,a0=rec.filter(x=>q(x)==="A0").length;
   const sr=x=>x.result||x.serve,ac=srv.filter(x=>sr(x)==="ACE").length,se=srv.filter(x=>sr(x)==="ERROR").length;
   const kill=att.filter(x=>x.result==="KILL").length,ae=att.filter(x=>x.result==="ERROR").length,ab=att.filter(x=>x.result==="BLOCKED").length,eff=att.length?Math.round((kill-ae-ab)/att.length*100):0;
+  const sbk=rr.filter(r=>r.event==="SecondBall"&&r.attacker===id&&r.result==="KILL").length,sbe=rr.filter(r=>r.event==="SecondBall"&&r.attacker===id&&r.result==="ERROR").length;
   const dq=x=>x.quality,d3=def.filter(x=>dq(x)==="D3").length,d2=def.filter(x=>dq(x)==="D2").length,d1=def.filter(x=>dq(x)==="D1").length,d0=def.filter(x=>dq(x)==="D0").length;
-  return{id,rec:rec.length,a3,a2,a1,a0,rq:rec.length?Math.round((a3+a2)/rec.length*100):0,srv:srv.length,ac,se,att:att.length,kill,ae,ab,eff,bl,def:def.length,d3,d2,d1,d0}
+  return{id,rec:rec.length,a3,a2,a1,a0,rq:rec.length?Math.round((a3+a2)/rec.length*100):0,srv:srv.length,ac,se,att:att.length,kill,ae,ab,eff,bl,second:second.length,sbk,sbe,def:def.length,d3,d2,d1,d0}
  })
 }
 function rotationStats(rr){
@@ -195,6 +225,7 @@ function fullStatsFrom(rr,label){
  return `<div class="statSection"><h2>${label} · Spielerstatistik</h2><div class="statCards"><div class="statCard"><span>K1</span><b>${win(k1)}%</b><small>n=${k1.length}</small></div><div class="statCard"><span>K2</span><b>${win(k2)}%</b><small>n=${k2.length}</small></div><div class="statCard"><span>Annahme +</span><b>${recN?Math.round(recPos/recN*100):0}%</b><small>${recPos}/${recN}</small></div><div class="statCard"><span>Aces / Fehler</span><b>${aces} / ${serr}</b><small>Aufschlag</small></div></div>
  <h3>Annahme je Spieler</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>n</th><th>A3</th><th>A2</th><th>A1</th><th>A0</th><th>+ Quote</th></tr></thead><tbody>${rows.filter(x=>x.rec).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.rec}</td><td>${x.a3}</td><td>${x.a2}</td><td>${x.a1}</td><td>${x.a0}</td><td>${x.rq}%</td></tr>`).join("")||'<tr><td colspan="7">Noch keine Annahmen</td></tr>'}</tbody></table></div>
  <h3>Angriff / Block</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>Angr.</th><th>Kill</th><th>Fehler</th><th>geblockt</th><th>Eff.</th><th>Blockpkt.</th></tr></thead><tbody>${rows.filter(x=>x.att||x.bl).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.att}</td><td>${x.kill}</td><td>${x.ae}</td><td>${x.ab}</td><td>${x.eff}%</td><td>${x.bl}</td></tr>`).join("")||'<tr><td colspan="7">Noch keine Angriffe/Blocks</td></tr>'}</tbody></table></div>
+ <h3>2. Ball rüber</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>Aktionen</th><th>Punkte</th><th>Fehler</th></tr></thead><tbody>${rows.filter(x=>x.second||x.sbk||x.sbe).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.second}</td><td>${x.sbk}</td><td>${x.sbe}</td></tr>`).join("")||'<tr><td colspan="4">Noch keine zweiten Bälle erfasst</td></tr>'}</tbody></table></div>
  <h3>Aufschlag</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>Versuche</th><th>Ass</th><th>Fehler</th></tr></thead><tbody>${rows.filter(x=>x.srv).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.srv}</td><td>${x.ac}</td><td>${x.se}</td></tr>`).join("")||'<tr><td colspan="4">Noch keine Aufschläge erfasst</td></tr>'}</tbody></table></div>
  <h3>Abwehr</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Spieler</th><th>n</th><th>D3</th><th>D2</th><th>D1</th><th>D0</th></tr></thead><tbody>${rows.filter(x=>x.def).map(x=>`<tr><td>${esc(nm(x.id))}</td><td>${x.def}</td><td>${x.d3}</td><td>${x.d2}</td><td>${x.d1}</td><td>${x.d0}</td></tr>`).join("")||'<tr><td colspan="6">Noch keine Abwehraktionen</td></tr>'}</tbody></table></div>
  <h3>Rotationen · K1/K2</h3><div style="overflow-x:auto"><table class="statsTable"><thead><tr><th>Rotation</th><th>Rallyes</th><th>K1</th><th>K1%</th><th>K2</th><th>K2%</th><th>Saldo</th></tr></thead><tbody>${rots.map(x=>`<tr><td>R${x.rot}</td><td>${x.n}</td><td>${x.k1}</td><td>${x.k1p}%</td><td>${x.k2}</td><td>${x.k2p}%</td><td>${x.saldo>0?"+":""}${x.saldo}</td></tr>`).join("")}</tbody></table></div><h3>Landepunkte</h3><div class="small">${rr.filter(r=>r.targetZone).length} markierte Punktaktionen.</div></div>`
@@ -206,12 +237,12 @@ function nextSetPrep(){
  const oppInputs=opponent.receivers.map((r,i)=>`<label>Annahme ${i+1}<input id="nOR${i}" value="${esc(r)}"></label>`).join("");
  modal(`<div class="setprep"><h2>Satz ${next} vorbereiten</h2><p class="small"><b>${esc(opponent.name)}</b> bleibt gespeichert. Nur Aufstellungen/Startbedingungen für den neuen Satz prüfen.</p>
  <h3>EVV Start-6</h3><div class="grid2">${[0,1,2,3,4,5].map(i=>`<label>Position ${i+1}<select id="nP${i}">${roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${st.lineup[i]===p.id?"selected":""}>${esc(p.name)} · ${p.role}</option>`).join("")}</select></label>`).join("")}</div>
- <h3>${esc(opponent.name)} · aktuelle Aufstellung</h3><div class="grid2"><label>Zuspieler<input id="nOZ" value="${esc(opponent.setter)}"></label><label>Libero<input id="nOL" value="${esc(opponent.libero)}"></label>${oppInputs}</div>
+ <h3>${esc(opponent.name)} · aktuelle Aufstellung</h3><div class="grid2"><label>Zuspieler<input id="nOZ" value="${esc(opponent.setter)}"></label><label>Libero 1<input id="nOL1" value="${esc((opponent.liberos||[])[0]||"#")}"></label><label>Libero 2<input id="nOL2" value="${esc((opponent.liberos||[])[1]||"#")}"></label>${oppInputs}</div>
  <label>Startrotation<select id="nRot">${[1,2,3,4,5,6].map(r=>`<option ${r===st.rot?"selected":""}>${r}</option>`).join("")}</select></label>
  <div class="grid2"><button id="nK1">Gegner-Aufschlag · K1</button><button id="nK2" class="primary">EVV-Aufschlag · K2</button></div></div>`);
  const go=serving=>{
    const ids=[0,1,2,3,4,5].map(i=>$("nP"+i).value); if(new Set(ids).size<6)return toast("EVV Start-6: Spieler doppelt");
-   st.lineup=ids;st.rot=+$("nRot").value;st.serving=serving;opponent.setter=$("nOZ").value.trim()||opponent.setter;opponent.libero=$("nOL").value.trim()||opponent.libero;opponent.receivers=[0,1,2,3].map(i=>$("nOR"+i).value.trim()||`#${i+1}`);
+   st.lineup=ids;st.rot=+$("nRot").value;st.serving=serving;opponent.setter=$("nOZ").value.trim()||opponent.setter;opponent.liberos=[1,2].map(i=>$("nOL"+i).value.trim()||"#");opponent.receivers=[0,1,2,3].map(i=>$("nOR"+i).value.trim()||`#${i+1}`);
    st.set=next;st.e=0;st.o=0;st.setEnded=false;st.rallies=[];draft={};view="live";closeModal();render();toast(`Satz ${next} gestartet`)
  };
  $("nK1").onclick=()=>go(false);$("nK2").onclick=()=>go(true);
@@ -263,7 +294,7 @@ function render(){
  if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();
  $("nextSet").disabled=!st.setEnded||st.matchEnded;$("substitute").disabled=!st.started||view!=="live"||!!draft.step
 }
-document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;draft={};render()});
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
 $("undo").onclick=()=>{if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};render();toast("Letzte Rally vollständig zurückgesetzt")};
 $("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{tab="coach";view="live";render()};$("nextSet").onclick=()=>{if(!st.setEnded)return toast("Satz läuft noch");prepareNextSet()};
@@ -331,6 +362,6 @@ function toggleVoice(){
 }
 $("voiceBtn").onclick=toggleVoice;
 
-const restored=loadLocal();setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,front,receivers,attackOptions};
+const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
+window.EVV_QS_TEST={target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,front,receivers,attackOptions,opponentReceivers,version:APP_VERSION};
 })();

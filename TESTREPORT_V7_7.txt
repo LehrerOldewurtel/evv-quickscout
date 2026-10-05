@@ -1,0 +1,27 @@
+EVV QuickScout V7.7 – Release-Gate 05.10.2026
+
+TESTPAKET Satz 1 / Düren umgesetzt:
+- Apple-like, zentriertes UI; Setup verschwindet nach Start.
+- Eine Versionsquelle: version.js = V7.7; UI + Service-Worker verwenden diese Version.
+- Zwei Gegner-Liberos im Setup und in der Gegner-Annahme.
+- EVV: zwei Libero-Kandidaten (Amar/Alexandra), aktiver Libero ersetzt einen gewählten Feldspieler und übernimmt dessen Feldposition.
+- Rotationsgebundene Angriffsauswahl: P4=IV, P3=III, P2=II, P6=PIPE, P1=I, P5=V; kein Fallback auf falsche Spieler.
+- Nach Annahme/Abwehr: 2. Ball -> Zuspiel ODER 2. Ball rüber.
+- 2. Ball rüber: Spieler + Feldposition + Punkt/weiter/Fehler; eigene Statistik.
+- Gegner besitzt denselben 2.-Ball-Zweig mit Positionsangabe.
+- Gegnerblock gegen EVV-Angriff: Blockpunkt ODER Blockabpraller/Rallye weiter.
+- EVV-Block: Blocker aus Vorderreihe; Blockpunkt ODER Blocktouch mit Fortsetzung auf Gegner- oder EVV-Seite.
+- Schrittweises Zurück innerhalb einer laufenden Rallye; kein Punkt/Statistik wird dabei erzeugt.
+- Tabwechsel löscht eine laufende Rallye nicht mehr.
+
+PRÜFUNGEN:
+- JavaScript Syntax: PASS
+- LOOPTEST_V7_7.py: 15/15 PASS
+- Chromium UI/Flow-Test via Playwright set_content: PASS
+  Version, Setup-Hide, Zurück, rotationsgebundener Angriff, 2. Ball, Blockfortsetzung, 2 Gegner-Liberos.
+- Chromium Statistik-Test: PASS
+  EVV-Libero ersetzt Feldspieler, 2.-Ball-Punkt + Zielzone, Undo entfernt Punkt/Ziel/Statistik.
+- ZIP-Integrität: wird nach Erstellung geprüft.
+
+Bewusste Grenze:
+- Taktische EVV-Annahmeformationen R1–R6 sind nicht erfunden. Die App bietet rotations-/feldgebunden aktive Spieler an. Spezifische Annahme-Presets benötigen die echten EVV-Formationen.
