@@ -16,8 +16,8 @@ test('No setter or libero normal attack',()=>{let st=a.fresh();st.setStart={rot:
 test('Libero rejects front-row MB',()=>{let st=a.fresh();st.setStart={rot:1};st.liberoOnCourt='amar';st.liberoReplacedId='janik';a.set(st);assert.equal(a.liberoEligible(),false)});
 test('Libero accepts back-row MB',()=>{let st=a.fresh();st.setStart={rot:1};st.liberoOnCourt='amar';st.liberoReplacedId='dirk';a.set(st);assert.equal(a.liberoEligible(),true)});
 test('Attack click checks allowed lane',()=>assert(code.includes('attackOptions().some(x=>x.id===a[1]&&x.zone===a[2])')));
-test('A0 rescue branch',()=>assert(code.includes('evvA0Decision')&&code.includes('oppA0Decision')));
+test('A0 direct point',()=>assert(code.includes('if(a[2]==="A0")return commit("Gegner"')&&code.includes('if(a[2]==="A0")return commit("EVV"')));
 test('Undo includes marks',()=>assert(code.includes('rallies:st.rallies,marks:st.marks')));
 test('Two liberos both teams',()=>assert(code.includes('liberoIds:["amar","alex"]')&&code.includes('liberos:["#","#"]')));
-test('Single version',()=>assert(fs.readFileSync(__dirname+'/version.js','utf8').includes('7.8.1')));
+test('Single version',()=>assert(fs.readFileSync(__dirname+'/version.js','utf8').includes('7.8.2')));
 console.log(`RESULT ${results.filter(Boolean).length}/${results.length}`);process.exit(results.every(Boolean)?0:1);
