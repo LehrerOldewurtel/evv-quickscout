@@ -1,0 +1,21 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const code=fs.readFileSync(__dirname+'/app.js','utf8');
+function extract(n){let a=code.indexOf('function '+n+'('),b=code.indexOf('{',a),d=0;assert(a>=0);for(let i=b;i<code.length;i++){if(code[i]==='{')d++;else if(code[i]==='}'&&!--d)return code.slice(a,i+1)}}
+const ids=['johann','michael','janik','jonas','maksym','dirk'];
+const els={nsRot:{value:'4'}};ids.forEach((_,i)=>els['nsP'+i]={value:ids[(i+1)%6]});
+let toastMessage='';const $=x=>els[x],clone=x=>JSON.parse(JSON.stringify(x));
+const roster=ids.map(id=>({id,name:id,role:id==='johann'?'Z':'AA'}));
+const byId=id=>roster.find(x=>x.id===id),nm=id=>id,esc=x=>x;
+let st={set:1,e:25,o:19,setEnded:true,matchEnded:false,lineup:[...ids],rot:2,serving:false,rallies:[{set:1,receiver:'michael',reception:'A2',winner:'EVV'}],marks:[{x:.5,y:.5}],sets:[],events:[],rallyUndo:[{}],liberoActive:true,liberoOnCourt:'amar',liberoReplacedId:'janik',setStart:{rot:1,serving:false}};
+let draft={step:'x'},pendingMark={x:1},tab='stats',view=1;
+const modal=html=>{els.nsRec={};els.nsSrv={};els.nsCancel={};},closeModal=()=>{},render=()=>{},toast=x=>{toastMessage=x},clearDraftHistory=()=>{};
+const ctx={$,clone,roster,byId,nm,esc,modal,closeModal,render,toast,clearDraftHistory,st,draft,pendingMark,tab,view};vm.createContext(ctx);
+vm.runInContext(extract('prepareNextSet')+';prepareNextSet()',ctx);
+assert.equal(typeof els.nsRec.onclick,'function');
+els.nsRec.onclick();
+assert.equal(ctx.st.set,2);assert.equal(ctx.st.rot,4);assert.equal(ctx.st.serving,false);
+assert.equal(JSON.stringify(ctx.st.lineup),JSON.stringify(ids.slice(1).concat(ids[0])));
+assert.equal(ctx.st.sets.length,1);assert.equal(ctx.st.sets[0].rallies.length,1);assert.equal(ctx.st.sets[0].e,25);
+assert.equal(ctx.st.rallies.length,0);assert.equal(ctx.st.liberoActive,false);
+assert.equal(ctx.view,'live');assert.equal(ctx.tab,'rally');
+console.log('PASS Satzwechsel: neue Startsechs, Rotation, K1, Historie erhalten, Live-Ansicht');
