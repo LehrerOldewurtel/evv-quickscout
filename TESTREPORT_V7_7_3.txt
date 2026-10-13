@@ -1,0 +1,22 @@
+EVV QuickScout V7.7.3 – Abschlussloop
+Datum: 2026-10-05
+
+NEU / KORRIGIERT
+- Einzelauswertung je gespieltem Satz über S1/S2/S3/S4/S5 sowie MATCH.
+- Satz-Rallyes und Satz-Landepunkte nutzen einen gemeinsamen Archivzugriff (st.sets); alter inkonsistenter setArchive-Zugriff entfernt.
+- Angriffszuteilung nicht mehr blind aus Feldposition abgeleitet.
+- Normaler Vorderreihen-Angriffsweg nach Rolle: AA -> IV, MB -> III, D -> II.
+- Hinterfeld: P6 -> PIPE, P1 -> I. P5 wird nicht automatisch fälschlich einer Frontposition zugeordnet.
+- K1-Erstangriff nach Annahme und spätere Transition werden als unterschiedliche Kontexte erkannt.
+- Auswertung Angriff ergänzt: IV / III / II / PIPE / I je Spieler als Versuche / Kills.
+- V7.7.2-Funktionen erhalten: Block-out/angeschlagen, Blocktouch weiter, Dankeball, Notball/angeschnitten, Zurück, zwei Liberos je Mannschaft, Undo, Auszeit.
+- Cache-Busting auf v=773.
+
+PRÜFUNG
+- JavaScript Syntax app.js: PASS (node --check)
+- JavaScript Syntax version.js: PASS
+- V7.7.3 Struktur-/Regressionsloop: 16/16 PASS
+- Ältere Looptests enthalten absichtlich hart codierte Versions-/Stringerwartungen und melden deshalb erwartete Versionsfehler; ihre fachlichen Funktionen sind im neuen V7.7.3-Test abgedeckt.
+
+WICHTIGE GRENZE
+Dies ist ein Code-/Struktur-/Regressionsloop. Ein realer Browser-/Video-Durchlauf mit der tatsächlichen EVV-Aufstellung bleibt die Endabnahme für die sechs konkreten K1-Läuferformationen. Es wurden keine unbekannten Sonderlaufwege erfunden.

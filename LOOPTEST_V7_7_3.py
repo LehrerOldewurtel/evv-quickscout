@@ -1,0 +1,25 @@
+from pathlib import Path
+import re,sys,zipfile
+root=Path(__file__).parent
+js=(root/'app.js').read_text(); html=(root/'index.html').read_text(); ver=(root/'version.js').read_text()
+tests=[]
+def ck(name, cond): tests.append((name,bool(cond)))
+ck('version 7.7.3', '7.7.3' in ver and '7.7.3' in js)
+ck('rotation R5-R6-R1 preserved','const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}' in js)
+ck('two EVV liberos preserved','liberoIds:["amar","alex"]' in js)
+ck('two opponent liberos preserved','liberos:["#","#"]' in js)
+ck('block-out preserved','BLOCK_OUT' in js and 'BLOCK-OUT / ANGESCHLAGEN' in js)
+ck('free/cut ball preserved','DANKEBALL RÜBER' in js and 'NOTBALL / ANGESCHNITTEN' in js)
+ck('role routes','r.startsWith("MB")' in js and 'return "III"' in js and 'return "II"' in js and 'return "IV"' in js)
+ck('backrow I and PIPE','if(pos===1)return ["I"]' in js and 'if(pos===6)return ["PIPE"]' in js)
+ck('P5 no false lane','P5 is not auto-mapped' in js and 'return []' in js)
+ck('K1 transition context','function attackContext()' in js and 'hasReception&&!hasDefense' in js)
+ck('per set unified store','function setRecord(s)' in js and 'ralliesForSet(view)' in js and 'marksForSet(view)' in js)
+ck('set nav dynamic','data-view="${n}"' in js and '>MATCH</button>' in js)
+ck('attack route stats table','Angriffspositionen' in js and '["IV","III","II","PIPE","I"]' in js and 'Versuche / Kills' in js)
+ck('undo preserved','rallyUndo' in js and 'snapshot()' in js)
+ck('no old setArchive access','st.setArchive' not in js)
+ck('score win rule preserved','Math.abs(e-o)>=2' in js and 'set===5?15:25' in js)
+for n,v in tests: print(('PASS' if v else 'FAIL'),n)
+print(f'RESULT {sum(v for _,v in tests)}/{len(tests)}')
+sys.exit(0 if all(v for _,v in tests) else 1)
