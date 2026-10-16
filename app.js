@@ -30,7 +30,7 @@ function target(set=st.set){return set===5?15:25}
 function isSetWin(e=st.e,o=st.o,set=st.set){return (e>=target(set)||o>=target(set))&&Math.abs(e-o)>=2}
 function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).length;if(st.setEnded&&(team==="EVV"?st.e>st.o:st.o>st.e))w++;return w}
 function checkEnd(){st.setEnded=isSetWin();st.matchEnded=false;if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=setWins(w)>=3}}
-function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB})}
+function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,sixBoards:st.sixBoards,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB})}
 function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
 function sanitizeLiberoName(v){return String(v||"").trim().slice(0,45)}
@@ -50,7 +50,7 @@ function setupLiberoSelectors(){
 function readLiberoNames(){return [1,2].map(i=>$("evvLiberoName"+i)?.value??(st.liberoIds.includes(i===1?"amar":"alex")?nm(i===1?"amar":"alex"):""))}
 function applyLiberoNames(){configureLiberos(readLiberoNames());setupLiberoSelectors()}
 function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent,roster}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
-function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
+function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.sixBoards=st.sixBoards||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
 // Team configuration: libero never serves. The original middle blocker serves in P1.
 // A registered libero can return when the same middle blocker enters the back row.
@@ -394,13 +394,13 @@ function liberoPlanner(){
  $("lpLib").value=st.liberoOnCourt||"";$("lpMB").value=st.liberoReplacedId||"";
  $("lpNamesSave").onclick=()=>{if(st.started&&!st.matchEnded)return toast("Libero-Meldung im laufenden Spiel nicht ändern. Neues Spiel starten.");configureLiberos([$("lpName1").value,$("lpName2").value]);closeModal();render();toast("Libero-Namen gespeichert")};
  $("lpCancel").onclick=closeModal;
- $("lpSave").onclick=()=>{if(draft.step||st.setEnded)return toast("Nur zwischen Ballwechseln");const l=$("lpLib").value,m=$("lpMB").value;if(!!l!==!!m)return toast("Libero und Mittelblocker gemeinsam wählen");if(m&&![1,5,6].includes(courtPos(m)))return toast("Mittelblocker muss in der Hinterreihe stehen");if(m&&courtPos(m)===1&&st.serving)return toast("Aufschlagposition P1: Mittelblocker muss selbst aufschlagen");st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};st.tacticPositions={};closeModal();render();toast("Libero-Einsatz aktualisiert")};
+ $("lpSave").onclick=()=>{if(draft.step||st.setEnded)return toast("Nur zwischen Ballwechseln");const l=$("lpLib").value,m=$("lpMB").value;if(!!l!==!!m)return toast("Libero und Mittelblocker gemeinsam wählen");if(m&&![1,5,6].includes(courtPos(m)))return toast("Mittelblocker muss in der Hinterreihe stehen");if(m&&courtPos(m)===1&&st.serving)return toast("Aufschlagposition P1: Mittelblocker muss selbst aufschlagen");st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};st.tacticPositions={};st.sixBoards={};closeModal();render();toast("Libero-Einsatz aktualisiert")};
 }
 function opponentCourt(){
  const marks=allRallies().filter(r=>r.targetZone&&r.winner==="EVV");
  const count=Object.fromEntries(Array.from({length:9},(_,i)=>[i+1,0]));marks.forEach(r=>count[r.targetZone]++);
  const defaults={4:[23,27],3:[50,27],2:[77,27],5:[22,77],6:[50,77],1:[78,77]};
- st.opponentPositions=st.opponentPositions||{};
+ st.opponentPositions=st.opponentPositions||{};st.sixBoards=st.sixBoards||{};
  const nodes=[4,3,2,5,6,1].map(pos=>{const xy=st.opponentPositions[pos]||defaults[pos];return `<button type="button" class="tacticPlayer" data-opp-player="${pos}" style="left:${xy[0]}%;top:${xy[1]}%"><b>#${pos}</b><small>Position ${pos}</small></button>`}).join("");
  modal(`<h2>${esc(opponent.name)} · Kill-Zonen</h2><p class="small">Zonen zeigen dokumentierte EVV-Punkte. Zonen für die Skizze auswählen. Angriff, Ass und Gegner-Kill werden direkt im Live-Scouting als Zone erfasst.</p><div class="zone9">${Array.from({length:9},(_,i)=>`<button type="button" class="killZone" data-opp-zone="${i+1}"><b>${i+1}</b><strong>${count[i+1]}</strong><small>Punkte</small></button>`).join("")}</div><p class="small" id="oppZoneInfo">${marks.length} markierte Punkte · Zone auswählen</p><h3>Gegner · Block und Feldabwehr</h3><div class="grid2"><button type="button" id="oppModeMove" class="primary">Spieler verschieben</button><button type="button" id="oppModeZone">📍 Punkte markieren</button></div><p class="small" id="oppModeHelp">Finger oder Apple Pencil: Spieler ziehen.</p><p class="small">Spieler auf dem Feld mit Maus oder Finger verschieben. Die Skizze wird lokal gespeichert und ist keine verifizierte Rotation.</p><div class="tacticCourt opponentTactic" id="opponentTacticCourt"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${nodes}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div><div class="grid3"><button id="oppUndoPin">Letzten Punkt löschen</button><button id="oppReset">Skizze zurücksetzen</button><button id="oppClose">Schließen</button></div>`);
  document.querySelectorAll("[data-opp-zone]").forEach(el=>el.onclick=()=>{document.querySelectorAll("[data-opp-zone]").forEach(b=>b.classList.remove("selected"));el.classList.add("selected");$("oppZoneInfo").textContent=`Zone ${el.dataset.oppZone}: ${count[+el.dataset.oppZone]} dokumentierte EVV-Punkte`;});
@@ -457,24 +457,44 @@ function tacticalPreset(kind){
  const positions=kind==="defense"?defensive:defaultXY;
  st.tacticPositions=Object.fromEntries(active().map(id=>[id,(positions[courtPos(id)]||positions[6]).slice()]));render();
 }
+// Six independent coaching sketches: each attack lane has its own defensive setup.
+function sixBoardKey(team,lane){return team+'_'+lane}
+function sixBoardPositions(team,lane){
+ st.sixBoards=st.sixBoards||{};
+ const key=sixBoardKey(team,lane);
+ if(!st.sixBoards[key])st.sixBoards[key]={players:{},pins:[]};
+ return st.sixBoards[key];
+}
 function tacticalBoard(){
- const ids=active(),loc=st.tacticPositions||{},ownDefault={1:[76,82],2:[77,28],3:[50,27],4:[23,28],5:[22,82],6:[50,80]};
- const ownNodes=ids.map(id=>{const pos=courtPos(id)||6,xy=loc[id]||ownDefault[pos];return `<button type="button" class="tacticPlayer" data-player="${esc(id)}" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="${esc(nm(id))}, Position ${pos}"><b>${esc(nm(id))}</b><small>${esc(roleOf(id))} · P${pos}</small></button>`}).join("");
- const oppDefault={1:[77,78],2:[77,26],3:[50,27],4:[23,26],5:[23,78],6:[50,75]};
- const oppNodes=[4,3,2,5,6,1].map(pos=>{const xy=st.opponentPositions?.[pos]||oppDefault[pos];return `<button type="button" class="tacticPlayer" data-opp-player="${pos}" style="left:${xy[0]}%;top:${xy[1]}%"><b>#${pos}</b><small>Position ${pos}</small></button>`}).join("");
- return `<div class="tacticActions"><button id="tacticReset">Grundordnung</button><button id="tacticDefense">Block / Abwehr 5+6</button><button id="recEdit">Annahme R${st.rot}</button><button id="liberoEdit">Libero verwalten</button><button id="oppCourtBtn">Gegnerfeld / Kill-Zonen</button></div><h3>Angriff EVV → Feldabwehr Gegner</h3><p class="small">Alle drei Angriffswege IV, III und II gleichzeitig. Pfeile zeigen taktische Möglichkeiten, keine gemessenen Treffer. Beide Felder sind mit Finger oder Pencil bearbeitbar.</p><div class="combinedBoards"><section class="combinedSide"><b>EVV · Angriff</b><div class="tacticCourt" id="tacticCourt"><div class="tacticNet">NETZ · IV / III / II</div>${ownNodes}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div></section><section class="combinedSide"><b>${esc(opponent.name)} · Abwehr</b><div class="tacticCourt opponentTactic" id="combinedOpponentCourt"><div class="tacticNet">NETZ · BLOCK / ABWEHR</div>${oppNodes}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div></section></div><div class="combinedArrows"><svg viewBox="0 0 360 120" role="img" aria-label="Drei mögliche Angriffswege von Position IV, III und II zum Gegnerfeld"><defs><marker id="combinedArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6" fill="none" stroke="#16865e" stroke-width="1.8"/></marker></defs><path d="M58 106 Q78 33 268 10"/><path d="M180 106 L180 10"/><path d="M302 106 Q281 33 90 10"/></svg><span>IV → Zielzone</span><span>III → Zielzone</span><span>II → Zielzone</span></div><p class="small">Taktische Skizze: keine automatische Überlappungsprüfung. Aufstellungen vor dem Aufschlag separat prüfen.</p>`;
+ const lanes=[['IV',4],['III',3],['II',2]];
+ const rows=[['EVV','EVV · Angriff → Gegnerabwehr'],['Gegner',esc(opponent.name)+' · Angriff → EVV-Abwehr']];
+ const cards=rows.map(([team,title])=>`<section class="sixBoardRow"><h3>${title}</h3><div class="sixBoardGrid">${lanes.map(([lane,pos])=>{
+  const board=sixBoardPositions(team,lane),defaultXY={1:[78,81],2:[77,26],3:[50,25],4:[22,26],5:[22,81],6:[50,79]};
+  const nodes=[4,3,2,5,6,1].map(p=>{const xy=board.players[p]||defaultXY[p];return `<button type="button" class="tacticPlayer sixPlayer" data-six-player="${p}" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="${team} Abwehrposition ${p} verschieben"><b>${team==='EVV'?'Gegner':'EVV'} ${p}</b></button>`}).join('');
+  const pins=board.pins.map((xy,i)=>`<span class="sixPin" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="Zielpunkt ${i+1}"></span>`).join('');
+  return `<article class="sixBoardCard"><div class="sixBoardTitle"><strong>Angriff ${lane}</strong><span>Position ${pos}</span></div><div class="tacticCourt sixCourt" data-six-team="${team}" data-six-lane="${lane}"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${nodes}${pins}<div class="tacticBaseline">5 / 6 / 1</div></div><div class="sixControls"><button type="button" class="sixMode" data-six-mode="mark">◎ Ziel markieren</button><button type="button" class="sixUndo">↶</button><button type="button" class="sixReset">Reset</button></div><p class="sixHint">Spieler ziehen · Ziel per Fingertipp setzen</p></article>`;
+ }).join('')}</div></section>`).join('');
+ return `<div class="tacticActions"><button id="tacticReset">Alle zurücksetzen</button><button id="recEdit">Annahme R${st.rot}</button><button id="liberoEdit">Libero verwalten</button><button id="oppCourtBtn">Gegnerfeld / Kill-Zonen</button></div><p class="small">Sechs getrennte Taktikbilder: oben EVV-Angriff IV/III/II, unten Gegnerangriff IV/III/II. Jede Abwehrformation und Zielmarkierung wird unabhängig gespeichert. Skizzen sind keine offiziellen Rotationsaufstellungen.</p>${cards}`;
 }
 function bindTactic(){
- const court=$("tacticCourt");if(!court)return;
- $("recEdit").onclick=receptionPlanner;$("liberoEdit").onclick=liberoPlanner;$("oppCourtBtn").onclick=opponentCourt;
- $("tacticReset").onclick=()=>tacticalPreset("base");$("tacticDefense").onclick=()=>tacticalPreset("defense");
- function attach(board,selector,field){if(!board)return;board.querySelectorAll(selector).forEach(el=>{
-  let pointer=null,offsetX=0,offsetY=0;
-  el.addEventListener("pointerdown",e=>{e.preventDefault();const r=board.getBoundingClientRect(),er=el.getBoundingClientRect();offsetX=e.clientX-(er.left+er.width/2);offsetY=e.clientY-(er.top+er.height/2);pointer=e.pointerId;el.setPointerCapture(pointer);el.classList.add("dragging")});
-  el.addEventListener("pointermove",e=>{if(pointer!==e.pointerId)return;const r=board.getBoundingClientRect(),x=Math.max(10,Math.min(90,(e.clientX-offsetX-r.left)/r.width*100)),y=Math.max(14,Math.min(88,(e.clientY-offsetY-r.top)/r.height*100));el.style.left=x+"%";el.style.top=y+"%";st[field]=st[field]||{};st[field][el.dataset.player||el.dataset.oppPlayer]=[x,y]});
-  const done=e=>{if(pointer!==e.pointerId)return;pointer=null;el.classList.remove("dragging");if(el.hasPointerCapture(e.pointerId))el.releasePointerCapture(e.pointerId);saveLocal()};el.addEventListener("pointerup",done);el.addEventListener("pointercancel",done);
- })}
- attach(court,"[data-player]","tacticPositions");attach($("combinedOpponentCourt"),"[data-opp-player]","opponentPositions");
+ if(!$('recEdit'))return;
+ $('recEdit').onclick=receptionPlanner;$('liberoEdit').onclick=liberoPlanner;$('oppCourtBtn').onclick=opponentCourt;
+ $('tacticReset').onclick=()=>{if(!confirm('Alle sechs Taktikskizzen zurücksetzen?'))return;st.sixBoards={};saveLocal();render()};
+ document.querySelectorAll('.sixBoardCard').forEach(card=>{
+  const court=card.querySelector('.sixCourt'),team=court.dataset.sixTeam,lane=court.dataset.sixLane;
+  const board=sixBoardPositions(team,lane),mode=card.querySelector('.sixMode');let marking=false;
+  mode.onclick=()=>{marking=!marking;mode.classList.toggle('primary',marking);mode.textContent=marking?'✓ Zielmodus aktiv':'◎ Ziel markieren'};
+  const point=e=>{const r=court.getBoundingClientRect();return [Math.max(5,Math.min(95,(e.clientX-r.left)/r.width*100)),Math.max(9,Math.min(93,(e.clientY-r.top)/r.height*100))]};
+  court.addEventListener('pointerup',e=>{if(!marking||e.target.closest('.sixPlayer')||e.target.closest('button'))return;const xy=point(e);board.pins.push(xy);const dot=document.createElement('span');dot.className='sixPin';dot.style.left=xy[0]+'%';dot.style.top=xy[1]+'%';court.appendChild(dot);saveLocal()});
+  card.querySelector('.sixUndo').onclick=()=>{board.pins.pop();saveLocal();render()};
+  card.querySelector('.sixReset').onclick=()=>{board.players={};board.pins=[];saveLocal();render()};
+  court.querySelectorAll('.sixPlayer').forEach(el=>{
+   let pointer=null,dx=0,dy=0;
+   el.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();pointer=e.pointerId;const r=el.getBoundingClientRect();dx=e.clientX-(r.left+r.width/2);dy=e.clientY-(r.top+r.height/2);el.setPointerCapture(pointer);el.classList.add('dragging')});
+   el.addEventListener('pointermove',e=>{if(pointer!==e.pointerId)return;const xy=point({clientX:e.clientX-dx,clientY:e.clientY-dy});el.style.left=xy[0]+'%';el.style.top=xy[1]+'%';board.players[el.dataset.sixPlayer]=xy});
+   const finish=e=>{if(pointer!==e.pointerId)return;pointer=null;el.classList.remove('dragging');saveLocal()};el.addEventListener('pointerup',finish);el.addEventListener('pointercancel',finish);
+  });
+ });
 }
 function opponentPlayerStats(rr){
  const actions=rr.flatMap(r=>r.chain||[]).filter(x=>x.side==="Gegner");
@@ -555,7 +575,7 @@ function prepareNextSet(){
   const newRot=Number($("nsRot").value);
   st.sets.push({set:st.set,e:st.e,o:st.o,rallies:clone(st.rallies),marks:clone(st.marks),start:clone(st.setStart),lineup:clone(st.lineup),roles:clone(st.roles),events:clone(st.events.filter(x=>x.set===st.set))});
   st.set=next;st.e=0;st.o=0;st.lineup=ids;st.roles=picked.roles;st.rot=newRot;st.serving=serv;st.setEnded=false;st.matchEnded=false;
-  st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";st.liberoPreferredId="";st.liberoPreferredMB="";st.receivePlans={};st.tacticPositions={};
+  st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";st.liberoPreferredId="";st.liberoPreferredMB="";st.receivePlans={};st.tacticPositions={};st.sixBoards={};
   st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids),roles:clone(st.roles)};
   draft={};clearDraftHistory();pendingMark=null;tab="rally";view="live";closeModal();render();toast(`Satz ${next} gestartet`);
  };
