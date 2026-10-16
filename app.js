@@ -1,18 +1,25 @@
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
-const APP_VERSION=globalThis.EVV_VERSION||"7.9.0";
+const APP_VERSION=globalThis.EVV_VERSION||"7.9.1";
 const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}; // confirmed live-test convention: R5→R6→R1
 const roster=[
 {id:"johann",name:"Johann",role:"Z"},{id:"michael",name:"Michael",role:"AA1"},{id:"janik",name:"Janik",role:"MB1"},
-{id:"jonas",name:"Jonas",role:"D"},{id:"maksym",name:"Maksym",role:"AA2"},{id:"dirk",name:"Dirk",role:"MB2"},
-{id:"felix",name:"Felix",role:"AA"},{id:"jens",name:"Jens",role:"D/AA"},{id:"amar",name:"Amar",role:"L"},{id:"alex",name:"Alexandra",role:"L"}];
+{id:"jonas",name:"Jonas",role:"D"},{id:"maksym",name:"Maxim",role:"AA2"},{id:"dirk",name:"Dirk",role:"MB2"},
+{id:"arthur",name:"Arthur",role:"AA"},{id:"lion",name:"Lion",role:"AA"},{id:"david",name:"David",role:"AA"},{id:"reinhold",name:"Reinhold",role:"Z"},{id:"felix",name:"Felix",role:"AA"},{id:"jens",name:"Jens",role:"D/AA"},{id:"amar",name:"Amar",role:"L"},{id:"alex",name:"Alexandra",role:"L"}];
+const ROLES=["Z","D","AA1","AA2","MB1","MB2"];
+const defaultRoles=()=>({johann:"Z",jonas:"D",michael:"AA1",maksym:"AA2",janik:"MB1",dirk:"MB2"});
+function roleOf(id){return (st.roles||{})[id]||(byId(id)||{}).role||""}
+function roleOptions(selected){return ROLES.map(r=>`<option value="${r}" ${selected===r?"selected":""}>${r}</option>`).join("")}
+function lineupEditor(prefix,ids){return ids.map((id,i)=>`<label>Startplatz P${i+1}<select id="${prefix}P${i}">${roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${p.id===id?"selected":""}>${esc(p.name)}</option>`).join("")}</select><select aria-label="Rolle für Startplatz ${i+1}" id="${prefix}R${i}">${roleOptions(roleOf(id))}</select></label>`).join("")}
+function readLineupEditor(prefix){const ids=[0,1,2,3,4,5].map(i=>$(prefix+"P"+i).value),roles=[0,1,2,3,4,5].map(i=>$(prefix+"R"+i).value);if(new Set(ids).size!==6||new Set(roles).size!==6||!ROLES.every(r=>roles.includes(r))){toast("Sechs verschiedene Spieler und jede Rolle genau einmal wählen");return null}return {ids,roles:Object.fromEntries(ids.map((id,i)=>[id,roles[i]]))}}
+function roleForPosition(pos){const id=st.lineup[pos-1];return id?roleOf(id):""}
 const byId=id=>roster.find(p=>p.id===id), nm=id=>(byId(id)||{name:id}).name;
 let opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};
 let tab="rally",view="live",draft={},draftHistory=[],pendingMark=null;
 let st=fresh();
 function fresh(){return{started:false,set:1,e:0,o:0,rot:1,serving:true,setEnded:false,matchEnded:false,
-lineup:["johann","michael","janik","jonas","maksym","dirk"],receiveIds:[],liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,
+lineup:["johann","michael","janik","jonas","maksym","dirk"],roles:defaultRoles(),receiveIds:[],liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,
 rallies:[],sets:[],rallyUndo:[],events:[],marks:[],setStart:null,subPairs:{},subCount:0,subUsed:[]}}
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function toast(s){$("toast").textContent=s;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),1100)}
@@ -23,11 +30,11 @@ function target(set=st.set){return set===5?15:25}
 function isSetWin(e=st.e,o=st.o,set=st.set){return (e>=target(set)||o>=target(set))&&Math.abs(e-o)>=2}
 function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).length;if(st.setEnded&&(team==="EVV"?st.e>st.o:st.o>st.e))w++;return w}
 function checkEnd(){st.setEnded=isSetWin();if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=st.set===5||setWins(w)>=3}}
-function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount})}
+function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive})}
 function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
 function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent}))}catch(e){}}
-function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];return true}}catch(e){}return false}
+function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];return true}}catch(e){}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
 function commit(w,data={},preSnapshot=null){
  if(w!=="EVV"&&w!=="Gegner")throw new Error("Ungültiger Rallye-Sieger");
@@ -55,20 +62,20 @@ function rotationMatrix(){
 function liberoEligible(){
  return !!(st.liberoOnCourt&&st.liberoReplacedId&&st.liberoIds.includes(st.liberoOnCourt)&&
    st.lineup.includes(st.liberoReplacedId)&&
-   (byId(st.liberoReplacedId)||{}).role?.startsWith("MB")&&
+   roleOf(st.liberoReplacedId).startsWith("MB")&&
    [1,5,6].includes(courtPos(st.liberoReplacedId)));
 }
 function playerAtPos(pos){return active().find(id=>courtPos(id)===pos)||null}
 function front(){return active().filter(id=>[2,3,4].includes(courtPos(id)))}
 function receivers(){
- let ids=active().filter(id=>{const p=byId(id);return p&&p.role!=="Z"&&p.role!=="L"});
+ let ids=active().filter(id=>{const p=byId(id);return p&&roleOf(id)!=="Z"&&p.role!=="L"});
  if(st.liberoActive&&st.liberoOnCourt&&!ids.includes(st.liberoOnCourt))ids.push(st.liberoOnCourt);
  return ids
 }
 function opponentReceivers(){return [...new Set(opponent.receivers.concat(opponent.liberos||[]).filter(x=>x&&x!=="#"&&x!=="#?"))]}
-function attackers(){return active().filter(id=>{const p=byId(id);return p&&p.role!=="Z"&&p.role!=="L"&&!st.liberoIds.includes(id)})}
+function attackers(){return active().filter(id=>{const p=byId(id);return p&&roleOf(id)!=="Z"&&p.role!=="L"&&!st.liberoIds.includes(id)})}
 function roleBaseRoute(id){
- const r=(byId(id)||{}).role||"";
+ const r=roleOf(id);
  if(r.startsWith("MB"))return "III";
  if(r==="D"||r.startsWith("D/"))return "II";
  if(r.startsWith("AA"))return "IV";
@@ -96,22 +103,23 @@ function attackOptions(context=attackContext()){
  return attackers().flatMap(id=>attackRoutesFor(id,context).map(zone=>({id,zone,pos:courtPos(id),context})))
 }
 function attackCandidates(target){return attackOptions().filter(x=>x.zone===target)}
-function setupUI(){
- $("startSix").innerHTML=st.lineup.map((id,i)=>`<label>Pos ${i+1}<select id="ss${i}">${roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${p.id===id?"selected":""}>${esc(p.name)} · ${esc(p.role)}</option>`).join("")}</select></label>`).join("")
-}
+function setupUI(){ $("startSix").innerHTML=lineupEditor("ss",st.lineup) }
 function readSetup(){
- const ids=[0,1,2,3,4,5].map(i=>$("ss"+i).value);
- if(new Set(ids).size!==6){toast("Start-Sechs enthält doppelte Spieler");return false}
- st.lineup=ids;
- st.receiveIds=[];
- st.liberoOnCourt=$("evvLiberoOnCourt")?$("evvLiberoOnCourt").value:"";st.liberoReplacedId=$("evvLiberoReplaces")?$("evvLiberoReplaces").value:"";st.liberoActive=!!(st.liberoOnCourt&&st.liberoReplacedId);
- opponent.name=$("oppName").value.trim()||"Gegner";opponent.setter="#"+($("oppSetter").value.trim()||"?");opponent.liberos=[1,2].map(i=>"#"+($("oppLibero"+i).value.trim()||"?"));
+ const picked=readLineupEditor("ss");if(!picked)return false;
+ st.lineup=picked.ids;st.roles=picked.roles;st.receiveIds=[];
+ st.liberoOnCourt=$("evvLiberoOnCourt")?$("evvLiberoOnCourt").value:"";
+ st.liberoReplacedId=$("evvLiberoReplaces")?$("evvLiberoReplaces").value:"";
+ st.liberoActive=!!(st.liberoOnCourt&&st.liberoReplacedId);
+ opponent.name=$("oppName").value.trim()||"Gegner";
+ opponent.setter="#"+($("oppSetter").value.trim()||"?");
+ opponent.liberos=[1,2].map(i=>"#"+($("oppLibero"+i).value.trim()||"?"));
  opponent.receivers=[1,2,3,4].map(i=>"#"+($("oppR"+i).value.trim()||"?"));
- st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.setStart={rot:st.rot,serving:false};
- if(st.liberoActive&&!liberoEligible()){toast("Libero nur für Mittelblocker in der Hinterreihe einsetzen");return false}
+ st.rot=parseInt($("startRotation").value.slice(1),10)||1;
+ st.setStart={rot:st.rot,serving:false,lineup:clone(st.lineup),roles:clone(st.roles)};
+ if(st.liberoActive&&!liberoEligible()){toast("Libero nur für einen Mittelblocker in der Hinterreihe einsetzen");return false}
  return true
 }
-function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRec=clone(st.receiveIds),keepLibs=clone(st.liberoIds),keepLibOn=st.liberoOnCourt,keepLibRep=st.liberoReplacedId,keepLibActive=st.liberoActive;st=fresh();st.lineup=keep;st.receiveIds=keepRec;st.liberoIds=keepLibs;st.liberoOnCourt=keepLibOn;st.liberoReplacedId=keepLibRep;st.liberoActive=keepLibActive;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv};$("setup").classList.add("hidden");render()}
+function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRoles=clone(st.roles),keepRec=clone(st.receiveIds),keepLibs=clone(st.liberoIds),keepLibOn=st.liberoOnCourt,keepLibRep=st.liberoReplacedId,keepLibActive=st.liberoActive;st=fresh();st.lineup=keep;st.roles=keepRoles;st.receiveIds=keepRec;st.liberoIds=keepLibs;st.liberoOnCourt=keepLibOn;st.liberoReplacedId=keepLibRep;st.liberoActive=keepLibActive;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv,lineup:clone(keep),roles:clone(keepRoles)};$("setup").classList.add("hidden");render()}
 function currentServerId(){return playerAtPos(1)}
 function currentServer(){
  if(!st.serving)return opponent.name;
@@ -121,7 +129,7 @@ function currentServer(){
 function renderHeader(){
  $("homeScore").textContent=st.e;$("oppScore").textContent=st.o;$("oppNameHead").textContent=opponent.name;$("setBadge").textContent=`S${st.set}${st.set===5?" · TB":""}`;$("rotationBadge").textContent=`R${st.rot}`;
  $("phase").textContent=st.serving?"K2":"K1";$("serveText").textContent=st.serving?"EVV Aufschlag":"Gegner Aufschlag";$("serverText").textContent=st.serving?`Aufschlag: ${currentServer()}`:`Aufschlag: ${opponent.name}`;
- $("lineups").innerHTML=`<div class="lineup"><b>EVV · aktive Sechs</b><div class="chips">${active().map(id=>`<span class="chip">${esc(nm(id))}</span>`).join("")}</div></div><div class="lineup"><b>${esc(opponent.name)}</b><div class="chips"><span class="chip">Z ${esc(opponent.setter)}</span><span class="chip">L1 ${esc((opponent.liberos||[])[0]||"–")}</span><span class="chip">L2 ${esc((opponent.liberos||[])[1]||"–")}</span>${opponent.receivers.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div></div>`
+ $("lineups").innerHTML=`<div class="lineup"><b>EVV · aktive Sechs</b><div class="chips">${active().map(id=>`<span class="chip">${esc(nm(id))} · ${esc(roleOf(id))}</span>`).join("")}</div></div><div class="lineup"><b>${esc(opponent.name)}</b><div class="chips"><span class="chip">Z ${esc(opponent.setter)}</span><span class="chip">L1 ${esc((opponent.liberos||[])[0]||"–")}</span><span class="chip">L2 ${esc((opponent.liberos||[])[1]||"–")}</span>${opponent.receivers.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div></div>`
 }
 function renderNav(){
  const nums=[...st.sets.map(s=>s.set),st.set].filter((v,i,a)=>a.indexOf(v)===i);
@@ -302,15 +310,15 @@ function nextSetPrep(){
  const next=st.set+1;
  const oppInputs=opponent.receivers.map((r,i)=>`<label>Annahme ${i+1}<input id="nOR${i}" value="${esc(r)}"></label>`).join("");
  modal(`<div class="setprep"><h2>Satz ${next} vorbereiten</h2><p class="small"><b>${esc(opponent.name)}</b> bleibt gespeichert. Nur Aufstellungen/Startbedingungen für den neuen Satz prüfen.</p>
- <h3>EVV Start-6</h3><div class="grid2">${[0,1,2,3,4,5].map(i=>`<label>Position ${i+1}<select id="nP${i}">${roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${st.lineup[i]===p.id?"selected":""}>${esc(p.name)} · ${p.role}</option>`).join("")}</select></label>`).join("")}</div>
+ <h3>EVV Start-6</h3><div class="grid2">${lineupEditor("n",st.lineup)}</div>
  <h3>${esc(opponent.name)} · aktuelle Aufstellung</h3><div class="grid2"><label>Zuspieler<input id="nOZ" value="${esc(opponent.setter)}"></label><label>Libero 1<input id="nOL1" value="${esc((opponent.liberos||[])[0]||"#")}"></label><label>Libero 2<input id="nOL2" value="${esc((opponent.liberos||[])[1]||"#")}"></label>${oppInputs}</div>
  <label>Startrotation<select id="nRot">${[1,2,3,4,5,6].map(r=>`<option ${r===st.rot?"selected":""}>${r}</option>`).join("")}</select></label>
  <div class="grid2"><button id="nK1">Gegner-Aufschlag · K1</button><button id="nK2" class="primary">EVV-Aufschlag · K2</button></div></div>`);
  const go=serving=>{
-   const ids=[0,1,2,3,4,5].map(i=>$("nP"+i).value); if(new Set(ids).size<6)return toast("EVV Start-6: Spieler doppelt");
+   const picked=readLineupEditor("n");if(!picked)return;const ids=picked.ids;st.roles=picked.roles; if(new Set(ids).size<6)return toast("EVV Start-6: Spieler doppelt");
    st.lineup=ids;st.rot=+$("nRot").value;st.serving=serving;
    if(st.liberoActive&&!liberoEligible()){st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";toast("Libero beim Satzwechsel deaktiviert: Einsatzposition prüfen")}opponent.setter=$("nOZ").value.trim()||opponent.setter;opponent.liberos=[1,2].map(i=>$("nOL"+i).value.trim()||"#");opponent.receivers=[0,1,2,3].map(i=>$("nOR"+i).value.trim()||`#${i+1}`);
-   st.set=next;st.e=0;st.o=0;st.setEnded=false;st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:st.rot,serving};draft={};clearDraftHistory();view="live";closeModal();render();toast(`Satz ${next} gestartet`)
+   st.set=next;st.e=0;st.o=0;st.setEnded=false;st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:st.rot,serving,lineup:clone(ids),roles:clone(st.roles)};draft={};clearDraftHistory();view="live";closeModal();render();toast(`Satz ${next} gestartet`)
  };
  $("nK1").onclick=()=>go(false);$("nK2").onclick=()=>go(true);
 }
@@ -348,46 +356,51 @@ function nineZonePicker(kind,payload){
  $("skipMark").onclick=()=>{let p=pendingMark;pendingMark=null;closeModal();commit(p.w,p.data)}
 }
 function courtPicker(){nineZonePicker("KILL",pendingMark)}
+// A substitute is tied to the original starter and can enter only once per set.
+function validateSub(out,inn){
+ if(!st.started||st.setEnded||view!=="live"||draft.step)return "Wechsel nur zwischen Rallyes im laufenden Satz";
+ if(!st.lineup.includes(out)||st.lineup.includes(inn)||!byId(inn)||byId(inn).role==="L")return "Spieler nicht verfügbar";
+ if(st.subCount>=6)return "Sechs reguläre Wechsel erreicht";
+ const starters=(st.setStart&&st.setStart.lineup)||st.lineup;
+ const pairs=st.subPairs||{},used=st.subUsed||[];
+ if(used.includes(inn))return "Spieler hat seinen zulässigen Einsatz bereits abgeschlossen";
+ if(pairs[out])return pairs[out]===inn?null:"Rückwechsel nur mit ursprünglichem Partner";
+ if(!starters.includes(out))return "Ersatzspieler darf nur mit ursprünglichem Startspieler zurückwechseln";
+ if(starters.includes(inn))return "Startspieler darf nur auf seine ursprüngliche Position zurückkehren";
+ if(Object.values(pairs).includes(inn))return "Ersatzspieler bereits einem Wechselpaar zugeordnet";
+ return null;
+}
+function applySub(out,inn,voice){
+ const err=validateSub(out,inn);if(err){toast(err);return false}
+ const i=st.lineup.indexOf(out),pairs=st.subPairs||(st.subPairs={}),used=st.subUsed||(st.subUsed=[]);
+ const isReturn=!!pairs[out];
+ if(isReturn){delete pairs[out];used.push(out,inn)}else pairs[inn]=out;
+ st.lineup[i]=inn;st.roles=st.roles||{};st.roles[inn]=st.roles[out]||(byId(out)||{}).role;delete st.roles[out];st.receiveIds=st.receiveIds.map(x=>x===out?inn:x);st.subCount++;
+ st.events.push({type:"sub",set:st.set,out,inn,score:`${st.e}:${st.o}`,pos:i+1,return:isReturn,...(voice?{voice}:{})});
+ render();toast(`${nm(inn)} ⇧ / ${nm(out)} ⇩`);return true;
+}
 function substitute(){
- if(!st.started||view!=="live"||st.setEnded)return toast("Wechsel nur im laufenden Live-Satz");
- if(draft.step)return toast("Wechsel nur zwischen Rallyes");
- st.subPairs=st.subPairs||{};st.subCount=st.subCount||0;
+ if(!st.started||view!=="live"||st.setEnded||draft.step)return toast("Wechsel nur zwischen Rallyes im laufenden Satz");
  const bench=roster.filter(p=>!active().includes(p.id)&&p.role!=="L");
- modal(`<h2>Spielerwechsel · Satz ${st.set}</h2><p class="small">${st.subCount} Wechsel im Satz. Rückwechsel nur mit ursprünglichem Partner; maximal sechs reguläre Wechsel pro Satz (Standardregel).</p><label>RAUS<select id="subOut">${st.lineup.map(id=>`<option value="${id}">${esc(nm(id))}</option>`).join("")}</select></label><label>REIN<select id="subIn">${bench.map(p=>`<option value="${p.id}">${esc(p.name)} · ${esc(p.role)}</option>`).join("")}</select></label><div class="grid2"><button id="cancelSub">Abbrechen</button><button id="doSub" class="primary">Wechsel bestätigen</button></div>`);
+ const history=st.events.filter(e=>e.type==="sub"&&e.set===st.set);
+ const hist=history.length?history.map(e=>`<div class="small">${esc(e.score)} · ${esc(nm(e.out))} raus → ${esc(nm(e.inn))} rein${e.return?" (Rückwechsel)":""}</div>`).join(""):"<p class='small'>Noch keine Wechsel in diesem Satz.</p>";
+ modal(`<h2>Spielerwechsel · Satz ${st.set}</h2><p class="small">${st.subCount} von 6 regulären Wechseln · Rückwechsel nur mit ursprünglichem Partner.</p><label>RAUS<select id="subOut">${st.lineup.map(id=>`<option value="${id}">${esc(nm(id))}</option>`).join("")}</select></label><label>REIN<select id="subIn">${bench.map(p=>`<option value="${p.id}">${esc(p.name)} · ${esc(p.role)}</option>`).join("")}</select></label><div class="grid2"><button id="cancelSub">Abbrechen</button><button id="doSub" class="primary">Wechsel bestätigen</button></div><h3>Wechselhistorie</h3>${hist}`);
  $("cancelSub").onclick=closeModal;
- $("doSub").onclick=()=>{
-  const out=$("subOut").value,inn=$("subIn").value,i=st.lineup.indexOf(out);
-  if(i<0||!inn)return toast("Spieler nicht verfügbar");
-  if(st.subCount>=6)return toast("Sechs reguläre Wechsel erreicht");
-  const pairs=st.subPairs,used=st.subUsed||[];
-  if(used.includes(inn))return toast("Spieler hat seinen zulässigen Einsatz bereits abgeschlossen");
-  if(pairs[out]){
-    if(pairs[out]!==inn)return toast("Rückwechsel nur mit ursprünglichem Partner");
-    delete pairs[out];used.push(out,inn);
-  }else{
-    if(Object.values(pairs).includes(inn))return toast("Dieser Spieler ist bereits in einem Wechselpaar gebunden");
-    if(Object.keys(pairs).length&&pairs[inn])return toast("Rückwechsel nur zum ursprünglichen Partner");
-    pairs[inn]=out;
-  }
-  st.subUsed=used;
-  st.lineup[i]=inn;st.receiveIds=st.receiveIds.map(x=>x===out?inn:x);st.subCount++;
-  st.events.push({type:"sub",set:st.set,out,inn,score:`${st.e}:${st.o}`,pos:i+1});closeModal();render();toast(`${nm(inn)} ⇧ / ${nm(out)} ⇩`)
- };
+ $("doSub").onclick=()=>{if(applySub($("subOut").value,$("subIn").value))closeModal()};
 }
 function scoreFix(){if(view!=="live")return toast("Nur LIVE korrigierbar");modal(`<h2>Punkt korrigieren</h2><p class="small">Nur Spielstand. Keine Statistik, Rotation oder Aufschlagänderung.</p><div class="grid2"><button data-f="e,1">EVV +1</button><button data-f="e,-1">EVV −1</button><button data-f="o,1">Gegner +1</button><button data-f="o,-1">Gegner −1</button></div>`);document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{let [t,d]=b.dataset.f.split(",");st[t]=Math.max(0,st[t]+(+d));st.setEnded=false;st.matchEnded=false;checkEnd();closeModal();render()})}
 function prepareNextSet(){
  if(!st.setEnded||st.matchEnded)return toast("Kein Satzwechsel möglich");
  const next=st.set+1;
  const options=(selected)=>roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${selected===p.id?"selected":""}>${esc(p.name)} · ${esc(p.role)}</option>`).join("");
- modal(`<h2>Satz ${next} · neue Startaufstellung</h2><p class="small">Jede Position frei wählen. Die bisherige Aufstellung ist vorausgewählt.</p><div class="grid2">${[0,1,2,3,4,5].map(i=>`<label>P${i+1}<select id="nsP${i}">${options(st.lineup[i])}</select></label>`).join("")}</div><label>Startrotation<select id="nsRot">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${n===st.rot?"selected":""}>R${n}</option>`).join("")}</select></label><p class="small">Libero-Einsatz wird vor dem neuen Satz zurückgesetzt und kann anschließend neu festgelegt werden.</p><div class="grid2"><button id="nsRec">Gegner-Aufschlag · K1</button><button id="nsSrv" class="primary">EVV-Aufschlag · K2</button></div><button id="nsCancel">Abbrechen</button>`);
+ modal(`<h2>Satz ${next} · neue Startaufstellung</h2><p class="small">Jede Position frei wählen. Die bisherige Aufstellung ist vorausgewählt.</p><div class="grid2">${lineupEditor("ns",st.lineup)}</div><label>Startrotation<select id="nsRot">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${n===st.rot?"selected":""}>R${n}</option>`).join("")}</select></label><p class="small">Libero-Einsatz wird vor dem neuen Satz zurückgesetzt und kann anschließend neu festgelegt werden.</p><div class="grid2"><button id="nsRec">Gegner-Aufschlag · K1</button><button id="nsSrv" class="primary">EVV-Aufschlag · K2</button></div><button id="nsCancel">Abbrechen</button>`);
  const go=serv=>{
-  const ids=[0,1,2,3,4,5].map(i=>$("nsP"+i).value);
-  if(new Set(ids).size!==6)return toast("Sechs unterschiedliche Spieler auswählen");
+  const picked=readLineupEditor("ns");if(!picked)return;const ids=picked.ids;
   const newRot=Number($("nsRot").value);
-  st.sets.push({set:st.set,e:st.e,o:st.o,rallies:clone(st.rallies),marks:clone(st.marks),start:clone(st.setStart),lineup:clone(st.lineup),events:clone(st.events.filter(x=>x.set===st.set))});
-  st.set=next;st.e=0;st.o=0;st.lineup=ids;st.rot=newRot;st.serving=serv;st.setEnded=false;st.matchEnded=false;
+  st.sets.push({set:st.set,e:st.e,o:st.o,rallies:clone(st.rallies),marks:clone(st.marks),start:clone(st.setStart),lineup:clone(st.lineup),roles:clone(st.roles),events:clone(st.events.filter(x=>x.set===st.set))});
+  st.set=next;st.e=0;st.o=0;st.lineup=ids;st.roles=picked.roles;st.rot=newRot;st.serving=serv;st.setEnded=false;st.matchEnded=false;
   st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";
-  st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids)};
+  st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids),roles:clone(st.roles)};
   draft={};clearDraftHistory();pendingMark=null;tab="rally";view="live";closeModal();render();toast(`Satz ${next} gestartet`);
  };
  $("nsRec").onclick=()=>go(false);$("nsSrv").onclick=()=>go(true);$("nsCancel").onclick=closeModal;
@@ -413,7 +426,8 @@ function render(){
 }
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
-$("undo").onclick=()=>{if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;render();toast("Letzte Rally vollständig zurückgesetzt")};
+function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;render();toast("Letzte Rally vollständig zurückgesetzt")}
+$("undo").onclick=undoLast;
 $("exportData").onclick=exportData;$("printReport").onclick=printReport;$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{
  if(!st.started||view!=="live")return toast("Auszeit nur im laufenden Satz");
  modal(`<h2>Auszeit erfassen</h2><p class="small">Spielstand ${st.e}:${st.o} · S${st.set} · R${st.rot}</p><div class="grid2"><button id="toEVV" class="primary">EVV-Auszeit</button><button id="toOpp">${esc(opponent.name)}-Auszeit</button></div><button id="toCancel">Abbrechen</button>`);
@@ -461,10 +475,7 @@ function executeVoice(c){
  if(c.type==="reception"){if(!receivers().includes(c.player))return toast(`${nm(c.player)} ist nicht in der aktuellen Annahme`); if(c.q==="A0")commit("Gegner",{event:"Reception",receiver:c.player,reception:c.q,voice:c.raw,result:"DIRECT_ERROR",chain:[{side:"EVV",type:"Reception",player:c.player,quality:"A0"}]});else{draft={step:2,receiver:c.player,reception:c.q,voice:c.raw};tab="rally";render();toast("Annahme gespeichert · Angriff weiter per Tap/Sprache")};return}
  if(c.type==="kill"){if(!attackers().includes(c.player))return toast(`${nm(c.player)} ist aktuell kein Angreifer`);pendingMark={w:"EVV",data:{event:"Attack",attacker:c.player,zone:c.zone,result:"KILL",voice:c.raw}};courtPicker();return}
  if(c.type==="block"){if(!front().includes(c.player))return toast(`${nm(c.player)} ist aktuell nicht Vorderreihe`);commit("EVV",{event:"Block",player:c.player,result:"BLOCK",voice:c.raw});return}
- if(c.type==="sub"){
-   let oi=st.lineup.indexOf(c.out);if(oi<0||st.lineup.includes(c.inn))return toast("Wechsel passt nicht zur aktiven Sechs");
-   st.lineup[oi]=c.inn;st.receiveIds=st.receiveIds.map(x=>x===c.out?c.inn:x);st.events.push({type:"sub",set:st.set,out:c.out,inn:c.inn,score:`${st.e}:${st.o}`,voice:c.raw});render();toast(`${nm(c.inn)} ⇧ / ${nm(c.out)} ⇩`);return
- }
+ if(c.type==="sub"){applySub(c.out,c.inn,c.raw);return}
  toast("Befehl nicht übernommen")
 }
 function startVoiceRecognition(){
@@ -486,5 +497,5 @@ function toggleVoice(){
 $("voiceBtn").onclick=toggleVoice;
 
 const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
+window.EVV_QS_TEST={action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
 })();
