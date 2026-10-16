@@ -3,10 +3,10 @@
 const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
 const APP_VERSION=globalThis.EVV_VERSION||"7.9.1";
 const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}; // confirmed live-test convention: R5→R6→R1
-const roster=[
+let roster=[
 {id:"johann",name:"Johann",role:"Z"},{id:"michael",name:"Michael",role:"AA1"},{id:"janik",name:"Janik",role:"MB1"},
 {id:"jonas",name:"Jonas",role:"D"},{id:"maksym",name:"Maxim",role:"AA2"},{id:"dirk",name:"Dirk",role:"MB2"},
-{id:"arthur",name:"Arthur",role:"AA"},{id:"lion",name:"Lion",role:"AA"},{id:"david",name:"David",role:"AA"},{id:"reinhold",name:"Reinhold",role:"Z"},{id:"felix",name:"Felix",role:"AA"},{id:"jens",name:"Jens",role:"D/AA"},{id:"amar",name:"Amar",role:"L"},{id:"alex",name:"Alexandra",role:"L"}];
+{id:"arthur",name:"Arthur",role:"AA"},{id:"lion",name:"Lion",role:"AA"},{id:"david",name:"David",role:"AA"},{id:"reinhold",name:"Reinhold",role:"Z"},{id:"felix",name:"Felix",role:"AA"},{id:"jens",name:"Jens",role:"D/AA"},{id:"amar",name:"Anmol",role:"L"},{id:"alex",name:"Sascha",role:"L"}];
 const ROLES=["Z","D","AA1","AA2","MB1","MB2"];
 const defaultRoles=()=>({johann:"Z",jens:"D",michael:"AA1",arthur:"AA2",janik:"MB1",dirk:"MB2"});
 function roleOf(id){return (st.roles||{})[id]||(byId(id)||{}).role||""}
@@ -19,7 +19,7 @@ let opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#",
 let tab="rally",view="live",draft={},draftHistory=[],pendingMark=null;
 let st=fresh();
 function fresh(){return{started:false,set:1,e:0,o:0,rot:1,serving:true,setEnded:false,matchEnded:false,
-lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,
+lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},opponentPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,
 rallies:[],sets:[],rallyUndo:[],events:[],marks:[],setStart:null,subPairs:{},subCount:0,subUsed:[]}}
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function toast(s){$("toast").textContent=s;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),1100)}
@@ -30,11 +30,27 @@ function target(set=st.set){return set===5?15:25}
 function isSetWin(e=st.e,o=st.o,set=st.set){return (e>=target(set)||o>=target(set))&&Math.abs(e-o)>=2}
 function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).length;if(st.setEnded&&(team==="EVV"?st.e>st.o:st.o>st.e))w++;return w}
 function checkEnd(){st.setEnded=isSetWin();st.matchEnded=false;if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=setWins(w)>=3}}
-function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive})}
+function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive})}
 function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
-function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
-function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
+function sanitizeLiberoName(v){return String(v||"").trim().slice(0,45)}
+function liberoRoster(){return roster.filter(p=>p.role==="L")}
+function configureLiberos(names){
+ const ids=["amar","alex"];
+ ids.forEach((id,i)=>{const name=sanitizeLiberoName(names[i]);const player=byId(id);if(player)player.name=name||["Anmol","Sascha"][i]});
+ st.liberoIds=ids.filter((id,i)=>!!sanitizeLiberoName(names[i]));
+ if(st.liberoOnCourt&&!st.liberoIds.includes(st.liberoOnCourt)){st.liberoOnCourt="";st.liberoReplacedId="";st.liberoActive=false}
+ st.receivePlans={};
+}
+function setupLiberoSelectors(){
+ const picker=$("evvLiberoOnCourt");if(!picker)return;const old=picker.value||st.liberoOnCourt||"";
+ picker.innerHTML=`<option value="">Kein Libero</option>`+st.liberoIds.map(id=>`<option value="${esc(id)}">${esc(nm(id))}</option>`).join("");
+ picker.value=st.liberoIds.includes(old)?old:"";
+}
+function readLiberoNames(){return [1,2].map(i=>$("evvLiberoName"+i)?.value??(st.liberoIds.includes(i===1?"amar":"alex")?nm(i===1?"amar":"alex"):""))}
+function applyLiberoNames(){configureLiberos(readLiberoNames());setupLiberoSelectors()}
+function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent,roster}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
+function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
 function commit(w,data={},preSnapshot=null){
  if(w!=="EVV"&&w!=="Gegner")throw new Error("Ungültiger Rallye-Sieger");
@@ -106,10 +122,12 @@ function attackOptions(context=attackContext()){
 }
 function attackCandidates(target){return attackOptions().filter(x=>x.zone===target)}
 function setupUI(){
+ [1,2].forEach(i=>{const el=$("evvLiberoName"+i);if(el)el.value=st.liberoIds.includes(i===1?"amar":"alex")?nm(i===1?"amar":"alex"):""});setupLiberoSelectors();
  $("startSix").innerHTML=lineupEditor("ss",st.lineup);
  const repl=$("evvLiberoReplaces");if(repl){repl.innerHTML=`<option value="">Niemand</option>`+roster.filter(p=>p.role!=="L").map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("")}
 }
 function readSetup(){
+ applyLiberoNames();
  const picked=readLineupEditor("ss");if(!picked)return false;
  st.lineup=picked.ids;st.roles=picked.roles;st.receiveIds=[];st.receivePlans={};
  st.liberoOnCourt=$("evvLiberoOnCourt")?$("evvLiberoOnCourt").value:"";
@@ -356,15 +374,35 @@ function liberoPlanner(){
  const select=(id,opts)=>`<select id="${id}">${opts.map(([v,label])=>`<option value="${esc(v)}">${esc(label)}</option>`).join("")}</select>`;
  const libs=[["","Kein Libero"],...available.map(id=>[id,nm(id)])];
  const middles=st.lineup.filter(id=>roleOf(id).startsWith("MB"));
- modal(`<h2>Libero · Satz ${st.set}</h2><p class="small">Ein oder zwei Liberos im Kader; jeweils nur einen für einen hinteren Mittelblocker aktivieren. Wechsel zwischen Rallyes.</p><label>Libero ${select("lpLib",libs)}</label><label>Ersetzt ${select("lpMB",[["","Niemand"],...middles.map(id=>[id,`${nm(id)} · P${courtPos(id)}`])])}</label><div class="grid2"><button id="lpCancel">Abbrechen</button><button id="lpSave" class="primary">Übernehmen</button></div>`);
+ modal(`<h2>Libero · Satz ${st.set}</h2><p class="small">Namen für künftige Spiele frei eintragen. Während eines offiziellen Spiels gelten die gemeldeten Libero- und Wechselregeln.</p><div class="grid2"><label>Libero 1<input id="lpName1" maxlength="45" value="${esc(st.liberoIds.includes("amar")?nm("amar"):"")}" placeholder="Name"></label><label>Libero 2<input id="lpName2" maxlength="45" value="${esc(st.liberoIds.includes("alex")?nm("alex"):"")}" placeholder="optional"></label></div><button id="lpNamesSave" type="button">Libero-Namen speichern</button><label>Libero ${select("lpLib",libs)}</label><label>Ersetzt ${select("lpMB",[["","Niemand"],...middles.map(id=>[id,`${nm(id)} · P${courtPos(id)}`])])}</label><div class="grid2"><button id="lpCancel">Abbrechen</button><button id="lpSave" class="primary">Übernehmen</button></div>`);
  $("lpLib").value=st.liberoOnCourt||"";$("lpMB").value=st.liberoReplacedId||"";
+ $("lpNamesSave").onclick=()=>{if(st.started&&!st.matchEnded)return toast("Libero-Meldung im laufenden Spiel nicht ändern. Neues Spiel starten.");configureLiberos([$("lpName1").value,$("lpName2").value]);closeModal();render();toast("Libero-Namen gespeichert")};
  $("lpCancel").onclick=closeModal;
  $("lpSave").onclick=()=>{if(draft.step||st.setEnded)return toast("Nur zwischen Ballwechseln");const l=$("lpLib").value,m=$("lpMB").value;if(!!l!==!!m)return toast("Libero und Mittelblocker gemeinsam wählen");if(m&&![1,5,6].includes(courtPos(m)))return toast("Mittelblocker muss in der Hinterreihe stehen");st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;st.receivePlans={};st.tacticPositions={};closeModal();render();toast("Libero-Einsatz aktualisiert")};
 }
 function opponentCourt(){
  const marks=allRallies().filter(r=>r.targetZone&&r.winner==="EVV");
  const count=Object.fromEntries(Array.from({length:9},(_,i)=>[i+1,0]));marks.forEach(r=>count[r.targetZone]++);
- modal(`<h2>${esc(opponent.name)} · Kill-Zonen</h2><p class="small">Aufschlag-Asse und Angriffspunkte unserer Mannschaft auf dem gegnerischen Feld. Netz oben, Grundlinie unten. Nur erfasste Zonen.</p><div class="zone9">${Array.from({length:9},(_,i)=>`<div class="killZone"><b>${i+1}</b><strong>${count[i+1]}</strong><small>Punkte</small></div>`).join("")}</div><p class="small">${marks.length} markierte Punkte · Die Zonen 1–9 sind ein 3×3-Raster, nicht die offiziellen Spielpositionen.</p><h3>Gegner · Block und Feldabwehr</h3><p class="small">Taktische Grundordnung als Skizze, keine aus Video bestätigte Gegneraufstellung.</p><div class="tacticCourt opponentTactic"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${[["#4",23,27],["#3",50,27],["#2",77,27],["#5",22,77],["#6",50,77],["#1",78,77]].map(([label,x,y])=>`<span class="tacticPlayer" style="left:${x}%;top:${y}%"><b>${label}</b><small>Gegner</small></span>`).join("")}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div><button id="oppClose">Schließen</button>`);$("oppClose").onclick=closeModal;
+ const defaults={4:[23,27],3:[50,27],2:[77,27],5:[22,77],6:[50,77],1:[78,77]};
+ st.opponentPositions=st.opponentPositions||{};
+ const nodes=[4,3,2,5,6,1].map(pos=>{const xy=st.opponentPositions[pos]||defaults[pos];return `<button type="button" class="tacticPlayer" data-opp-player="${pos}" style="left:${xy[0]}%;top:${xy[1]}%"><b>#${pos}</b><small>Position ${pos}</small></button>`}).join("");
+ modal(`<h2>${esc(opponent.name)} · Kill-Zonen</h2><p class="small">Zonen zeigen dokumentierte EVV-Punkte. Antippen wählt eine Zone für die Skizze; historische Rallyes werden dabei nicht verändert.</p><div class="zone9">${Array.from({length:9},(_,i)=>`<button type="button" class="killZone" data-opp-zone="${i+1}"><b>${i+1}</b><strong>${count[i+1]}</strong><small>Punkte</small></button>`).join("")}</div><p class="small" id="oppZoneInfo">${marks.length} markierte Punkte · Zone auswählen</p><h3>Gegner · Block und Feldabwehr</h3><div class="grid2"><button type="button" id="oppModeMove" class="primary">Spieler verschieben</button><button type="button" id="oppModeZone">Kill-Zone antippen</button></div><p class="small" id="oppModeHelp">Finger oder Apple Pencil: Spieler ziehen.</p><p class="small">Spieler auf dem Feld mit Maus oder Finger verschieben. Die Skizze wird lokal gespeichert und ist keine verifizierte Rotation.</p><div class="tacticCourt opponentTactic" id="opponentTacticCourt"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${nodes}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div><div class="grid2"><button id="oppReset">Skizze zurücksetzen</button><button id="oppClose">Schließen</button></div>`);
+ document.querySelectorAll("[data-opp-zone]").forEach(el=>el.onclick=()=>{document.querySelectorAll("[data-opp-zone]").forEach(b=>b.classList.remove("selected"));el.classList.add("selected");$("oppZoneInfo").textContent=`Zone ${el.dataset.oppZone}: ${count[+el.dataset.oppZone]} dokumentierte EVV-Punkte`;});
+ const court=$("opponentTacticCourt");
+ let zoneMode=false;
+ const moveButton=$("oppModeMove"),zoneButton=$("oppModeZone");
+ moveButton.onclick=()=>{zoneMode=false;moveButton.classList.add("primary");zoneButton.classList.remove("primary");$("oppModeHelp").textContent="Spieler mit Finger oder Pencil verschieben."};
+ zoneButton.onclick=()=>{zoneMode=true;zoneButton.classList.add("primary");moveButton.classList.remove("primary");$("oppModeHelp").textContent="Auf freie Spielfeldfläche tippen: exakte Zielposition wählen (nur Skizze, keine Änderung alter Rallyes)."};
+ court.addEventListener("pointerup",e=>{
+  if(!zoneMode||e.target.closest("[data-opp-player]"))return;
+  const rect=court.getBoundingClientRect(),x=Math.max(0,Math.min(.999,(e.clientX-rect.left)/rect.width)),y=Math.max(0,Math.min(.999,(e.clientY-rect.top)/rect.height));
+  const col=Math.min(2,Math.floor(x*3)),row=Math.min(2,Math.floor(y*3)),zone=1+row*3+col;
+  document.querySelectorAll("[data-opp-zone]").forEach(b=>b.classList.toggle("selected",+b.dataset.oppZone===zone));
+  $("oppZoneInfo").textContent=`Zone ${zone} · Position ${Math.round(x*100)} % / ${Math.round(y*100)} % · ${count[zone]} dokumentierte EVV-Punkte`;
+  const old=court.querySelector(".zonePin");if(old)old.remove();const pin=document.createElement("div");pin.className="zonePin";pin.style.left=x*100+"%";pin.style.top=y*100+"%";pin.title=`Zone ${zone}`;court.appendChild(pin);
+ });
+ court.querySelectorAll("[data-opp-player]").forEach(el=>{el.addEventListener("pointerdown",e=>{if(zoneMode)return;e.preventDefault();el.setPointerCapture(e.pointerId)});el.addEventListener("pointermove",e=>{if(zoneMode||!el.hasPointerCapture(e.pointerId))return;const r=court.getBoundingClientRect(),x=Math.max(8,Math.min(92,(e.clientX-r.left)/r.width*100)),y=Math.max(13,Math.min(90,(e.clientY-r.top)/r.height*100));el.style.left=x+"%";el.style.top=y+"%";st.opponentPositions[el.dataset.oppPlayer]=[x,y]});el.addEventListener("pointerup",()=>saveLocal());el.addEventListener("pointercancel",()=>saveLocal())});
+ $("oppReset").onclick=()=>{st.opponentPositions={};saveLocal();opponentCourt()};$("oppClose").onclick=closeModal;
 }
 function tacticalPreset(kind){
  const defaultXY={1:[76,82],2:[77,28],3:[50,27],4:[23,28],5:[22,82],6:[50,80]};
@@ -477,7 +515,7 @@ function importData(){
  const data=JSON.parse(await file.text());
  if(data.schema!=="EVV-QuickScout-1"||!data.match||!Array.isArray(data.match.lineup)||data.match.lineup.length!==6||!Array.isArray(data.match.rallies)||!Array.isArray(data.match.sets)||!data.opponent||typeof data.opponent.name!=="string")throw Error("Kein gültiges QuickScout-Backup");
  if(!confirm("Aktuellen Spielstand durch Backup ersetzen? Bitte vorher exportieren."))return;
- st=Object.assign(fresh(),data.match);opponent=Object.assign({name:"Gegner",setter:"#",liberos:["#","#"],receivers:[]},data.opponent);
+ st=Object.assign(fresh(),data.match);opponent=Object.assign({name:"Gegner",setter:"#",liberos:["#","#"],receivers:[]},data.opponent);if(Array.isArray(data.roster)){for(const saved of data.roster){const player=byId(saved.id);if(player&&saved.role==="L")player.name=sanitizeLiberoName(saved.name)||player.name}}
  st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};draft={};clearDraftHistory();view="live";tab="rally";saveLocal();setupUI();$("setup").classList.toggle("hidden",!!st.started);render();toast("Backup importiert");
  }catch(e){toast("Import fehlgeschlagen: "+e.message)}};input.click();
 }
@@ -487,7 +525,7 @@ function newMatch(){
  $("nmConfirm").onclick=()=>{st=fresh();opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};draft={};draftHistory=[];pendingMark=null;tab="rally";view="live";closeModal();$("setup").classList.remove("hidden");setupUI();$("oppName").value="Gegner";["oppSetter","oppLibero1","oppLibero2","oppR1","oppR2","oppR3","oppR4"].forEach(id=>{if($(id))$(id).value=""});render();toast("Neues Spiel einrichten")};
 }
 function exportData(){
- const payload={schema:"EVV-QuickScout-1",version:APP_VERSION,exportedAt:new Date().toISOString(),opponent,match:st};
+ const payload={schema:"EVV-QuickScout-1",version:APP_VERSION,exportedAt:new Date().toISOString(),opponent,match:st,roster};
  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=`EVV_Scout_S${st.set}_${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
 }
 function printReport(){
@@ -545,8 +583,8 @@ function parseVoice(text){
 function voiceConfirm(cmd){
  voicePending=cmd;
  modal(`<h2>🎙 Sprachbefehl</h2><div class="voiceheard">${esc(cmd.raw)}</div><p><b>Erkannt:</b> ${esc(cmd.label)}</p><div class="grid2"><button id="voiceNo">Verwerfen</button><button id="voiceYes" class="primary">✓ Übernehmen</button></div>`);
- $("voiceNo").onclick=()=>{voicePending=null;closeModal();if(voiceListening)setTimeout(startVoiceRecognition,120)};
- $("voiceYes").onclick=()=>{closeModal();executeVoice(cmd);voicePending=null;if(voiceListening)setTimeout(startVoiceRecognition,180)};
+ $("voiceNo").onclick=()=>{voicePending=null;closeModal();stopVoiceRecognition()};
+ $("voiceYes").onclick=()=>{closeModal();executeVoice(cmd);voicePending=null;stopVoiceRecognition()};
 }
 function executeVoice(c){
  if(c.type==="undo"){let x=st.rallyUndo.pop();if(x){restore(x);draft={};render();toast("Sprach-UNDO")}else toast("Kein Undo verfügbar");return}
@@ -558,24 +596,36 @@ function executeVoice(c){
  if(c.type==="sub"){applySub(c.out,c.inn,c.raw);return}
  toast("Befehl nicht übernommen")
 }
+// Privacy and Safari stability: single recognition per explicit tap; never retry automatically.
+function stopVoiceRecognition(){
+ voiceListening=false;
+ const old=voiceRec;voiceRec=null;
+ if(old){old.onend=null;old.onerror=null;old.onresult=null;try{old.abort()}catch(e){}}
+ const b=$("voiceBtn");if(b)b.textContent="🎙 Sprache";
+ const indicator=$("voiceState");if(indicator){indicator.textContent="🎙 Sprache aus";indicator.classList.remove("listening")}
+}
 function startVoiceRecognition(){
- if(!voiceListening||!SpeechAPI)return;
+ if(!SpeechAPI||!window.isSecureContext)return;
+ stopVoiceRecognition();
+ voiceListening=true;
+ const b=$("voiceBtn");if(b)b.textContent="⏹ Sprache stoppen";
  try{
-  voiceRec=new SpeechAPI();voiceRec.lang="de-DE";voiceRec.interimResults=false;voiceRec.continuous=false;voiceRec.maxAlternatives=3;
-  voiceRec.onresult=e=>{let best=e.results[e.results.length-1][0].transcript;let cmd=parseVoice(best);if(cmd.type==="unknown"){toast(`Nicht sicher: „${best}“`);setTimeout(startVoiceRecognition,300)}else voiceConfirm(cmd)};
-  voiceRec.onerror=e=>{if(e.error!=="aborted")toast("Sprache: "+e.error);if(voiceListening)setTimeout(startVoiceRecognition,700)};
-  voiceRec.onend=()=>{if(voiceListening&&!voicePending)setTimeout(startVoiceRecognition,250)};
-  voiceRec.start();
- }catch(e){if(voiceListening)setTimeout(startVoiceRecognition,700)}
+  const rec=new SpeechAPI();voiceRec=rec;rec.lang="de-DE";rec.interimResults=false;rec.continuous=false;rec.maxAlternatives=3;
+  rec.onresult=e=>{const heard=e.results[e.results.length-1][0].transcript;const cmd=parseVoice(heard);stopVoiceRecognition();if(cmd.type==="unknown")toast(`Nicht sicher: „${heard}“`);else voiceConfirm(cmd)};
+  rec.onerror=e=>{const reason=e.error;stopVoiceRecognition();if(reason!=="aborted")toast("Sprache beendet: "+reason+" · zum erneuten Start tippen")};
+  rec.onend=()=>{if(voiceListening){stopVoiceRecognition();toast("Sprache beendet · zum erneuten Start tippen")}};
+  rec.start();
+ }catch(e){stopVoiceRecognition();toast("Mikrofon nicht gestartet · Browserberechtigung prüfen")}
 }
 function toggleVoice(){
- if(!SpeechAPI){modal('<h2>🎙 Sprache nicht verfügbar</h2><p>Dieser Browser stellt die Web-Spracherkennung nicht bereit. Bitte Safari auf dem iPad verwenden.</p><button id="voiceClose">OK</button>');$("voiceClose").onclick=closeModal;return}
- if(!window.isSecureContext){modal('<h2>🎙 Für Sprache HTTPS nötig</h2><p>Die lokale ZIP-Version funktioniert zum Tippen. Für Mikrofon-Spracherkennung muss QuickScout in Safari über eine sichere HTTPS-Adresse geöffnet werden.</p><button id="voiceClose">OK</button>');$("voiceClose").onclick=closeModal;return}
- voiceListening=!voiceListening;if($("voiceState")){$("voiceState").textContent=voiceListening?"🎙 hört zu":"🎙 Sprache aus";$("voiceState").classList.toggle("listening",voiceListening);}
- if(voiceListening){toast("Sprachmodus an · kurze Volleyball-Kommandos");startVoiceRecognition()}else{try{voiceRec&&voiceRec.abort()}catch(e){};voiceRec=null;toast("Sprachmodus aus")}
+ if(voiceListening){stopVoiceRecognition();toast("Sprache ausgeschaltet");return}
+ if(!SpeechAPI||!window.isSecureContext){toast("Sprache benötigt einen kompatiblen Browser und HTTPS");return}
+ startVoiceRecognition();
 }
+window.addEventListener("pagehide",stopVoiceRecognition);
+document.addEventListener("visibilitychange",()=>{if(document.hidden)stopVoiceRecognition()});
 $("voiceBtn").onclick=toggleVoice;
 
 const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={newMatch,liberoPlanner,opponentCourt,checkEnd,setWins,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
+window.EVV_QS_TEST={newMatch,liberoPlanner,opponentCourt,configureLiberos,liberoRoster,checkEnd,setWins,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
 })();

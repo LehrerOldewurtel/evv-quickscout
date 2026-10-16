@@ -39,3 +39,12 @@ button{min-height:46px;-webkit-tap-highlight-color:transparent}button:focus-visi
 
 /* VIP 7.9.5 usability */
 .killZone{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:76px;border-radius:14px;background:#fff;color:#1d1d1f;gap:4px;border:1px solid #d2d2d7}.killZone strong{font-size:24px;color:#007aff}.killZone small{font-size:11px;color:#6e6e73}.tacticActions{display:flex;flex-wrap:wrap;gap:8px}.tacticActions button{min-height:44px}.bottom button{min-height:44px}button:focus-visible{outline:3px solid #007aff;outline-offset:2px}@media(max-width:650px){.tacticActions button{flex:1 1 42%}.killZone{min-height:64px}}
+
+/* VIP 7.9.6: editable opponent court */
+.opponentTactic .tacticPlayer{touch-action:none;cursor:grab}.opponentTactic .tacticPlayer:active{cursor:grabbing}.killZone{cursor:pointer;border:1px solid rgba(100,116,139,.2);border-radius:12px}.killZone.selected{outline:3px solid #007aff;background:#eaf3ff}
+
+/* V7.9.7 Pencil and touch opponent field */
+.opponentTactic{touch-action:none;user-select:none;-webkit-user-select:none}
+.opponentTactic .tacticPlayer{touch-action:none}
+.zonePin{position:absolute;z-index:5;width:17px;height:17px;border:3px solid white;background:#ff3b30;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none;box-shadow:0 1px 8px #0006}
+.killZone.selected{background:#d7eaff!important;border:2px solid #0071e3!important}
