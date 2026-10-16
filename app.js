@@ -386,23 +386,54 @@ function opponentCourt(){
  const defaults={4:[23,27],3:[50,27],2:[77,27],5:[22,77],6:[50,77],1:[78,77]};
  st.opponentPositions=st.opponentPositions||{};
  const nodes=[4,3,2,5,6,1].map(pos=>{const xy=st.opponentPositions[pos]||defaults[pos];return `<button type="button" class="tacticPlayer" data-opp-player="${pos}" style="left:${xy[0]}%;top:${xy[1]}%"><b>#${pos}</b><small>Position ${pos}</small></button>`}).join("");
- modal(`<h2>${esc(opponent.name)} · Kill-Zonen</h2><p class="small">Zonen zeigen dokumentierte EVV-Punkte. Antippen wählt eine Zone für die Skizze; historische Rallyes werden dabei nicht verändert.</p><div class="zone9">${Array.from({length:9},(_,i)=>`<button type="button" class="killZone" data-opp-zone="${i+1}"><b>${i+1}</b><strong>${count[i+1]}</strong><small>Punkte</small></button>`).join("")}</div><p class="small" id="oppZoneInfo">${marks.length} markierte Punkte · Zone auswählen</p><h3>Gegner · Block und Feldabwehr</h3><div class="grid2"><button type="button" id="oppModeMove" class="primary">Spieler verschieben</button><button type="button" id="oppModeZone">Kill-Zone antippen</button></div><p class="small" id="oppModeHelp">Finger oder Apple Pencil: Spieler ziehen.</p><p class="small">Spieler auf dem Feld mit Maus oder Finger verschieben. Die Skizze wird lokal gespeichert und ist keine verifizierte Rotation.</p><div class="tacticCourt opponentTactic" id="opponentTacticCourt"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${nodes}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div><div class="grid2"><button id="oppReset">Skizze zurücksetzen</button><button id="oppClose">Schließen</button></div>`);
+ modal(`<h2>${esc(opponent.name)} · Kill-Zonen</h2><p class="small">Zonen zeigen dokumentierte EVV-Punkte. Antippen wählt eine Zone für die Skizze; historische Rallyes werden dabei nicht verändert.</p><div class="zone9">${Array.from({length:9},(_,i)=>`<button type="button" class="killZone" data-opp-zone="${i+1}"><b>${i+1}</b><strong>${count[i+1]}</strong><small>Punkte</small></button>`).join("")}</div><p class="small" id="oppZoneInfo">${marks.length} markierte Punkte · Zone auswählen</p><h3>Gegner · Block und Feldabwehr</h3><div class="grid2"><button type="button" id="oppModeMove" class="primary">Spieler verschieben</button><button type="button" id="oppModeZone">📍 Punkte markieren</button></div><p class="small" id="oppModeHelp">Finger oder Apple Pencil: Spieler ziehen.</p><p class="small">Spieler auf dem Feld mit Maus oder Finger verschieben. Die Skizze wird lokal gespeichert und ist keine verifizierte Rotation.</p><div class="tacticCourt opponentTactic" id="opponentTacticCourt"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${nodes}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div><div class="grid3"><button id="oppUndoPin">Letzten Punkt löschen</button><button id="oppReset">Skizze zurücksetzen</button><button id="oppClose">Schließen</button></div>`);
  document.querySelectorAll("[data-opp-zone]").forEach(el=>el.onclick=()=>{document.querySelectorAll("[data-opp-zone]").forEach(b=>b.classList.remove("selected"));el.classList.add("selected");$("oppZoneInfo").textContent=`Zone ${el.dataset.oppZone}: ${count[+el.dataset.oppZone]} dokumentierte EVV-Punkte`;});
  const court=$("opponentTacticCourt");
- let zoneMode=false;
+ let zoneMode=false,drag=null,raf=0;
  const moveButton=$("oppModeMove"),zoneButton=$("oppModeZone");
- moveButton.onclick=()=>{zoneMode=false;moveButton.classList.add("primary");zoneButton.classList.remove("primary");$("oppModeHelp").textContent="Spieler mit Finger oder Pencil verschieben."};
- zoneButton.onclick=()=>{zoneMode=true;zoneButton.classList.add("primary");moveButton.classList.remove("primary");$("oppModeHelp").textContent="Auf freie Spielfeldfläche tippen: exakte Zielposition wählen (nur Skizze, keine Änderung alter Rallyes)."};
- court.addEventListener("pointerup",e=>{
-  if(!zoneMode||e.target.closest("[data-opp-player]"))return;
-  const rect=court.getBoundingClientRect(),x=Math.max(0,Math.min(.999,(e.clientX-rect.left)/rect.width)),y=Math.max(0,Math.min(.999,(e.clientY-rect.top)/rect.height));
-  const col=Math.min(2,Math.floor(x*3)),row=Math.min(2,Math.floor(y*3)),zone=1+row*3+col;
-  document.querySelectorAll("[data-opp-zone]").forEach(b=>b.classList.toggle("selected",+b.dataset.oppZone===zone));
-  $("oppZoneInfo").textContent=`Zone ${zone} · Position ${Math.round(x*100)} % / ${Math.round(y*100)} % · ${count[zone]} dokumentierte EVV-Punkte`;
-  const old=court.querySelector(".zonePin");if(old)old.remove();const pin=document.createElement("div");pin.className="zonePin";pin.style.left=x*100+"%";pin.style.top=y*100+"%";pin.title=`Zone ${zone}`;court.appendChild(pin);
+ const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+ const coords=e=>{const r=court.getBoundingClientRect();return {x:clamp((e.clientX-r.left)/r.width*100,0,100),y:clamp((e.clientY-r.top)/r.height*100,0,100)}};
+ const zoneAt=(x,y)=>1+Math.min(2,Math.floor(y/100*3))*3+Math.min(2,Math.floor(x/100*3));
+ const markAt=(x,y)=>{
+  const zone=zoneAt(x,y);
+  st.opponentSketchMarks=st.opponentSketchMarks||[];
+  st.opponentSketchMarks.push({x,y,zone,at:Date.now()});
+  const pin=document.createElement("span");pin.className="zonePin";pin.style.left=x+"%";pin.style.top=y+"%";pin.title=`Markierung Zone ${zone}`;court.appendChild(pin);
+  document.querySelectorAll("[data-opp-zone]").forEach(el=>el.classList.toggle("selected",+el.dataset.oppZone===zone));
+  $("oppZoneInfo").textContent=`Markierung gesetzt · Zone ${zone} · ${st.opponentSketchMarks.length} Skizzenpunkte (keine Spielstatistik)`;
+  saveLocal();
+ };
+ (st.opponentSketchMarks||[]).forEach(m=>{const pin=document.createElement("span");pin.className="zonePin";pin.style.left=m.x+"%";pin.style.top=m.y+"%";court.appendChild(pin)});
+ const setMode=on=>{zoneMode=on;moveButton.classList.toggle("primary",!on);zoneButton.classList.toggle("primary",on);court.classList.toggle("markMode",on);$("oppModeHelp").textContent=on?"Mit Finger oder Pencil auf eine beliebige Feldstelle tippen. Markierungen bleiben sichtbar.":"Spieler direkt mit Finger oder Pencil ziehen – ohne Halten."};
+ moveButton.onclick=()=>setMode(false);zoneButton.onclick=()=>setMode(true);
+ court.addEventListener("pointerdown",e=>{
+  if(e.button!==undefined&&e.button!==0)return;
+  const node=e.target.closest("[data-opp-player]");
+  if(!zoneMode&&!node)return;
+  e.preventDefault();
+  const pt=coords(e);
+  drag={id:e.pointerId,node:zoneMode?null:node,startX:pt.x,startY:pt.y,moved:false};
+  court.setPointerCapture(e.pointerId);
+  if(node&&!zoneMode)node.classList.add("dragging");
  });
- court.querySelectorAll("[data-opp-player]").forEach(el=>{el.addEventListener("pointerdown",e=>{if(zoneMode)return;e.preventDefault();el.setPointerCapture(e.pointerId)});el.addEventListener("pointermove",e=>{if(zoneMode||!el.hasPointerCapture(e.pointerId))return;const r=court.getBoundingClientRect(),x=Math.max(8,Math.min(92,(e.clientX-r.left)/r.width*100)),y=Math.max(13,Math.min(90,(e.clientY-r.top)/r.height*100));el.style.left=x+"%";el.style.top=y+"%";st.opponentPositions[el.dataset.oppPlayer]=[x,y]});el.addEventListener("pointerup",()=>saveLocal());el.addEventListener("pointercancel",()=>saveLocal())});
- $("oppReset").onclick=()=>{st.opponentPositions={};saveLocal();opponentCourt()};$("oppClose").onclick=closeModal;
+ court.addEventListener("pointermove",e=>{
+  if(!drag||drag.id!==e.pointerId||!drag.node)return;
+  e.preventDefault();const pt=coords(e);const x=clamp(pt.x,8,92),y=clamp(pt.y,13,90);
+  drag.moved=true;drag.x=x;drag.y=y;
+  if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(!drag||!drag.node)return;drag.node.style.left=drag.x+"%";drag.node.style.top=drag.y+"%"});
+ });
+ const finish=e=>{
+  if(!drag||drag.id!==e.pointerId)return;
+  const d=drag;drag=null;
+  if(raf){cancelAnimationFrame(raf);raf=0;}
+  if(d.node){d.node.classList.remove("dragging");if(d.moved){d.node.style.left=d.x+"%";d.node.style.top=d.y+"%";st.opponentPositions[d.node.dataset.oppPlayer]=[d.x,d.y];saveLocal();}}
+  else if(e.type==="pointerup"){const pt=coords(e);markAt(pt.x,pt.y)}
+  if(court.hasPointerCapture(e.pointerId))court.releasePointerCapture(e.pointerId);
+ };
+ court.addEventListener("pointerup",finish);court.addEventListener("pointercancel",finish);
+ setMode(false);
+ $("oppUndoPin").onclick=()=>{if(!st.opponentSketchMarks?.length)return toast("Keine Skizzenpunkte");st.opponentSketchMarks.pop();saveLocal();opponentCourt()};
+ $("oppReset").onclick=()=>{st.opponentPositions={};st.opponentSketchMarks=[];saveLocal();opponentCourt()};$("oppClose").onclick=closeModal;
 }
 function tacticalPreset(kind){
  const defaultXY={1:[76,82],2:[77,28],3:[50,27],4:[23,28],5:[22,82],6:[50,80]};
