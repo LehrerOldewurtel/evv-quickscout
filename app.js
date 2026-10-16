@@ -12,7 +12,7 @@ const defaultRoles=()=>({johann:"Z",jens:"D",michael:"AA1",arthur:"AA2",janik:"M
 function roleOf(id){return (st.roles||{})[id]||(byId(id)||{}).role||""}
 function roleOptions(selected){return ROLES.map(r=>`<option value="${r}" ${selected===r?"selected":""}>${r}</option>`).join("")}
 function lineupEditor(prefix,ids){return ids.map((id,i)=>`<label>Startplatz P${i+1}<select id="${prefix}P${i}">${roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${p.id===id?"selected":""}>${esc(p.name)}</option>`).join("")}</select><select aria-label="Rolle für Startplatz ${i+1}" id="${prefix}R${i}">${roleOptions(roleOf(id))}</select></label>`).join("")}
-function readLineupEditor(prefix){const ids=[0,1,2,3,4,5].map(i=>$(prefix+"P"+i).value),roles=[0,1,2,3,4,5].map(i=>$(prefix+"R"+i).value);if(new Set(ids).size!==6||new Set(roles).size!==6||!ROLES.every(r=>roles.includes(r))){toast("Sechs verschiedene Spieler und jede Rolle genau einmal wählen");return null}return {ids,roles:Object.fromEntries(ids.map((id,i)=>[id,roles[i]]))}}
+function readLineupEditor(prefix){const ids=[0,1,2,3,4,5].map(i=>$(prefix+"P"+i).value),roles=[0,1,2,3,4,5].map(i=>$(prefix+"R"+i).value);if(st.started&&ids.some(id=>st.liberoIds.includes(id))){toast("Gemeldeter Libero darf nicht als Feldspieler aufgestellt werden");return null}if(new Set(ids).size!==6||new Set(roles).size!==6||!ROLES.every(r=>roles.includes(r))){toast("Sechs verschiedene Spieler und jede Rolle genau einmal wählen");return null}return {ids,roles:Object.fromEntries(ids.map((id,i)=>[id,roles[i]]))}}
 function roleForPosition(pos){const id=st.lineup[pos-1];return id?roleOf(id):""}
 const byId=id=>roster.find(p=>p.id===id), nm=id=>(byId(id)||{name:id}).name;
 let opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};
@@ -35,6 +35,15 @@ function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
 function sanitizeLiberoName(v){return String(v||"").trim().slice(0,45)}
 function liberoRoster(){return roster.filter(p=>p.role==="L")}
+function liberoCandidateOptions(selected){return `<option value="">Nicht gemeldet</option>`+roster.map(p=>`<option value="${esc(p.id)}" ${p.id===selected?"selected":""}>${esc(p.name)}</option>`).join("")}
+function liberoSlotIds(){return [1,2].map(i=>$("evvLiberoSlot"+i)?.value||"")}
+function configureLiberoSlots(ids,names){
+ const chosen=ids.filter(Boolean);if(new Set(chosen).size!==chosen.length){toast("Libero 1 und 2 müssen verschieden sein");return false}
+ ids.forEach((id,i)=>{if(id&&["amar","alex"].includes(id)){const name=sanitizeLiberoName(names[i]);if(name)byId(id).name=name}});
+ st.liberoIds=chosen;st.liberoOnCourt=chosen.includes(st.liberoOnCourt)?st.liberoOnCourt:"";
+ if(!st.liberoOnCourt){st.liberoActive=false;st.liberoReplacedId="";st.liberoPreferredId="";st.liberoPreferredMB=""}
+ st.receivePlans={};return true
+}
 function configureLiberos(names){
  const ids=["amar","alex"];
  ids.forEach((id,i)=>{const name=sanitizeLiberoName(names[i]);const player=byId(id);if(player)player.name=name||["Anmol","Sascha"][i]});
@@ -47,8 +56,8 @@ function setupLiberoSelectors(){
  picker.innerHTML=`<option value="">Kein Libero</option>`+st.liberoIds.map(id=>`<option value="${esc(id)}">${esc(nm(id))}</option>`).join("");
  picker.value=st.liberoIds.includes(old)?old:"";
 }
-function readLiberoNames(){return [1,2].map(i=>$("evvLiberoName"+i)?.value??(st.liberoIds.includes(i===1?"amar":"alex")?nm(i===1?"amar":"alex"):""))}
-function applyLiberoNames(){configureLiberos(readLiberoNames());setupLiberoSelectors()}
+function readLiberoNames(){return [1,2].map(i=>$("evvLiberoName"+i)?.value??(st.liberoIds[i-1]&&["amar","alex"].includes(st.liberoIds[i-1])?nm(st.liberoIds[i-1]):""))}
+function applyLiberoNames(){const ids=liberoSlotIds();if(!configureLiberoSlots(ids,readLiberoNames()))return false;setupLiberoSelectors();return true}
 function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent,roster}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
 function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.sixBoards=st.sixBoards||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
@@ -137,13 +146,14 @@ function attackOptions(context=attackContext()){
 }
 function attackCandidates(target){return attackOptions().filter(x=>x.zone===target)}
 function setupUI(){
- [1,2].forEach(i=>{const el=$("evvLiberoName"+i);if(el)el.value=st.liberoIds.includes(i===1?"amar":"alex")?nm(i===1?"amar":"alex"):""});setupLiberoSelectors();
+ [1,2].forEach(i=>{const selected=st.liberoIds[i-1]||"";const slot=$("evvLiberoSlot"+i);if(slot)slot.innerHTML=liberoCandidateOptions(selected);const el=$("evvLiberoName"+i);if(el)el.value=selected&&["amar","alex"].includes(selected)?nm(selected):""});setupLiberoSelectors();
  $("startSix").innerHTML=lineupEditor("ss",st.lineup);
  const repl=$("evvLiberoReplaces");if(repl){repl.innerHTML=`<option value="">Niemand</option>`+roster.filter(p=>p.role!=="L").map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("")}
 }
 function readSetup(){
- applyLiberoNames();
  const picked=readLineupEditor("ss");if(!picked)return false;
+ if(picked.ids.some(id=>liberoSlotIds().includes(id))){toast("Libero kann nicht gleichzeitig Startspieler sein");return false}
+ if(!applyLiberoNames())return false;
  st.lineup=picked.ids;st.roles=picked.roles;st.receiveIds=[];st.receivePlans={};
  st.liberoOnCourt=$("evvLiberoOnCourt")?$("evvLiberoOnCourt").value:"";
  st.liberoReplacedId=$("evvLiberoReplaces")?$("evvLiberoReplaces").value:"";
@@ -392,7 +402,7 @@ function liberoPlanner(){
  const middles=st.lineup.filter(id=>roleOf(id).startsWith("MB"));
  modal(`<h2>Libero · Satz ${st.set}</h2><p class="small">Namen für künftige Spiele frei eintragen. Während eines offiziellen Spiels gelten die gemeldeten Libero- und Wechselregeln.</p><div class="grid2"><label>Libero 1<input id="lpName1" maxlength="45" value="${esc(st.liberoIds.includes("amar")?nm("amar"):"")}" placeholder="Name"></label><label>Libero 2<input id="lpName2" maxlength="45" value="${esc(st.liberoIds.includes("alex")?nm("alex"):"")}" placeholder="optional"></label></div><button id="lpNamesSave" type="button">Libero-Namen speichern</button><label>Libero ${select("lpLib",libs)}</label><label>Ersetzt ${select("lpMB",[["","Niemand"],...middles.map(id=>[id,`${nm(id)} · P${courtPos(id)}`])])}</label><div class="grid2"><button id="lpCancel">Abbrechen</button><button id="lpSave" class="primary">Übernehmen</button></div>`);
  $("lpLib").value=st.liberoOnCourt||"";$("lpMB").value=st.liberoReplacedId||"";
- $("lpNamesSave").onclick=()=>{if(st.started&&!st.matchEnded)return toast("Libero-Meldung im laufenden Spiel nicht ändern. Neues Spiel starten.");configureLiberos([$("lpName1").value,$("lpName2").value]);closeModal();render();toast("Libero-Namen gespeichert")};
+ $("lpNamesSave").onclick=()=>{if(st.started&&!st.matchEnded)return toast("Libero-Meldung im laufenden Spiel nicht ändern. Neues Spiel starten.");if(!configureLiberoSlots(st.liberoIds,[$("lpName1").value,$("lpName2").value]))return;closeModal();setupUI();render();toast("Libero-Konfiguration gespeichert")};
  $("lpCancel").onclick=closeModal;
  $("lpSave").onclick=()=>{if(draft.step||st.setEnded)return toast("Nur zwischen Ballwechseln");const l=$("lpLib").value,m=$("lpMB").value;if(!!l!==!!m)return toast("Libero und Mittelblocker gemeinsam wählen");if(m&&![1,5,6].includes(courtPos(m)))return toast("Mittelblocker muss in der Hinterreihe stehen");if(m&&courtPos(m)===1&&st.serving)return toast("Aufschlagposition P1: Mittelblocker muss selbst aufschlagen");st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};st.tacticPositions={};st.sixBoards={};closeModal();render();toast("Libero-Einsatz aktualisiert")};
 }
@@ -702,5 +712,5 @@ document.addEventListener("visibilitychange",()=>{if(document.hidden)stopVoiceRe
 $("voiceBtn").onclick=toggleVoice;
 
 const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={newMatch,liberoPlanner,opponentCourt,configureLiberos,liberoRoster,checkEnd,setWins,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,syncLiberoRotation,currentServerId,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
+window.EVV_QS_TEST={newMatch,liberoPlanner,opponentCourt,configureLiberos,configureLiberoSlots,liberoRoster,checkEnd,setWins,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,syncLiberoRotation,currentServerId,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
 })();
