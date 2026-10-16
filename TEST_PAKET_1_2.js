@@ -19,5 +19,5 @@ test('Attack click checks allowed lane',()=>assert(code.includes('attackOptions(
 test('A0 direct point',()=>assert(code.includes('if(a[2]==="A0")return commit("Gegner"')&&code.includes('if(a[2]==="A0")return commit("EVV"')));
 test('Undo includes marks',()=>assert(code.includes('rallies:st.rallies,marks:st.marks')));
 test('Two liberos both teams',()=>assert(code.includes('liberoIds:["amar","alex"]')&&code.includes('liberos:["#","#"]')));
-test('Single version',()=>assert(fs.readFileSync(__dirname+'/version.js','utf8').includes(globalThis.__V||'7.9.2')));
+test('Single version',()=>assert(fs.readFileSync(__dirname+'/version.js','utf8').includes(globalThis.__V||'7.9.4-release-candidate')));
 console.log(`RESULT ${results.filter(Boolean).length}/${results.length}`);process.exit(results.every(Boolean)?0:1);
