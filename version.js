@@ -1,1 +1,1 @@
-globalThis.EVV_VERSION="7.9.9-rc";
+globalThis.EVV_VERSION="7.10.0-rc";
