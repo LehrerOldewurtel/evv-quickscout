@@ -29,7 +29,7 @@ $("modal").addEventListener("click",e=>{if(e.target===$("modal"))closeModal()});
 function target(set=st.set){return set===5?15:25}
 function isSetWin(e=st.e,o=st.o,set=st.set){return (e>=target(set)||o>=target(set))&&Math.abs(e-o)>=2}
 function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).length;if(st.setEnded&&(team==="EVV"?st.e>st.o:st.o>st.e))w++;return w}
-function checkEnd(){st.setEnded=isSetWin();if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=st.set===5||setWins(w)>=3}}
+function checkEnd(){st.setEnded=isSetWin();st.matchEnded=false;if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=setWins(w)>=3}}
 function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive})}
 function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
@@ -105,7 +105,10 @@ function attackOptions(context=attackContext()){
  return attackers().flatMap(id=>attackRoutesFor(id,context).map(zone=>({id,zone,pos:courtPos(id),context})))
 }
 function attackCandidates(target){return attackOptions().filter(x=>x.zone===target)}
-function setupUI(){ $("startSix").innerHTML=lineupEditor("ss",st.lineup) }
+function setupUI(){
+ $("startSix").innerHTML=lineupEditor("ss",st.lineup);
+ const repl=$("evvLiberoReplaces");if(repl){repl.innerHTML=`<option value="">Niemand</option>`+roster.filter(p=>p.role!=="L").map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join("")}
+}
 function readSetup(){
  const picked=readLineupEditor("ss");if(!picked)return false;
  st.lineup=picked.ids;st.roles=picked.roles;st.receiveIds=[];st.receivePlans={};
@@ -216,7 +219,7 @@ function action(s){
 function rally(){
  if(!st.started)return $("flow").innerHTML="<h2>Bereit</h2><p>Spiel einrichten und starten.</p>";
  if(view!=="live")return historical();
- if(st.matchEnded)return $("flow").innerHTML=`<div class="banner">MATCH BEENDET</div>${summary(allRallies())}`;
+ if(st.matchEnded)return $("flow").innerHTML=`<div class="banner">MATCH BEENDET · ${setWins("EVV")}:${setWins("Gegner")} Sätze</div>${summary(allRallies())}<button id="finishedNew" class="primary">Neues Spiel</button>`;
  if(st.setEnded){$("flow").innerHTML=`<div class="banner">SATZ ${st.set} BEENDET · ${st.e}:${st.o}</div>${summary(st.rallies)}<button id="prep" class="primary">Nächsten Satz vorbereiten</button>`;$("prep").onclick=prepareNextSet;return}
  if(draft.step==="evvBlockChoice"){
    $("flow").innerHTML=flowHead("EVV · Wer blockt?")+`<div class="eligibleNote">Nur aktuelle Vorderreihe P2/P3/P4.</div><div class="grid3">${front().map(id=>B(`${esc(nm(id))} · P${courtPos(id)}`,`ebc|${id}`,"good")).join("")}</div>`;bindActs();return
@@ -348,6 +351,21 @@ function receptionPlanner(){
  $("recDefault").onclick=()=>{st.receivePlans[st.rot]=[];closeModal();render();toast("Standardannahme aktiv")};
  $("recSave").onclick=()=>{const ids=[...document.querySelectorAll("[data-rec]:checked")].map(x=>x.dataset.rec);if(!ids.length)return toast("Mindestens einen Spieler wählen");st.receivePlans[st.rot]=ids;closeModal();render()};
 }
+function liberoPlanner(){
+ const available=st.liberoIds||[];
+ const select=(id,opts)=>`<select id="${id}">${opts.map(([v,label])=>`<option value="${esc(v)}">${esc(label)}</option>`).join("")}</select>`;
+ const libs=[["","Kein Libero"],...available.map(id=>[id,nm(id)])];
+ const middles=st.lineup.filter(id=>roleOf(id).startsWith("MB"));
+ modal(`<h2>Libero · Satz ${st.set}</h2><p class="small">Ein oder zwei Liberos im Kader; jeweils nur einen für einen hinteren Mittelblocker aktivieren. Wechsel zwischen Rallyes.</p><label>Libero ${select("lpLib",libs)}</label><label>Ersetzt ${select("lpMB",[["","Niemand"],...middles.map(id=>[id,`${nm(id)} · P${courtPos(id)}`])])}</label><div class="grid2"><button id="lpCancel">Abbrechen</button><button id="lpSave" class="primary">Übernehmen</button></div>`);
+ $("lpLib").value=st.liberoOnCourt||"";$("lpMB").value=st.liberoReplacedId||"";
+ $("lpCancel").onclick=closeModal;
+ $("lpSave").onclick=()=>{if(draft.step||st.setEnded)return toast("Nur zwischen Ballwechseln");const l=$("lpLib").value,m=$("lpMB").value;if(!!l!==!!m)return toast("Libero und Mittelblocker gemeinsam wählen");if(m&&![1,5,6].includes(courtPos(m)))return toast("Mittelblocker muss in der Hinterreihe stehen");st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;st.receivePlans={};st.tacticPositions={};closeModal();render();toast("Libero-Einsatz aktualisiert")};
+}
+function opponentCourt(){
+ const marks=allRallies().filter(r=>r.targetZone&&r.winner==="EVV");
+ const count=Object.fromEntries(Array.from({length:9},(_,i)=>[i+1,0]));marks.forEach(r=>count[r.targetZone]++);
+ modal(`<h2>${esc(opponent.name)} · Kill-Zonen</h2><p class="small">Aufschlag-Asse und Angriffspunkte unserer Mannschaft auf dem gegnerischen Feld. Netz oben, Grundlinie unten. Nur erfasste Zonen.</p><div class="zone9">${Array.from({length:9},(_,i)=>`<div class="killZone"><b>${i+1}</b><strong>${count[i+1]}</strong><small>Punkte</small></div>`).join("")}</div><p class="small">${marks.length} markierte Punkte · Die Zonen 1–9 sind ein 3×3-Raster, nicht die offiziellen Spielpositionen.</p><h3>Gegner · Block und Feldabwehr</h3><p class="small">Taktische Grundordnung als Skizze, keine aus Video bestätigte Gegneraufstellung.</p><div class="tacticCourt opponentTactic"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${[["#4",23,27],["#3",50,27],["#2",77,27],["#5",22,77],["#6",50,77],["#1",78,77]].map(([label,x,y])=>`<span class="tacticPlayer" style="left:${x}%;top:${y}%"><b>${label}</b><small>Gegner</small></span>`).join("")}<div class="tacticBaseline">GRUNDLINIE · 5 / 6 / 1</div></div><button id="oppClose">Schließen</button>`);$("oppClose").onclick=closeModal;
+}
 function tacticalPreset(kind){
  const defaultXY={1:[76,82],2:[77,28],3:[50,27],4:[23,28],5:[22,82],6:[50,80]};
  const defensive={1:[79,77],2:[72,29],3:[51,29],4:[29,29],5:[22,72],6:[51,76]};
@@ -357,11 +375,11 @@ function tacticalPreset(kind){
 function tacticalBoard(){
  const ids=active(),loc=st.tacticPositions||{},defaultXY={1:[76,82],2:[77,28],3:[50,27],4:[23,28],5:[22,82],6:[50,80]};
  const nodes=ids.map(id=>{const pos=courtPos(id)||6,xy=loc[id]||defaultXY[pos];return `<button class="tacticPlayer" data-player="${esc(id)}" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="${esc(nm(id))}, Position ${pos}"><b>${esc(nm(id))}</b><small>${esc(roleOf(id))} · P${pos}</small></button>`}).join("");
- return `<div class="tacticActions"><button id="tacticReset">Grundordnung</button><button id="tacticDefense">Block / Abwehr 5+6</button><button id="recEdit">Annahme R${st.rot}</button></div><div class="tacticCourt" id="tacticCourt"><div class="tacticNet">NETZ · POSITION 4 / 3 / 2</div>${nodes}<div class="tacticBaseline">GRUNDLINIE · POSITION 5 / 6 / 1</div></div><p class="small">Taktische Skizze: Spieler mit dem Finger verschieben. Keine automatische Prüfung der Überlappungsregeln. Startpositionen vor Aufschlag separat kontrollieren.</p>`;
+ return `<div class="tacticActions"><button id="tacticReset">Grundordnung</button><button id="tacticDefense">Block / Abwehr 5+6</button><button id="recEdit">Annahme R${st.rot}</button><button id="liberoEdit">Libero verwalten</button><button id="oppCourtBtn">Gegnerfeld / Kill-Zonen</button></div><div class="tacticCourt" id="tacticCourt"><div class="tacticNet">NETZ · POSITION 4 / 3 / 2</div>${nodes}<div class="tacticBaseline">GRUNDLINIE · POSITION 5 / 6 / 1</div></div><p class="small">Taktische Skizze: Spieler mit dem Finger verschieben. Keine automatische Prüfung der Überlappungsregeln. Startpositionen vor Aufschlag separat kontrollieren.</p>`;
 }
 function bindTactic(){
  const court=$("tacticCourt");if(!court)return;
- $("recEdit").onclick=receptionPlanner;
+ $("recEdit").onclick=receptionPlanner;$("liberoEdit").onclick=liberoPlanner;$("oppCourtBtn").onclick=opponentCourt;
  $("tacticReset").onclick=()=>tacticalPreset("base");$("tacticDefense").onclick=()=>tacticalPreset("defense");
  court.querySelectorAll("[data-player]").forEach(el=>{el.addEventListener("pointerdown",e=>{e.preventDefault();el.setPointerCapture(e.pointerId)});el.addEventListener("pointermove",e=>{if(!el.hasPointerCapture(e.pointerId))return;const r=court.getBoundingClientRect(),x=Math.max(8,Math.min(92,(e.clientX-r.left)/r.width*100)),y=Math.max(13,Math.min(90,(e.clientY-r.top)/r.height*100));el.style.left=x+"%";el.style.top=y+"%";st.tacticPositions=st.tacticPositions||{};st.tacticPositions[el.dataset.player]=[x,y]});el.addEventListener("pointerup",()=>saveLocal())});
 }
@@ -463,6 +481,11 @@ function importData(){
  st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};draft={};clearDraftHistory();view="live";tab="rally";saveLocal();setupUI();$("setup").classList.toggle("hidden",!!st.started);render();toast("Backup importiert");
  }catch(e){toast("Import fehlgeschlagen: "+e.message)}};input.click();
 }
+function newMatch(){
+ modal(`<h2>Neues Spiel beginnen</h2><p>Der aktuelle Spielstand wird durch ein neues Spiel ersetzt. Exportiere ihn vorher als JSON, damit keine Daten verloren gehen.</p><div class="grid2"><button id="nmExport">Backup exportieren</button><button id="nmCancel">Abbrechen</button></div><button id="nmConfirm" class="danger">Neues Spiel ohne Übernahme starten</button>`);
+ $("nmExport").onclick=exportData;$("nmCancel").onclick=closeModal;
+ $("nmConfirm").onclick=()=>{st=fresh();opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};draft={};draftHistory=[];pendingMark=null;tab="rally";view="live";closeModal();$("setup").classList.remove("hidden");setupUI();$("oppName").value="Gegner";["oppSetter","oppLibero1","oppLibero2","oppR1","oppR2","oppR3","oppR4"].forEach(id=>{if($(id))$(id).value=""});render();toast("Neues Spiel einrichten")};
+}
 function exportData(){
  const payload={schema:"EVV-QuickScout-1",version:APP_VERSION,exportedAt:new Date().toISOString(),opponent,match:st};
  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=`EVV_Scout_S${st.set}_${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
@@ -478,13 +501,13 @@ function recent(){let r=allRallies().slice(-3).reverse();$("recent").innerHTML=`
 function render(){
  saveLocal();
  renderHeader();renderNav();document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
- if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();
+ if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();if($("finishedNew"))$("finishedNew").onclick=newMatch;
  $("nextSet").disabled=!st.setEnded||st.matchEnded;$("substitute").disabled=!st.started||view!=="live"||!!draft.step
 }
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
 function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;render();toast("Letzte Rally vollständig zurückgesetzt")}
-$("undo").onclick=undoLast;
+$("undo").onclick=undoLast;$("newMatch").onclick=newMatch;
 $("exportData").onclick=exportData;$("importData").onclick=importData;$("printReport").onclick=printReport;$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{
  if(!st.started||view!=="live")return toast("Auszeit nur im laufenden Satz");
  modal(`<h2>Auszeit erfassen</h2><p class="small">Spielstand ${st.e}:${st.o} · S${st.set} · R${st.rot}</p><div class="grid2"><button id="toEVV" class="primary">EVV-Auszeit</button><button id="toOpp">${esc(opponent.name)}-Auszeit</button></div><button id="toCancel">Abbrechen</button>`);
@@ -554,5 +577,5 @@ function toggleVoice(){
 $("voiceBtn").onclick=toggleVoice;
 
 const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
+window.EVV_QS_TEST={newMatch,liberoPlanner,opponentCourt,checkEnd,setWins,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
 })();

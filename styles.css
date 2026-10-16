@@ -36,3 +36,6 @@ button{min-height:46px;-webkit-tap-highlight-color:transparent}button:focus-visi
 @media(max-width:760px){.bottom{grid-template-columns:repeat(3,minmax(0,1fr))}.bottom button{min-height:45px}.card{padding:12px}.scoreline{gap:4px}.team{min-width:0}.team span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 @media(min-width:761px) and (max-width:1024px){.bottom{grid-template-columns:repeat(5,minmax(0,1fr))}}
 @media(prefers-color-scheme:dark){:root{color-scheme:light}}
+
+/* VIP 7.9.5 usability */
+.killZone{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:76px;border-radius:14px;background:#fff;color:#1d1d1f;gap:4px;border:1px solid #d2d2d7}.killZone strong{font-size:24px;color:#007aff}.killZone small{font-size:11px;color:#6e6e73}.tacticActions{display:flex;flex-wrap:wrap;gap:8px}.tacticActions button{min-height:44px}.bottom button{min-height:44px}button:focus-visible{outline:3px solid #007aff;outline-offset:2px}@media(max-width:650px){.tacticActions button{flex:1 1 42%}.killZone{min-height:64px}}
