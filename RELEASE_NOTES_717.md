@@ -1,0 +1,1 @@
+7.17.0 K1: exactly three reception candidates, libero included when on court; libero replacement accepts MB or AA; rotational replacement recalculated on sideout. Libero does not serve. This is a field-test build, not certified official two-libero logic.

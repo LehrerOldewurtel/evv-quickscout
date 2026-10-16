@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
-const APP_VERSION=globalThis.EVV_VERSION||"7.16.0-match";
+const APP_VERSION=globalThis.EVV_VERSION||"7.19.0-k1-auto-mb";
 const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}; // confirmed live-test convention: R5→R6→R1
 let roster=[
 {id:"johann",name:"Johann",role:"Z"},{id:"michael",name:"Michael",role:"AA1"},{id:"janik",name:"Janik",role:"MB1"},
@@ -65,16 +65,25 @@ function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)retur
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
 // Team configuration: libero never serves. The original middle blocker serves in P1.
 // A registered libero can return when the same middle blocker enters the back row.
+function liberoReplacementEligible(id){
+ return !!id&&st.lineup.includes(id)&&(/^(MB|AA)/.test(roleOf(id)))&&[1,5,6].includes(courtPos(id));
+}
+// A registered libero replaces one nominated MB or outside hitter in the back row.
+// The nominated player remains in the rotation and returns on the front row or to serve.
 function syncLiberoRotation(){
- const libero=st.liberoPreferredId||st.liberoOnCourt||st.liberoIds[0];
- const mb=st.liberoPreferredMB||st.liberoReplacedId||st.lineup.find(id=>roleOf(id).startsWith("MB")&&([5,6].includes(courtPos(id))||(courtPos(id)===1&&!st.serving)));
- if(!libero||!mb||!st.liberoIds.includes(libero)||!st.lineup.includes(mb)||!roleOf(mb).startsWith("MB")){
-  st.liberoActive=false;return;
- }
- const pos=courtPos(mb);
- const eligible=[1,5,6].includes(pos)&&!(pos===1&&st.serving);
- st.liberoOnCourt=libero;st.liberoReplacedId=mb;
- st.liberoActive=eligible;
+ // K1: replace whichever of the two middle blockers is currently in the back row.
+ // On our serve at P1 the original MB serves; no libero serves in this configuration.
+ const libero=st.liberoPreferredId||st.liberoOnCourt||st.liberoIds[0]||"";
+ const middles=st.lineup.filter(id=>/^MB/.test(roleOf(id)));
+ const eligible=middles.filter(id=>[1,5,6].includes(courtPos(id)));
+ // Keep the current replacement if still eligible to avoid needless switches.
+ const previous=st.liberoReplacedId;
+ const preferred=st.liberoPreferredMB;
+ const replaced=eligible.includes(previous)?previous:eligible.includes(preferred)?preferred:(eligible[0]||"");
+ const valid=!!libero&&st.liberoIds.includes(libero)&&!st.lineup.includes(libero)&&!!replaced;
+ st.liberoOnCourt=libero;
+ st.liberoReplacedId=replaced;
+ st.liberoActive=valid&&!(courtPos(replaced)===1&&st.serving);
 }
 
 function commit(w,data={},preSnapshot=null){
@@ -104,19 +113,24 @@ function rotationMatrix(){
 function liberoEligible(){
  return !!(st.liberoOnCourt&&st.liberoReplacedId&&st.liberoIds.includes(st.liberoOnCourt)&&
    st.lineup.includes(st.liberoReplacedId)&&
-   roleOf(st.liberoReplacedId).startsWith("MB")&&
+   /^(MB|AA)/.test(roleOf(st.liberoReplacedId))&&
    [1,5,6].includes(courtPos(st.liberoReplacedId)));
 }
 function playerAtPos(pos){return active().find(id=>courtPos(id)===pos)||null}
 function front(){return active().filter(id=>[2,3,4].includes(courtPos(id)))}
 function receivers(){
- if(st.started&&!st.liberoActive&&st.liberoIds.length&&st.liberoPreferredId)syncLiberoRotation();
- const plan=(st.receivePlans||{})[st.rot];if(Array.isArray(plan)&&plan.length)return plan.filter(id=>active().includes(id));
- let ids=active().filter(id=>["AA1","AA2"].includes(roleOf(id)));
- if(st.liberoActive&&st.liberoOnCourt)ids.push(st.liberoOnCourt);
- else {const diagonal=active().find(id=>roleOf(id)==="D");if(diagonal)ids.push(diagonal)}
- return [...new Set(ids)]
+ if(st.started)syncLiberoRotation();
+ const on=active(), plan=(st.receivePlans||{})[st.rot];
+ const libero=st.liberoActive&&on.includes(st.liberoOnCourt)?st.liberoOnCourt:null;
+ const selected=Array.isArray(plan)?plan.filter(id=>on.includes(id)):[];
+ const outside=on.filter(id=>/^AA/.test(roleOf(id)));
+ const fallback=on.filter(id=>roleOf(id)==="D"||/^MB/.test(roleOf(id)));
+ // Four selectable reception players: libero plus three other court players.
+ // Explicit reception plan takes priority, but never hides an active libero.
+ const ordered=[...new Set([...selected,...outside,...fallback,...on])].filter(id=>id!==libero);
+ return [...(libero?[libero]:[]),...ordered.slice(0,libero?3:4)];
 }
+
 function opponentReceivers(){return [...new Set(opponent.receivers.concat(opponent.liberos||[]).filter(x=>x&&x!=="#"&&x!=="#?"))]}
 function attackers(){return active().filter(id=>{const p=byId(id);return p&&roleOf(id)!=="Z"&&p.role!=="L"&&!st.liberoIds.includes(id)})}
 function roleBaseRoute(id){
@@ -397,14 +411,14 @@ function coach(){
 function receptionPlanner(){
  st.receivePlans=st.receivePlans||{};const selected=st.receivePlans[st.rot]||receivers();
  const choices=active().filter(id=>roleOf(id)!=="Z"||st.liberoIds.includes(id));
- modal(`<h2>Annahme R${st.rot} anpassen</h2><p class="small">Darf auch D enthalten. AA1/AA2 sind unabhängig von der Annahme. Drei Spieler sind eine Vorlage, keine Pflicht.</p>${choices.map(id=>`<label class="pickRow"><input type="checkbox" data-rec="${esc(id)}" ${selected.includes(id)?"checked":""}>${esc(nm(id))} #${jersey(id)} · ${esc(roleOf(id))}</label>`).join("")}<div class="grid2"><button id="recDefault">Vorlage</button><button class="primary" id="recSave">Übernehmen</button></div>`);
+ modal(`<h2>Annahme R${st.rot} anpassen</h2><p class="small">Darf auch D enthalten. AA1/AA2 sind unabhängig von der Annahme. K1 erlaubt vier Annahmespieler: Libero plus drei weitere Feldspieler (z. B. vorderer Mittelblocker).</p>${choices.map(id=>`<label class="pickRow"><input type="checkbox" data-rec="${esc(id)}" ${selected.includes(id)?"checked":""}>${esc(nm(id))} #${jersey(id)} · ${esc(roleOf(id))}</label>`).join("")}<div class="grid2"><button id="recDefault">Vorlage</button><button class="primary" id="recSave">Übernehmen</button></div>`);
  $("recDefault").onclick=()=>{st.receivePlans[st.rot]=[];closeModal();render();toast("Standardannahme aktiv")};
- $("recSave").onclick=()=>{const ids=[...document.querySelectorAll("[data-rec]:checked")].map(x=>x.dataset.rec);if(!ids.length)return toast("Mindestens einen Spieler wählen");st.receivePlans[st.rot]=ids;closeModal();render()};
+ $("recSave").onclick=()=>{const ids=[...document.querySelectorAll("[data-rec]:checked")].map(x=>x.dataset.rec);if(ids.length!==4)return toast("Genau vier Annahmespieler wählen");st.receivePlans[st.rot]=ids;closeModal();render()};
 }
 function liberoPlanner(){
  const options=selected=>'<option value="">Nicht gemeldet</option>'+roster.map(p=>`<option value="${esc(p.id)}" ${selected===p.id?'selected':''}>${esc(p.name)} #${jersey(p.id)}</option>`).join('');
- const mids=st.lineup.filter(id=>roleOf(id).startsWith('MB'));
- modal(`<h2>Libero · Satz ${st.set}</h2><p class="small">Zuerst Libero 1/2 wählen, dann den aktiven Libero und seinen Mittelblocker. <b>Einmal „Speichern & übernehmen“</b> drücken. Ein Libero darf nicht gleichzeitig in der Start-Sechs stehen.</p><div class="grid2"><label>Libero 1<select id="lpSlot1">${options(st.liberoIds[0])}</select></label><label>Libero 2<select id="lpSlot2">${options(st.liberoIds[1])}</select></label></div><label>Aktiver Libero<select id="lpLib"></select></label><label>Ersetzt Mittelblocker<select id="lpMB"><option value="">Niemand</option>${mids.map(id=>`<option value="${id}">${esc(nm(id))} #${jersey(id)} · P${courtPos(id)}</option>`).join('')}</select></label><p id="lpHint" class="small" aria-live="polite"></p><div class="grid2"><button id="lpCancel">Abbrechen</button><button id="lpSave" class="primary">Speichern & übernehmen</button></div>`);
+ const mids=st.lineup.filter(id=>/^(MB|AA)/.test(roleOf(id)));
+ modal(`<h2>Libero · Satz ${st.set}</h2><p class="small">Zuerst Libero 1/2 wählen, dann den aktiven Libero und seinen Mittelblocker. <b>Einmal „Speichern & übernehmen“</b> drücken. Ein Libero darf nicht gleichzeitig in der Start-Sechs stehen.</p><div class="grid2"><label>Libero 1<select id="lpSlot1">${options(st.liberoIds[0])}</select></label><label>Libero 2<select id="lpSlot2">${options(st.liberoIds[1])}</select></label></div><label>Aktiver Libero<select id="lpLib"></select></label><label>Ersetzt MB / Annahme-Außen<select id="lpMB"><option value="">Niemand</option>${mids.map(id=>`<option value="${id}">${esc(nm(id))} #${jersey(id)} · P${courtPos(id)}</option>`).join('')}</select></label><p id="lpHint" class="small" aria-live="polite"></p><div class="grid2"><button id="lpCancel">Abbrechen</button><button id="lpSave" class="primary">Speichern & übernehmen</button></div>`);
  const refresh=()=>{const ids=[$('lpSlot1').value,$('lpSlot2').value].filter(Boolean),sel=$('lpLib').value||st.liberoPreferredId||st.liberoOnCourt||ids[0]||'';$('lpLib').innerHTML='<option value="">Kein Libero</option>'+ids.map(id=>`<option value="${id}">${esc(nm(id))} #${jersey(id)}</option>`).join('');$('lpLib').value=ids.includes(sel)?sel:(ids[0]||'');$('lpHint').textContent=ids.length?'Gemeldet: '+ids.map(id=>nm(id)).join(' / '):'Kein Libero gemeldet';};
  $('lpSlot1').addEventListener('change',refresh);$('lpSlot2').addEventListener('change',refresh);refresh();
  $('lpMB').value=st.liberoPreferredMB||st.liberoReplacedId||mids.find(id=>[5,6].includes(courtPos(id)))||'';
@@ -417,8 +431,8 @@ function liberoPlanner(){
   if(st.started&&st.rallies.length&&chosen.some(id=>!st.liberoIds.includes(id)))return toast('Libero-Meldung während des Spiels nicht ändern');
   if(l&&!chosen.includes(l))return toast('Aktiven Libero aus der Meldung wählen');
   if(!!l!==!!m)return toast('Libero und Mittelblocker gemeinsam wählen');
-  if(m&&![1,5,6].includes(courtPos(m)))return toast('Mittelblocker muss hinten stehen');
-  if(m&&courtPos(m)===1&&st.serving)return toast('P1: Mittelblocker schlägt selbst auf');
+  if(m&&![1,5,6].includes(courtPos(m)))return toast('Ersatzspieler muss hinten stehen');
+  if(m&&courtPos(m)===1&&st.serving)return toast('P1: regulärer Spieler schlägt selbst auf');
   if(!configureLiberoSlots(ids,['','']))return;
   st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};saveLocal();closeModal();render();toast(l?nm(l)+' als Libero übernommen':'Libero-Einsatz beendet');
  };
