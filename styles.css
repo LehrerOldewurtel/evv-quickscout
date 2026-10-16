@@ -60,3 +60,12 @@ button{min-height:46px;-webkit-tap-highlight-color:transparent}button:focus-visi
 /* 7.10.0 direct manipulation: no transitions, no pointer delay */
 .opponentTactic .tacticPlayer,.opponentTactic .tacticPlayer.dragging{transition:none!important;animation:none!important;touch-action:none!important;will-change:left,top;transform:translate(-50%,-50%)!important;box-shadow:0 3px 12px rgba(24,51,90,.18)}
 .opponentTactic{touch-action:none!important;overscroll-behavior:contain}
+
+/* 7.10.1: large, directly tappable scoring targets in Chrome on iPad */
+.zone9{width:min(100%,520px);grid-template-rows:repeat(3,minmax(90px,1fr))!important;touch-action:manipulation}
+.zone9 button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;font-size:22px}
+.zone9 button:active{background:#d7eaff;transform:scale(.985)}
+.modalbox{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;max-height:calc(100dvh - 32px)}
+@media (max-height:800px){.zone9{width:min(100%,340px);grid-template-rows:repeat(3,minmax(65px,1fr))!important}}
+
+.zoneInstruction{padding:12px;border-radius:14px;background:#e7f1ff;color:#075eb5;font-size:15px;font-weight:800;text-align:center}

@@ -19,7 +19,7 @@ let opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#",
 let tab="rally",view="live",draft={},draftHistory=[],pendingMark=null;
 let st=fresh();
 function fresh(){return{started:false,set:1,e:0,o:0,rot:1,serving:true,setEnded:false,matchEnded:false,
-lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},opponentPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,
+lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},opponentPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,liberoPreferredId:"",liberoPreferredMB:"",
 rallies:[],sets:[],rallyUndo:[],events:[],marks:[],setStart:null,subPairs:{},subCount:0,subUsed:[]}}
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function toast(s){$("toast").textContent=s;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),1100)}
@@ -30,7 +30,7 @@ function target(set=st.set){return set===5?15:25}
 function isSetWin(e=st.e,o=st.o,set=st.set){return (e>=target(set)||o>=target(set))&&Math.abs(e-o)>=2}
 function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).length;if(st.setEnded&&(team==="EVV"?st.e>st.o:st.o>st.e))w++;return w}
 function checkEnd(){st.setEnded=isSetWin();st.matchEnded=false;if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=setWins(w)>=3}}
-function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive})}
+function snapshot(){return clone({e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB})}
 function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
 function sanitizeLiberoName(v){return String(v||"").trim().slice(0,45)}
@@ -52,6 +52,20 @@ function applyLiberoNames(){configureLiberos(readLiberoNames());setupLiberoSelec
 function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent,roster}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
 function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
+// Team configuration: libero never serves. The original middle blocker serves in P1.
+// A registered libero can return when the same middle blocker enters the back row.
+function syncLiberoRotation(){
+ const libero=st.liberoPreferredId||st.liberoOnCourt;
+ const mb=st.liberoPreferredMB||st.liberoReplacedId;
+ if(!libero||!mb||!st.liberoIds.includes(libero)||!st.lineup.includes(mb)||!roleOf(mb).startsWith("MB")){
+  st.liberoActive=false;return;
+ }
+ const pos=courtPos(mb);
+ const eligible=[1,5,6].includes(pos)&&!(pos===1&&st.serving);
+ st.liberoOnCourt=libero;st.liberoReplacedId=mb;
+ st.liberoActive=eligible;
+}
+
 function commit(w,data={},preSnapshot=null){
  if(w!=="EVV"&&w!=="Gegner")throw new Error("Ungültiger Rallye-Sieger");
  if(st.setEnded||st.matchEnded)return toast("Satz ist beendet");
@@ -59,6 +73,7 @@ function commit(w,data={},preSnapshot=null){
  const before=`${st.e}:${st.o}`,rb=st.rot,sb=st.serving;
  if(w==="EVV"){st.e++;if(!st.serving){st.serving=true;rotate()}}
  else{st.o++;if(st.serving)st.serving=false}
+ syncLiberoRotation();
  data=Object.assign({},data,{winner:w,before,after:`${st.e}:${st.o}`,rotation:rb,servingBefore:sb,phase:data.phase||(sb?"K2":"K1"),set:st.set});
  st.rallies.push(data);draft={};clearDraftHistory();tab="rally";view="live";checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
 }
@@ -133,6 +148,7 @@ function readSetup(){
  st.liberoOnCourt=$("evvLiberoOnCourt")?$("evvLiberoOnCourt").value:"";
  st.liberoReplacedId=$("evvLiberoReplaces")?$("evvLiberoReplaces").value:"";
  st.liberoActive=!!(st.liberoOnCourt&&st.liberoReplacedId);
+ st.liberoPreferredId=st.liberoOnCourt;st.liberoPreferredMB=st.liberoReplacedId;
  opponent.name=$("oppName").value.trim()||"Gegner";
  opponent.setter="#"+($("oppSetter").value.trim()||"?");
  opponent.liberos=[1,2].map(i=>"#"+($("oppLibero"+i).value.trim()||"?"));
@@ -142,8 +158,8 @@ function readSetup(){
  if(st.liberoActive&&!liberoEligible()){toast("Libero nur für einen Mittelblocker in der Hinterreihe einsetzen");return false}
  return true
 }
-function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRoles=clone(st.roles),keepRec=clone(st.receiveIds),keepLibs=clone(st.liberoIds),keepLibOn=st.liberoOnCourt,keepLibRep=st.liberoReplacedId,keepLibActive=st.liberoActive;st=fresh();st.lineup=keep;st.roles=keepRoles;st.receiveIds=keepRec;st.liberoIds=keepLibs;st.liberoOnCourt=keepLibOn;st.liberoReplacedId=keepLibRep;st.liberoActive=keepLibActive;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv,lineup:clone(keep),roles:clone(keepRoles)};$("setup").classList.add("hidden");render()}
-function currentServerId(){return playerAtPos(1)}
+function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRoles=clone(st.roles),keepRec=clone(st.receiveIds),keepLibs=clone(st.liberoIds),keepLibOn=st.liberoOnCourt,keepLibRep=st.liberoReplacedId,keepLibActive=st.liberoActive,keepPreferred=st.liberoPreferredId,keepMB=st.liberoPreferredMB;st=fresh();st.lineup=keep;st.roles=keepRoles;st.receiveIds=keepRec;st.liberoIds=keepLibs;st.liberoOnCourt=keepLibOn;st.liberoReplacedId=keepLibRep;st.liberoActive=keepLibActive;st.liberoPreferredId=keepPreferred;st.liberoPreferredMB=keepMB;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv,lineup:clone(keep),roles:clone(keepRoles)};syncLiberoRotation();$("setup").classList.add("hidden");render()}
+function currentServerId(){const id=playerAtPos(1);return st.liberoIds.includes(id)?st.liberoReplacedId:id}
 function currentServer(){
  if(!st.serving)return opponent.name;
  // Rotation number indexes current service turn; preserve selected six and substitutions.
@@ -378,7 +394,7 @@ function liberoPlanner(){
  $("lpLib").value=st.liberoOnCourt||"";$("lpMB").value=st.liberoReplacedId||"";
  $("lpNamesSave").onclick=()=>{if(st.started&&!st.matchEnded)return toast("Libero-Meldung im laufenden Spiel nicht ändern. Neues Spiel starten.");configureLiberos([$("lpName1").value,$("lpName2").value]);closeModal();render();toast("Libero-Namen gespeichert")};
  $("lpCancel").onclick=closeModal;
- $("lpSave").onclick=()=>{if(draft.step||st.setEnded)return toast("Nur zwischen Ballwechseln");const l=$("lpLib").value,m=$("lpMB").value;if(!!l!==!!m)return toast("Libero und Mittelblocker gemeinsam wählen");if(m&&![1,5,6].includes(courtPos(m)))return toast("Mittelblocker muss in der Hinterreihe stehen");st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;st.receivePlans={};st.tacticPositions={};closeModal();render();toast("Libero-Einsatz aktualisiert")};
+ $("lpSave").onclick=()=>{if(draft.step||st.setEnded)return toast("Nur zwischen Ballwechseln");const l=$("lpLib").value,m=$("lpMB").value;if(!!l!==!!m)return toast("Libero und Mittelblocker gemeinsam wählen");if(m&&![1,5,6].includes(courtPos(m)))return toast("Mittelblocker muss in der Hinterreihe stehen");if(m&&courtPos(m)===1&&st.serving)return toast("Aufschlagposition P1: Mittelblocker muss selbst aufschlagen");st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};st.tacticPositions={};closeModal();render();toast("Libero-Einsatz aktualisiert")};
 }
 function opponentCourt(){
  const marks=allRallies().filter(r=>r.targetZone&&r.winner==="EVV");
@@ -477,7 +493,7 @@ function zoneCenter(z){
 }
 function nineZonePicker(kind,payload){
  pendingMark=payload;
- modal(`<h2>${kind==="ACE"?"Aufschlag-Ass":kind==="OPP_KILL"?"Gegnerangriff · Landepunkt":"Angriffspunkt"} · Zielzone</h2><div class="courtOrient"><b>↑ NETZ</b><span>1–3 netznah · 4–6 Mitte · 7–9 grundliniennah</span></div><div class="zone9">
+ modal(`<p class="zoneInstruction">Jetzt Landepunkt wählen: eine der 9 großen Zonen antippen</p><h2>${kind==="ACE"?"Aufschlag-Ass":kind==="OPP_KILL"?"Gegnerangriff · Landepunkt":"Angriffspunkt"} · Zielzone</h2><div class="courtOrient"><b>↑ NETZ</b><span>1–3 netznah · 4–6 Mitte · 7–9 grundliniennah</span></div><div class="zone9">
  ${[1,2,3,4,5,6,7,8,9].map(z=>`<button type="button" data-zone="${z}"><b>${z}</b><span>${z<=3?"NETZ":z<=6?"MITTE":"GRUNDLINIE"}</span></button>`).join("")}
  </div><div class="courtOrient bottom"><b>↓ GRUNDLINIE</b></div><button id="skipMark">Überspringen</button>`);
  document.querySelectorAll("[data-zone]").forEach(b=>b.onclick=()=>{
@@ -531,7 +547,7 @@ function prepareNextSet(){
   const newRot=Number($("nsRot").value);
   st.sets.push({set:st.set,e:st.e,o:st.o,rallies:clone(st.rallies),marks:clone(st.marks),start:clone(st.setStart),lineup:clone(st.lineup),roles:clone(st.roles),events:clone(st.events.filter(x=>x.set===st.set))});
   st.set=next;st.e=0;st.o=0;st.lineup=ids;st.roles=picked.roles;st.rot=newRot;st.serving=serv;st.setEnded=false;st.matchEnded=false;
-  st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";st.receivePlans={};st.tacticPositions={};
+  st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";st.liberoPreferredId="";st.liberoPreferredMB="";st.receivePlans={};st.tacticPositions={};
   st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids),roles:clone(st.roles)};
   draft={};clearDraftHistory();pendingMark=null;tab="rally";view="live";closeModal();render();toast(`Satz ${next} gestartet`);
  };
@@ -658,5 +674,5 @@ document.addEventListener("visibilitychange",()=>{if(document.hidden)stopVoiceRe
 $("voiceBtn").onclick=toggleVoice;
 
 const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={newMatch,liberoPlanner,opponentCourt,configureLiberos,liberoRoster,checkEnd,setWins,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
+window.EVV_QS_TEST={newMatch,liberoPlanner,opponentCourt,configureLiberos,liberoRoster,checkEnd,setWins,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,syncLiberoRotation,currentServerId,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
 })();
