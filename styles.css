@@ -89,3 +89,9 @@ button{min-height:46px;-webkit-tap-highlight-color:transparent}button:focus-visi
 .sixBoardCard .sixPlayer small{font-size:9px;color:#65748a}
 .sixCourt{overflow:hidden}.liberoK1Btn{width:100%;margin:6px 0 12px;min-height:44px}
 @media(max-width:750px){.sixBoardGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.sixBoardCard .sixPlayer{width:37%}.sixBoardCard .sixPlayer b{font-size:9px}}
+
+/* 7.13: exact pointer positioning and visible per-set timeout count */
+.timeoutSummary{grid-column:1/-1;text-align:center;font-weight:700;color:#1f4b7d;background:#edf5ff;border-radius:10px;padding:7px 12px;font-size:13px}
+.sixCourt .sixPlayer{transform:translate(-50%,-50%);box-sizing:border-box;max-width:32%;width:30%;min-height:11%;height:auto;overflow:visible;white-space:normal;word-break:normal;overflow-wrap:break-word;z-index:2}
+.sixCourt .sixPlayer b{font-size:clamp(9px,1vw,12px)}
+.sixCourt .sixPlayer small{display:block;font-size:9px}
