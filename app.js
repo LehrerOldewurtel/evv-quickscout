@@ -1,7 +1,7 @@
 (function(){
 "use strict";
 const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
-const APP_VERSION=globalThis.EVV_VERSION||"7.14.0-rc";
+const APP_VERSION=globalThis.EVV_VERSION||"7.16.0-match";
 const ROT_NEXT={5:6,6:1,1:2,2:3,3:4,4:5}; // confirmed live-test convention: R5→R6→R1
 let roster=[
 {id:"johann",name:"Johann",role:"Z"},{id:"michael",name:"Michael",role:"AA1"},{id:"janik",name:"Janik",role:"MB1"},
@@ -179,7 +179,7 @@ function currentServer(){
  return nm(currentServerId()||"");
 }
 function timeoutCount(team,set=st.set){return (st.events||[]).filter(x=>x.type==='timeout'&&x.team===team&&Number(x.set)===Number(set)).length}
-function timeoutSummary(){const count=t=>timeoutCount(t);return `Auszeiten S${st.set}: EVV ${count("EVV")}/2 · ${esc(opponent.name)} ${count("Gegner")}/2${count("EVV")>2||count("Gegner")>2?" · ⚠ Historische Auszeiten prüfen":""}`}
+function timeoutSummary(){const count=t=>timeoutCount(t);return `Auszeiten S${st.set}: EVV ${Math.min(2,count("EVV"))}/2 · ${esc(opponent.name)} ${Math.min(2,count("Gegner"))}/2${count("EVV")>2||count("Gegner")>2?" · ⚠ Historische Auszeiten prüfen":""}`}
 function renderHeader(){
  $("homeScore").textContent=st.e;$("oppScore").textContent=st.o;$("oppNameHead").textContent=opponent.name;$("setBadge").textContent=`S${st.set}${st.set===5?" · TB":""}`;$("rotationBadge").textContent=`R${st.rot}`;
  $("phase").textContent=st.serving?"K2":"K1";$("serveText").textContent=st.serving?"EVV Aufschlag":"Gegner Aufschlag";$("serverText").textContent=st.serving?`Aufschlag: ${currentServer()}`:`Aufschlag: ${opponent.name}`;
