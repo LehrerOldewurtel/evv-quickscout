@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "python3 -m http.server 4173 --bind 127.0.0.1",
-    "test": "node --test tests/rotations.test.cjs tests/unit.test.cjs tests/review.test.cjs tests/simulation.test.cjs",
+    "test": "node --test tests/rotations.test.cjs tests/unit.test.cjs tests/review.test.cjs tests/hybrid.test.cjs tests/simulation.test.cjs",
     "test:e2e": "playwright test",
     "test:all": "npm test && npm run test:e2e"
   },
