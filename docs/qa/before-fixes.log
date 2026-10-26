@@ -1,0 +1,70 @@
+✔ R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (193.652565ms)
+✔ R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (68.88086ms)
+✔ R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (34.041573ms)
+✔ R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (32.3605ms)
+✔ R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (27.994683ms)
+✔ R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (29.717925ms)
+✔ Satzgrenzen: 25/15, zwei Punkte Abstand (205.334269ms)
+✔ Rotationen und erlaubte Angreifer in allen sechs Aufstellungen (65.015234ms)
+✔ Sideout rotiert einmal; eigener Punkt und eigener Fehler nicht (29.64043ms)
+✔ Ungültiger Sieger und beendeter Satz verändern keine Rallyes (32.368926ms)
+✔ Wechsel/Rückwechsel, Paarbindung und Wiederverwendung (31.393966ms)
+✖ Registrierter Libero darf nicht regulär eingewechselt werden (31.599173ms)
+✔ A0 beendet unmittelbar mit Gegnerpunkt (30.495092ms)
+✖ D0 beider Teams beendet die Rallye unmittelbar (31.811831ms)
+✔ Markierter Punkt und Undo sind atomar (28.758787ms)
+✔ Undo und lokale Speicherung nach Reload repräsentieren denselben Stand (23.484687ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 14
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 874.582679
+
+✖ failing tests:
+
+test at tests/unit.test.cjs:4:25
+✖ Registrierter Libero darf nicht regulär eingewechselt werden (31.599173ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at /workspace/evv-quickscout/tests/unit.test.cjs:29:68
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/unit.test.cjs:4:72)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit.test.cjs:4:25
+✖ D0 beider Teams beendet die Rallye unmittelbar (31.811831ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  0 !== 1
+
+      at /workspace/evv-quickscout/tests/unit.test.cjs:35:46
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/unit.test.cjs:4:72)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

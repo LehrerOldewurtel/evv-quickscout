@@ -276,9 +276,9 @@ function action(s){
  else if(a[0]==="ebc"){draft.blocker=a[1];draft.step="evvBlockResult";render()}
  else if(a[0]==="ebr"){if(a[1]==="TOOLED"){draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"TOOLED"});return commit("Gegner",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK_OUT",blocker:draft.blocker}))}
  else if(a[1]==="POINT"){draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"BLOCK"});return commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:draft.blocker}))}draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"TOUCH"});if(a[1]==="EVV"){draft.step="evvDefense";tab="rally"}else{draft.step="oppDefense";tab="opponent"}render()}
- else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});draft.step="evvBall2";render()}
+ else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});if(a[2]==="D0")return commit("Gegner",Object.assign({},draft,{event:"Defense",result:"DIRECT_ERROR"}));draft.step="evvBall2";render()}
  else if(a[0]==="blk"){if(!front().includes(a[1]))return toast("Blocker steht nicht in der Vorderreihe");draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:a[1],result:"BLOCK"});commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:a[1]}))}
- else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});draft.step="oppBall2";render()}
+ else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});if(a[1]==="D0")return commit("EVV",Object.assign({},draft,{event:"OpponentDefense",result:"DIRECT_ERROR"}));draft.step="oppBall2";render()}
 }
 function rally(){
  if(!st.started)return $("flow").innerHTML="<h2>Bereit</h2><p>Spiel einrichten und starten.</p>";
@@ -608,7 +608,7 @@ function courtPicker(){nineZonePicker("KILL",pendingMark)}
 // A substitute is tied to the original starter and can enter only once per set.
 function validateSub(out,inn){
  if(!st.started||st.setEnded||view!=="live"||draft.step)return "Wechsel nur zwischen Rallyes im laufenden Satz";
- if(!st.lineup.includes(out)||st.lineup.includes(inn)||!byId(inn)||byId(inn).role==="L")return "Spieler nicht verfügbar";
+ if(!st.lineup.includes(out)||st.lineup.includes(inn)||!byId(inn)||byId(inn).role==="L"||st.liberoIds.includes(inn))return "Spieler nicht verfügbar";
  if(st.subCount>=6)return "Sechs reguläre Wechsel erreicht";
  const starters=(st.setStart&&st.setStart.lineup)||st.lineup;
  const pairs=st.subPairs||{},used=st.subUsed||[];
