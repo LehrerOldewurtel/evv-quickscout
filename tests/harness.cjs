@@ -2,8 +2,9 @@ const {JSDOM}=require('jsdom');
 const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
-function app({render=true}={}) {
+function app({render=true,storage}={}) {
  const dom=new JSDOM(fs.readFileSync(path.join(root,'index.html'),'utf8'),{url:'http://127.0.0.1:4173',runScripts:'outside-only'});
+ if(storage)dom.window.localStorage.setItem('evvQuickScoutV77',typeof storage==='string'?storage:JSON.stringify(storage));
  dom.window.eval(fs.readFileSync(path.join(root,'version.js'),'utf8'));
  // Test-only instrumentation of the complete source. No copied game functions.
  const source=fs.readFileSync(path.join(root,'app.js'),'utf8');

@@ -34,3 +34,7 @@ Die Rotationstests R1–R6 bestanden bereits vor diesen Korrekturen. Die Projekt
 ## Offener Bedarf
 
 V8.0 benötigt weiterhin eine Entscheidung und Implementierung für den nativen Hybrid-Container, echte Geräteabnahme, vollständige Import-/Migrations-/Sicherheitsprüfungen und einen Offline-/Cache-Update-Test. Die Versionsabweichungen sind dokumentiert; ein pauschales Umbenennen in „V8.0 stabil“ wäre nicht durch Tests gedeckt. Siehe Testbericht und QA-Playbook für genaue Nachweisgrenzen.
+
+## Review-Nachtrag
+
+Die Überprüfung des ersten PR steht in `PR1_REVIEW.md`, mit Versionsnachweis ab V7.9.2, gezielten Update-/Sprach-/Libero-/Speicherfehlerkorrekturen und Abgrenzung der bestehenden Chain zur erst geplanten Turnaround-Engine. Das ursprüngliche Audit und seine Rohbelege bleiben als Ausgangsbefund erhalten.

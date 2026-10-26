@@ -30,3 +30,7 @@ Fehler zuerst rot reproduzieren, minimal korrigieren, dann den betroffenen Lauf 
 ## Weitere Abnahme vor stabilem Hybrid-Release
 
 Nicht von den Pflichtprüfungen abgedeckt: echtes iPad/Safari, Pencil, Mikrofon/Spracherkennung, native iOS-/Android-Verpackung, Hintergrundwechsel, vollständiger Offline-Cache-Lebenszyklus, Import-Migrationen und fehlerhafte Backups, Sonderwechsel/Verletzungen und vollständige DVV/FIVB-Regelkonformität. Die 100 Quick-Matches prüfen keine unabhängige vollständige Spielerstatistik. Für diese Bereiche eigene reproduzierbare Abnahmen ergänzen, bevor V8.0 stabil genannt wird.
+
+## Nachprüfung von PR #1
+
+Siehe `PR1_REVIEW.md`: zusätzliche Upgrade-/Speicher-/Sprach-/Libero-Regressionen in `tests/review.test.cjs` und `tests/e2e/review.spec.cjs`. Historische synthetische Fixtures sind eingecheckt und brauchen im normalen Testlauf weder Git-Historie noch Netz. Bei notwendiger Regeneration nur `node scripts/generate-upgrade-fixtures.cjs` ausführen (benötigt die beiden dokumentierten historischen Commits); die echten alten Apps laufen dabei isoliert in JSDOM. Keine produktiven Backups ersetzen. Die nächste Engine und die vollständige Hybrid-Abnahmematrix sind in `design/V8_HYBRID_TURNAROUND.md` spezifiziert, noch nicht implementiert.

@@ -1,0 +1,33 @@
+✔ v7.9.2: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (169.350607ms)
+✔ pre-pr-main: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (66.13549ms)
+✔ Undo schließt ausstehende Zielzone und verhindert verwaiste Bestätigung (57.998149ms)
+✔ Sprach-Undo respektiert historische READ-ONLY-Ansicht (27.024426ms)
+✔ Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wie Touch (44.159293ms)
+✔ Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet (62.35987ms)
+✔ Libero-Aufschlagsverbot und Wiedereintritt in allen sechs Rotationen (262.191185ms)
+✔ Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: {"st": (28.607626ms)
+✔ Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: null (31.530196ms)
+✔ R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (204.095134ms)
+✔ R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (55.594971ms)
+✔ R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (46.493851ms)
+✔ R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (37.837106ms)
+✔ R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (28.642481ms)
+✔ R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (29.227508ms)
+✔ Satzgrenzen: 25/15, zwei Punkte Abstand (190.660254ms)
+✔ Rotationen und erlaubte Angreifer in allen sechs Aufstellungen (50.558866ms)
+✔ Sideout rotiert einmal; eigener Punkt und eigener Fehler nicht (33.629023ms)
+✔ Ungültiger Sieger und beendeter Satz verändern keine Rallyes (37.18873ms)
+✔ Wechsel/Rückwechsel, Paarbindung und Wiederverwendung (30.686003ms)
+✔ Registrierter Libero darf nicht regulär eingewechselt werden (22.584478ms)
+✔ A0 beendet unmittelbar mit Gegnerpunkt (27.491782ms)
+✔ D0 beider Teams beendet die Rallye unmittelbar (28.978851ms)
+✔ Markierter Punkt und Undo sind atomar (25.694792ms)
+✔ Undo und explizites Speichern enthalten den aktuellen Spielstand (21.407061ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1126.460516

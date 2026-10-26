@@ -1,4 +1,6 @@
-# Testbericht · 26.10.2026
+# Testbericht · erster PR-Stand vom 26.10.2026
+
+Aktueller Review-Nachtrag mit gezielten Fehlerkorrekturen: [PR1_REVIEW.md](PR1_REVIEW.md). Die Zahlen und Rohbelege unten beschreiben den ersten PR-Stand; die Nachprüfung wird getrennt dokumentiert.
 
 Basiscommit `f6b316b`, Entwicklungsbranch `dev/v8-qa-foundation`. App-Version bleibt `7.19.0-k1-auto-mb`; Paketversion `8.0.0-dev` bezeichnet das neue Entwicklungs-/Testsystem. Kein V8.0-Release und keine native Gerätefreigabe.
 
