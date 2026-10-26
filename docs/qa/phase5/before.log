@@ -1,0 +1,52 @@
+✖ Transition: Rallyequote 2/3, Chancenverwertung 2/6, Killquote 1/6; keine Doppelzählung (206.352029ms)
+✖ Gegnerfehler: Annahme, Abwehr, zweiter Ball und Angriff getrennt von Block/Kill (61.227438ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 692.438881
+
+✖ failing tests:
+
+test at tests/matchday-regressions.test.cjs:2:1
+✖ Transition: Rallyequote 2/3, Chancenverwertung 2/6, Killquote 1/6; keine Doppelzählung (206.352029ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  undefined !== 3
+
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/matchday-regressions.test.cjs:5:46)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/matchday-regressions.test.cjs:9:1
+✖ Gegnerfehler: Annahme, Abwehr, zweiter Ball und Angriff getrennt von Block/Kill (61.227438ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 4
+
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/matchday-regressions.test.cjs:11:9)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

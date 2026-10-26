@@ -17,7 +17,7 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npx playwright install --with-deps chromium
       - run: node --test tests/rotations.test.cjs
-      - run: npm run test:all
+      - run: npm run qa:release
       - uses: actions/upload-artifact@v4
         if: always()
         with:

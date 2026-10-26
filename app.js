@@ -131,7 +131,7 @@ function validateRuntime(r){
  if(r.view!==undefined&&!['live','match',1,2,3,4,5].includes(r.view))throw Error('Ungültige Ansicht');
 }
 function turnaroundAnalysis(rr){
- const x={observed:0,incomplete:0,kills:0,attackingRallies:0,firstAttackKill:0,killByTwo:0,killByThree:0,chances:0,transitionKills:0,transitionPoints:0,chancesWithoutAttack:0,multipleTransitions:0,blockPoints:0,opponentErrors:0,attacksToKill:[]};
+ const x={observed:0,incomplete:0,kills:0,attackingRallies:0,firstAttackKill:0,killByTwo:0,killByThree:0,chances:0,transitionRallies:0,transitionKills:0,transitionPoints:0,chancesWithoutAttack:0,multipleTransitions:0,blockPoints:0,opponentErrors:0,attacksToKill:[]};
  for(const r of rr){const ids=new Set(),ch=(r.chain||[]).filter(c=>{if(!c.id)return true;if(ids.has(c.id))return false;ids.add(c.id);return true}),complete=r.observationComplete===true||(r.observationComplete!==false&&ch.length>0&&r.event!=='Quick'&&r.event!=='VoiceQuick');if(!complete)x.incomplete++;else x.observed++;
  let attacks=0,chances=0,open=false,attacked=false;
  for(const c of ch){if(c.side!=='EVV')continue;
@@ -143,19 +143,20 @@ function turnaroundAnalysis(rr){
  if(attacks&&complete)x.attackingRallies++;
  if(kill){x.kills++;x.attacksToKill.push(attacks);if(complete&&attacks===1)x.firstAttackKill++;if(complete&&attacks<=2)x.killByTwo++;if(complete&&attacks<=3)x.killByThree++;if(open&&attacked)x.transitionKills++}
  if(ch.some(c=>c.side==='EVV'&&c.type==='Block'&&c.result==='BLOCK')&&r.winner==='EVV')x.blockPoints++;
- if(r.winner==='EVV'&&r.event==='OpponentAttack'&&r.result==='ERROR')x.opponentErrors++;
- x.chances+=chances;if(chances>1)x.multipleTransitions++;if(chances&&r.winner==='EVV')x.transitionPoints++;
+ if(r.winner==='EVV'&&(['OpponentAttack','OpponentSecondBall'].includes(r.event)&&r.result==='ERROR'||['OpponentReception','OpponentDefense'].includes(r.event)&&r.result==='DIRECT_ERROR'))x.opponentErrors++;
+ x.chances+=chances;if(chances)x.transitionRallies++;if(chances>1)x.multipleTransitions++;if(chances&&r.winner==='EVV')x.transitionPoints++;
  }
  x.killByTwoRate=x.attackingRallies?100*x.killByTwo/x.attackingRallies:null;x.killByThreeRate=x.attackingRallies?100*x.killByThree/x.attackingRallies:null;
  x.firstAttackKillRate=x.attackingRallies?100*x.firstAttackKill/x.attackingRallies:null;
- x.transitionKillRate=x.chances?100*x.transitionKills/x.chances:null;x.transitionPointRate=x.chances?100*x.transitionPoints/x.chances:null;
+ x.transitionKillRate=x.chances?100*x.transitionKills/x.chances:null;x.transitionPointRate=x.transitionRallies?100*x.transitionPoints/x.transitionRallies:null;
+ x.transitionConversionRate=x.chances?100*x.transitionPoints/x.chances:null;
  return x;
 }
 function analysisPanel(){const rr=allRallies(),set=Number($('analysisSet')?.value)||0,rot=Number($('analysisRot')?.value)||0,phase=$('analysisPhase')?.value||'all';
- const draw=()=>{const filtered=rr.filter(r=>(!Number($('analysisSet').value)||r.set===Number($('analysisSet').value))&&(!Number($('analysisRot').value)||r.rotation===Number($('analysisRot').value))&&($('analysisPhase').value==='all'||r.phase===$('analysisPhase').value)),x=turnaroundAnalysis(filtered),pct=n=>n===null?'–':n.toFixed(1)+'%';
- $('analysisResults').innerHTML=`<p>Beobachtet ${x.observed} · unvollständig ${x.incomplete}</p><p>Angriffe bis Kill: ${x.attacksToKill.join(', ')||'–'} · First-Attack-Kill ${pct(x.firstAttackKillRate)} (Nenner: ${x.attackingRallies} Rallyes mit Angriff)</p><p>Kill bis Angriff 2: ${x.killByTwo} (${pct(x.killByTwoRate)}) · bis Angriff 3: ${x.killByThree} (${pct(x.killByThreeRate)})</p><p>Transition-Chancen ${x.chances} · Kills ${x.transitionKills} (${pct(x.transitionKillRate)}) · Punkte ${x.transitionPoints} (${pct(x.transitionPointRate)})</p><p>Chancen ohne Angriff ${x.chancesWithoutAttack} · Mehrfach-Transition-Rallyes ${x.multipleTransitions}</p><p>Eigene Kills ${x.kills} · Blockpunkte ${x.blockPoints} · Gegnerfehler ${x.opponentErrors}</p><p>${x.observed<5?'Noch keine belastbare Coaching-Stichprobe (mindestens 5 beobachtete Rallyes).':x.chancesWithoutAttack?'Chancen ohne Angriff im Video prüfen: Ballkontrolle und Anschlusszuspiel beobachten.':'Angriffsabschluss und Block-Abwehr anhand der getrennten Quoten überprüfen.'}</p>`};
- modal(`<h2>Turnaround · Coaching</h2><div class="grid3"><label>Satz<select id="analysisSet"><option value="0">Alle</option>${[1,2,3,4,5].map(n=>`<option>${n}</option>`).join('')}</select></label><label>Rotation<select id="analysisRot"><option value="0">Alle</option>${[1,2,3,4,5,6].map(n=>`<option>${n}</option>`).join('')}</select></label><label>Phase<select id="analysisPhase"><option value="all">K1 + K2</option><option>K1</option><option>K2</option></select></label></div><div id="analysisResults"></div><button id="analysisClose">Schließen</button>`);
- $('analysisSet').value=set;$('analysisRot').value=rot;$('analysisPhase').value=phase;['analysisSet','analysisRot','analysisPhase'].forEach(id=>$(id).onchange=draw);$('analysisClose').onclick=closeModal;draw();
+ const draw=()=>{const selectedRotation=Number($('analysisRot').value);$('analysisFormation').disabled=!selectedRotation;$('analysisFormationHint').textContent=selectedRotation?`Analyse R${selectedRotation} · Formation gezielt öffnen; keine automatische Änderung.`:'Für die Taktik eine Rotation auswählen.';const filtered=rr.filter(r=>(!Number($('analysisSet').value)||r.set===Number($('analysisSet').value))&&(!Number($('analysisRot').value)||r.rotation===Number($('analysisRot').value))&&($('analysisPhase').value==='all'||r.phase===$('analysisPhase').value)),x=turnaroundAnalysis(filtered),pct=n=>n===null?'–':n.toFixed(1)+'%';
+ $('analysisResults').innerHTML=`<p>Beobachtet ${x.observed} · unvollständig ${x.incomplete}</p><p>Angriffe bis Kill: ${x.attacksToKill.join(', ')||'–'} · First-Attack-Kill ${pct(x.firstAttackKillRate)} (Nenner: ${x.attackingRallies} Rallyes mit Angriff)</p><p>Kill bis Angriff 2: ${x.killByTwo} (${pct(x.killByTwoRate)}) · bis Angriff 3: ${x.killByThree} (${pct(x.killByThreeRate)})</p><p>Transition-Chancen ${x.chances} · Kills ${x.transitionKills} (${pct(x.transitionKillRate)}) · Punkte ${x.transitionPoints}</p><p>Rallyebezogene Transition-Punktquote: ${pct(x.transitionPointRate)} (${x.transitionPoints}/${x.transitionRallies} Rallyes mit Chance)</p><p>Chancenbezogene Transition-Verwertungsquote: ${pct(x.transitionConversionRate)} (${x.transitionPoints}/${x.chances} Chancen; höchstens ein Punkt pro Rallye)</p><p>Chancen ohne Angriff ${x.chancesWithoutAttack} · Mehrfach-Transition-Rallyes ${x.multipleTransitions}</p><p>Eigene Kills ${x.kills} · Blockpunkte ${x.blockPoints} · Gegnerfehler ${x.opponentErrors}</p><p>${x.observed<5?'Noch keine belastbare Coaching-Stichprobe (mindestens 5 beobachtete Rallyes).':x.chancesWithoutAttack?'Chancen ohne Angriff im Video prüfen: Ballkontrolle und Anschlusszuspiel beobachten.':'Angriffsabschluss und Block-Abwehr anhand der getrennten Quoten überprüfen.'}</p>`};
+ modal(`<h2>Turnaround · Coaching</h2><div class="grid3"><label>Satz<select id="analysisSet"><option value="0">Alle</option>${[1,2,3,4,5].map(n=>`<option>${n}</option>`).join('')}</select></label><label>Rotation<select id="analysisRot"><option value="0">Alle</option>${[1,2,3,4,5,6].map(n=>`<option>${n}</option>`).join('')}</select></label><label>Phase<select id="analysisPhase"><option value="all">K1 + K2</option><option>K1</option><option>K2</option></select></label></div><div id="analysisResults"></div><p id="analysisFormationHint"></p><label>Formationskontext<select id="analysisFormationKind"><option value="receive">Annahme</option><option value="defense-IV">Abwehr IV</option><option value="defense-III">Abwehr III</option><option value="defense-II">Abwehr II</option></select></label><button id="analysisFormation">Formation der analysierten Rotation öffnen</button><button id="analysisClose">Schließen</button>`);
+ $('analysisSet').value=set;$('analysisRot').value=rot;$('analysisPhase').value=phase;['analysisSet','analysisRot','analysisPhase'].forEach(id=>$(id).onchange=draw);$('analysisClose').onclick=closeModal;$('analysisFormation').onclick=()=>{const r=Number($('analysisRot').value);if(r)formationEditor(r,$('analysisFormationKind').value)};draw();
 }
 const formationDefaults={1:[80,80],2:[80,25],3:[50,25],4:[20,25],5:[20,80],6:[50,80]};
 function activeFormation(){const step=String(draft.step||''),defending=(!step&&st.serving)||step.startsWith('opp')||['evvDefense','evvBlockChoice','evvBlockResult'].includes(step);const lane=['IV','III','II'].includes(draft.setterTarget)?draft.setterTarget:'IV',kind=defending?'defense-'+lane:'receive';return {rotation:st.rot,kind,data:formationFor(st.rot,kind)}}
@@ -220,6 +221,8 @@ function turnaroundMetrics(chain=[]){
 }
 let liveMode="detail",selectedQuickPlayer=null,quickPending=null,quickRevision=0;
 function hybridMode(mode){liveMode=mode;selectedQuickPlayer=null;quickPending=null;render()}
+// Restored drafts may contain IDs from an earlier browser process.
+function nextQuickContactId(){const used=new Set((draft.chain||[]).map(c=>c.id)),prefix=`q-${st.set}-${st.rallies.length}-`;let n=quickRevision;while(used.has(prefix+n))n++;return prefix+n}
 function hybridAction(kind,player=null,revision=quickRevision){
  if(revision!==quickRevision||view!=="live"||!st.started||st.setEnded||st.matchEnded)return;
  quickRevision++;
@@ -227,13 +230,13 @@ function hybridAction(kind,player=null,revision=quickRevision){
  // A repeated defense tap without an intervening own attack is the same chance.
  const chain=draft.chain||[],last=chain.filter(x=>["Attack","Defense","TransitionChance","FreeBall","SecondBall","AttackResult"].includes(x.type)).at(-1);
  if(last&&(last.type==="TransitionChance"||last.type==="Defense"))return render();
- pushDraft();draft.chain=chain.concat({side:"EVV",type:"TransitionChance",id:`q-${st.set}-${st.rallies.length}-${quickRevision}`});draft.phase=draft.phase||(st.serving?"K2":"K1");draft.step="evvBall2";tab="rally";return render();
+ pushDraft();draft.chain=chain.concat({side:"EVV",type:"TransitionChance",id:nextQuickContactId()});draft.phase=draft.phase||(st.serving?"K2":"K1");draft.step="evvBall2";tab="rally";return render();
  }
  if(kind==="opponentError"){quickPending=null;return commit("EVV",{...draft,event:"OpponentAttack",result:"ERROR",chain:draft.chain||[]})}
  if(kind==="ace"){if(!st.serving)return render();player=currentServerId()}
  const eligible=kind==="block"?front():kind==="a0"?receivers():["kill","error","continue"].includes(kind)?attackOptions().map(x=>x.id):active();
  if(!player||!eligible.includes(player)){quickPending=kind;return render()}
- pushDraft();const chain=(draft.chain||[]).slice(),id=`q-${st.set}-${st.rallies.length}-${quickRevision}`;
+ pushDraft();const chain=(draft.chain||[]).slice(),id=nextQuickContactId();
  const result=kind==="kill"?"KILL":kind==="error"?"ERROR":"CONTINUE";
  if(["kill","error","continue"].includes(kind)){const last=chain.at(-1);if(last&&last.side==="EVV"&&last.type==="Attack"&&!last.result)chain[chain.length-1]={...last,result};else chain.push({side:"EVV",type:"Attack",player,result,id})}
  else if(kind==="a0")chain.push({side:"EVV",type:"Reception",player,quality:"A0",id});
@@ -830,7 +833,7 @@ function prepareNextSet(){
   st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";
   if(keepLib){st.liberoIds=clone(wizardLib.liberoIds);st.liberoAutoEnabled=wizardLib.liberoAutoEnabled;st.liberoPreferredId=wizardLib.liberoPreferredId||"";st.liberoPreferredMB=wizardLib.liberoPreferredMB||""}else{st.liberoAutoEnabled=false;st.liberoPreferredId="";st.liberoPreferredMB=""}
   st.receivePlans={};st.tacticPositions={};st.sixBoards={};
-  st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids),roles:clone(st.roles)};
+  st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids),roles:clone(st.roles)};syncLiberoRotation();
   draft={};clearDraftHistory();pendingMark=null;tab="rally";view="live";closeModal();render();toast(`Satz ${next} gestartet`);
  };
  $("nsRec").onclick=()=>go(false);$("nsSrv").onclick=()=>go(true);$("nsCancel").onclick=closeModal;

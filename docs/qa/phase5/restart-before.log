@@ -1,0 +1,35 @@
+✔ Transition: Rallyequote 2/3, Chancenverwertung 2/6, Killquote 1/6; keine Doppelzählung (155.81213ms)
+✔ Gegnerfehler: Annahme, Abwehr, zweiter Ball und Angriff getrennt von Block/Kill (51.461394ms)
+✔ Satzassistent lädt Libero vor der ersten Rallye auch im Schnellmodus (231.390361ms)
+✖ Neustart in Mehrfach-Transition: neue Kontakt-IDs kollidieren nicht mit gespeichertem Entwurf (65.962532ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 882.699624
+
+✖ failing tests:
+
+test at tests/matchday-regressions.test.cjs:17:1
+✖ Neustart in Mehrfach-Transition: neue Kontakt-IDs kollidieren nicht mit gespeichertem Entwurf (65.962532ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 2
+
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/matchday-regressions.test.cjs:18:321)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
