@@ -6,7 +6,7 @@ Basiscommit `f6b316b`, Entwicklungsbranch `dev/v8-qa-foundation`. App-Version bl
 
 | Prüfung | Ergebnis |
 |---|---|
-| Vor Korrektur: Rotation R1–R6, je sechs Umläufe/Sideouts | 6/6 bestanden |
+| Vor Korrektur: Rotation R1–R6, je sechs Sideouts (ein Umlauf) | 6/6 bestanden |
 | Vor Korrektur: vollständiger erster Node-Lauf | 14/16 bestanden; zwei nachgewiesene Fehler |
 | Nach Korrektur: Node-Unit-, Rotations- und Simulationstests | 17/17 bestanden, keine übersprungenen Tests |
 | Playwright Chromium, sechs Szenarien × sechs Startrotationen | 36/36 bestanden, keine übersprungenen Tests |
@@ -29,7 +29,7 @@ Nur diese drei Stellen in `app.js` wurden geändert. Keine Rotation, kein Speich
 
 ## 100 Testmatches
 
-100 Matches, 400 Sätze und 19.990 Rallyes wurden geprüft, darunter 50 Fünfsatzmatches. Ergebnisartefakt SHA256: `6a0ae5a7ae881f46e4e0ee01eaa871d5f7824205117d7181ca83ce53f4b7bd39`.
+100 Matches, 400 Sätze und 19.990 Rallyes wurden geprüft, darunter 50 Fünfsatzmatches. Ein zweiter Lauf erzeugte byteidentische Ergebnisse. Ergebnisartefakt SHA256: `6a0ae5a7ae881f46e4e0ee01eaa871d5f7824205117d7181ca83ce53f4b7bd39`.
 
 Seeds 1–100 mit festem uint32-LCG; verlängerte Einstandsphasen und explizite Satzsieger. Gerade Seeds erzwingen einen fünften Satz, ungerade Seeds drei Sätze. Unabhängig geprüft werden Siegerstrom, jeder Vor-/Nachstand, Aufschlag, Rotation, K1/K2, Satzende, drei Gewinnsätze, Archiv und Reset.
 
