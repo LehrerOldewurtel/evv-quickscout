@@ -1,5 +1,7 @@
 # Hybrid-Live-Entwicklung
 
+Dieser Bericht beschreibt PR #2. Der Folgeauftrag mit Taktikeditor und zuverlässiger Speicherung steht in [PHASE4_REPORT.md](PHASE4_REPORT.md).
+
 Branch: `dev/v8-hybrid-live`, auf PR #1 (`935905e`) aufgebaut. Separater, gestapelter PR gegen `dev/v8-qa-foundation`; kein Merge und keine Veröffentlichung. Die Produktversionskennung bleibt gemäß AGENTS.md 7.19.0, bis eine Release-Abnahme erfolgt.
 
 ## Versionshistorie

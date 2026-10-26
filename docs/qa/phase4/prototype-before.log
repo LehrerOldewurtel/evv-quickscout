@@ -1,0 +1,41 @@
+✔ Laufende Rallye überlebt Neustart, kein doppelter Punkt (223.139123ms)
+✔ Importvalidierung lehnt beschädigte Zustände vor Mutation ab (35.827204ms)
+✔ Unabhängige Sollwerte für Turnaround-Quoten und Beobachtungslücken (30.474ms)
+✔ Gespeicherte Formationen werden nach Rotation/Angriffsrichtung automatisch geladen (43.724608ms)
+✔ Sicheres Speichern: Quota-Fehler bewahrt letzte gültige Bytes und aktuellen Speicherzustand (44.853376ms)
+✔ Geometrie und unbekannte Speicherversion werden ohne Überschreiben abgewiesen (44.597936ms)
+✔ Taktik-Bibliothek bleibt bei neuem Spiel erhalten; Slot statt Spieler-ID (37.342535ms)
+✖ Gegnerdaten mit Prototype-Schlüsseln werden vor Anwendung blockiert (48.620574ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 885.115549
+
+✖ failing tests:
+
+test at tests/advanced.test.cjs:10:1
+✖ Gegnerdaten mit Prototype-Schlüsseln werden vor Anwendung blockiert (48.620574ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + '{"schemaVersion":2,"st":{"started":false,"set":1,"e":0,"o":0,"rot":1,"serving":true,"setEnded":false,"matchEnded":false,"lineup":["johann","michael","janik","jens","arthur","dirk"],"roles":{"johann":"Z","jens":"D","michael":"AA1","arthur":"AA2","janik":"MB1","dirk":"MB2"},"receiveIds":[],"receivePlans":{},"tacticPositions":{},"opponentPositions":{},"liberoIds":["amar","alex"],"liberoOnCourt":"","liberoReplacedId":"","liberoActive":false,"liberoAutoEnabled":true,"liberoPreferredId":"","liberoPreferredMB":"","rallies":[],"sets":[],"rallyUndo":[],"events":[],"marks":[],"setStart":null,"subPairs":{},"subCount":0,"subUsed":[],"sixBoards":{}},"opponent":{"name":"QA","setter":"#","liberos":[],"receivers":[]},"roster":[{"id":"johann","name":"Johann","role":"Z"},{"id":"michael","name":"Michael","role":"AA1"},{"id":"janik","name":"Janik","role":"MB1"},{"id":"jonas","name":"Jonas","role":"D"},{"id":"maksym","name":"Maxim","role":"AA2"},{"id":"dirk","name":"Dirk","role":"MB2"},{"id":"arthur","name":"Arthur","role":"AA"},{"id":"lion","name":"Lion","role":"AA"},{"id":"david","name":"David","role":"AA"},{"id":"reinhold","name":"Reinhold","role":"Z"},{"id":"felix","name":"Felix","role":"AA"},{"id":"jens","name":"Jens","role":"D/AA"},{"id":"amar","name":"Anmol","role":"L"},{"id":"alex","name":"Sascha","role":"L"}],"runtime":{"draft":{},"draftHistory":[],"pendingMark":null,"liveMode":"detail","tab":"rally","view":"live"}}'
+  - '{"schemaVersion":2,"st":{"started":false,"set":1,"e":0,"o":0,"rot":1,"serving":true,"setEnded":false,"matchEnded":false,"lineup":["johann","michael","janik","jens","arthur","dirk"],"roles":{"johann":"Z","jens":"D","michael":"AA1","arthur":"AA2","janik":"MB1","dirk":"MB2"},"receiveIds":[],"receivePlans":{},"tacticPositions":{},"opponentPositions":{},"liberoIds":["amar","alex"],"liberoOnCourt":"","liberoReplacedId":"","liberoActive":false,"liberoAutoEnabled":true,"liberoPreferredId":"","liberoPreferredMB":"","rallies":[],"sets":[],"rallyUndo":[],"events":[],"marks":[],"setStart":null,"subPairs":{},"subCount":0,"subUsed":[]},"opponent":{"name":"QA","receivers":[],"liberos":[],"__proto__":{"bad":true}}}'
+
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/advanced.test.cjs:10:288)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '{"schemaVersion":2,"st":{"started":false,"set":1,"e":0,"o":0,"rot":1,"serving":true,"setEnded":false,"matchEnded":false,"lineup":["johann","michael","janik","jens","arthur","dirk"],"roles":{"johann":"Z","jens":"D","michael":"AA1","arthur":"AA2","janik":"MB1","dirk":"MB2"},"receiveIds":[],"receivePlans":{},"tacticPositions":{},"opponentPositions":{},"liberoIds":["amar","alex"],"liberoOnCourt":"","liberoReplacedId":"","liberoActive":false,"liberoAutoEnabled":true,"liberoPreferredId":"","liberoPreferredMB":"","rallies":[],"sets":[],"rallyUndo":[],"events":[],"marks":[],"setStart":null,"subPairs":{},"subCount":0,"subUsed":[],"sixBoards":{}},"opponent":{"name":"QA","setter":"#","liberos":[],"receivers":[]},"roster":[{"id":"johann","name":"Johann","role":"Z"},{"id":"michael","name":"Michael","role":"AA1"},{"id":"janik","name":"Janik","role":"MB1"},{"id":"jonas","name":"Jonas","role":"D"},{"id":"maksym","name":"Maxim","role":"AA2"},{"id":"dirk","name":"Dirk","role":"MB2"},{"id":"arthur","name":"Arthur","role":"AA"},{"id":"lion","name":"Lion","role":"AA"},{"id":"david","name":"David","role":"AA"},{"id":"reinhold","name":"Reinhold","role":"Z"},{"id":"felix","name":"Felix","role":"AA"},{"id":"jens","name":"Jens","role":"D/AA"},{"id":"amar","name":"Anmol","role":"L"},{"id":"alex","name":"Sascha","role":"L"}],"runtime":{"draft":{},"draftHistory":[],"pendingMark":null,"liveMode":"detail","tab":"rally","view":"live"}}',
+    expected: '{"schemaVersion":2,"st":{"started":false,"set":1,"e":0,"o":0,"rot":1,"serving":true,"setEnded":false,"matchEnded":false,"lineup":["johann","michael","janik","jens","arthur","dirk"],"roles":{"johann":"Z","jens":"D","michael":"AA1","arthur":"AA2","janik":"MB1","dirk":"MB2"},"receiveIds":[],"receivePlans":{},"tacticPositions":{},"opponentPositions":{},"liberoIds":["amar","alex"],"liberoOnCourt":"","liberoReplacedId":"","liberoActive":false,"liberoAutoEnabled":true,"liberoPreferredId":"","liberoPreferredMB":"","rallies":[],"sets":[],"rallyUndo":[],"events":[],"marks":[],"setStart":null,"subPairs":{},"subCount":0,"subUsed":[]},"opponent":{"name":"QA","receivers":[],"liberos":[],"__proto__":{"bad":true}}}',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
