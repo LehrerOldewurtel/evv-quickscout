@@ -14,7 +14,7 @@ Basiscommit `f6b316b`, Entwicklungsbranch `dev/v8-qa-foundation`. App-Version bl
 | Installation aus Lockfile (`npm ci --ignore-scripts`) | erfolgreich |
 | `node --check app.js`, `compact.js`, `sw.js`; `git diff --check` | erfolgreich |
 | `npm audit --omit=optional` | 0 gemeldete Schwachstellen zum Prüfzeitpunkt |
-| GitHub Actions in GitHub | noch nicht ausgeführt; Workflow hinzugefügt |
+| GitHub Actions in GitHub | Ergebnis nicht abgefragt; Workflow hinzugefügt |
 
 Laufzeit: Node 24.19.0, npm 11.9.0, Python 3.12.14, Chromium 154.0.8037.57, Playwright 1.56.1. System-Chromium wurde erfolgreich verwendet; echte Safari-/iPad-Abdeckung folgt daraus nicht.
 
@@ -58,6 +58,6 @@ Unnötiger Schritt: Nach Auswahl von Zuspielweg/Spieler erscheint noch eine Angr
 4. Importdaten werden nur teilweise strukturell validiert. Fehlformatierte oder manipulierte Backups, Migrationsfälle und Quota-Fehler benötigen eigene Sicherheits-/Datenerhaltungstests.
 5. Vollständige DVV-/FIVB-Sonderwechselregeln, alle freien Aufstellungen und unabhängige Spielerstatistiken sind nicht vollständig geprüft. Die Rotationstests verwenden die dokumentierte Standardsechs.
 6. Die redundant angebotene Angreiferbestätigung bleibt als belegtes Bedienproblem dokumentiert.
-7. GitHub-API-Aufruf über `gh api` wurde mit `Forbidden` blockiert. `api.github.com` ist im gespeicherten Umgebungsentwurf ergänzt; die Freischaltung muss in den Umgebungseinstellungen übernommen werden. Ein gespeicherter Entwurf aktiviert die laufende Netzwerkkonfiguration nicht.
+7. Der erste REST-Aufruf über `gh api` meldete `Forbidden`. Push und anschließende PR-Erstellung mit `gh pr create` waren erfolgreich: https://github.com/LehrerOldewurtel/evv-quickscout/pull/1. Für diesen PR besteht damit kein offener Zugriffsblocker. Installations-/Startanweisungen und `api.github.com` sind im Umgebungsentwurf gespeichert; Veröffentlichung der Umgebung bleibt ein separater Schritt.
 
 Produktionsdaten wurden weder geladen noch verändert; Browserfälle verwenden frische Kontexte und ausschließlich synthetische Matches. Kein Merge und kein Deployment durchgeführt.
