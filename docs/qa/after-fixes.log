@@ -1,0 +1,34 @@
+
+> evv-quickscout@8.0.0-dev test
+> node --test tests/rotations.test.cjs tests/unit.test.cjs tests/simulation.test.cjs
+
+✔ R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (167.423186ms)
+✔ R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (62.327869ms)
+✔ R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (33.194337ms)
+✔ R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (31.442582ms)
+✔ R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (32.17755ms)
+✔ R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (29.476385ms)
+✔ 100 reproduzierbare vollständige Matches, unabhängige Prüfung jedes Punktes (33985.650038ms)
+✔ Satzgrenzen: 25/15, zwei Punkte Abstand (148.866098ms)
+✔ Rotationen und erlaubte Angreifer in allen sechs Aufstellungen (51.939839ms)
+✔ Sideout rotiert einmal; eigener Punkt und eigener Fehler nicht (40.172803ms)
+✔ Ungültiger Sieger und beendeter Satz verändern keine Rallyes (41.644613ms)
+✔ Wechsel/Rückwechsel, Paarbindung und Wiederverwendung (47.107376ms)
+✔ Registrierter Libero darf nicht regulär eingewechselt werden (25.562716ms)
+✔ A0 beendet unmittelbar mit Gegnerpunkt (23.842199ms)
+✔ D0 beider Teams beendet die Rallye unmittelbar (34.894065ms)
+✔ Markierter Punkt und Undo sind atomar (25.621827ms)
+✔ Undo und explizites Speichern enthalten den aktuellen Spielstand (20.724022ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 34436.444382
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

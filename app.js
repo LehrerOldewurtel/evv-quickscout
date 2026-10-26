@@ -19,9 +19,10 @@ function roleForPosition(pos){const id=st.lineup[pos-1];return id?roleOf(id):""}
 const byId=id=>roster.find(p=>p.id===id), nm=id=>(byId(id)||{name:id}).name;
 let opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};
 let tab="rally",view="live",draft={},draftHistory=[],pendingMark=null;
+let storageLoadFailed=false;
 let st=fresh();
 function fresh(){return{started:false,set:1,e:0,o:0,rot:1,serving:true,setEnded:false,matchEnded:false,
-lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},opponentPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,liberoPreferredId:"",liberoPreferredMB:"",
+lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},opponentPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,liberoAutoEnabled:true,liberoPreferredId:"",liberoPreferredMB:"",
 rallies:[],sets:[],rallyUndo:[],events:[],marks:[],setStart:null,subPairs:{},subCount:0,subUsed:[]}}
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function toast(s){$("toast").textContent=s;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),1100)}
@@ -32,7 +33,7 @@ function target(set=st.set){return set===5?15:25}
 function isSetWin(e=st.e,o=st.o,set=st.set){return (e>=target(set)||o>=target(set))&&Math.abs(e-o)>=2}
 function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).length;if(st.setEnded&&(team==="EVV"?st.e>st.o:st.o>st.e))w++;return w}
 function checkEnd(){st.setEnded=isSetWin();st.matchEnded=false;if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=setWins(w)>=3}}
-function snapshot(){return clone({coachNotes:st.coachNotes,e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,sixBoards:st.sixBoards,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB})}
+function snapshot(){return clone({coachNotes:st.coachNotes,e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,sixBoards:st.sixBoards,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive,liberoAutoEnabled:st.liberoAutoEnabled,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB})}
 function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
 function sanitizeLiberoName(v){return String(v||"").trim().slice(0,45)}
@@ -60,8 +61,16 @@ function setupLiberoSelectors(){
 }
 function readLiberoNames(){return [1,2].map(i=>$("evvLiberoName"+i)?.value??(st.liberoIds[i-1]&&["amar","alex"].includes(st.liberoIds[i-1])?nm(st.liberoIds[i-1]):""))}
 function applyLiberoNames(){const ids=liberoSlotIds();if(!configureLiberoSlots(ids,readLiberoNames()))return false;setupLiberoSelectors();return true}
-function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent,roster}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
-function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.sixBoards=st.sixBoards||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
+function saveLocal(){if(storageLoadFailed)return;try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent,roster}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
+// Preserve an explicit "no libero" choice when loading pre-flag matches.
+function loadedMatch(match){
+ const result=Object.assign(fresh(),match);
+ result.sixBoards=result.sixBoards||{};
+ if(!Object.prototype.hasOwnProperty.call(match,"liberoAutoEnabled")&&match.started)
+  result.liberoAutoEnabled=!!(match.liberoOnCourt||match.liberoPreferredId||match.liberoActive);
+ return result;
+}
+function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=loadedMatch(d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.sixBoards=st.sixBoards||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}throw Error("Kein Spielstand")}catch(e){storageLoadFailed=true;toast("Spielstand nicht lesbar. Gespeicherte Daten bleiben unverändert; bitte vor einem Neustart sichern.")}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
 // Team configuration: libero never serves. The original middle blocker serves in P1.
 // A registered libero can return when the same middle blocker enters the back row.
@@ -71,6 +80,7 @@ function liberoReplacementEligible(id){
 // A registered libero replaces one nominated MB or outside hitter in the back row.
 // The nominated player remains in the rotation and returns on the front row or to serve.
 function syncLiberoRotation(){
+ if(st.liberoAutoEnabled===false){st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";return}
  // K1: replace whichever of the two middle blockers is currently in the back row.
  // On our serve at P1 the original MB serves; no libero serves in this configuration.
  const libero=st.liberoPreferredId||st.liberoOnCourt||st.liberoIds[0]||"";
@@ -276,9 +286,9 @@ function action(s){
  else if(a[0]==="ebc"){draft.blocker=a[1];draft.step="evvBlockResult";render()}
  else if(a[0]==="ebr"){if(a[1]==="TOOLED"){draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"TOOLED"});return commit("Gegner",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK_OUT",blocker:draft.blocker}))}
  else if(a[1]==="POINT"){draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"BLOCK"});return commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:draft.blocker}))}draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"TOUCH"});if(a[1]==="EVV"){draft.step="evvDefense";tab="rally"}else{draft.step="oppDefense";tab="opponent"}render()}
- else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});draft.step="evvBall2";render()}
+ else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});if(a[2]==="D0")return commit("Gegner",Object.assign({},draft,{event:"Defense",result:"DIRECT_ERROR"}));draft.step="evvBall2";render()}
  else if(a[0]==="blk"){if(!front().includes(a[1]))return toast("Blocker steht nicht in der Vorderreihe");draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:a[1],result:"BLOCK"});commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:a[1]}))}
- else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});draft.step="oppBall2";render()}
+ else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});if(a[1]==="D0")return commit("EVV",Object.assign({},draft,{event:"OpponentDefense",result:"DIRECT_ERROR"}));draft.step="oppBall2";render()}
 }
 function rally(){
  if(!st.started)return $("flow").innerHTML="<h2>Bereit</h2><p>Spiel einrichten und starten.</p>";
@@ -434,7 +444,7 @@ function liberoPlanner(){
   if(m&&![1,5,6].includes(courtPos(m)))return toast('Ersatzspieler muss hinten stehen');
   if(m&&courtPos(m)===1&&st.serving)return toast('P1: regulärer Spieler schlägt selbst auf');
   if(!configureLiberoSlots(ids,['','']))return;
-  st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};saveLocal();closeModal();render();toast(l?nm(l)+' als Libero übernommen':'Libero-Einsatz beendet');
+  st.liberoAutoEnabled=!!l;st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};saveLocal();closeModal();render();toast(l?nm(l)+' als Libero übernommen':'Libero-Einsatz beendet');
  };
 }
 
@@ -608,7 +618,7 @@ function courtPicker(){nineZonePicker("KILL",pendingMark)}
 // A substitute is tied to the original starter and can enter only once per set.
 function validateSub(out,inn){
  if(!st.started||st.setEnded||view!=="live"||draft.step)return "Wechsel nur zwischen Rallyes im laufenden Satz";
- if(!st.lineup.includes(out)||st.lineup.includes(inn)||!byId(inn)||byId(inn).role==="L")return "Spieler nicht verfügbar";
+ if(!st.lineup.includes(out)||st.lineup.includes(inn)||!byId(inn)||byId(inn).role==="L"||st.liberoIds.includes(inn))return "Spieler nicht verfügbar";
  if(st.subCount>=6)return "Sechs reguläre Wechsel erreicht";
  const starters=(st.setStart&&st.setStart.lineup)||st.lineup;
  const pairs=st.subPairs||{},used=st.subUsed||[];
@@ -663,14 +673,14 @@ function importData(){
  const data=JSON.parse(await file.text());
  if(data.schema!=="EVV-QuickScout-1"||!data.match||!Array.isArray(data.match.lineup)||data.match.lineup.length!==6||!Array.isArray(data.match.rallies)||!Array.isArray(data.match.sets)||!data.opponent||typeof data.opponent.name!=="string")throw Error("Kein gültiges QuickScout-Backup");
  if(!confirm("Aktuellen Spielstand durch Backup ersetzen? Bitte vorher exportieren."))return;
- st=Object.assign(fresh(),data.match);opponent=Object.assign({name:"Gegner",setter:"#",liberos:["#","#"],receivers:[]},data.opponent);if(Array.isArray(data.roster)){for(const saved of data.roster){const player=byId(saved.id);if(player&&saved.role==="L")player.name=sanitizeLiberoName(saved.name)||player.name}}
+ storageLoadFailed=false;st=loadedMatch(data.match);opponent=Object.assign({name:"Gegner",setter:"#",liberos:["#","#"],receivers:[]},data.opponent);if(Array.isArray(data.roster)){for(const saved of data.roster){const player=byId(saved.id);if(player&&saved.role==="L")player.name=sanitizeLiberoName(saved.name)||player.name}}
  st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};draft={};clearDraftHistory();view="live";tab="rally";saveLocal();setupUI();$("setup").classList.toggle("hidden",!!st.started);render();toast("Backup importiert");
  }catch(e){toast("Import fehlgeschlagen: "+e.message)}};input.click();
 }
 function newMatch(){
  modal(`<h2>Neues Spiel beginnen</h2><p>Der aktuelle Spielstand wird durch ein neues Spiel ersetzt. Exportiere ihn vorher als JSON, damit keine Daten verloren gehen.</p><div class="grid2"><button id="nmExport">Backup exportieren</button><button id="nmCancel">Abbrechen</button></div><button id="nmConfirm" class="danger">Neues Spiel ohne Übernahme starten</button>`);
  $("nmExport").onclick=exportData;$("nmCancel").onclick=closeModal;
- $("nmConfirm").onclick=()=>{st=fresh();opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};draft={};draftHistory=[];pendingMark=null;tab="rally";view="live";closeModal();$("setup").classList.remove("hidden");setupUI();$("oppName").value="Gegner";["oppSetter","oppLibero1","oppLibero2","oppR1","oppR2","oppR3","oppR4"].forEach(id=>{if($(id))$(id).value=""});render();toast("Neues Spiel einrichten")};
+ $("nmConfirm").onclick=()=>{storageLoadFailed=false;st=fresh();opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};draft={};draftHistory=[];pendingMark=null;tab="rally";view="live";closeModal();$("setup").classList.remove("hidden");setupUI();$("oppName").value="Gegner";["oppSetter","oppLibero1","oppLibero2","oppR1","oppR2","oppR3","oppR4"].forEach(id=>{if($(id))$(id).value=""});render();toast("Neues Spiel einrichten")};
 }
 function exportData(){
  const payload={schema:"EVV-QuickScout-1",version:APP_VERSION,exportedAt:new Date().toISOString(),opponent,match:st,roster};
@@ -692,7 +702,7 @@ function render(){
 }
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
-function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;render();toast("Letzte Rally vollständig zurückgesetzt")}
+function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;closeModal();render();toast("Letzte Rally vollständig zurückgesetzt")}
 $("undo").onclick=undoLast;$("newMatch").onclick=newMatch;
 $("exportData").onclick=exportData;$("importData").onclick=importData;$("printReport").onclick=printReport;$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{
  if(!st.started||view!=="live")return toast("Auszeit nur im laufenden Satz");
@@ -735,10 +745,11 @@ function voiceConfirm(cmd){
  $("voiceYes").onclick=()=>{closeModal();executeVoice(cmd);voicePending=null;stopVoiceRecognition()};
 }
 function executeVoice(c){
- if(c.type==="undo"){let x=st.rallyUndo.pop();if(x){restore(x);draft={};render();toast("Sprach-UNDO")}else toast("Kein Undo verfügbar");return}
+ if(view!=="live")return toast("Sprachaktionen nur LIVE");
+ if(c.type==="undo"){undoLast();return}
  if(c.type==="quick"){commit(c.winner,{event:"VoiceQuick",voice:c.raw});return}
  if(c.type==="serve"){if(c.result==="ACE"){nineZonePicker("ACE",{w:"EVV",data:{event:"Serve",serve:"ACE",voice:c.raw}})}else commit("Gegner",{event:"Serve",serve:"ERROR",voice:c.raw});return}
- if(c.type==="reception"){if(!receivers().includes(c.player))return toast(`${nm(c.player)} ist nicht in der aktuellen Annahme`); if(c.q==="A0")commit("Gegner",{event:"Reception",receiver:c.player,reception:c.q,voice:c.raw,result:"DIRECT_ERROR",chain:[{side:"EVV",type:"Reception",player:c.player,quality:"A0"}]});else{draft={step:2,receiver:c.player,reception:c.q,voice:c.raw};tab="rally";render();toast("Annahme gespeichert · Angriff weiter per Tap/Sprache")};return}
+ if(c.type==="reception"){if(!receivers().includes(c.player))return toast(`${nm(c.player)} ist nicht in der aktuellen Annahme`); if(c.q==="A0")commit("Gegner",{event:"Reception",receiver:c.player,reception:c.q,voice:c.raw,result:"DIRECT_ERROR",chain:[{side:"EVV",type:"Reception",player:c.player,quality:"A0"}]});else{pushDraft();draft={step:"evvBall2",phase:"K1",receiver:c.player,reception:c.q,voice:c.raw,chain:[{side:"EVV",type:"Reception",player:c.player,quality:c.q}]};tab="rally";render();toast("Annahme gespeichert · Angriff weiter per Tap/Sprache")};return}
  if(c.type==="kill"){if(!attackers().includes(c.player))return toast(`${nm(c.player)} ist aktuell kein Angreifer`);pendingMark={w:"EVV",data:{event:"Attack",attacker:c.player,zone:c.zone,result:"KILL",voice:c.raw}};courtPicker();return}
  if(c.type==="block"){if(!front().includes(c.player))return toast(`${nm(c.player)} ist aktuell nicht Vorderreihe`);commit("EVV",{event:"Block",player:c.player,result:"BLOCK",voice:c.raw});return}
  if(c.type==="sub"){applySub(c.out,c.inn,c.raw);return}

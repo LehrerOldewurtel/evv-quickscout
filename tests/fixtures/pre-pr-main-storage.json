@@ -1,0 +1,752 @@
+{
+  "provenance": {
+    "commit": "f6b316bfbbcf30d4758fc954ef006bff59a1fc9e",
+    "version": "7.19.0-k1-auto-mb",
+    "appSha256": "74906171587d585bb054fc4772017d6d3ec621613632aa7c8f46df84c2629063",
+    "synthetic": true
+  },
+  "payload": {
+    "st": {
+      "started": true,
+      "set": 2,
+      "e": 2,
+      "o": 1,
+      "rot": 3,
+      "serving": false,
+      "setEnded": false,
+      "matchEnded": false,
+      "lineup": [
+        "johann",
+        "lion",
+        "janik",
+        "jens",
+        "arthur",
+        "dirk"
+      ],
+      "roles": {
+        "johann": "Z",
+        "janik": "MB1",
+        "jens": "D",
+        "arthur": "AA2",
+        "dirk": "MB2",
+        "lion": "AA1"
+      },
+      "receiveIds": [],
+      "receivePlans": {},
+      "tacticPositions": {},
+      "opponentPositions": {},
+      "liberoIds": [
+        "amar",
+        "alex"
+      ],
+      "liberoOnCourt": "amar",
+      "liberoReplacedId": "dirk",
+      "liberoActive": true,
+      "liberoPreferredId": "",
+      "liberoPreferredMB": "",
+      "rallies": [
+        {
+          "event": "Quick",
+          "winner": "EVV",
+          "before": "0:0",
+          "after": "1:0",
+          "rotation": 2,
+          "servingBefore": false,
+          "phase": "K1",
+          "set": 2
+        },
+        {
+          "event": "Serve",
+          "serve": "ACE",
+          "server": "lion",
+          "phase": "K2",
+          "chain": [
+            {
+              "side": "EVV",
+              "type": "Serve",
+              "player": "lion",
+              "result": "ACE"
+            }
+          ],
+          "targetZone": 5,
+          "court": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "winner": "EVV",
+          "before": "1:0",
+          "after": "2:0",
+          "rotation": 3,
+          "servingBefore": true,
+          "set": 2
+        },
+        {
+          "event": "Serve",
+          "serve": "ERROR",
+          "server": "lion",
+          "phase": "K2",
+          "chain": [
+            {
+              "side": "EVV",
+              "type": "Serve",
+              "player": "lion",
+              "result": "ERROR"
+            }
+          ],
+          "winner": "Gegner",
+          "before": "2:0",
+          "after": "2:1",
+          "rotation": 3,
+          "servingBefore": true,
+          "set": 2
+        }
+      ],
+      "sets": [
+        {
+          "set": 1,
+          "e": 25,
+          "o": 0,
+          "rallies": [
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "0:0",
+              "after": "1:0",
+              "rotation": 5,
+              "servingBefore": false,
+              "phase": "K1",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "1:0",
+              "after": "2:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "2:0",
+              "after": "3:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "3:0",
+              "after": "4:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "4:0",
+              "after": "5:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "5:0",
+              "after": "6:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "6:0",
+              "after": "7:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "7:0",
+              "after": "8:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "8:0",
+              "after": "9:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "9:0",
+              "after": "10:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "10:0",
+              "after": "11:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "11:0",
+              "after": "12:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "12:0",
+              "after": "13:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "13:0",
+              "after": "14:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "14:0",
+              "after": "15:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "15:0",
+              "after": "16:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "16:0",
+              "after": "17:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "17:0",
+              "after": "18:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "18:0",
+              "after": "19:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "19:0",
+              "after": "20:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "20:0",
+              "after": "21:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "21:0",
+              "after": "22:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "22:0",
+              "after": "23:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "23:0",
+              "after": "24:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            },
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "24:0",
+              "after": "25:0",
+              "rotation": 6,
+              "servingBefore": true,
+              "phase": "K2",
+              "set": 1
+            }
+          ],
+          "marks": [],
+          "start": {
+            "rot": 5,
+            "serving": false,
+            "lineup": [
+              "johann",
+              "michael",
+              "janik",
+              "jens",
+              "arthur",
+              "dirk"
+            ],
+            "roles": {
+              "johann": "Z",
+              "michael": "AA1",
+              "janik": "MB1",
+              "jens": "D",
+              "arthur": "AA2",
+              "dirk": "MB2"
+            }
+          },
+          "lineup": [
+            "johann",
+            "michael",
+            "janik",
+            "jens",
+            "arthur",
+            "dirk"
+          ],
+          "roles": {
+            "johann": "Z",
+            "michael": "AA1",
+            "janik": "MB1",
+            "jens": "D",
+            "arthur": "AA2",
+            "dirk": "MB2"
+          },
+          "events": []
+        }
+      ],
+      "rallyUndo": [
+        {
+          "e": 0,
+          "o": 0,
+          "rot": 2,
+          "serving": false,
+          "setEnded": false,
+          "matchEnded": false,
+          "rallies": [],
+          "marks": [],
+          "events": [
+            {
+              "type": "sub",
+              "set": 2,
+              "out": "michael",
+              "inn": "lion",
+              "score": "0:0",
+              "pos": 2,
+              "return": false
+            }
+          ],
+          "subPairs": {
+            "lion": "michael"
+          },
+          "subCount": 1,
+          "subUsed": [],
+          "lineup": [
+            "johann",
+            "lion",
+            "janik",
+            "jens",
+            "arthur",
+            "dirk"
+          ],
+          "roles": {
+            "johann": "Z",
+            "janik": "MB1",
+            "jens": "D",
+            "arthur": "AA2",
+            "dirk": "MB2",
+            "lion": "AA1"
+          },
+          "receiveIds": [],
+          "receivePlans": {},
+          "tacticPositions": {},
+          "opponentPositions": {},
+          "sixBoards": {},
+          "liberoOnCourt": "amar",
+          "liberoReplacedId": "dirk",
+          "liberoActive": true,
+          "liberoPreferredId": "",
+          "liberoPreferredMB": ""
+        },
+        {
+          "e": 1,
+          "o": 0,
+          "rot": 3,
+          "serving": true,
+          "setEnded": false,
+          "matchEnded": false,
+          "rallies": [
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "0:0",
+              "after": "1:0",
+              "rotation": 2,
+              "servingBefore": false,
+              "phase": "K1",
+              "set": 2
+            }
+          ],
+          "marks": [],
+          "events": [
+            {
+              "type": "sub",
+              "set": 2,
+              "out": "michael",
+              "inn": "lion",
+              "score": "0:0",
+              "pos": 2,
+              "return": false
+            }
+          ],
+          "subPairs": {
+            "lion": "michael"
+          },
+          "subCount": 1,
+          "subUsed": [],
+          "lineup": [
+            "johann",
+            "lion",
+            "janik",
+            "jens",
+            "arthur",
+            "dirk"
+          ],
+          "roles": {
+            "johann": "Z",
+            "janik": "MB1",
+            "jens": "D",
+            "arthur": "AA2",
+            "dirk": "MB2",
+            "lion": "AA1"
+          },
+          "receiveIds": [],
+          "receivePlans": {},
+          "tacticPositions": {},
+          "opponentPositions": {},
+          "sixBoards": {},
+          "liberoOnCourt": "amar",
+          "liberoReplacedId": "dirk",
+          "liberoActive": true,
+          "liberoPreferredId": "",
+          "liberoPreferredMB": ""
+        },
+        {
+          "e": 2,
+          "o": 0,
+          "rot": 3,
+          "serving": true,
+          "setEnded": false,
+          "matchEnded": false,
+          "rallies": [
+            {
+              "event": "Quick",
+              "winner": "EVV",
+              "before": "0:0",
+              "after": "1:0",
+              "rotation": 2,
+              "servingBefore": false,
+              "phase": "K1",
+              "set": 2
+            },
+            {
+              "event": "Serve",
+              "serve": "ACE",
+              "server": "lion",
+              "phase": "K2",
+              "chain": [
+                {
+                  "side": "EVV",
+                  "type": "Serve",
+                  "player": "lion",
+                  "result": "ACE"
+                }
+              ],
+              "targetZone": 5,
+              "court": {
+                "x": 0.5,
+                "y": 0.5
+              },
+              "winner": "EVV",
+              "before": "1:0",
+              "after": "2:0",
+              "rotation": 3,
+              "servingBefore": true,
+              "set": 2
+            }
+          ],
+          "marks": [
+            {
+              "x": 0.5,
+              "y": 0.5,
+              "zone": 5,
+              "set": 2,
+              "player": "lion",
+              "side": "EVV",
+              "kind": "ACE"
+            }
+          ],
+          "events": [
+            {
+              "type": "sub",
+              "set": 2,
+              "out": "michael",
+              "inn": "lion",
+              "score": "0:0",
+              "pos": 2,
+              "return": false
+            }
+          ],
+          "subPairs": {
+            "lion": "michael"
+          },
+          "subCount": 1,
+          "subUsed": [],
+          "lineup": [
+            "johann",
+            "lion",
+            "janik",
+            "jens",
+            "arthur",
+            "dirk"
+          ],
+          "roles": {
+            "johann": "Z",
+            "janik": "MB1",
+            "jens": "D",
+            "arthur": "AA2",
+            "dirk": "MB2",
+            "lion": "AA1"
+          },
+          "receiveIds": [],
+          "receivePlans": {},
+          "tacticPositions": {},
+          "opponentPositions": {},
+          "sixBoards": {},
+          "liberoOnCourt": "amar",
+          "liberoReplacedId": "dirk",
+          "liberoActive": true,
+          "liberoPreferredId": "",
+          "liberoPreferredMB": ""
+        }
+      ],
+      "events": [
+        {
+          "type": "sub",
+          "set": 2,
+          "out": "michael",
+          "inn": "lion",
+          "score": "0:0",
+          "pos": 2,
+          "return": false
+        }
+      ],
+      "marks": [
+        {
+          "x": 0.5,
+          "y": 0.5,
+          "zone": 5,
+          "set": 2,
+          "player": "lion",
+          "side": "EVV",
+          "kind": "ACE"
+        }
+      ],
+      "setStart": {
+        "rot": 2,
+        "serving": false,
+        "lineup": [
+          "johann",
+          "michael",
+          "janik",
+          "jens",
+          "arthur",
+          "dirk"
+        ],
+        "roles": {
+          "johann": "Z",
+          "michael": "AA1",
+          "janik": "MB1",
+          "jens": "D",
+          "arthur": "AA2",
+          "dirk": "MB2"
+        }
+      },
+      "subPairs": {
+        "lion": "michael"
+      },
+      "subCount": 1,
+      "subUsed": [],
+      "sixBoards": {}
+    },
+    "opponent": {
+      "name": "QA SYNTHETISCH",
+      "setter": "#?",
+      "liberos": [
+        "#?",
+        "#?"
+      ],
+      "receivers": [
+        "#21",
+        "#22",
+        "#23",
+        "#24"
+      ]
+    },
+    "roster": [
+      {
+        "id": "johann",
+        "name": "Johann",
+        "role": "Z"
+      },
+      {
+        "id": "michael",
+        "name": "Michael",
+        "role": "AA1"
+      },
+      {
+        "id": "janik",
+        "name": "Janik",
+        "role": "MB1"
+      },
+      {
+        "id": "jonas",
+        "name": "Jonas",
+        "role": "D"
+      },
+      {
+        "id": "maksym",
+        "name": "Maxim",
+        "role": "AA2"
+      },
+      {
+        "id": "dirk",
+        "name": "Dirk",
+        "role": "MB2"
+      },
+      {
+        "id": "arthur",
+        "name": "Arthur",
+        "role": "AA"
+      },
+      {
+        "id": "lion",
+        "name": "Lion",
+        "role": "AA"
+      },
+      {
+        "id": "david",
+        "name": "David",
+        "role": "AA"
+      },
+      {
+        "id": "reinhold",
+        "name": "Reinhold",
+        "role": "Z"
+      },
+      {
+        "id": "felix",
+        "name": "Felix",
+        "role": "AA"
+      },
+      {
+        "id": "jens",
+        "name": "Jens",
+        "role": "D/AA"
+      },
+      {
+        "id": "amar",
+        "name": "Anmol",
+        "role": "L"
+      },
+      {
+        "id": "alex",
+        "name": "Sascha",
+        "role": "L"
+      }
+    ]
+  }
+}
