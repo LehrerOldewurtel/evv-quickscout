@@ -1,0 +1,22 @@
+{
+  "stats": {
+    "startTime": "2026-10-26T13:09:39.141Z",
+    "duration": 2620.737,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "Best\u00e4tigte Sprachannahme und READ-ONLY-Sprache (Speech-API simuliert)",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

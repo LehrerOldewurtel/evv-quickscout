@@ -22,12 +22,13 @@ test('Libero aus und wieder ein: UI und Reload',async({page})=>{
  expect((await state(page)).liberoActive).toBe(false);await page.reload();expect((await state(page)).liberoActive).toBe(false);
  await page.locator('[data-act="liberoPlanner"]').tap();await page.locator('#lpLib').selectOption('amar');await page.locator('#lpMB').selectOption('dirk');await page.locator('#lpSave').tap();expect((await state(page)).liberoActive).toBe(true);
 });
-test('Bestätigte Sprachannahme und READ-ONLY-Sprach-Undo (Speech-API simuliert)',async({page})=>{
+test('Bestätigte Sprachannahme und READ-ONLY-Sprache (Speech-API simuliert)',async({page})=>{
  await page.addInitScript(()=>{window.qaTranscript='Michael Annahme A3';window.SpeechRecognition=class{start(){setTimeout(()=>this.onresult?.({results:[[{transcript:window.qaTranscript}]]}),0)}abort(){}}});
  await page.goto('/');await page.locator('#startReceive').tap();await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();
  await expect(page.locator('#flow')).toContainText('EVV · 2. Ball');
  await page.evaluate(()=>{EVV_QS_TEST.action('quick|EVV');EVV_QS_TEST.setView(1);window.qaTranscript='Undo'});
  const before=await state(page);await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();expect(await state(page)).toEqual(before);
+ await page.evaluate(()=>window.qaTranscript='Punkt EVV');await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();expect(await state(page)).toEqual(before);
 });
 test('Undo ausstehender Zielzone entfernt den alten Dialog',async({page})=>{
  await page.goto('/');await page.locator('#startServe').tap();

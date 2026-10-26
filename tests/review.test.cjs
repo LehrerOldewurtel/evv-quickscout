@@ -50,3 +50,10 @@ for(const raw of ['{"st":', 'null'])test('Unlesbarer Speicher bleibt unveränder
  h.api.newMatch();h.w.document.getElementById('nmConfirm').click();assert.equal(JSON.parse(h.w.localStorage.getItem('evvQuickScoutV77')).st.started,false);
  }finally{h.close()}
 });
+
+check('Alle schreibenden Sprachaktionen respektieren READ-ONLY, nicht nur Undo',({api:a,qa,w})=>{
+ for(const command of [{type:'quick',winner:'EVV'},{type:'serve',result:'ERR'},{type:'serve',result:'ACE'},{type:'reception',player:'michael',q:'A3'},{type:'kill',player:'michael',zone:'IV'},{type:'block',player:'michael'}]){
+ qa.reset();a.setView(1);const before=plain(a.state());qa.executeVoice(command);
+ assert.deepEqual(plain(a.state()),before,command.type);assert.deepEqual(plain(a.getDraft()),{},command.type);assert(w.document.getElementById('modal').classList.contains('hidden'));
+ }
+});

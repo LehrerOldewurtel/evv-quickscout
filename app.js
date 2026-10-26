@@ -745,6 +745,7 @@ function voiceConfirm(cmd){
  $("voiceYes").onclick=()=>{closeModal();executeVoice(cmd);voicePending=null;stopVoiceRecognition()};
 }
 function executeVoice(c){
+ if(view!=="live")return toast("Sprachaktionen nur LIVE");
  if(c.type==="undo"){undoLast();return}
  if(c.type==="quick"){commit(c.winner,{event:"VoiceQuick",voice:c.raw});return}
  if(c.type==="serve"){if(c.result==="ACE"){nineZonePicker("ACE",{w:"EVV",data:{event:"Serve",serve:"ACE",voice:c.raw}})}else commit("Gegner",{event:"Serve",serve:"ERROR",voice:c.raw});return}

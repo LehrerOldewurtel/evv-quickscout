@@ -1,0 +1,114 @@
+✖ Alle schreibenden Sprachaktionen respektieren READ-ONLY, nicht nur Undo (162.103656ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 538.774067
+
+✖ failing tests:
+
+test at tests/review.test.cjs:5:25
+✖ Alle schreibenden Sprachaktionen respektieren READ-ONLY, nicht nur Undo (162.103656ms)
+  AssertionError [ERR_ASSERTION]: quick
+  + actual - expected
+  ... Skipped lines
+
+    {
+  +   e: 1,
+  -   e: 0,
+      events: [],
+      liberoActive: true,
+      liberoAutoEnabled: true,
+      liberoIds: [
+        'amar',
+  ...
+      opponentPositions: {},
+  +   rallies: [
+  +     {
+  +       after: '1:0',
+  +       before: '0:0',
+  +       event: 'VoiceQuick',
+  +       phase: 'K1',
+  +       rotation: 1,
+  +       servingBefore: false,
+  +       set: 1,
+  +       winner: 'EVV'
+  +     }
+  +   ],
+  +   rallyUndo: [
+  +     {
+  +       e: 0,
+  +       events: [],
+  +       liberoActive: true,
+  +       liberoAutoEnabled: true,
+  +       liberoOnCourt: 'amar',
+  +       liberoPreferredId: '',
+  +       liberoPreferredMB: '',
+  +       liberoReplacedId: 'dirk',
+  +       lineup: [
+  +         'johann',
+  +         'michael',
+  +         'janik',
+  +         'jens',
+  +         'arthur',
+  +         'dirk'
+  +       ],
+  +       marks: [],
+  +       matchEnded: false,
+  +       o: 0,
+  +       opponentPositions: {},
+  +       rallies: [],
+  +       receiveIds: [],
+  +       receivePlans: {},
+  +       roles: {
+  +         arthur: 'AA2',
+  +         dirk: 'MB2',
+  +         janik: 'MB1',
+  +         jens: 'D',
+  +         johann: 'Z',
+  +         michael: 'AA1'
+  +       },
+  +       rot: 1,
+  +       serving: false,
+  +       setEnded: false,
+  +       subCount: 0,
+  +       subPairs: {},
+  +       subUsed: [],
+  +       tacticPositions: {}
+  +     }
+  +   ],
+  -   rallies: [],
+  -   rallyUndo: [],
+      receiveIds: [],
+      receivePlans: {},
+      roles: {
+        arthur: 'AA2',
+        dirk: 'MB2',
+  ...
+      },
+  +   rot: 2,
+  +   serving: true,
+  -   rot: 1,
+  -   serving: false,
+      set: 1,
+      setEnded: false,
+      setStart: {
+        lineup: [
+          'johann',
+
+      at /workspace/evv-quickscout/tests/review.test.cjs:57:9
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/review.test.cjs:5:58)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { started: true, set: 1, e: 1, o: 0, rot: 2, serving: true, setEnded: false, matchEnded: false, lineup: [ 'johann', 'michael', 'janik', 'jens', 'arthur', 'dirk' ], roles: { johann: 'Z', jens: 'D', michael: 'AA1', arthur: 'AA2', janik: 'MB1', dirk: 'MB2' }, receiveIds: [], receivePlans: {}, tacticPositions: {}, opponentPositions: {}, liberoIds: [ 'amar', 'alex' ], liberoOnCourt: 'amar', liberoReplacedId: 'dirk', liberoActive: true, liberoAutoEnabled: true, liberoPreferredId: '', liberoPreferredMB: '', rallies: [ [Object] ], sets: [], rallyUndo: [ [Object] ], events: [], marks: [], setStart: { rot: 1, serving: false, lineup: [Array], roles: [Object] }, subPairs: {}, subCount: 0, subUsed: [] },
+    expected: { started: true, set: 1, e: 0, o: 0, rot: 1, serving: false, setEnded: false, matchEnded: false, lineup: [ 'johann', 'michael', 'janik', 'jens', 'arthur', 'dirk' ], roles: { johann: 'Z', jens: 'D', michael: 'AA1', arthur: 'AA2', janik: 'MB1', dirk: 'MB2' }, receiveIds: [], receivePlans: {}, tacticPositions: {}, opponentPositions: {}, liberoIds: [ 'amar', 'alex' ], liberoOnCourt: 'amar', liberoReplacedId: 'dirk', liberoActive: true, liberoAutoEnabled: true, liberoPreferredId: '', liberoPreferredMB: '', rallies: [], sets: [], rallyUndo: [], events: [], marks: [], setStart: { rot: 1, serving: false, lineup: [Array], roles: [Object] }, subPairs: {}, subCount: 0, subUsed: [] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
