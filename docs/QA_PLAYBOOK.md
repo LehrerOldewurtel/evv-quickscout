@@ -38,3 +38,7 @@ Siehe `PR1_REVIEW.md`: zusätzliche Upgrade-/Speicher-/Sprach-/Libero-Regression
 ## Hybrid-Entwicklung
 
 `tests/hybrid.test.cjs` ergänzt 100 deterministische vollständige Kontaktketten und unabhängige Sollzähler; `tests/e2e/hybrid.spec.cjs` misst sechs Erfassungsabläufe bei 390/820 px mit echten Touch-Taps. Ergebnisgrenzen und Vorbereitung der taktischen Formationen stehen in `HYBRID_IMPLEMENTATION.md`. `npm test` und `npm run test:e2e` enthalten sämtliche bisherigen und neuen Fälle.
+
+## Entwicklungsauftrag 4
+
+`tests/advanced.test.cjs` und `tests/e2e/advanced.spec.cjs` ergänzen Formationseditor, Satzassistent, Auswertung, Wiederherstellung, Offline, Import- und Quota-Fälle. Der Folge- und Freigabebericht steht in `PHASE4_REPORT.md`; aktuelle Rohbelege unter `docs/qa/phase4/`. Die 100 Kontaktketten prüfen jetzt zusätzlich die erweiterten Statistikwerte mit unabhängigen Sollzählern. Aktuelle Verhaltenstests und historische fragmentbasierte Skripte getrennt berichten.

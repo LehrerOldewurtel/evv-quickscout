@@ -14,6 +14,8 @@ test('100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontakt
  if(end===2)a.hybridAction('block',a.front()[0]);
  if(end===3)a.hybridAction('opponentError');
  const s=a.state(),r=s.rallies[0];assert.equal(s.rallies.length,1);assert.equal(r.turnaround.attacks,attacks);assert.equal(r.turnaround.transitions,transitions);assert.equal(r.winner,end===1?'Gegner':'EVV');
+ const analysis=a.turnaroundAnalysis([r]);assert.equal(analysis.kills,end===0?1:0);assert.equal(analysis.firstAttackKill,end===0&&attacks===1?1:0);assert.equal(analysis.killByTwo,end===0&&attacks<=2?1:0);assert.equal(analysis.killByThree,end===0&&attacks<=3?1:0);assert.equal(analysis.chances,transitions);assert.equal(analysis.transitionKills,end===0&&transitions>0?1:0);assert.equal(analysis.transitionPoints,end!==1&&transitions>0?1:0);assert.equal(analysis.chancesWithoutAttack,transitions>0&&[2,3].includes(end)?1:0);assert.equal(analysis.multipleTransitions,transitions>1?1:0);assert.equal(analysis.blockPoints,end===2?1:0);assert.equal(analysis.opponentErrors,end===3?1:0);
+
  results.push({seed,attacks,transitions,winner:r.winner,contacts:r.chain?.length||0});
  }require('fs').mkdirSync('artifacts',{recursive:true});require('fs').writeFileSync('artifacts/100-event-chains.json',JSON.stringify(results,null,2));}finally{h.close()}
 });

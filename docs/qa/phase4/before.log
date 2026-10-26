@@ -1,0 +1,33 @@
+✖ Laufende Rallye überlebt Neustart, kein doppelter Punkt (208.922936ms)
+✔ Importvalidierung lehnt beschädigte Zustände vor Mutation ab (39.874116ms)
+✖ Unabhängige Sollwerte für Turnaround-Quoten und Beobachtungslücken (38.893926ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 733.792298
+
+✖ failing tests:
+
+test at tests/advanced.test.cjs:2:1
+✖ Laufende Rallye überlebt Neustart, kein doppelter Punkt (208.922936ms)
+  TypeError: Cannot read properties of undefined (reading '0')
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/advanced.test.cjs:2:270)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests/advanced.test.cjs:4:1
+✖ Unabhängige Sollwerte für Turnaround-Quoten und Beobachtungslücken (38.893926ms)
+  TypeError: h.api.turnaroundAnalysis is not a function
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/advanced.test.cjs:4:538)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
