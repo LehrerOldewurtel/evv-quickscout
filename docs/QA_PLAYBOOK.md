@@ -34,3 +34,7 @@ Nicht von den Pflichtprüfungen abgedeckt: echtes iPad/Safari, Pencil, Mikrofon/
 ## Nachprüfung von PR #1
 
 Siehe `PR1_REVIEW.md`: zusätzliche Upgrade-/Speicher-/Sprach-/Libero-Regressionen in `tests/review.test.cjs` und `tests/e2e/review.spec.cjs`. Historische synthetische Fixtures sind eingecheckt und brauchen im normalen Testlauf weder Git-Historie noch Netz. Bei notwendiger Regeneration nur `node scripts/generate-upgrade-fixtures.cjs` ausführen (benötigt die beiden dokumentierten historischen Commits); die echten alten Apps laufen dabei isoliert in JSDOM. Keine produktiven Backups ersetzen. Die nächste Engine und die vollständige Hybrid-Abnahmematrix sind in `design/V8_HYBRID_TURNAROUND.md` spezifiziert, noch nicht implementiert.
+
+## Hybrid-Entwicklung
+
+`tests/hybrid.test.cjs` ergänzt 100 deterministische vollständige Kontaktketten und unabhängige Sollzähler; `tests/e2e/hybrid.spec.cjs` misst sechs Erfassungsabläufe bei 390/820 px mit echten Touch-Taps. Ergebnisgrenzen und Vorbereitung der taktischen Formationen stehen in `HYBRID_IMPLEMENTATION.md`. `npm test` und `npm run test:e2e` enthalten sämtliche bisherigen und neuen Fälle.

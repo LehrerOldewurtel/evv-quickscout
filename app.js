@@ -96,6 +96,64 @@ function syncLiberoRotation(){
  st.liberoActive=valid&&!(courtPos(replaced)===1&&st.serving);
 }
 
+// Tactical targets never alter lineup, courtPos or legal rotation.
+function saveHybridFormation(rotation,targets,routes={}){
+ if(!Number.isInteger(rotation)||rotation<1||rotation>6)throw Error("Rotation 1–6 erforderlich");
+ const valid=p=>Array.isArray(p)&&p.length===2&&p.every(n=>Number.isFinite(n)&&n>=0&&n<=100);
+ for(const [id,xy] of Object.entries(targets))if(!byId(id)||!valid(xy))throw Error("Ungültiges taktisches Ziel");
+ for(const [id,path] of Object.entries(routes))if(!byId(id)||!Array.isArray(path)||!path.every(valid))throw Error("Ungültiger Laufweg");
+ st.hybridFormations=st.hybridFormations||{};st.hybridFormations[rotation]=clone({targets,routes});saveLocal();
+}
+function hybridFormation(rotation){return clone((st.hybridFormations||{})[rotation]||{targets:{},routes:{}})}
+// Additive rally metrics: never infer attacks from points, blocks or opponent errors.
+function turnaroundMetrics(chain=[]){
+ const seen=new Set();let attacks=0,transitions=0;
+ for(const x of chain){if(x.id){if(seen.has(x.id))continue;seen.add(x.id)}
+ if(x.side!=="EVV")continue;
+ if(x.type==="Attack")attacks++;
+ if(x.type==="TransitionChance"||(x.type==="Defense"&&["D2","D3"].includes(x.quality)))transitions++;
+ }
+ return {attacks,transitions};
+}
+let liveMode="detail",selectedQuickPlayer=null,quickPending=null,quickRevision=0;
+function hybridMode(mode){liveMode=mode;selectedQuickPlayer=null;quickPending=null;render()}
+function hybridAction(kind,player=null,revision=quickRevision){
+ if(revision!==quickRevision||view!=="live"||!st.started||st.setEnded||st.matchEnded)return;
+ quickRevision++;
+ if(kind==="transition"){
+ // A repeated defense tap without an intervening own attack is the same chance.
+ const chain=draft.chain||[],last=chain.filter(x=>["Attack","Defense","TransitionChance","FreeBall","SecondBall","AttackResult"].includes(x.type)).at(-1);
+ if(last&&(last.type==="TransitionChance"||last.type==="Defense"))return render();
+ pushDraft();draft.chain=chain.concat({side:"EVV",type:"TransitionChance",id:`q-${st.set}-${st.rallies.length}-${quickRevision}`});draft.phase=draft.phase||(st.serving?"K2":"K1");draft.step="evvBall2";tab="rally";return render();
+ }
+ if(kind==="opponentError"){quickPending=null;return commit("EVV",{...draft,event:"OpponentAttack",result:"ERROR",chain:draft.chain||[]})}
+ if(kind==="ace"){if(!st.serving)return render();player=currentServerId()}
+ const eligible=kind==="block"?front():kind==="a0"?receivers():["kill","error","continue"].includes(kind)?attackOptions().map(x=>x.id):active();
+ if(!player||!eligible.includes(player)){quickPending=kind;return render()}
+ pushDraft();const chain=(draft.chain||[]).slice(),id=`q-${st.set}-${st.rallies.length}-${quickRevision}`;
+ const result=kind==="kill"?"KILL":kind==="error"?"ERROR":"CONTINUE";
+ if(["kill","error","continue"].includes(kind)){const last=chain.at(-1);if(last&&last.side==="EVV"&&last.type==="Attack"&&!last.result)chain[chain.length-1]={...last,result};else chain.push({side:"EVV",type:"Attack",player,result,id})}
+ else if(kind==="a0")chain.push({side:"EVV",type:"Reception",player,quality:"A0",id});
+ else if(kind==="d0")chain.push({side:"EVV",type:"Defense",player,quality:"D0",id});
+ else if(kind==="ace")chain.push({side:"EVV",type:"Serve",player,result:"ACE",id});
+ else if(kind==="block")chain.push({side:"EVV",type:"Block",player,result:"BLOCK",id});
+ if(kind==="continue"){draft.chain=chain;draft.step="oppDefense";tab="opponent";quickPending=null;return render()}
+ const win=["kill","ace","block"].includes(kind)?"EVV":"Gegner";
+ const event={kill:"Attack",error:"Attack",ace:"Serve",a0:"Reception",d0:"Defense",block:"Block"}[kind];
+ quickPending=null;selectedQuickPlayer=null;
+ commit(win,{...draft,event,chain,result:kind==="block"?"BLOCK":kind==="ace"?"ACE":["a0","d0"].includes(kind)?"DIRECT_ERROR":result});
+}
+function hybridPanel(){
+ const coords={1:[80,80],2:[80,25],3:[50,25],4:[20,25],5:[20,80],6:[50,80]};
+ const pending=quickPending,eligible=pending==="block"?front():pending==="a0"?receivers():["kill","error","continue"].includes(pending)?attackOptions().map(x=>x.id):active();
+ const metrics=turnaroundMetrics(draft.chain);
+ $("flow").innerHTML=`<h2>Schnellmodus${pending?" · Spieler wählen":""}</h2><div class="liveCourt" aria-label="Regeltechnische Feldpositionen"><span class="liveNet">NETZ</span>${rotationMatrix().map(x=>{const [left,top]=coords[x.position];return `<button class="livePlayer" data-quick-player="${x.player}" style="left:${left}%;top:${top}%" ${pending&&!eligible.includes(x.player)?"disabled":""}>${esc(nm(x.player))}<small>P${x.position} · ${esc(roleOf(x.player))}</small></button>`}).join("")}</div><p aria-live="polite">Eigene Angriffe: ${metrics.attacks} · Transition-Chancen: ${metrics.transitions}</p><div class="quickActions">${[["ace","Ass"],["a0","A0"],["d0","D0"],["kill","Angriffspunkt"],["error","Angriffsfehler"],["block","Blockpunkt"],["continue","Angriff verteidigt"],["opponentError","Gegnerfehler"]].map(([k,label])=>`<button data-quick="${k}" ${k==="ace"&&!st.serving?"disabled":""}>${label}</button>`).join("")}</div><button class="transitionButton primary" id="quickTransition">Abwehr gewonnen / Transition</button><button id="quickUndo">↶ Undo</button>`;
+ const rev=quickRevision;
+ document.querySelectorAll('[data-quick]').forEach(b=>b.onclick=()=>hybridAction(b.dataset.quick,selectedQuickPlayer,rev));
+ document.querySelectorAll('[data-quick-player]').forEach(b=>b.onclick=()=>{if(pending)hybridAction(pending,b.dataset.quickPlayer,rev);else{selectedQuickPlayer=b.dataset.quickPlayer;b.setAttribute('aria-pressed','true')}});
+ $('quickTransition').onclick=()=>hybridAction('transition',null,rev);$('quickUndo').onclick=undoLast;
+}
+
 function commit(w,data={},preSnapshot=null){
  if(w!=="EVV"&&w!=="Gegner")throw new Error("Ungültiger Rallye-Sieger");
  if(st.setEnded||st.matchEnded)return toast("Satz ist beendet");
@@ -105,6 +163,7 @@ function commit(w,data={},preSnapshot=null){
  else{st.o++;if(st.serving)st.serving=false}
  syncLiberoRotation();
  data=Object.assign({},data,{winner:w,before,after:`${st.e}:${st.o}`,rotation:rb,servingBefore:sb,phase:data.phase||(sb?"K2":"K1"),set:st.set});
+ data.turnaround=turnaroundMetrics(data.chain);
  st.rallies.push(data);draft={};clearDraftHistory();tab="rally";view="live";checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
 }
 function allRallies(){return st.sets.flatMap(s=>s.rallies).concat(st.rallies)}
@@ -278,6 +337,7 @@ function action(s){
  else if(a[0]==="ob2r"){if(a[1]==="KILL")return commit("Gegner",Object.assign({},draft,{event:"OpponentSecondBall",result:"KILL"}));if(a[1]==="ERROR")return commit("EVV",Object.assign({},draft,{event:"OpponentSecondBall",result:"ERROR"}));draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"SecondBallResult",result:"CONTINUE"});draft.step="evvDefense";tab="rally";render()}
  else if(a[0]==="os"){draft.setterTarget=a[1];draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Set",target:a[1]});draft.step="oppAttack";render()}
  else if(a[0]==="of"){
+   draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Attack",route:draft.setterTarget,result:a[1]});
    if(a[1]==="KILL"){nineZonePicker("OPP_KILL",{w:"Gegner",data:Object.assign({},draft,{event:"OpponentAttack",result:"KILL"})});return}
    if(a[1]==="BLOCK"){draft.step="evvBlockChoice";tab="rally";render();return}
    if(a[1]==="ERROR")return commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:a[1]}));
@@ -295,6 +355,7 @@ function rally(){
  if(view!=="live")return historical();
  if(st.matchEnded)return $("flow").innerHTML=`<div class="banner">MATCH BEENDET · ${setWins("EVV")}:${setWins("Gegner")} Sätze</div>${summary(allRallies())}<button id="finishedNew" class="primary">Neues Spiel</button>`;
  if(st.setEnded){$("flow").innerHTML=`<div class="banner">SATZ ${st.set} BEENDET · ${st.e}:${st.o}</div>${summary(st.rallies)}<button id="prep" class="primary">Nächsten Satz vorbereiten</button>`;$("prep").onclick=prepareNextSet;return}
+ if(liveMode==="quick")return hybridPanel();
  if(draft.step==="evvBlockChoice"){
    $("flow").innerHTML=flowHead("EVV · Wer blockt?")+`<div class="eligibleNote">Nur aktuelle Vorderreihe P2/P3/P4.</div><div class="grid3">${front().map(id=>B(`${esc(nm(id))} #${jersey(id)} · P${courtPos(id)}`,`ebc|${id}`,"good")).join("")}</div>`;bindActs();return
  }
@@ -693,16 +754,18 @@ function printReport(){
  popup.document.write(html);popup.document.close();
 }
 function rallyLabel(x){let a=[];if(x.serve)a.push(`Aufschlag ${x.serve}`);if(x.receiver&&x.reception)a.push(`Annahme ${x.receiver} ${x.reception}`);if(x.setterTarget)a.push(`Zuspiel ${x.setterTarget}`);if(x.attacker)a.push(`Angriff ${nm(x.attacker)} ${x.zone||""} ${x.result||""}`.trim());else if(x.event==="OpponentAttack")a.push(`Gegnerangriff ${x.result||""}`.trim());else if(!a.length)a.push(x.event||"Rally");return a.join(" → ")}
-function recent(){let r=allRallies().slice(-3).reverse();$("recent").innerHTML=`<h3>Letzte Rallys</h3><div class="history">${r.length?r.map(x=>`S${x.set} · ${esc(x.after)} · ${esc(rallyLabel(x))} · ${esc(x.winner)}`).join("<br>"):"Noch keine Rally"}</div>`}
+function recent(){let r=allRallies().slice(-3).reverse();$("recent").innerHTML=`<h3>Letzte Rallys</h3><div class="history">${r.length?r.map(x=>`S${x.set} · ${esc(x.after)} · ${esc(rallyLabel(x))} · ${esc(x.winner)}${x.turnaround?` · Angriffe ${x.turnaround.attacks} · Transitions ${x.turnaround.transitions}`:""}`).join("<br>"):"Noch keine Rally"}</div>`}
 function render(){
  saveLocal();
+ if(!$("hybridModes")){const nav=document.createElement("section");nav.id="hybridModes";nav.className="card hybridModes";$("flow").before(nav)}
+ $("hybridModes").innerHTML=`<button id="modeQuick" aria-pressed="${liveMode==='quick'}">Schnellmodus</button><button id="modeDetail" aria-pressed="${liveMode==='detail'}">Detailmodus</button>`;$("modeQuick").onclick=()=>hybridMode("quick");$("modeDetail").onclick=()=>hybridMode("detail");
  renderHeader();renderNav();document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
- if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();if($("finishedNew"))$("finishedNew").onclick=newMatch;
+ if(liveMode==="quick"&&(tab==="rally"||tab==="opponent"))rally();else if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();if($("finishedNew"))$("finishedNew").onclick=newMatch;
  $("nextSet").disabled=!st.setEnded||st.matchEnded;$("substitute").disabled=!st.started||view!=="live"||!!draft.step
 }
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
-function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;closeModal();render();toast("Letzte Rally vollständig zurückgesetzt")}
+function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;quickPending=null;selectedQuickPlayer=null;quickRevision++;closeModal();render();toast("Letzte Rally vollständig zurückgesetzt")}
 $("undo").onclick=undoLast;$("newMatch").onclick=newMatch;
 $("exportData").onclick=exportData;$("importData").onclick=importData;$("printReport").onclick=printReport;$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{
  if(!st.started||view!=="live")return toast("Auszeit nur im laufenden Satz");
@@ -786,5 +849,5 @@ document.addEventListener("visibilitychange",()=>{if(document.hidden)stopVoiceRe
 $("voiceBtn").onclick=toggleVoice;
 
 const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={editOpponentJerseys,jersey,newMatch,liberoPlanner,opponentCourt,configureLiberos,configureLiberoSlots,liberoRoster,checkEnd,setWins,timeoutCount,timeoutSummary,saveSixPresets,loadSixPresets,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,syncLiberoRotation,currentServerId,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
+window.EVV_QS_TEST={saveHybridFormation,hybridFormation,turnaroundMetrics,hybridAction,hybridMode,editOpponentJerseys,jersey,newMatch,liberoPlanner,opponentCourt,configureLiberos,configureLiberoSlots,liberoRoster,checkEnd,setWins,timeoutCount,timeoutSummary,saveSixPresets,loadSixPresets,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,syncLiberoRotation,currentServerId,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
 })();
