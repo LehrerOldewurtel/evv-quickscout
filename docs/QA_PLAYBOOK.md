@@ -42,3 +42,15 @@ Siehe `PR1_REVIEW.md`: zusätzliche Upgrade-/Speicher-/Sprach-/Libero-Regression
 ## Entwicklungsauftrag 4
 
 `tests/advanced.test.cjs` und `tests/e2e/advanced.spec.cjs` ergänzen Formationseditor, Satzassistent, Auswertung, Wiederherstellung, Offline, Import- und Quota-Fälle. Der Folge- und Freigabebericht steht in `PHASE4_REPORT.md`; aktuelle Rohbelege unter `docs/qa/phase4/`. Die 100 Kontaktketten prüfen jetzt zusätzlich die erweiterten Statistikwerte mit unabhängigen Sollzählern. Aktuelle Verhaltenstests und historische fragmentbasierte Skripte getrennt berichten.
+
+## Auftrag 5: vollständige Spieltage und Release-Kandidatenlauf
+
+`npm run qa:release` führt alle Node- und Browserprüfungen aus, entfernt vorher nur die bekannten generierten QA-Artefakte und schreibt Prozess-Exitcodes, Zeitpunkte, TAP, Playwright-JSON sowie einen maschinell erzeugten Bericht unter `artifacts/release-candidate.{json,md}`. Veraltete Simulations-/Browserartefakte werden nicht als neue Evidenz akzeptiert. CI verwendet denselben Ablauf und lädt die Artefakte auch bei Fehlern hoch. Installation weiterhin `npm ci --ignore-scripts --cache /workspace/.npm-cache`; Syntax/Diff gesondert prüfen.
+
+`tests/matchday-oracle.cjs` importiert keine App-Funktionen. Seeds 501–520 erzeugen Kontaktpläne, bevor die Aktionen ausgeführt werden. `tests/matchday.test.cjs` führt diese über die vollständige App aus und prüft **nach jeder Rallye** Score, Aufschlag, Rotation, K1/K2, sämtliche Kontakte, Historie, Spieler-/Rotations-/Turnaround-Statistik, Wechselprotokoll, Libero, Formationen und tatsächliches `saveLocal`. Rendering ist für diese Simulation im Harness deaktiviert; Speichern wird deshalb explizit ausgelöst. Nach jedem Match folgt ein vollständig neuer App-Kontext aus den gespeicherten Daten. SHA256 der Sollpläne erlaubt Replay-Vergleiche.
+
+`tests/e2e/matchday.spec.cjs` spielt je ein vollständiges Match auf 390/820/1024 Pixeln ausschließlich über UI-Eingaben; `evaluate` liest nur Zustände. Dazu Setup, Detail-/Schnellmodus, Wechsel/Rückwechsel, Libero, Taktik, Reload, Satzvorlage, Matchende, Download und tatsächlicher Reimport. Ein weiterer Test schließt den Chromium-Prozess und startet ihn mit demselben **eigens angelegten temporären** Profil neu.
+
+`tests/e2e/cache-lifecycle.spec.cjs` betreibt einen isolierten lokalen Test-Origin, installiert den unveränderten Auftrag-4-Service-Worker, aktualisiert auf den neuen Worker, erzwingt eine fehlgeschlagene Installation, prüft HTTP-503-Fallback und Offline-Reloads mit tatsächlich abgebrochenen Serververbindungen und installiert anschließend den vorherigen Worker erneut. Es handelt sich um einen Cache-/Worker-Rollback mit kompatiblem Datenschema, nicht um eine App-/Schema-Downgrade-Freigabe.
+
+Historische Dateien liegen unverändert unter `tests/legacy/`. `node tests/legacy/audit.cjs` dokumentiert weiterhin acht Fehlschläge und einen Erfolg; Gründe und Migrationen: `tests/legacy/README.md`. Diese Inkompatibilitäten sind getrennt von echten aktuellen Produktfehlern zu zählen. Neue Releasebewertung: `docs/RELEASE_CANDIDATE_REPORT.md`.

@@ -38,3 +38,17 @@ V8.0 benötigt weiterhin eine Entscheidung und Implementierung für den nativen 
 ## Review-Nachtrag
 
 Die Überprüfung des ersten PR steht in `PR1_REVIEW.md`, mit Versionsnachweis ab V7.9.2, gezielten Update-/Sprach-/Libero-/Speicherfehlerkorrekturen und Abgrenzung der bestehenden Chain zur erst geplanten Turnaround-Engine. Das ursprüngliche Audit und seine Rohbelege bleiben als Ausgangsbefund erhalten.
+
+## Folgeaudit Auftrag 5 (26.10.2026)
+
+Die obigen Angaben beschreiben den ursprünglichen main-Bestand. Aktuelle Grundlage ist `dev/v8-tactics-reliability` bei `b01e62562eabc8de3159705b679165cb3fa396df`; neuer Folgebranch `dev/v8-matchday-rehearsal`.
+
+| PR | Head | Base | bei Prüfung |
+|---|---|---|---|
+| #1 | dev/v8-qa-foundation · 935905e | main | offen, beide QA-Checks erfolgreich |
+| #2 | dev/v8-hybrid-live · 72caf77 | dev/v8-qa-foundation | offen, beide QA-Checks erfolgreich |
+| #3 | dev/v8-tactics-reliability · b01e625 | dev/v8-hybrid-live | offen, beide QA-Checks erfolgreich |
+
+Die Abstammung wurde mit `git merge-base --is-ancestor` bestätigt. V7.9.0 (`7269d1e`) wurde durch V7.9.2 (`d10c1b5`) abgelöst; auch V7.9.2 liegt in der Historie des heutigen 7.19.0-Stands. Alle drei PRs sind enthalten; kein Zurücksetzen auf 7.9.2. Remote-main ist unverändert `f6b316bfbbcf30d4758fc954ef006bff59a1fc9e`. Kein Merge, kein Deployment, kein Versionsbump. Der Folge-PR muss gegen PR3s Branch geprüft werden; ein späteres Zusammenführen benötigt die richtige Reihenfolge und ausdrückliche Freigabe.
+
+Die bestehende Hybrid-/Taktik-/Speicherimplementierung und alle bisherigen Verhaltenstests bleiben erhalten. Änderungen an App-Code beschränken sich auf nachgewiesene Fehler und den beauftragten Sprung von der Analyse in den Formationseditor. Cache-Lebenszyklus wird inzwischen in einem realen Chromium-Service-Worker geprüft; die historischen SW-Risiken oben gelten damit nicht unverändert fort. Die acht alten Skripte sind als unverändertes Archiv mit reproduzierbarem Audit und Ersatztests dokumentiert. Aktuelle Ergebnisse und Grenzen: `RELEASE_CANDIDATE_REPORT.md`.

@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "start": "python3 -m http.server 4173 --bind 127.0.0.1",
-    "test": "node --test tests/rotations.test.cjs tests/unit.test.cjs tests/review.test.cjs tests/hybrid.test.cjs tests/advanced.test.cjs tests/simulation.test.cjs",
+    "test": "node --test --test-reporter=tap tests/rotations.test.cjs tests/unit.test.cjs tests/review.test.cjs tests/hybrid.test.cjs tests/advanced.test.cjs tests/matchday-regressions.test.cjs tests/legacy-migrated.test.cjs tests/matchday.test.cjs tests/simulation.test.cjs",
     "test:e2e": "playwright test",
-    "test:all": "npm test && npm run test:e2e"
+    "test:all": "npm test && npm run test:e2e",
+    "qa:release": "node scripts/release-qa.cjs"
   },
-  "devDependencies": {"@playwright/test": "1.56.1", "jsdom": "26.1.0"}
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "jsdom": "26.1.0"
+  }
 }

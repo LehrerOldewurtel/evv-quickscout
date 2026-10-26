@@ -1,0 +1,6 @@
+// Reproducible release-candidate evidence from commands actually run now.
+const fs=require('node:fs'),path=require('node:path'),{spawn}=require('node:child_process');
+process.chdir(path.resolve(__dirname,'..'));fs.mkdirSync('artifacts',{recursive:true});
+for(const file of ['node.tap','browser.log','playwright.json','20-matchdays.json','100-matches.json','100-event-chains.json','qa-run.json','release-candidate.json','release-candidate.md']){const p=path.join('artifacts',file);if(fs.existsSync(p))fs.unlinkSync(p)}
+async function run(command,args,file){console.log(`Running ${command} ${args.join(' ')} → ${file}`);const fd=fs.openSync(file,'w'),startedAt=new Date().toISOString();return new Promise((resolve,reject)=>{const p=spawn(command,args,{stdio:['ignore',fd,fd]});p.on('error',reject);p.on('exit',(code,signal)=>{fs.closeSync(fd);resolve({command:[command,...args],exitCode:code,signal,startedAt,finishedAt:new Date().toISOString(),log:file})})})}
+(async()=>{const node=await run('npm',['test'],'artifacts/node.tap');const browser=await run('npm',['run','test:e2e'],'artifacts/browser.log');fs.writeFileSync('artifacts/qa-run.json',JSON.stringify({node,browser},null,2));require('./release-report.cjs');process.exitCode=node.exitCode===0&&browser.exitCode===0?0:1})().catch(e=>{console.error(e);process.exitCode=1});
