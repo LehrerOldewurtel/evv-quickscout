@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "distinctSeeds": 100,
+  "samePlanDigests": 100,
+  "runs": 2,
+  "setsPerRun": 400,
+  "ralliesPerRun": 17213
+}

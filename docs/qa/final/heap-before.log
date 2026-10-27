@@ -1,0 +1,6 @@
+First expanded run: 39 completed detailed matches; Node worker then aborted.
+# FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+  signal: 'SIGABRT'
+# tests 50
+# pass 49
+# fail 1

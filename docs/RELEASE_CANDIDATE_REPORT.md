@@ -1,5 +1,8 @@
 # Auftrag 5 · Spieltags-Generalprobe / Release-Kandidatenbericht
 
+Historischer Bericht zu Auftrag 5. Für den finalen Kandidaten vom 27.10.2026 gilt
+[FINAL_RELEASE_REPORT.md](FINAL_RELEASE_REPORT.md) mit dem neuen 100-Match-Lauf und der ZIP-Abnahme.
+
 Stand: 26.10.2026. Basis `dev/v8-tactics-reliability` (`b01e625`), Folgebranch `dev/v8-matchday-rehearsal`. Produktversion unverändert **7.19.0-k1-auto-mb**. Dieser Bericht ist keine V8.0-Versionsfreigabe.
 
 ## Tatsächlich ausgeführte Prüfung

@@ -52,3 +52,26 @@ Die obigen Angaben beschreiben den ursprünglichen main-Bestand. Aktuelle Grundl
 Die Abstammung wurde mit `git merge-base --is-ancestor` bestätigt. V7.9.0 (`7269d1e`) wurde durch V7.9.2 (`d10c1b5`) abgelöst; auch V7.9.2 liegt in der Historie des heutigen 7.19.0-Stands. Alle drei PRs sind enthalten; kein Zurücksetzen auf 7.9.2. Remote-main ist unverändert `f6b316bfbbcf30d4758fc954ef006bff59a1fc9e`. Kein Merge, kein Deployment, kein Versionsbump. Der Folge-PR muss gegen PR3s Branch geprüft werden; ein späteres Zusammenführen benötigt die richtige Reihenfolge und ausdrückliche Freigabe.
 
 Die bestehende Hybrid-/Taktik-/Speicherimplementierung und alle bisherigen Verhaltenstests bleiben erhalten. Änderungen an App-Code beschränken sich auf nachgewiesene Fehler und den beauftragten Sprung von der Analyse in den Formationseditor. Cache-Lebenszyklus wird inzwischen in einem realen Chromium-Service-Worker geprüft; die historischen SW-Risiken oben gelten damit nicht unverändert fort. Die acht alten Skripte sind als unverändertes Archiv mit reproduzierbarem Audit und Ersatztests dokumentiert. Aktuelle Ergebnisse und Grenzen: `RELEASE_CANDIDATE_REPORT.md`.
+
+
+## Finalaudit 27.10.2026
+
+Arbeitsbranch `release/v8-final-candidate`, Basis `c49a511b4563747d07edea2e4ed36ab0d7bfa323`.
+Alle vier dev-Branches liegen in seiner Abstammung (native Git-Prüfung). Remote-main
+bleibt `f6b316bfbbcf30d4758fc954ef006bff59a1fc9e`. Der Ausgangscheckout war sauber.
+Native Git-Lesezugriffe und ein Push-Dry-Run ausschließlich auf den neuen Release-Branch
+funktionieren. `refs/pull/1/head` bis `refs/pull/4/head` entsprechen den vier bekannten
+Entwicklungsständen. Aktueller PR-Status/Checks konnten nicht via API verifiziert werden:
+`api.github.com` wird mit CONNECT HTTP 403 gesperrt. Frühere PR-Statusangaben oben sind
+historische Evidenz, keine neue Abnahme. Kein produktiver Push, Merge oder Deployment.
+
+Die offiziellen Firefox-/WebKit-Download-Domains liefern ebenfalls CONNECT HTTP 403;
+diese Engines sind deshalb nicht verfügbar und werden nicht als getestet ausgewiesen.
+Benötigte Domain-Ergänzungen wurden im Cloud-Konfigurationsentwurf gespeichert:
+api.github.com, cdn.playwright.dev, playwright.download.prss.microsoft.com.
+Ein gespeicherter Entwurf aktiviert weder Netzwerkzugriff noch Veröffentlichung automatisch.
+
+Aktueller Legacy-Audit erneut ausgeführt: acht ursprüngliche Inkompatibilitäten, ein Erfolg.
+Keine historischen Testdateien entfernt oder Assertions abgeschwächt. Der neue Produktfix
+validiert Inhalte der Undo-Snapshots vor Import/Reload statt erst beim späteren Undo.
+Negative Erstläufe, Diagnose und aktuelle Ergebnisse werden im finalen Bericht referenziert.

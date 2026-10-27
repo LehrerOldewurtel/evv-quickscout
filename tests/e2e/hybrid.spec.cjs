@@ -1,5 +1,5 @@
 const {test,expect}=require('@playwright/test');
-for(const width of [390,820])for(const [kind,limit] of [['ace',2],['a0',2],['d0',2],['kill',2],['transition',1],['transitionKill',3]])test(`${width}px ${kind}: höchstens ${limit} Eingaben`,async({page},info)=>{
+for(const width of [390,820])for(const [kind,limit] of [['ace',1],['a0',2],['d0',2],['kill',2],['transition',1],['transitionKill',3]])test(`${width}px ${kind}: höchstens ${limit} Eingaben`,async({page},info)=>{
  await page.setViewportSize({width,height:1180});await page.goto('/');await page.locator(kind==='ace'?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();
  let taps=0;async function tap(selector){await page.locator(selector).tap();taps++}
  await expect(page.locator('[data-quick-player]')).toHaveCount(6);

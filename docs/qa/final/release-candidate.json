@@ -1,0 +1,7307 @@
+{
+  "generatedAt": "2026-10-27T17:39:22.763Z",
+  "run": {
+    "source": {
+      "branch": "release/v8-final-candidate",
+      "commit": "c49a511b4563747d07edea2e4ed36ab0d7bfa323",
+      "assets": {
+        "index.html": "8fc9ec4d03f13eeb4d5b222a9f07149dd744c3f2813d6dabbf7f867bda38c1da",
+        "app.js": "66dca5b2c6d74492450c29ce5ff1027764548c377727a4afa1a02cfa56f719f1",
+        "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
+        "styles.css": "cef1e07c2bd765ebb19e7b5715a37ed97e9c527216548e632dc66713f58f19e4",
+        "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
+        "sw.js": "08cae80494fa2986eb7fd62a867f241fca32ae518519a658a866826828642896",
+        "manifest.webmanifest": "d0969adf8316c5023195181bd5b31dd218a16430e9ffab6396e37eee6573422c"
+      }
+    },
+    "node": {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "startedAt": "2026-10-27T17:32:53.187Z",
+      "finishedAt": "2026-10-27T17:37:02.064Z",
+      "log": "artifacts/node.tap"
+    },
+    "browser": {
+      "command": [
+        "npm",
+        "run",
+        "test:e2e"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "startedAt": "2026-10-27T17:37:02.064Z",
+      "finishedAt": "2026-10-27T17:39:22.759Z",
+      "log": "artifacts/browser.log"
+    }
+  },
+  "node": {
+    "tests": 149,
+    "passed": 149,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "browser": {
+    "startTime": "2026-10-27T17:37:03.012Z",
+    "duration": 139723.094,
+    "expected": 76,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "cases": [
+      {
+        "title": "Tablet 768: Touch-Drag, Formationen R1–R6, Kopie, Reload und Libero",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 5175,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Tablet 1024: Touch-Drag, Formationen R1–R6, Kopie, Reload und Libero",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7587,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Satzassistent: Vorlage und Libero nur nach Bestätigung übernehmen",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2019,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Neuer Browserkontext stellt laufende Rallye wieder her",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2447,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Offline-Kaltladen erhält laufende Rallye und Compact-UI",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1578,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Beschädigte Imports verändern weder Stand noch Speicher",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1276,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Speicherplatzfehler zeigt dauerhafte Warnung und erhält vorherigen Stand",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 881,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Wiederherstellungsexport sichert beschädigte Rohdaten exakt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 661,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Unterbrechung bei Zielzone: Wiederaufnahme und genau ein Punkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1302,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Cache: Upgrade, fehlgeschlagenes Upgrade, Offline-Rückfall und Online-Rollback erhalten Rallye",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7623,
+            "attachments": [
+              {
+                "name": "cache-lifecycle",
+                "data": "{\"upgrade\":\"activated\",\"failedInstall\":\"redundant\",\"rollback\":\"activated\",\"offlineReloads\":2,\"localStorageUnchangedUntilKill\":true,\"scope\":\"Service-Worker-Rollback; kein App-Schema-Downgrade\",\"requests\":[{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/favicon.ico\"},{\"stage\":\"old\",\"path\":\"/sw.js\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/index.html\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/manifest.webmanifest\"},{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"current\",\"path\":\"/sw.js\"},{\"stage\":\"current\",\"path\":\"/version.js\"},{\"stage\":\"current\",\"path\":\"/\"},{\"stage\":\"current\",\"path\":\"/index.html\"},{\"stage\":\"current\",\"path\":\"/styles.css\"},{\"stage\":\"current\",\"path\":\"/version.js\"},{\"stage\":\"current\",\"path\":\"/app.js\"},{\"stage\":\"current\",\"path\":\"/compact.js\"},{\"stage\":\"current\",\"path\":\"/manifest.webmanifest\"},{\"stage\":\"broken\",\"path\":\"/sw.js\"},{\"stage\":\"broken\",\"path\":\"/version.js\"},{\"stage\":\"broken\",\"path\":\"/\"},{\"stage\":\"broken\",\"path\":\"/index.html\"},{\"stage\":\"broken\",\"path\":\"/styles.css\"},{\"stage\":\"broken\",\"path\":\"/version.js\"},{\"stage\":\"broken\",\"path\":\"/app.js\"},{\"stage\":\"broken\",\"path\":\"/compact.js\"},{\"stage\":\"broken\",\"path\":\"/manifest.webmanifest\"},{\"stage\":\"broken\",\"path\":\"/\"},{\"stage\":\"broken\",\"path\":\"/styles.css\"},{\"stage\":\"broken\",\"path\":\"/version.js\"},{\"stage\":\"broken\",\"path\":\"/app.js\"},{\"stage\":\"broken\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/sw.js\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/index.html\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/manifest.webmanifest\"}]}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px ace: höchstens 1 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 917,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"ace\",\"width\":390,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px a0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1033,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"a0\",\"width\":390,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px d0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1199,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"d0\",\"width\":390,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px kill: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 917,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"kill\",\"width\":390,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px transition: höchstens 1 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 965,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transition\",\"width\":390,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px transitionKill: höchstens 3 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1317,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transitionKill\",\"width\":390,\"inputs\":3,\"limit\":3}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px ace: höchstens 1 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1374,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"ace\",\"width\":820,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px a0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1606,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"a0\",\"width\":820,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px d0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1598,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"d0\",\"width\":820,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px kill: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1211,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"kill\",\"width\":820,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px transition: höchstens 1 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1237,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transition\",\"width\":820,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px transitionKill: höchstens 3 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1414,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transitionKill\",\"width\":820,\"inputs\":3,\"limit\":3}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Generalprobe 390px: komplettes Match ausschließlich per Oberfläche",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 35743,
+            "attachments": [
+              {
+                "name": "matchday",
+                "data": "{\"width\":390,\"sets\":[{\"set\":1,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":2,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":3,\"e\":25,\"o\":7,\"rallies\":32}],\"rallies\":96,\"taps\":245,\"selects\":18,\"typedFields\":2,\"dragGestures\":1,\"notes\":\"Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI.\"}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Generalprobe 820px: komplettes Match ausschließlich per Oberfläche",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 42046,
+            "attachments": [
+              {
+                "name": "matchday",
+                "data": "{\"width\":820,\"sets\":[{\"set\":1,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":2,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":3,\"e\":25,\"o\":7,\"rallies\":32}],\"rallies\":96,\"taps\":244,\"selects\":18,\"typedFields\":2,\"dragGestures\":1,\"notes\":\"Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI.\"}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Generalprobe 1024px: komplettes Match ausschließlich per Oberfläche",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 33260,
+            "attachments": [
+              {
+                "name": "matchday",
+                "data": "{\"width\":1024,\"sets\":[{\"set\":1,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":2,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":3,\"e\":25,\"o\":7,\"rallies\":32}],\"rallies\":96,\"taps\":244,\"selects\":19,\"typedFields\":2,\"dragGestures\":1,\"notes\":\"Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI.\"}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Coaching öffnet gewählte Rotation und Annahme/Abwehr ohne automatische Mutation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2045,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Echter Chromium-Neustart: Mehrfach-Transition-Rallye und eindeutige Kontakte",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2315,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Release 390px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1325,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"undo\",\"width\":390,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Release 820px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1343,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"undo\",\"width\":820,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Release 1024px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1288,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"undo\",\"width\":1024,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Manipuliertes Undo im Import: keine Mutation; ursprünglicher Stand bleibt bedienbar",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1150,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Update v7.9.2: alter Stand, Reload und Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 766,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Update pre-pr-main: alter Stand, Reload und Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 686,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Libero aus und wieder ein: UI und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1431,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Bestätigte Sprachannahme und READ-ONLY-Sprache (Speech-API simuliert)",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1156,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Undo ausstehender Zielzone entfernt den alten Dialog",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 666,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: {\"st\":",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 590,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: null",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 581,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Import v7.9.2: bestätigtes synthetisches Backup behält Spielstand",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 918,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Import pre-pr-main: bestätigtes synthetisches Backup behält Spielstand",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 882,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "R1 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1450,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1450,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2793,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1999,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1222,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1173,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1340,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1350,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2548,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1908,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1218,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1256,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1415,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1434,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2508,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1963,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1137,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1360,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1279,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1375,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2759,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2514,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1445,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1568,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1595,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1469,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2999,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2214,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1376,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1592,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1496,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1489,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 3066,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2451,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1451,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1630,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "simulations": {
+    "detailed": {
+      "matches": 100,
+      "sets": 400,
+      "rallies": 17213,
+      "contacts": 271405,
+      "undos": 1220,
+      "substitutions": 800,
+      "restarts": 331,
+      "results": [
+        {
+          "seed": 501,
+          "maxStoredChars": 1424028,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 21
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 16
+            }
+          ],
+          "sets": 3,
+          "rallies": 130,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 8,
+            "D0": 17,
+            "kill": 15,
+            "ace": 10,
+            "serveError": 6,
+            "opponentServeError": 6,
+            "attackError": 24,
+            "block": 23,
+            "opponentError": 21
+          },
+          "contacts": 2038,
+          "transitions": 198,
+          "digest": "49514d70546c1bf6670f4858d2c9e099c0d74cf03a7c971b64cba78cabc70254"
+        },
+        {
+          "seed": 502,
+          "maxStoredChars": 1294808,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            },
+            {
+              "set": 4,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 13,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 194,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 17,
+            "D0": 28,
+            "block": 25,
+            "ace": 8,
+            "serveError": 16,
+            "opponentServeError": 8,
+            "attackError": 39,
+            "kill": 26,
+            "opponentError": 27
+          },
+          "contacts": 2947,
+          "transitions": 285,
+          "digest": "19cb59e85377b17fe3e26c6539d28791f39d541d95b13625c7e290b40acc088a"
+        },
+        {
+          "seed": 503,
+          "maxStoredChars": 1429072,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 21,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 131,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 29,
+            "opponentError": 19,
+            "ace": 6,
+            "serveError": 7,
+            "opponentServeError": 5,
+            "attackError": 25,
+            "kill": 13,
+            "block": 13
+          },
+          "contacts": 2107,
+          "transitions": 200,
+          "digest": "73f9ffa698bc8df574b2af4a629d6c5f045601d8897b4a8b1c44eff3f11ec9a3"
+        },
+        {
+          "seed": 504,
+          "maxStoredChars": 1432705,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 16
+            },
+            {
+              "set": 4,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 10
+            }
+          ],
+          "sets": 5,
+          "rallies": 198,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 12,
+            "D0": 37,
+            "kill": 26,
+            "ace": 6,
+            "serveError": 12,
+            "opponentServeError": 8,
+            "attackError": 33,
+            "block": 32,
+            "opponentError": 32
+          },
+          "contacts": 3445,
+          "transitions": 335,
+          "digest": "2263ee3bd7f7c1693e73867357fb0977392b2b4f48f40c8c08da8f9ae9961416"
+        },
+        {
+          "seed": 505,
+          "maxStoredChars": 2137567,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 10,
+            "D0": 24,
+            "opponentError": 28,
+            "ace": 8,
+            "serveError": 8,
+            "opponentServeError": 6,
+            "attackError": 36,
+            "kill": 18,
+            "block": 24
+          },
+          "contacts": 2578,
+          "transitions": 248,
+          "digest": "12c611ad6e8b2c15df7fb320b2594c93401eb3760d04614bdcb16016301c0ab5"
+        },
+        {
+          "seed": 506,
+          "maxStoredChars": 1550236,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 23,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 4,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 9,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 203,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 17,
+            "D0": 35,
+            "opponentServeError": 8,
+            "ace": 10,
+            "serveError": 16,
+            "attackError": 37,
+            "kill": 26,
+            "block": 29,
+            "opponentError": 25
+          },
+          "contacts": 3018,
+          "transitions": 285,
+          "digest": "4ee074983abc4ae0aed85d818a3c8c0247eab7558ecc1d36fc82876a448c4ab5"
+        },
+        {
+          "seed": 507,
+          "maxStoredChars": 1281530,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 17,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 126,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 26,
+            "D0": 16,
+            "block": 17,
+            "ace": 7,
+            "serveError": 7,
+            "opponentServeError": 4,
+            "attackError": 26,
+            "kill": 10,
+            "opponentError": 13
+          },
+          "contacts": 1893,
+          "transitions": 186,
+          "digest": "2a7afe45f6fc21e0464c382d34a3b38c101802c624d55057cbd21523f960d8d4"
+        },
+        {
+          "seed": 508,
+          "maxStoredChars": 1601252,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 23,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            },
+            {
+              "set": 4,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 8
+            }
+          ],
+          "sets": 5,
+          "rallies": 197,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 9,
+            "D0": 36,
+            "opponentError": 34,
+            "ace": 7,
+            "serveError": 13,
+            "opponentServeError": 13,
+            "attackError": 35,
+            "kill": 28,
+            "block": 22
+          },
+          "contacts": 3435,
+          "transitions": 341,
+          "digest": "be79a5923ef05ca5977e2c42672a3eee11d38c57cf364c01a6f4df966d2a6d28"
+        },
+        {
+          "seed": 509,
+          "maxStoredChars": 1489965,
+          "restarts": 1,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 21
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 22
+            }
+          ],
+          "sets": 3,
+          "rallies": 136,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 27,
+            "kill": 18,
+            "ace": 8,
+            "serveError": 11,
+            "opponentServeError": 9,
+            "attackError": 18,
+            "block": 16,
+            "opponentError": 24
+          },
+          "contacts": 2181,
+          "transitions": 209,
+          "digest": "d1f5d3c6c7946310b9d3a1ceb77db54fa0ee9c2f9b9f93b76c7895481a13cce8"
+        },
+        {
+          "seed": 510,
+          "maxStoredChars": 2245543,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 16,
+              "o": 18
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 16,
+            "D0": 56,
+            "opponentServeError": 8,
+            "ace": 10,
+            "serveError": 13,
+            "attackError": 41,
+            "kill": 38,
+            "block": 34,
+            "opponentError": 34
+          },
+          "contacts": 4275,
+          "transitions": 411,
+          "digest": "a93a07505e5f1e5e03c1dd30c375fae989e580f68b74c54759f13a03dc9032e4"
+        },
+        {
+          "seed": 511,
+          "maxStoredChars": 1320686,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 18,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 130,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 13,
+            "D0": 30,
+            "opponentError": 19,
+            "ace": 8,
+            "serveError": 8,
+            "opponentServeError": 3,
+            "attackError": 24,
+            "kill": 16,
+            "block": 9
+          },
+          "contacts": 2040,
+          "transitions": 192,
+          "digest": "c19052ec227ca8929d13a728db3f8e65ed3298a2b458e3c434e357933bc48b78"
+        },
+        {
+          "seed": 512,
+          "maxStoredChars": 1602802,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 4,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 9
+            }
+          ],
+          "sets": 5,
+          "rallies": 200,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 31,
+            "kill": 30,
+            "ace": 8,
+            "serveError": 13,
+            "opponentServeError": 13,
+            "attackError": 33,
+            "block": 24,
+            "opponentError": 30
+          },
+          "contacts": 3180,
+          "transitions": 315,
+          "digest": "3e9678315eade6382ff6ba9dbd531132e71f275c12e4ef07d58afdfda635cc12"
+        },
+        {
+          "seed": 513,
+          "maxStoredChars": 1191953,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 17
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            }
+          ],
+          "sets": 3,
+          "rallies": 124,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 8,
+            "D0": 20,
+            "block": 24,
+            "ace": 6,
+            "serveError": 8,
+            "opponentServeError": 4,
+            "attackError": 13,
+            "kill": 15,
+            "opponentError": 26
+          },
+          "contacts": 2059,
+          "transitions": 197,
+          "digest": "70b999b15dbf3ef058a2bb20cbc22ae5b3ef48d739479aad6bc03fd83c2092b7"
+        },
+        {
+          "seed": 514,
+          "maxStoredChars": 1687667,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 4,
+              "e": 22,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 11,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 204,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 21,
+            "D0": 37,
+            "opponentError": 31,
+            "ace": 14,
+            "serveError": 16,
+            "opponentServeError": 11,
+            "attackError": 31,
+            "kill": 25,
+            "block": 18
+          },
+          "contacts": 3002,
+          "transitions": 287,
+          "digest": "7beee1140d5cef7c5514df0a746e5f75fe2737b2bf56d4f822c90ab2a36d2f78"
+        },
+        {
+          "seed": 515,
+          "maxStoredChars": 2274815,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 26,
+              "o": 28
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 16,
+            "D0": 32,
+            "block": 21,
+            "ace": 8,
+            "serveError": 8,
+            "opponentServeError": 6,
+            "attackError": 28,
+            "kill": 16,
+            "opponentError": 27
+          },
+          "contacts": 2660,
+          "transitions": 255,
+          "digest": "c1c429ad0761bd3530bf18ed46f786f9e57bbd189e9e6740037701fe8c71e101"
+        },
+        {
+          "seed": 516,
+          "maxStoredChars": 1273587,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 4,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 12
+            }
+          ],
+          "sets": 5,
+          "rallies": 193,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 19,
+            "D0": 30,
+            "opponentError": 28,
+            "ace": 10,
+            "serveError": 16,
+            "opponentServeError": 15,
+            "attackError": 29,
+            "kill": 24,
+            "block": 22
+          },
+          "contacts": 2750,
+          "transitions": 265,
+          "digest": "128e5364c29ed9c52aae532cb8b8de068b6d2e5f00349ba7a30180446da78f83"
+        },
+        {
+          "seed": 517,
+          "maxStoredChars": 1505170,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 21
+            }
+          ],
+          "sets": 3,
+          "rallies": 136,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 27,
+            "kill": 24,
+            "ace": 7,
+            "serveError": 5,
+            "opponentServeError": 6,
+            "attackError": 24,
+            "block": 19,
+            "opponentError": 19
+          },
+          "contacts": 2298,
+          "transitions": 224,
+          "digest": "abd3d50153991a35b2f7e0eecf44a6a6f5e0fc329ddb066a62a9268297c8660a"
+        },
+        {
+          "seed": 518,
+          "maxStoredChars": 1430623,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 16
+            },
+            {
+              "set": 4,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 10,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 195,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 19,
+            "D0": 31,
+            "block": 25,
+            "ace": 11,
+            "serveError": 9,
+            "opponentServeError": 7,
+            "attackError": 40,
+            "kill": 26,
+            "opponentError": 27
+          },
+          "contacts": 3269,
+          "transitions": 324,
+          "digest": "a714f2b42377bb72329f09fc790728ac16e3a8f094440f23944f35e9bfce45c7"
+        },
+        {
+          "seed": 519,
+          "maxStoredChars": 1560444,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 23,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 136,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 13,
+            "D0": 29,
+            "opponentError": 17,
+            "ace": 9,
+            "serveError": 7,
+            "opponentServeError": 5,
+            "attackError": 26,
+            "kill": 17,
+            "block": 13
+          },
+          "contacts": 2024,
+          "transitions": 190,
+          "digest": "9aac188039b024a9578cd906587dc6757f92ac922d22b4da66d3c878e14479e6"
+        },
+        {
+          "seed": 520,
+          "maxStoredChars": 2167042,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 18,
+              "o": 16
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 16,
+            "D0": 50,
+            "opponentError": 39,
+            "ace": 14,
+            "serveError": 15,
+            "opponentServeError": 12,
+            "attackError": 43,
+            "kill": 26,
+            "block": 35
+          },
+          "contacts": 4063,
+          "transitions": 387,
+          "digest": "c18518947df34e88331261e5a4c879f949c40b4a6fcd938b08ab30dc3af8c531"
+        },
+        {
+          "seed": 521,
+          "maxStoredChars": 1307346,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 20
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            }
+          ],
+          "sets": 3,
+          "rallies": 130,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 18,
+            "block": 19,
+            "ace": 9,
+            "serveError": 8,
+            "opponentServeError": 7,
+            "attackError": 24,
+            "kill": 20,
+            "opponentError": 20
+          },
+          "contacts": 2032,
+          "transitions": 199,
+          "digest": "07d6024c1cf06a61bcf47ab3e4c2e95cee6b3cf5261fc9d805a3ceb0f40dd926"
+        },
+        {
+          "seed": 522,
+          "maxStoredChars": 1463210,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            },
+            {
+              "set": 4,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 10,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 201,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 24,
+            "D0": 39,
+            "opponentError": 25,
+            "ace": 9,
+            "serveError": 10,
+            "opponentServeError": 13,
+            "attackError": 33,
+            "kill": 22,
+            "block": 26
+          },
+          "contacts": 2962,
+          "transitions": 281,
+          "digest": "945467518b4c7966e7af953733cf10d0832b8a7b402fda36c243d17a0815a808"
+        },
+        {
+          "seed": 523,
+          "maxStoredChars": 1323876,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 17,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 125,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 15,
+            "D0": 27,
+            "opponentServeError": 8,
+            "ace": 4,
+            "serveError": 10,
+            "attackError": 23,
+            "kill": 13,
+            "block": 12,
+            "opponentError": 13
+          },
+          "contacts": 1872,
+          "transitions": 177,
+          "digest": "ac1803d87fbffe15b26157fe95f6dd2da9d0c4ac1b797970b1d7ea0bc728669d"
+        },
+        {
+          "seed": 524,
+          "maxStoredChars": 1431152,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 19
+            },
+            {
+              "set": 4,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 9
+            }
+          ],
+          "sets": 5,
+          "rallies": 189,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 17,
+            "D0": 30,
+            "block": 28,
+            "ace": 9,
+            "serveError": 9,
+            "opponentServeError": 10,
+            "attackError": 40,
+            "kill": 31,
+            "opponentError": 15
+          },
+          "contacts": 2881,
+          "transitions": 282,
+          "digest": "5cd8f554e3771b165e4dfb7be66449d43404e71ec96e43cae3afba96136b267b"
+        },
+        {
+          "seed": 525,
+          "maxStoredChars": 1884785,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 25,
+            "opponentError": 25,
+            "ace": 13,
+            "serveError": 10,
+            "opponentServeError": 6,
+            "attackError": 25,
+            "kill": 11,
+            "block": 29
+          },
+          "contacts": 2388,
+          "transitions": 223,
+          "digest": "d1da6f755ae3be3afe4fc3dcd8ab28262804d5d2a5e95fe2b5d4cfbe5a30b10e"
+        },
+        {
+          "seed": 526,
+          "maxStoredChars": 1508613,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            },
+            {
+              "set": 4,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 10,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 197,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 37,
+            "block": 22,
+            "ace": 10,
+            "serveError": 11,
+            "opponentServeError": 6,
+            "attackError": 34,
+            "kill": 30,
+            "opponentError": 29
+          },
+          "contacts": 3187,
+          "transitions": 309,
+          "digest": "10648a7cd329bf7db47e0293dbb8e3c8ceb33cc9889a20e9648107934632c23d"
+        },
+        {
+          "seed": 527,
+          "maxStoredChars": 1513936,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 17,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 131,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 26,
+            "opponentError": 14,
+            "ace": 8,
+            "serveError": 10,
+            "opponentServeError": 5,
+            "attackError": 25,
+            "kill": 14,
+            "block": 15
+          },
+          "contacts": 1996,
+          "transitions": 189,
+          "digest": "11a1f3bdc200b9ec2fa510c28eab4bb5a7c6c1fd6832e74177bacc30726c8cdb"
+        },
+        {
+          "seed": 528,
+          "maxStoredChars": 1503990,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 20
+            },
+            {
+              "set": 4,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 7
+            }
+          ],
+          "sets": 5,
+          "rallies": 199,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 16,
+            "D0": 30,
+            "kill": 26,
+            "ace": 12,
+            "serveError": 15,
+            "opponentServeError": 10,
+            "attackError": 34,
+            "block": 31,
+            "opponentError": 25
+          },
+          "contacts": 3176,
+          "transitions": 311,
+          "digest": "bd7a655ae0ffe58b049a2ee968034702454d3ade295c3da4301a5a11ca4d460e"
+        },
+        {
+          "seed": 529,
+          "maxStoredChars": 1316640,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 20
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            }
+          ],
+          "sets": 3,
+          "rallies": 127,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 8,
+            "D0": 17,
+            "block": 20,
+            "ace": 15,
+            "serveError": 7,
+            "opponentServeError": 5,
+            "attackError": 20,
+            "kill": 19,
+            "opponentError": 16
+          },
+          "contacts": 1875,
+          "transitions": 182,
+          "digest": "9d2a47ffa6ff02e23463e0d8b12ff9a499ff53bfd9d747e9c41886d24e9673b0"
+        },
+        {
+          "seed": 530,
+          "maxStoredChars": 2298238,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 16,
+              "o": 18
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 23,
+            "D0": 50,
+            "kill": 33,
+            "ace": 10,
+            "serveError": 13,
+            "opponentServeError": 12,
+            "attackError": 40,
+            "block": 40,
+            "opponentError": 29
+          },
+          "contacts": 3919,
+          "transitions": 373,
+          "digest": "1401ff9a23fe1b5e6da427ad9bf531de6750e87d28f778cc18b417d362717d44"
+        },
+        {
+          "seed": 531,
+          "maxStoredChars": 1465317,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 20,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 129,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 29,
+            "kill": 13,
+            "ace": 6,
+            "serveError": 6,
+            "opponentServeError": 6,
+            "attackError": 26,
+            "block": 16,
+            "opponentError": 13
+          },
+          "contacts": 1982,
+          "transitions": 186,
+          "digest": "5a060f60e853060b1ee1754c41e55acf1ccd573121494accede3eae2f6659fb2"
+        },
+        {
+          "seed": 532,
+          "maxStoredChars": 1367532,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 22,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            },
+            {
+              "set": 4,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 12
+            }
+          ],
+          "sets": 5,
+          "rallies": 201,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 15,
+            "D0": 37,
+            "block": 30,
+            "ace": 10,
+            "serveError": 14,
+            "opponentServeError": 10,
+            "attackError": 31,
+            "kill": 27,
+            "opponentError": 27
+          },
+          "contacts": 3042,
+          "transitions": 288,
+          "digest": "2f99f33699238612b37f323c13cd37db4de1f0cb1af45d8488d5e94979d9e1c2"
+        },
+        {
+          "seed": 533,
+          "maxStoredChars": 1287190,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 15
+            }
+          ],
+          "sets": 3,
+          "rallies": 122,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 8,
+            "D0": 15,
+            "opponentServeError": 7,
+            "ace": 7,
+            "serveError": 7,
+            "attackError": 17,
+            "kill": 19,
+            "block": 23,
+            "opponentError": 19
+          },
+          "contacts": 1973,
+          "transitions": 196,
+          "digest": "35c41aceb22a470d9f75590a4c571a692986162489210eaa81c8c7e8b1d6c808"
+        },
+        {
+          "seed": 534,
+          "maxStoredChars": 1387599,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 4,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 8,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 191,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 13,
+            "D0": 36,
+            "block": 25,
+            "ace": 10,
+            "serveError": 11,
+            "opponentServeError": 9,
+            "attackError": 37,
+            "kill": 24,
+            "opponentError": 26
+          },
+          "contacts": 3008,
+          "transitions": 288,
+          "digest": "3f3e00146950852183e2b2c8256ba4d802d3510581ea82a9db6e8ef5c94de757"
+        },
+        {
+          "seed": 535,
+          "maxStoredChars": 2271017,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 26,
+              "o": 28
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 11,
+            "D0": 34,
+            "block": 24,
+            "ace": 9,
+            "serveError": 9,
+            "opponentServeError": 8,
+            "attackError": 30,
+            "kill": 14,
+            "opponentError": 23
+          },
+          "contacts": 2781,
+          "transitions": 268,
+          "digest": "4bceaab7c8468193680d0322919372e225b02c9d0159fcfaff41e878a80033e4"
+        },
+        {
+          "seed": 536,
+          "maxStoredChars": 1294621,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 16
+            },
+            {
+              "set": 4,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 13
+            }
+          ],
+          "sets": 5,
+          "rallies": 200,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 21,
+            "D0": 28,
+            "kill": 30,
+            "ace": 14,
+            "serveError": 10,
+            "opponentServeError": 10,
+            "attackError": 38,
+            "block": 25,
+            "opponentError": 24
+          },
+          "contacts": 3083,
+          "transitions": 306,
+          "digest": "33715db2f5b38b09377bab83a6eee4e81362ddb76840f7de1322faebeea83914"
+        },
+        {
+          "seed": 537,
+          "maxStoredChars": 1445248,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 19
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            }
+          ],
+          "sets": 3,
+          "rallies": 135,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 21,
+            "block": 23,
+            "ace": 10,
+            "serveError": 9,
+            "opponentServeError": 8,
+            "attackError": 25,
+            "kill": 17,
+            "opponentError": 17
+          },
+          "contacts": 2184,
+          "transitions": 213,
+          "digest": "0ad06b3e8e4c4bf317adadc3ce08fae4f7e1d3dad3ec651fdb75958f70719f8b"
+        },
+        {
+          "seed": 538,
+          "maxStoredChars": 1741031,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 4,
+              "e": 23,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 8,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 196,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 20,
+            "D0": 27,
+            "opponentError": 25,
+            "ace": 13,
+            "serveError": 12,
+            "opponentServeError": 8,
+            "attackError": 38,
+            "kill": 32,
+            "block": 21
+          },
+          "contacts": 3043,
+          "transitions": 303,
+          "digest": "c1e84af03ada089a7a8478422bbd10ce91d06743195891106fe9e7eaa0b7354a"
+        },
+        {
+          "seed": 539,
+          "maxStoredChars": 1455104,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 23,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 16,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 132,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 26,
+            "kill": 27,
+            "ace": 8,
+            "serveError": 10,
+            "opponentServeError": 5,
+            "attackError": 25,
+            "block": 6,
+            "opponentError": 11
+          },
+          "contacts": 1907,
+          "transitions": 185,
+          "digest": "985d48fae057b22cfdc406fb9b797f5f8f45c6f9d95390d12390b5fb5998dd2f"
+        },
+        {
+          "seed": 540,
+          "maxStoredChars": 2244485,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 18,
+              "o": 16
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 15,
+            "D0": 40,
+            "block": 27,
+            "ace": 15,
+            "serveError": 15,
+            "opponentServeError": 9,
+            "attackError": 54,
+            "kill": 38,
+            "opponentError": 37
+          },
+          "contacts": 3991,
+          "transitions": 390,
+          "digest": "cf59f9256114ac015f00cea8475a8aae2c95444071eb83300e72b81725e1c99c"
+        },
+        {
+          "seed": 541,
+          "maxStoredChars": 1220800,
+          "restarts": 1,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            }
+          ],
+          "sets": 3,
+          "rallies": 124,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 8,
+            "D0": 10,
+            "opponentError": 25,
+            "ace": 8,
+            "serveError": 10,
+            "opponentServeError": 6,
+            "attackError": 21,
+            "kill": 20,
+            "block": 16
+          },
+          "contacts": 1865,
+          "transitions": 186,
+          "digest": "315114623d1d7c31d6e845204ad6b6fd84491a1d5e0f6a66bdf01134e56c1107"
+        },
+        {
+          "seed": 542,
+          "maxStoredChars": 1738606,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 22,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 15
+            },
+            {
+              "set": 4,
+              "e": 22,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 9,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 201,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 17,
+            "D0": 29,
+            "kill": 37,
+            "ace": 11,
+            "serveError": 10,
+            "opponentServeError": 12,
+            "attackError": 42,
+            "block": 18,
+            "opponentError": 25
+          },
+          "contacts": 3177,
+          "transitions": 321,
+          "digest": "d495c42915a5e3cc1881e083098a91b7b255f832920d724c4cf14e6bdf0cfaf5"
+        },
+        {
+          "seed": 543,
+          "maxStoredChars": 1655940,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 23,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 130,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 15,
+            "D0": 30,
+            "opponentError": 16,
+            "ace": 4,
+            "serveError": 9,
+            "opponentServeError": 7,
+            "attackError": 21,
+            "kill": 15,
+            "block": 13
+          },
+          "contacts": 2005,
+          "transitions": 189,
+          "digest": "8d890cfc89ecbcbf766ff769c9acb3177d12905358f2e667470702e6f549fa38"
+        },
+        {
+          "seed": 544,
+          "maxStoredChars": 1401147,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 15
+            },
+            {
+              "set": 4,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 13
+            }
+          ],
+          "sets": 5,
+          "rallies": 197,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 20,
+            "D0": 29,
+            "kill": 23,
+            "ace": 12,
+            "serveError": 11,
+            "opponentServeError": 8,
+            "attackError": 36,
+            "block": 31,
+            "opponentError": 27
+          },
+          "contacts": 3015,
+          "transitions": 291,
+          "digest": "74d1c60eae2fa8089e39d2f8f651d828963da736ab9f2e7767b9f6fafd6dba73"
+        },
+        {
+          "seed": 545,
+          "maxStoredChars": 2149229,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 12,
+            "D0": 29,
+            "opponentError": 26,
+            "ace": 6,
+            "serveError": 11,
+            "opponentServeError": 6,
+            "attackError": 26,
+            "kill": 25,
+            "block": 21
+          },
+          "contacts": 2838,
+          "transitions": 280,
+          "digest": "773a6b329e6ab915c3c007b857f8e807dedc2238b548c08258998ea2c3878224"
+        },
+        {
+          "seed": 546,
+          "maxStoredChars": 1665281,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            },
+            {
+              "set": 4,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 13,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 205,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 38,
+            "opponentError": 28,
+            "ace": 11,
+            "serveError": 12,
+            "opponentServeError": 7,
+            "attackError": 38,
+            "kill": 28,
+            "block": 25
+          },
+          "contacts": 3341,
+          "transitions": 324,
+          "digest": "03e18c81a182ca0e2c9853588d186319e913464b6ca6dbbd6da89d9955995414"
+        },
+        {
+          "seed": 547,
+          "maxStoredChars": 1526507,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 19,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 129,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 12,
+            "D0": 29,
+            "kill": 15,
+            "ace": 4,
+            "serveError": 9,
+            "opponentServeError": 4,
+            "attackError": 25,
+            "block": 21,
+            "opponentError": 10
+          },
+          "contacts": 2158,
+          "transitions": 205,
+          "digest": "3eb6db38c82d4fa994152c6574285515e42c3b631f27e1aeb0f6a68f0e8ae798"
+        },
+        {
+          "seed": 548,
+          "maxStoredChars": 1506110,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            },
+            {
+              "set": 4,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 8
+            }
+          ],
+          "sets": 5,
+          "rallies": 195,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 17,
+            "D0": 36,
+            "block": 19,
+            "ace": 9,
+            "serveError": 13,
+            "opponentServeError": 11,
+            "attackError": 33,
+            "kill": 36,
+            "opponentError": 21
+          },
+          "contacts": 2842,
+          "transitions": 274,
+          "digest": "a8704c9599344e635a3cfe1efbc55f60882aca5b8570885706ca9a2b51ebebce"
+        },
+        {
+          "seed": 549,
+          "maxStoredChars": 1223694,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 15
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 18
+            }
+          ],
+          "sets": 3,
+          "rallies": 126,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 17,
+            "opponentError": 24,
+            "ace": 11,
+            "serveError": 10,
+            "opponentServeError": 4,
+            "attackError": 19,
+            "kill": 16,
+            "block": 20
+          },
+          "contacts": 1944,
+          "transitions": 186,
+          "digest": "d46be5ad5fb45ff6b755fbbd5b8e7a8b5a2e34b70170c7adca5a89fb9d4509d2"
+        },
+        {
+          "seed": 550,
+          "maxStoredChars": 2162868,
+          "restarts": 1,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 16,
+              "o": 18
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 20,
+            "D0": 48,
+            "kill": 34,
+            "ace": 15,
+            "serveError": 15,
+            "opponentServeError": 10,
+            "attackError": 43,
+            "block": 25,
+            "opponentError": 40
+          },
+          "contacts": 3903,
+          "transitions": 374,
+          "digest": "5d1692a2ff910dcb1d2d4b0f1fa23c8cef70814537b535e882e1a593567f3aac"
+        },
+        {
+          "seed": 551,
+          "maxStoredChars": 1136176,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 17,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 124,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 21,
+            "block": 18,
+            "ace": 5,
+            "serveError": 11,
+            "opponentServeError": 3,
+            "attackError": 29,
+            "kill": 8,
+            "opponentError": 15
+          },
+          "contacts": 1757,
+          "transitions": 160,
+          "digest": "234fae6599e8def635c9349513795179ee595790a19bca9d9ae092aa8dfb3bc9"
+        },
+        {
+          "seed": 552,
+          "maxStoredChars": 1502521,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            },
+            {
+              "set": 4,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 9
+            }
+          ],
+          "sets": 5,
+          "rallies": 195,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 15,
+            "D0": 32,
+            "kill": 23,
+            "ace": 14,
+            "serveError": 11,
+            "opponentServeError": 8,
+            "attackError": 36,
+            "block": 22,
+            "opponentError": 34
+          },
+          "contacts": 3086,
+          "transitions": 299,
+          "digest": "a8d7b86fb8b1a4cb81f3b8a019b1f60a2daa44e508a81392ab06e83590e8a8ef"
+        },
+        {
+          "seed": 553,
+          "maxStoredChars": 1688182,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 20
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            }
+          ],
+          "sets": 3,
+          "rallies": 136,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 20,
+            "block": 21,
+            "ace": 5,
+            "serveError": 9,
+            "opponentServeError": 5,
+            "attackError": 18,
+            "kill": 21,
+            "opponentError": 23
+          },
+          "contacts": 2237,
+          "transitions": 220,
+          "digest": "e4b6797e3f5c560412adb5f08912c685ff4dced691935277c97274928b88c89c"
+        },
+        {
+          "seed": 554,
+          "maxStoredChars": 1562078,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 19
+            },
+            {
+              "set": 4,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 12,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 206,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 21,
+            "D0": 30,
+            "opponentError": 27,
+            "ace": 13,
+            "serveError": 19,
+            "opponentServeError": 7,
+            "attackError": 32,
+            "kill": 27,
+            "block": 30
+          },
+          "contacts": 3049,
+          "transitions": 292,
+          "digest": "41f5935dc0e25045b03ad4ea5b0be0330ca22cad2c8d4843e9b507a3306a1338"
+        },
+        {
+          "seed": 555,
+          "maxStoredChars": 2128643,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 26,
+              "o": 28
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 8,
+            "D0": 37,
+            "kill": 17,
+            "ace": 8,
+            "serveError": 7,
+            "opponentServeError": 9,
+            "attackError": 32,
+            "block": 23,
+            "opponentError": 21
+          },
+          "contacts": 2738,
+          "transitions": 262,
+          "digest": "8432efba6d94d80f972c70750cb9eab05771a2591f9a69ec41307ece4cce0bde"
+        },
+        {
+          "seed": 556,
+          "maxStoredChars": 1461838,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 20
+            },
+            {
+              "set": 4,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 7
+            }
+          ],
+          "sets": 5,
+          "rallies": 194,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 34,
+            "block": 30,
+            "ace": 12,
+            "serveError": 13,
+            "opponentServeError": 7,
+            "attackError": 34,
+            "kill": 24,
+            "opponentError": 26
+          },
+          "contacts": 3034,
+          "transitions": 289,
+          "digest": "451e1ba62ffbbaf413082b4a8b104f24a48c0a6cf5d6ce7537282287a40ddfa1"
+        },
+        {
+          "seed": 557,
+          "maxStoredChars": 1333409,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 16
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 17
+            }
+          ],
+          "sets": 3,
+          "rallies": 126,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 10,
+            "D0": 20,
+            "opponentError": 22,
+            "ace": 13,
+            "serveError": 8,
+            "opponentServeError": 5,
+            "attackError": 13,
+            "kill": 14,
+            "block": 21
+          },
+          "contacts": 1970,
+          "transitions": 189,
+          "digest": "230803ba9791a70e810126199b3e8adcd2729efb844445938d6d6ee4f3059eb8"
+        },
+        {
+          "seed": 558,
+          "maxStoredChars": 1661034,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 21
+            },
+            {
+              "set": 4,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 10,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 195,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 35,
+            "kill": 26,
+            "ace": 8,
+            "serveError": 14,
+            "opponentServeError": 8,
+            "attackError": 41,
+            "block": 27,
+            "opponentError": 22
+          },
+          "contacts": 3187,
+          "transitions": 309,
+          "digest": "66e67f4374162a56657393823580369da22dc0601d8910de0d79afc45e2ef4ce"
+        },
+        {
+          "seed": 559,
+          "maxStoredChars": 1653733,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 23,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 19,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 135,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 9,
+            "D0": 35,
+            "block": 12,
+            "ace": 5,
+            "serveError": 9,
+            "opponentServeError": 6,
+            "attackError": 22,
+            "kill": 21,
+            "opponentError": 16
+          },
+          "contacts": 2166,
+          "transitions": 204,
+          "digest": "3b1bb24c0a54649fb179823513bb56ab946e519fab585ecbaed59a81275294ca"
+        },
+        {
+          "seed": 560,
+          "maxStoredChars": 2427962,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 18,
+              "o": 16
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 47,
+            "block": 38,
+            "ace": 9,
+            "serveError": 17,
+            "opponentServeError": 8,
+            "attackError": 46,
+            "kill": 33,
+            "opponentError": 38
+          },
+          "contacts": 4253,
+          "transitions": 410,
+          "digest": "502c6848a8dba3e6362d25918e12639cce77da07fad9bc603499fc7f658b6111"
+        },
+        {
+          "seed": 561,
+          "maxStoredChars": 1555930,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 19
+            }
+          ],
+          "sets": 3,
+          "rallies": 126,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 9,
+            "D0": 18,
+            "block": 22,
+            "ace": 8,
+            "serveError": 5,
+            "opponentServeError": 4,
+            "attackError": 19,
+            "kill": 18,
+            "opponentError": 23
+          },
+          "contacts": 2236,
+          "transitions": 223,
+          "digest": "89c4b371dd19769052b230e106e2ec5b28a9e03adbf6b73c220227852c9b8843"
+        },
+        {
+          "seed": 562,
+          "maxStoredChars": 1657583,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 4,
+              "e": 22,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 8,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 205,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 41,
+            "opponentError": 30,
+            "ace": 14,
+            "serveError": 12,
+            "opponentServeError": 5,
+            "attackError": 34,
+            "kill": 26,
+            "block": 25
+          },
+          "contacts": 3349,
+          "transitions": 321,
+          "digest": "d1a0aa5d35ff2908610d7ebcee11e3764f1eb2e3e7985f0bdbb0df47d10579f1"
+        },
+        {
+          "seed": 563,
+          "maxStoredChars": 1570515,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 22,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 134,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 16,
+            "D0": 27,
+            "kill": 19,
+            "ace": 4,
+            "serveError": 11,
+            "opponentServeError": 5,
+            "attackError": 21,
+            "block": 14,
+            "opponentError": 17
+          },
+          "contacts": 2258,
+          "transitions": 221,
+          "digest": "69b08bd95fe9ab44ec4dbff260a7468b9a5c16d9871b8d4a6254b32a680027be"
+        },
+        {
+          "seed": 564,
+          "maxStoredChars": 1720606,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            },
+            {
+              "set": 4,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 13
+            }
+          ],
+          "sets": 5,
+          "rallies": 199,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 19,
+            "D0": 35,
+            "block": 29,
+            "ace": 8,
+            "serveError": 15,
+            "opponentServeError": 9,
+            "attackError": 35,
+            "kill": 27,
+            "opponentError": 22
+          },
+          "contacts": 3172,
+          "transitions": 307,
+          "digest": "cd849dd37061f29740946c3167426f9aa531d46c4d4f743023d6ce740fff9393"
+        },
+        {
+          "seed": 565,
+          "maxStoredChars": 1928293,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 13,
+            "D0": 25,
+            "opponentError": 23,
+            "ace": 6,
+            "serveError": 12,
+            "opponentServeError": 9,
+            "attackError": 28,
+            "kill": 21,
+            "block": 25
+          },
+          "contacts": 2500,
+          "transitions": 241,
+          "digest": "97c46c4e98d21f9aee6a820e30536279697f936f19fde7b1e35da6b63e9dd104"
+        },
+        {
+          "seed": 566,
+          "maxStoredChars": 1533865,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 4,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 12,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 197,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 21,
+            "D0": 36,
+            "kill": 25,
+            "ace": 12,
+            "serveError": 8,
+            "opponentServeError": 9,
+            "attackError": 32,
+            "block": 29,
+            "opponentError": 25
+          },
+          "contacts": 3255,
+          "transitions": 319,
+          "digest": "3b6b13e216b6c34cdbf6445f087ce455f9ec8cdc924221242568b6d40e60d86b"
+        },
+        {
+          "seed": 567,
+          "maxStoredChars": 1661885,
+          "restarts": 1,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 22,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 135,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 28,
+            "block": 18,
+            "ace": 7,
+            "serveError": 11,
+            "opponentServeError": 5,
+            "attackError": 22,
+            "kill": 14,
+            "opponentError": 16
+          },
+          "contacts": 2015,
+          "transitions": 187,
+          "digest": "56fa113c9d14f4b72ccc896581dcba3869dada0502d368fd2f6020a81de6973f"
+        },
+        {
+          "seed": 568,
+          "maxStoredChars": 1417678,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 16
+            },
+            {
+              "set": 4,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 9
+            }
+          ],
+          "sets": 5,
+          "rallies": 186,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 34,
+            "opponentError": 25,
+            "ace": 10,
+            "serveError": 13,
+            "opponentServeError": 10,
+            "attackError": 32,
+            "kill": 26,
+            "block": 22
+          },
+          "contacts": 2877,
+          "transitions": 277,
+          "digest": "0f17efa01ebca0e205cba00caa546a488e539867bd412946a5b8fbf372af8059"
+        },
+        {
+          "seed": 569,
+          "maxStoredChars": 1707227,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            }
+          ],
+          "sets": 3,
+          "rallies": 138,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 10,
+            "D0": 19,
+            "kill": 19,
+            "ace": 7,
+            "serveError": 8,
+            "opponentServeError": 7,
+            "attackError": 26,
+            "block": 19,
+            "opponentError": 23
+          },
+          "contacts": 2262,
+          "transitions": 224,
+          "digest": "02f38a8c3accd4e5bd7337487589a45b44e89179814623e1bbecadd06b78e8b8"
+        },
+        {
+          "seed": 570,
+          "maxStoredChars": 2044728,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 16,
+              "o": 18
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 28,
+            "D0": 40,
+            "kill": 34,
+            "ace": 13,
+            "serveError": 22,
+            "opponentServeError": 10,
+            "attackError": 36,
+            "block": 30,
+            "opponentError": 37
+          },
+          "contacts": 3729,
+          "transitions": 358,
+          "digest": "a8820f3c1f42a59c66d8670e9fca5696291c91dbf94dacc167678d143c187a8f"
+        },
+        {
+          "seed": 571,
+          "maxStoredChars": 1374041,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 19,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 15,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 127,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 27,
+            "kill": 17,
+            "ace": 6,
+            "serveError": 5,
+            "opponentServeError": 6,
+            "attackError": 29,
+            "block": 14,
+            "opponentError": 9
+          },
+          "contacts": 1991,
+          "transitions": 192,
+          "digest": "36715b56c87f7ca63d4b24b6e7c7f1c900d163fb514f1ba13dd457d250499990"
+        },
+        {
+          "seed": 572,
+          "maxStoredChars": 1491301,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 22,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 19
+            },
+            {
+              "set": 4,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 13
+            }
+          ],
+          "sets": 5,
+          "rallies": 208,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 20,
+            "D0": 26,
+            "block": 23,
+            "ace": 12,
+            "serveError": 14,
+            "opponentServeError": 6,
+            "attackError": 40,
+            "kill": 30,
+            "opponentError": 37
+          },
+          "contacts": 3322,
+          "transitions": 329,
+          "digest": "3939ffb02957ec02f27511354bf1e243e4fb99ad818f8d1f4532e4e7b4b45bda"
+        },
+        {
+          "seed": 573,
+          "maxStoredChars": 1596485,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            }
+          ],
+          "sets": 3,
+          "rallies": 130,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 6,
+            "D0": 25,
+            "opponentError": 24,
+            "ace": 10,
+            "serveError": 8,
+            "opponentServeError": 5,
+            "attackError": 16,
+            "kill": 20,
+            "block": 16
+          },
+          "contacts": 2064,
+          "transitions": 197,
+          "digest": "a7fb19967975d9548c1ca7e747e35f5b1d1c7ad80f6c672e105173bb9ea1c0af"
+        },
+        {
+          "seed": 574,
+          "maxStoredChars": 1210729,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 15
+            },
+            {
+              "set": 4,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 13,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 192,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 17,
+            "D0": 32,
+            "kill": 27,
+            "ace": 10,
+            "serveError": 12,
+            "opponentServeError": 7,
+            "attackError": 37,
+            "block": 24,
+            "opponentError": 26
+          },
+          "contacts": 2973,
+          "transitions": 287,
+          "digest": "783bce874d270f997ad992dbaf6537ac6bd1f914ed121d98bcf4b90433c10574"
+        },
+        {
+          "seed": 575,
+          "maxStoredChars": 1974348,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 26,
+              "o": 28
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 12,
+            "D0": 21,
+            "kill": 21,
+            "ace": 9,
+            "serveError": 10,
+            "opponentServeError": 10,
+            "attackError": 41,
+            "block": 24,
+            "opponentError": 14
+          },
+          "contacts": 2396,
+          "transitions": 235,
+          "digest": "509145fde5cad0d08bf121de98bf9a89d9e1a85cda7e83be6d0d0310a047f610"
+        },
+        {
+          "seed": 576,
+          "maxStoredChars": 1620210,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 4,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 10
+            }
+          ],
+          "sets": 5,
+          "rallies": 199,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 17,
+            "D0": 31,
+            "opponentError": 25,
+            "ace": 8,
+            "serveError": 13,
+            "opponentServeError": 8,
+            "attackError": 39,
+            "kill": 28,
+            "block": 30
+          },
+          "contacts": 3190,
+          "transitions": 311,
+          "digest": "7596832a247f85d9511a78fc574b8013306c278b18bf0b8421981e393a9c26c4"
+        },
+        {
+          "seed": 577,
+          "maxStoredChars": 1388686,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 18
+            }
+          ],
+          "sets": 3,
+          "rallies": 133,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 7,
+            "D0": 16,
+            "opponentServeError": 12,
+            "ace": 9,
+            "serveError": 10,
+            "attackError": 25,
+            "kill": 20,
+            "block": 14,
+            "opponentError": 20
+          },
+          "contacts": 1971,
+          "transitions": 197,
+          "digest": "08c6e770baf42a4d7a4bd7d1f5926f8361c10eb698fec5e755a8d8d260171f9c"
+        },
+        {
+          "seed": 578,
+          "maxStoredChars": 1450894,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 4,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 8,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 196,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 12,
+            "D0": 44,
+            "block": 26,
+            "ace": 10,
+            "serveError": 10,
+            "opponentServeError": 6,
+            "attackError": 31,
+            "kill": 28,
+            "opponentError": 29
+          },
+          "contacts": 3227,
+          "transitions": 306,
+          "digest": "a042fd6f400e77870b7a737ac5211fb9cefd20f1cd16000259eb6fcbd974cafd"
+        },
+        {
+          "seed": 579,
+          "maxStoredChars": 1237865,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 17,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 130,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 16,
+            "D0": 27,
+            "kill": 16,
+            "ace": 6,
+            "serveError": 8,
+            "opponentServeError": 5,
+            "attackError": 24,
+            "block": 12,
+            "opponentError": 16
+          },
+          "contacts": 1811,
+          "transitions": 167,
+          "digest": "0ea7ebe298847817c9a21bc521791fa4f5505de009b0c7bb2ce45add1f1e774e"
+        },
+        {
+          "seed": 580,
+          "maxStoredChars": 2097708,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 18,
+              "o": 16
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 24,
+            "D0": 41,
+            "block": 41,
+            "ace": 12,
+            "serveError": 16,
+            "opponentServeError": 12,
+            "attackError": 43,
+            "kill": 24,
+            "opponentError": 37
+          },
+          "contacts": 3918,
+          "transitions": 375,
+          "digest": "7d6c56212311bf39c397a9e90343589b66054468f001a4d64b98a795b5d623b3"
+        },
+        {
+          "seed": 581,
+          "maxStoredChars": 1621765,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 21
+            }
+          ],
+          "sets": 3,
+          "rallies": 136,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 24,
+            "opponentError": 22,
+            "ace": 9,
+            "serveError": 8,
+            "opponentServeError": 4,
+            "attackError": 24,
+            "kill": 12,
+            "block": 28
+          },
+          "contacts": 2372,
+          "transitions": 227,
+          "digest": "63a14d7adda761b99e88bb6a95786b3aafcb04e96d73d652171897b88a977bad"
+        },
+        {
+          "seed": 582,
+          "maxStoredChars": 1725753,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 21
+            },
+            {
+              "set": 4,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 10,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 202,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 16,
+            "D0": 40,
+            "kill": 29,
+            "ace": 10,
+            "serveError": 12,
+            "opponentServeError": 11,
+            "attackError": 36,
+            "block": 25,
+            "opponentError": 23
+          },
+          "contacts": 3294,
+          "transitions": 321,
+          "digest": "5146e95dacee23154027005661e3543f5210b91c02d138d00f6cc3e75e1c70cc"
+        },
+        {
+          "seed": 583,
+          "maxStoredChars": 1406810,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 19,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 127,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 9,
+            "D0": 30,
+            "block": 15,
+            "ace": 5,
+            "serveError": 7,
+            "opponentServeError": 3,
+            "attackError": 29,
+            "kill": 16,
+            "opponentError": 13
+          },
+          "contacts": 2050,
+          "transitions": 192,
+          "digest": "ab6ca713e6bc4671fe01949c4ed9ba902d6d23269d771f580000b29b75bbbd7e"
+        },
+        {
+          "seed": 584,
+          "maxStoredChars": 1284377,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 4,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 8
+            }
+          ],
+          "sets": 5,
+          "rallies": 189,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 11,
+            "D0": 35,
+            "opponentError": 18,
+            "ace": 13,
+            "serveError": 14,
+            "opponentServeError": 13,
+            "attackError": 34,
+            "kill": 21,
+            "block": 30
+          },
+          "contacts": 2899,
+          "transitions": 277,
+          "digest": "a2129150f95ae5ef48ff117d0cc8cb1b9f5503ad12823c15d2102baf892c2da2"
+        },
+        {
+          "seed": 585,
+          "maxStoredChars": 1961665,
+          "restarts": 1,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 34,
+            "opponentServeError": 9,
+            "ace": 6,
+            "serveError": 8,
+            "attackError": 22,
+            "kill": 22,
+            "block": 21,
+            "opponentError": 26
+          },
+          "contacts": 2508,
+          "transitions": 237,
+          "digest": "da0c51cecd3af7e4841ab3a58d0d79a2348eb64ae19dfda4098cf88b76a5b888"
+        },
+        {
+          "seed": 586,
+          "maxStoredChars": 1747411,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 22,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 23
+            },
+            {
+              "set": 4,
+              "e": 23,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 7,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 208,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 15,
+            "D0": 40,
+            "block": 25,
+            "ace": 11,
+            "serveError": 14,
+            "opponentServeError": 8,
+            "attackError": 37,
+            "kill": 25,
+            "opponentError": 33
+          },
+          "contacts": 3370,
+          "transitions": 323,
+          "digest": "4c9b74cf6afd64ea313e88fd8333e9c916b1994158b261c3196a83fed831613e"
+        },
+        {
+          "seed": 587,
+          "maxStoredChars": 1478424,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 20,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 128,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 22,
+            "opponentServeError": 7,
+            "ace": 4,
+            "serveError": 6,
+            "attackError": 29,
+            "kill": 14,
+            "block": 16,
+            "opponentError": 12
+          },
+          "contacts": 1827,
+          "transitions": 174,
+          "digest": "8af84a310d4eff9c1074a863f201922b9de23fc3839ac90663a1fcf33ab90100"
+        },
+        {
+          "seed": 588,
+          "maxStoredChars": 1371495,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 20
+            },
+            {
+              "set": 4,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 7
+            }
+          ],
+          "sets": 5,
+          "rallies": 194,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 13,
+            "D0": 27,
+            "block": 24,
+            "ace": 9,
+            "serveError": 13,
+            "opponentServeError": 8,
+            "attackError": 42,
+            "kill": 28,
+            "opponentError": 30
+          },
+          "contacts": 2854,
+          "transitions": 274,
+          "digest": "0797bd4c8dbfc5877ab5501cd869cf078d98984af723c80f5063d771f242f872"
+        },
+        {
+          "seed": 589,
+          "maxStoredChars": 1602444,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 19
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 19
+            }
+          ],
+          "sets": 3,
+          "rallies": 131,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 21,
+            "opponentError": 25,
+            "ace": 8,
+            "serveError": 5,
+            "opponentServeError": 4,
+            "attackError": 25,
+            "kill": 20,
+            "block": 18
+          },
+          "contacts": 2265,
+          "transitions": 223,
+          "digest": "d4919f2733ab8bb975b4b97c923c5f031988229d2403303fb0dd9f63db7e3592"
+        },
+        {
+          "seed": 590,
+          "maxStoredChars": 2102533,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 16,
+              "o": 18
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 40,
+            "opponentError": 33,
+            "ace": 11,
+            "serveError": 21,
+            "opponentServeError": 10,
+            "attackError": 47,
+            "kill": 33,
+            "block": 37
+          },
+          "contacts": 3757,
+          "transitions": 357,
+          "digest": "05b2842951768e5d47163f544058801db7e397017b3a1d1368d17c7332a579f0"
+        },
+        {
+          "seed": 591,
+          "maxStoredChars": 1302951,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 16,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 16,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 125,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 18,
+            "D0": 23,
+            "block": 14,
+            "ace": 5,
+            "serveError": 7,
+            "opponentServeError": 5,
+            "attackError": 27,
+            "kill": 9,
+            "opponentError": 17
+          },
+          "contacts": 2059,
+          "transitions": 200,
+          "digest": "7572af0a2daffd48bfc760f0c1b5f58135fcbfa14df61f500d5ca2a240889c67"
+        },
+        {
+          "seed": 592,
+          "maxStoredChars": 1300423,
+          "restarts": 5,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 15,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            },
+            {
+              "set": 4,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 7
+            }
+          ],
+          "sets": 5,
+          "rallies": 183,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 15,
+            "D0": 36,
+            "opponentError": 21,
+            "ace": 8,
+            "serveError": 9,
+            "opponentServeError": 8,
+            "attackError": 29,
+            "kill": 27,
+            "block": 30
+          },
+          "contacts": 3115,
+          "transitions": 304,
+          "digest": "c633fbc487129d460bf4956fd16e903f4075ffc5ec0d72840fc7c6d71e2cc7a0"
+        },
+        {
+          "seed": 593,
+          "maxStoredChars": 1502749,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 21
+            }
+          ],
+          "sets": 3,
+          "rallies": 132,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 6,
+            "D0": 20,
+            "kill": 25,
+            "ace": 7,
+            "serveError": 11,
+            "opponentServeError": 6,
+            "attackError": 20,
+            "block": 23,
+            "opponentError": 14
+          },
+          "contacts": 2048,
+          "transitions": 199,
+          "digest": "85241e5ea33dc06183fa5b3a2865b8c340eead6d33154b7792725c6ad5400ea3"
+        },
+        {
+          "seed": 594,
+          "maxStoredChars": 1662078,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 20
+            },
+            {
+              "set": 4,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 8,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 196,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 22,
+            "D0": 31,
+            "block": 26,
+            "ace": 11,
+            "serveError": 11,
+            "opponentServeError": 9,
+            "attackError": 39,
+            "kill": 21,
+            "opponentError": 26
+          },
+          "contacts": 3096,
+          "transitions": 302,
+          "digest": "38ce48a8328a62344e58a8fa861c2d5741ca0814d08081d1839bfe81028d1815"
+        },
+        {
+          "seed": 595,
+          "maxStoredChars": 1922892,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 26,
+              "o": 28
+            }
+          ],
+          "sets": 3,
+          "rallies": 162,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 12,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 13,
+            "D0": 28,
+            "kill": 16,
+            "ace": 9,
+            "serveError": 13,
+            "opponentServeError": 6,
+            "attackError": 30,
+            "block": 23,
+            "opponentError": 24
+          },
+          "contacts": 2326,
+          "transitions": 215,
+          "digest": "8f3bc0a96eae3a4e37d4c94e29bd548332e1f6d753889444c5e122b3d5af7f78"
+        },
+        {
+          "seed": 596,
+          "maxStoredChars": 1515341,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 20,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 21
+            },
+            {
+              "set": 4,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 15,
+              "o": 13
+            }
+          ],
+          "sets": 5,
+          "rallies": 201,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 19,
+            "D0": 41,
+            "kill": 27,
+            "ace": 11,
+            "serveError": 11,
+            "opponentServeError": 8,
+            "attackError": 31,
+            "block": 26,
+            "opponentError": 27
+          },
+          "contacts": 3129,
+          "transitions": 297,
+          "digest": "86a57b2213ba532464d73f2ac1bb3584cc39e997453f7925123291f201617c9e"
+        },
+        {
+          "seed": 597,
+          "maxStoredChars": 1386237,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 25,
+              "o": 16
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 14
+            }
+          ],
+          "sets": 3,
+          "rallies": 123,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 7,
+            "D0": 21,
+            "opponentServeError": 6,
+            "ace": 11,
+            "serveError": 5,
+            "attackError": 15,
+            "kill": 27,
+            "block": 15,
+            "opponentError": 16
+          },
+          "contacts": 2079,
+          "transitions": 210,
+          "digest": "b0207c10ce1e31d8379861be61c9f19ea600ff5cb024eeeb0adfd52640515e46"
+        },
+        {
+          "seed": 598,
+          "maxStoredChars": 1509743,
+          "restarts": 2,
+          "scores": [
+            {
+              "set": 1,
+              "e": 25,
+              "o": 18
+            },
+            {
+              "set": 2,
+              "e": 14,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 25,
+              "o": 22
+            },
+            {
+              "set": 4,
+              "e": 21,
+              "o": 25
+            },
+            {
+              "set": 5,
+              "e": 9,
+              "o": 15
+            }
+          ],
+          "sets": 5,
+          "rallies": 199,
+          "wins": [
+            2,
+            3
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 21,
+            "D0": 35,
+            "kill": 16,
+            "ace": 12,
+            "serveError": 16,
+            "opponentServeError": 13,
+            "attackError": 33,
+            "block": 27,
+            "opponentError": 26
+          },
+          "contacts": 2823,
+          "transitions": 264,
+          "digest": "23934491829248b1dd072612e90a8e2867121dbedc86de1cf1889367b3d291a3"
+        },
+        {
+          "seed": 599,
+          "maxStoredChars": 1365202,
+          "restarts": 3,
+          "scores": [
+            {
+              "set": 1,
+              "e": 18,
+              "o": 25
+            },
+            {
+              "set": 2,
+              "e": 17,
+              "o": 25
+            },
+            {
+              "set": 3,
+              "e": 18,
+              "o": 25
+            }
+          ],
+          "sets": 3,
+          "rallies": 128,
+          "wins": [
+            0,
+            3
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 14,
+            "D0": 28,
+            "block": 19,
+            "ace": 4,
+            "serveError": 9,
+            "opponentServeError": 5,
+            "attackError": 24,
+            "kill": 14,
+            "opponentError": 11
+          },
+          "contacts": 1979,
+          "transitions": 185,
+          "digest": "38cbed53060cb7344be44ffaa67f590d9bbdb9510cc353826f3a277f5fb7a85e"
+        },
+        {
+          "seed": 600,
+          "maxStoredChars": 2310052,
+          "restarts": 4,
+          "scores": [
+            {
+              "set": 1,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 2,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 3,
+              "e": 28,
+              "o": 26
+            },
+            {
+              "set": 4,
+              "e": 26,
+              "o": 28
+            },
+            {
+              "set": 5,
+              "e": 18,
+              "o": 16
+            }
+          ],
+          "sets": 5,
+          "rallies": 250,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 18,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 21,
+            "D0": 39,
+            "block": 34,
+            "ace": 12,
+            "serveError": 14,
+            "opponentServeError": 15,
+            "attackError": 50,
+            "kill": 38,
+            "opponentError": 27
+          },
+          "contacts": 3930,
+          "transitions": 388,
+          "digest": "4b4bcdf0aaec2596f91ae5ca189ed64230fcfbab36308a8fb3e127a0d5985f67"
+        }
+      ]
+    },
+    "quick": {
+      "matches": 100,
+      "sets": 400,
+      "rallies": 19990
+    },
+    "eventChains": {
+      "count": 100,
+      "contacts": 2175
+    }
+  },
+  "measurements": [
+    {
+      "name": "cache-lifecycle",
+      "upgrade": "activated",
+      "failedInstall": "redundant",
+      "rollback": "activated",
+      "offlineReloads": 2,
+      "localStorageUnchangedUntilKill": true,
+      "scope": "Service-Worker-Rollback; kein App-Schema-Downgrade",
+      "requests": [
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/favicon.ico"
+        },
+        {
+          "stage": "old",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/index.html"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/manifest.webmanifest"
+        },
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "current",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "current",
+          "path": "/version.js"
+        },
+        {
+          "stage": "current",
+          "path": "/"
+        },
+        {
+          "stage": "current",
+          "path": "/index.html"
+        },
+        {
+          "stage": "current",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "current",
+          "path": "/version.js"
+        },
+        {
+          "stage": "current",
+          "path": "/app.js"
+        },
+        {
+          "stage": "current",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "current",
+          "path": "/manifest.webmanifest"
+        },
+        {
+          "stage": "broken",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/version.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/"
+        },
+        {
+          "stage": "broken",
+          "path": "/index.html"
+        },
+        {
+          "stage": "broken",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "broken",
+          "path": "/version.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/app.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/manifest.webmanifest"
+        },
+        {
+          "stage": "broken",
+          "path": "/"
+        },
+        {
+          "stage": "broken",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "broken",
+          "path": "/version.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/app.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/index.html"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/manifest.webmanifest"
+        }
+      ]
+    },
+    {
+      "name": "inputs",
+      "kind": "ace",
+      "width": 390,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "a0",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "d0",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "kill",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "transition",
+      "width": 390,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "transitionKill",
+      "width": 390,
+      "inputs": 3,
+      "limit": 3
+    },
+    {
+      "name": "inputs",
+      "kind": "ace",
+      "width": 820,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "a0",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "d0",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "kill",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "transition",
+      "width": 820,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "transitionKill",
+      "width": 820,
+      "inputs": 3,
+      "limit": 3
+    },
+    {
+      "name": "matchday",
+      "width": 390,
+      "sets": [
+        {
+          "set": 1,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 2,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 3,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        }
+      ],
+      "rallies": 96,
+      "taps": 245,
+      "selects": 18,
+      "typedFields": 2,
+      "dragGestures": 1,
+      "notes": "Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI."
+    },
+    {
+      "name": "matchday",
+      "width": 820,
+      "sets": [
+        {
+          "set": 1,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 2,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 3,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        }
+      ],
+      "rallies": 96,
+      "taps": 244,
+      "selects": 18,
+      "typedFields": 2,
+      "dragGestures": 1,
+      "notes": "Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI."
+    },
+    {
+      "name": "matchday",
+      "width": 1024,
+      "sets": [
+        {
+          "set": 1,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 2,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 3,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        }
+      ],
+      "rallies": 96,
+      "taps": 244,
+      "selects": 19,
+      "typedFields": 2,
+      "dragGestures": 1,
+      "notes": "Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI."
+    },
+    {
+      "name": "inputs",
+      "kind": "undo",
+      "width": 390,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "undo",
+      "width": 820,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "undo",
+      "width": 1024,
+      "inputs": 1,
+      "limit": 1
+    }
+  ]
+}

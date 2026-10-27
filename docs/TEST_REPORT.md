@@ -63,3 +63,8 @@ Unnötiger Schritt: Nach Auswahl von Zuspielweg/Spieler erscheint noch eine Angr
 7. Der erste REST-Aufruf über `gh api` meldete `Forbidden`. Push und anschließende PR-Erstellung mit `gh pr create` waren erfolgreich: https://github.com/LehrerOldewurtel/evv-quickscout/pull/1. Für diesen PR besteht damit kein offener Zugriffsblocker. Installations-/Startanweisungen und `api.github.com` sind im Umgebungsentwurf gespeichert; Veröffentlichung der Umgebung bleibt ein separater Schritt.
 
 Produktionsdaten wurden weder geladen noch verändert; Browserfälle verwenden frische Kontexte und ausschließlich synthetische Matches. Kein Merge und kein Deployment durchgeführt.
+
+
+## Finaler Release-Kandidat · 27.10.2026
+
+Aktueller Schlusslauf: 149/149 Node-Tests und 76/76 Chromium-Browsertests, keine übersprungenen oder flaky Fälle. 100 detaillierte Matches, 400 Sätze, 17.213 Rallyes, 271.405 Kontakte; separater vollständiger Replay mit identischen 100 Plan-Digests. Legacy: ein Erfolg, acht unveränderte historische Inkompatibilitäten. Details, Erstfehler, Einschränkungen und Paketgate: [FINAL_RELEASE_REPORT.md](FINAL_RELEASE_REPORT.md), Rohdaten unter [qa/final](qa/final/release-candidate.json).

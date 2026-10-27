@@ -116,7 +116,12 @@ function validateMatch(m){
  map(m.formationBook,f=>obj(f)&&obj(f.targets)&&obj(f.routes)&&Array.isArray(f.ballPaths)&&Object.values(f.targets).every(xy)&&Object.values(f.routes).every(path=>Array.isArray(path)&&path.every(xy))&&f.ballPaths.every(path=>Array.isArray(path)&&path.every(xy)));
  map(m.sixBoards,b=>obj(b)&&obj(b.players)&&Array.isArray(b.pins)&&Object.values(b.players).every(xy)&&b.pins.every(xy));
  map(m.receivePlans,ids=>Array.isArray(ids)&&ids.every(id=>!!byId(id)));
- for(const u of m.rallyUndo){if(!obj(u)||![u.e,u.o].every(n=>Number.isInteger(n)&&n>=0)||!Array.isArray(u.lineup)||u.lineup.length!==6||u.lineup.some(id=>!byId(id)))fail()}
+ // Undo snapshots become live state. Validate their contents as strictly as the
+ // enclosing match before accepting an import or restoring local storage.
+ for(const u of m.rallyUndo){
+  if(!obj(u)||Object.prototype.hasOwnProperty.call(u,'rallyUndo')||![u.e,u.o].every(n=>Number.isInteger(n)&&n>=0)||!Array.isArray(u.lineup)||u.lineup.length!==6||new Set(u.lineup).size!==6||u.lineup.some(id=>!byId(id)))fail();
+  validateMatch({...m,...u,rallyUndo:[]});
+ }
  for(const mark of m.marks)if(!obj(mark)||![mark.x,mark.y].every(n=>Number.isFinite(n)&&n>=0&&n<=1))fail();
  map(m.startPresets,p=>obj(p)&&Array.isArray(p.lineup)&&p.lineup.length===6&&new Set(p.lineup).size===6&&p.lineup.every(id=>!!byId(id))&&obj(p.roles)&&p.lineup.every(id=>ROLES.includes(p.roles[id]))&&Array.isArray(p.liberoIds)&&p.liberoIds.every(id=>!!byId(id)));
  const visit=(v,depth=0)=>{if(depth>80)fail();if(v&&typeof v==='object'){for(const k of Object.keys(v)){if(['__proto__','prototype','constructor'].includes(k))fail();visit(v[k],depth+1)}}};visit(m);

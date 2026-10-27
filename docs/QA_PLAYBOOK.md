@@ -54,3 +54,44 @@ Siehe `PR1_REVIEW.md`: zusätzliche Upgrade-/Speicher-/Sprach-/Libero-Regression
 `tests/e2e/cache-lifecycle.spec.cjs` betreibt einen isolierten lokalen Test-Origin, installiert den unveränderten Auftrag-4-Service-Worker, aktualisiert auf den neuen Worker, erzwingt eine fehlgeschlagene Installation, prüft HTTP-503-Fallback und Offline-Reloads mit tatsächlich abgebrochenen Serververbindungen und installiert anschließend den vorherigen Worker erneut. Es handelt sich um einen Cache-/Worker-Rollback mit kompatiblem Datenschema, nicht um eine App-/Schema-Downgrade-Freigabe.
 
 Historische Dateien liegen unverändert unter `tests/legacy/`. `node tests/legacy/audit.cjs` dokumentiert weiterhin acht Fehlschläge und einen Erfolg; Gründe und Migrationen: `tests/legacy/README.md`. Diese Inkompatibilitäten sind getrennt von echten aktuellen Produktfehlern zu zählen. Neue Releasebewertung: `docs/RELEASE_CANDIDATE_REPORT.md`.
+
+
+## Finaler Release-Kandidat (27.10.2026)
+
+Basis `c49a511`, Arbeitsbranch `release/v8-final-candidate`; Produktversion bleibt unverändert.
+Die detaillierte Generalprobe umfasst jetzt Seeds 501–600: 100 vollständige Matches,
+Drei- und Fünfsatzverläufe, beide Matchsieger, variable Endstände sowie verlängerte Sätze
+(jeder fünfte Seed). Erzwungene kurze Startsequenzen sichern die Szenarioabdeckung;
+danach werden legale Sieger aus dem unabhängigen, vorgegebenen Endstand gewichtet gezogen.
+Kontaktpläne enthalten 0–3 zusätzliche Angriff-/Abwehrzyklen. Sie sind synthetische
+Abnahmeszenarien, keine empirische Verteilung realer Ligaspiele.
+
+Erwartungen für Score, Rotation, Aufschlag, Kontakte und sämtliche erfassten Spieler- und
+Turnaround-Zähler stammen aus `matchday-oracle.cjs`; Vergleich nach jeder Rallye.
+Asse, Aufschlagfehler und nicht beobachtete Gegneraufschlagfehler werden zusätzlich erfasst.
+In jedem Match wird gezielt in Kontaktketten gespeichert und eine neue JSDOM-App gestartet.
+Abschließend wird auch das komplette Match aus gespeichertem Zustand rekonstruiert.
+Bei Fehlern schreibt der Simulator Seed, alle abgeschlossenen Pläne, den aktuellen Plan,
+Zustand und Entwurf nach `artifacts/failure-seed-N.json`. Erfolgssummen und Plan-SHA256:
+`artifacts/100-matchdays.json`. Ein event-loop yield nach jedem Match gibt geschlossene
+JSDOM-Kontexte frei; die neue 100er-Serie darf nicht durch ein höheres Heap-Limit kaschiert werden.
+
+Zusätzliche Tests: beschädigte Undo-Snapshots inklusive Import ohne Mutation,
+Touchziele mindestens 44×44 Pixel und ein tatsächlicher Undo-Tap bei 390/820/1024 px.
+Die ursprünglichen UI-Matches, 100 Quick-Matches, 100 isolierten Kontaktketten,
+Migrations- und Cache-Lebenszyklusprüfungen bleiben erhalten.
+
+Paketworkflow nach grüner Generalprobe:
+
+```sh
+python3 scripts/package_release.py
+node scripts/verify-package.cjs artifacts/EVV-QuickScout-V8-RC.zip
+```
+
+Der Builder verlangt aktuelle, erfolgreiche QA-Ausgaben und identische App-Asset-Hashes.
+Der Prüfer entpackt das echte ZIP in ein neues temporäres Verzeichnis, prüft alle Pflichtdateien
+und SHA256-Einträge, startet dessen TEST_START.py und bedient den Inhalt bei 390/820/1440 px
+inklusive Schnell-/Detailmodus, Taktik, Analyse, Statistik, Speicherung und Offline-Reload.
+Ein synthetischer Sentinel im normalen Speicherschlüssel beweist die Speichertrennung.
+Der abschließende ZIP-Hash und Paketprüfung stehen neben dem ZIP in .sha256/.verification.json.
+Ein Download darf erst nach erfolgreichem Prüferlauf als verifiziert bezeichnet werden.
