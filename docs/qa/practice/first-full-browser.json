@@ -1,0 +1,3389 @@
+{
+  "config": {
+    "configFile": "/workspace/evv-quickscout/playwright.config.cjs",
+    "rootDir": "/workspace/evv-quickscout/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "artifacts/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/workspace/evv-quickscout/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/evv-quickscout/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 2,
+    "webServer": {
+      "command": "npm start",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "advanced.spec.cjs",
+      "file": "advanced.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Tablet 768: Touch-Drag, Formationen R1–R6, Kopie, Reload und Libero",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4068,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:33:49.703Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-d004d0341c77d66b7049",
+          "file": "advanced.spec.cjs",
+          "line": 5,
+          "column": 31
+        },
+        {
+          "title": "Tablet 1024: Touch-Drag, Formationen R1–R6, Kopie, Reload und Libero",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4882,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:33:53.994Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-d68e1b9480bf0113d843",
+          "file": "advanced.spec.cjs",
+          "line": 5,
+          "column": 31
+        },
+        {
+          "title": "Satzassistent: Vorlage und Libero nur nach Bestätigung übernehmen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1708,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:33:58.901Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-136e0f1ba846524c124e",
+          "file": "advanced.spec.cjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "Neuer Browserkontext stellt laufende Rallye wieder her",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1922,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:00.627Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-af4713b6774c1f5f6897",
+          "file": "advanced.spec.cjs",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "Offline-Kaltladen erhält laufende Rallye und Compact-UI",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1278,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:02.576Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-17008bf831e421cf0ea5",
+          "file": "advanced.spec.cjs",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "Beschädigte Imports verändern weder Stand noch Speicher",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1697,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:03.885Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-4b85f58d6fb41b571334",
+          "file": "advanced.spec.cjs",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "Speicherplatzfehler zeigt dauerhafte Warnung und erhält vorherigen Stand",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 779,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:05.592Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-d9a789aee819554672a7",
+          "file": "advanced.spec.cjs",
+          "line": 31,
+          "column": 1
+        },
+        {
+          "title": "Wiederherstellungsexport sichert beschädigte Rohdaten exakt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 761,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:06.386Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-09dc102f8ce377692d6a",
+          "file": "advanced.spec.cjs",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "Unterbrechung bei Zielzone: Wiederaufnahme und genau ein Punkt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1248,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:07.164Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "946db637196c6b8469b2-4280cd167e00b0e57441",
+          "file": "advanced.spec.cjs",
+          "line": 37,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "cache-lifecycle.spec.cjs",
+      "file": "cache-lifecycle.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Cache: Upgrade, fehlgeschlagenes Upgrade, Offline-Rückfall und Online-Rollback erhalten Rallye",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 7295,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:33:49.665Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cache-lifecycle",
+                      "contentType": "application/json",
+                      "body": "eyJ1cGdyYWRlIjoiYWN0aXZhdGVkIiwiZmFpbGVkSW5zdGFsbCI6InJlZHVuZGFudCIsInJvbGxiYWNrIjoiYWN0aXZhdGVkIiwib2ZmbGluZVJlbG9hZHMiOjIsImxvY2FsU3RvcmFnZVVuY2hhbmdlZFVudGlsS2lsbCI6dHJ1ZSwic2NvcGUiOiJTZXJ2aWNlLVdvcmtlci1Sb2xsYmFjazsga2VpbiBBcHAtU2NoZW1hLURvd25ncmFkZSIsInJlcXVlc3RzIjpbeyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvc3R5bGVzLmNzcyJ9LHsic3RhZ2UiOiJvbGQiLCJwYXRoIjoiL3ZlcnNpb24uanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9hcHAuanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9jb21wYWN0LmpzIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvZmF2aWNvbi5pY28ifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9zdy5qcyJ9LHsic3RhZ2UiOiJvbGQiLCJwYXRoIjoiL3ZlcnNpb24uanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii8ifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9pbmRleC5odG1sIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvc3R5bGVzLmNzcyJ9LHsic3RhZ2UiOiJvbGQiLCJwYXRoIjoiL2NvbXBhY3QuanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii92ZXJzaW9uLmpzIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvYXBwLmpzIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvbWFuaWZlc3Qud2VibWFuaWZlc3QifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii8ifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9zdHlsZXMuY3NzIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvdmVyc2lvbi5qcyJ9LHsic3RhZ2UiOiJvbGQiLCJwYXRoIjoiL2FwcC5qcyJ9LHsic3RhZ2UiOiJvbGQiLCJwYXRoIjoiL2NvbXBhY3QuanMifSx7InN0YWdlIjoiY3VycmVudCIsInBhdGgiOiIvc3cuanMifSx7InN0YWdlIjoiY3VycmVudCIsInBhdGgiOiIvdmVyc2lvbi5qcyJ9LHsic3RhZ2UiOiJjdXJyZW50IiwicGF0aCI6Ii8ifSx7InN0YWdlIjoiY3VycmVudCIsInBhdGgiOiIvaW5kZXguaHRtbCJ9LHsic3RhZ2UiOiJjdXJyZW50IiwicGF0aCI6Ii9zdHlsZXMuY3NzIn0seyJzdGFnZSI6ImN1cnJlbnQiLCJwYXRoIjoiL3ZlcnNpb24uanMifSx7InN0YWdlIjoiY3VycmVudCIsInBhdGgiOiIvYXBwLmpzIn0seyJzdGFnZSI6ImN1cnJlbnQiLCJwYXRoIjoiL2NvbXBhY3QuanMifSx7InN0YWdlIjoiY3VycmVudCIsInBhdGgiOiIvbWFuaWZlc3Qud2VibWFuaWZlc3QifSx7InN0YWdlIjoiYnJva2VuIiwicGF0aCI6Ii9zdy5qcyJ9LHsic3RhZ2UiOiJicm9rZW4iLCJwYXRoIjoiL3ZlcnNpb24uanMifSx7InN0YWdlIjoiYnJva2VuIiwicGF0aCI6Ii8ifSx7InN0YWdlIjoiYnJva2VuIiwicGF0aCI6Ii9pbmRleC5odG1sIn0seyJzdGFnZSI6ImJyb2tlbiIsInBhdGgiOiIvc3R5bGVzLmNzcyJ9LHsic3RhZ2UiOiJicm9rZW4iLCJwYXRoIjoiL3ZlcnNpb24uanMifSx7InN0YWdlIjoiYnJva2VuIiwicGF0aCI6Ii9hcHAuanMifSx7InN0YWdlIjoiYnJva2VuIiwicGF0aCI6Ii9jb21wYWN0LmpzIn0seyJzdGFnZSI6ImJyb2tlbiIsInBhdGgiOiIvbWFuaWZlc3Qud2VibWFuaWZlc3QifSx7InN0YWdlIjoiYnJva2VuIiwicGF0aCI6Ii8ifSx7InN0YWdlIjoiYnJva2VuIiwicGF0aCI6Ii9zdHlsZXMuY3NzIn0seyJzdGFnZSI6ImJyb2tlbiIsInBhdGgiOiIvdmVyc2lvbi5qcyJ9LHsic3RhZ2UiOiJicm9rZW4iLCJwYXRoIjoiL2FwcC5qcyJ9LHsic3RhZ2UiOiJicm9rZW4iLCJwYXRoIjoiL2NvbXBhY3QuanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9zdy5qcyJ9LHsic3RhZ2UiOiJvbGQiLCJwYXRoIjoiL3ZlcnNpb24uanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii8ifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9pbmRleC5odG1sIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvc3R5bGVzLmNzcyJ9LHsic3RhZ2UiOiJvbGQiLCJwYXRoIjoiL3ZlcnNpb24uanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9hcHAuanMifSx7InN0YWdlIjoib2xkIiwicGF0aCI6Ii9jb21wYWN0LmpzIn0seyJzdGFnZSI6Im9sZCIsInBhdGgiOiIvbWFuaWZlc3Qud2VibWFuaWZlc3QifV19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "441369bcae25eb3204a7-df40da7c7d31ee4c13ad",
+          "file": "cache-lifecycle.spec.cjs",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "hybrid.spec.cjs",
+      "file": "hybrid.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "390px ace: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 799,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:33:57.249Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYWNlIiwid2lkdGgiOjM5MCwiaW5wdXRzIjoxLCJsaW1pdCI6MX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-8fbdd09fbb106c3d2d54",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px a0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 881,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:33:58.064Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYTAiLCJ3aWR0aCI6MzkwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-a1d9dc26132e25534252",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px d0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1048,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:33:58.960Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiZDAiLCJ3aWR0aCI6MzkwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-60245e49501d6898f1c3",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px kill: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 884,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:00.026Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoia2lsbCIsIndpZHRoIjozOTAsImlucHV0cyI6MiwibGltaXQiOjJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-b9a9ef3b2611cb33c83a",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px transition: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1092,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:00.926Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbiIsIndpZHRoIjozOTAsImlucHV0cyI6MSwibGltaXQiOjF9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-a8a983aadd10b8f800df",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px transitionKill: höchstens 3 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1250,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:02.034Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbktpbGwiLCJ3aWR0aCI6MzkwLCJpbnB1dHMiOjMsImxpbWl0IjozfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-407421c32568948494ec",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px ace: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 963,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:03.301Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYWNlIiwid2lkdGgiOjgyMCwiaW5wdXRzIjoxLCJsaW1pdCI6MX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-cf83ec8991127be91231",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px a0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 924,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:04.292Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYTAiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-6597932336f16569a2f3",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px d0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:05.238Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiZDAiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-2c00daa775cbb6297a4a",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px kill: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1121,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:06.401Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoia2lsbCIsIndpZHRoIjo4MjAsImlucHV0cyI6MiwibGltaXQiOjJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-67fb0d7dc469a6ac2077",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px transition: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1132,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:07.539Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbiIsIndpZHRoIjo4MjAsImlucHV0cyI6MSwibGltaXQiOjF9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-732089f49d4107eb8b66",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px transitionKill: höchstens 3 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1049,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:08.697Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbktpbGwiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-b5035a8813805bc0bf27",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        }
+      ]
+    },
+    {
+      "title": "matchday.spec.cjs",
+      "file": "matchday.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Generalprobe 390px: komplettes Match ausschließlich per Oberfläche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27251,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:08.442Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "matchday",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6MzkwLCJzZXRzIjpbeyJzZXQiOjEsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjIsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjMsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn1dLCJyYWxsaWVzIjo5NiwidGFwcyI6MjQ1LCJzZWxlY3RzIjoxOCwidHlwZWRGaWVsZHMiOjIsImRyYWdHZXN0dXJlcyI6MSwibm90ZXMiOiJOYXRpdmUgc2VsZWN0T3B0aW9uIHrDpGhsdCBhbHMgQXVzd2FobGFrdGlvbiwgbmljaHQgYWxzIGdlbWVzc2VuZSBNZW7DvC1UYXBzOyBzw6RtdGxpY2hlIFNwaWVsYWt0aW9uZW4gcGVyIFVJLiJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-0cda9e8bf74a706899e9",
+          "file": "matchday.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Generalprobe 820px: komplettes Match ausschließlich per Oberfläche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28681,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:35.709Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "matchday",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6ODIwLCJzZXRzIjpbeyJzZXQiOjEsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjIsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjMsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn1dLCJyYWxsaWVzIjo5NiwidGFwcyI6MjQ1LCJzZWxlY3RzIjoxOCwidHlwZWRGaWVsZHMiOjIsImRyYWdHZXN0dXJlcyI6MSwibm90ZXMiOiJOYXRpdmUgc2VsZWN0T3B0aW9uIHrDpGhsdCBhbHMgQXVzd2FobGFrdGlvbiwgbmljaHQgYWxzIGdlbWVzc2VuZSBNZW7DvC1UYXBzOyBzw6RtdGxpY2hlIFNwaWVsYWt0aW9uZW4gcGVyIFVJLiJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-9718eb526937931c4b7d",
+          "file": "matchday.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Generalprobe 1024px: komplettes Match ausschließlich per Oberfläche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33202,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:04.397Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "matchday",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6MTAyNCwic2V0cyI6W3sic2V0IjoxLCJlIjoyNSwibyI6NywicmFsbGllcyI6MzJ9LHsic2V0IjoyLCJlIjoyNSwibyI6NywicmFsbGllcyI6MzJ9LHsic2V0IjozLCJlIjoyNSwibyI6NywicmFsbGllcyI6MzJ9XSwicmFsbGllcyI6OTYsInRhcHMiOjI0NSwic2VsZWN0cyI6MTksInR5cGVkRmllbGRzIjoyLCJkcmFnR2VzdHVyZXMiOjEsIm5vdGVzIjoiTmF0aXZlIHNlbGVjdE9wdGlvbiB6w6RobHQgYWxzIEF1c3dhaGxha3Rpb24sIG5pY2h0IGFscyBnZW1lc3NlbmUgTWVuw7wtVGFwczsgc8OkbXRsaWNoZSBTcGllbGFrdGlvbmVuIHBlciBVSS4ifQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-5cf69c5ed4f2fb6fe174",
+          "file": "matchday.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Coaching öffnet gewählte Rotation und Annahme/Abwehr ohne automatische Mutation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2680,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:37.607Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-d2894a1ade0e748667ec",
+          "file": "matchday.spec.cjs",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "Echter Chromium-Neustart: Mehrfach-Transition-Rallye und eindeutige Kontakte",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2670,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:40.298Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-e3372750d2d478a42116",
+          "file": "matchday.spec.cjs",
+          "line": 42,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "practice.spec.cjs",
+      "file": "practice.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1133,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:09.776Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJtaWNoYWVsIiwiYXR0YWNrcyI6MSwiY2hhbmNlcyI6MX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-932448af33fe533c87ef",
+          "file": "practice.spec.cjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1248,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:10.930Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-6fb1ec299376f96df5a1",
+          "file": "practice.spec.cjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "iPad 820x1180: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1022,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:13.574Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-e1c574914472db5435ad",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "iPad 768x1024: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 921,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:14.617Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-0ab5f2088a54e98ef4ce",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "iPad 1024x768: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 1022,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:15.547Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-721fe9eaf1134175a4b3",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "iPad 1180x820: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "passed",
+                  "duration": 909,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:16.581Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-f8b5d3ec8969ee76c375",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "Touch R1 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 5945,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:19.037Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R1-K1-drei--6f4ea--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R1-K1-drei--6f4ea--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-838b4decc14a2fa963d5",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R2 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 5907,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:25.761Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R2-K1-drei--13ec0--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R2-K1-drei--13ec0--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-265595e5f4bd6b317637",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R3 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 5992,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:32.629Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R3-K1-drei--ebc43--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R3-K1-drei--ebc43--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-3a20797e1043943027ed",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R4 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6015,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:39.659Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R4-K1-drei--4d540--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R4-K1-drei--4d540--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-4a797efdf908e319b834",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R5 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6046,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:46.631Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R5-K1-drei--adeb8--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R5-K1-drei--adeb8--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-bf4f0da2426d059ac389",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R6 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6252,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:34:53.802Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R6-K1-drei--eec45--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R6-K1-drei--eec45--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-f98ef4edd29833ec3e77",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R1 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6495,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:01.286Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R1-K2-drei--b9bb8--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R1-K2-drei--b9bb8--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-4359b4dabf00344a8f4c",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R2 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6301,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:09.014Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R2-K2-drei--951fb--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R2-K2-drei--951fb--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-670ac2503411121351ff",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R3 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6315,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:16.418Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R3-K2-drei--3d852--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R3-K2-drei--3d852--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-918bd1b94af33aacd0c7",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R4 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 10,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6271,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:23.783Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R4-K2-drei--412d1--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R4-K2-drei--412d1--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-f4f48c6aa83cca81a527",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R5 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 11,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 6278,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:31.153Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R5-K2-drei--cf6cc--korrekter-Spielerzuordnung/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R5-K2-drei--cf6cc--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-7b315d2448abd19040cb",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R6 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 12,
+                  "parallelIndex": 1,
+                  "status": "interrupted",
+                  "duration": 5758,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    8 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    8 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                      "column": 209,
+                      "line": 45
+                    },
+                    "snippet": "  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                        "column": 209,
+                        "line": 45
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-quick-player]:not([disabled])').last()\nExpected: \u001b[32m\"\u001b[7mtru\u001b[27me\"\u001b[39m\nReceived: \u001b[31m\"\u001b[7mfals\u001b[27me\"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-quick-player]:not([disabled])').last()\u001b[22m\n\u001b[2m    8 × locator resolved to <button class=\"livePlayer\" aria-pressed=\"false\" data-quick-player=\"amar\">…</button>\u001b[22m\n\u001b[2m      - unexpected value \"false\"\u001b[22m\n\n\n  43 | for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{\n  44 |  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();\n> 45 |  await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick=\"kill\"]').tap();\n     |                                                                                                                                                                                                                 ^\n  46 |  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);\n  47 |  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});\n  48 | });\n    at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:45:209"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:38.581Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/practice-Touch-R6-K2-drei--9cde7--korrekter-Spielerzuordnung/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/practice.spec.cjs",
+                    "column": 209,
+                    "line": 45
+                  }
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-d624c77a8d13b99afd1c",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Abgebrochene Mausgeste auf Coach-Taktik verwirft die Zwischenposition",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-1fdf30d32d56af55f995",
+          "file": "practice.spec.cjs",
+          "line": 49,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "Desktop ohne Touch-Hardware",
+          "file": "practice.spec.cjs",
+          "line": 21,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1373,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-27T22:34:12.190Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b70be45a801c39b797ff-76eab4d98175b34d0bb6",
+              "file": "practice.spec.cjs",
+              "line": 22,
+              "column": 1
+            }
+          ]
+        },
+        {
+          "title": "Formationseditor ohne Touch-Hardware",
+          "file": "practice.spec.cjs",
+          "line": 35,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Formationseditor: außermittig greifen ohne Sprung, Auswahl/Zielklick und Maus-Speichern",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1522,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-27T22:34:17.503Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b70be45a801c39b797ff-affb4a4b7a81162efaa6",
+              "file": "practice.spec.cjs",
+              "line": 36,
+              "column": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "release.spec.cjs",
+      "file": "release.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Dialog 390px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 943,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:42.979Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-d8d34fbce0495f5c05ea",
+          "file": "release.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Dialog 820px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "interrupted",
+                  "duration": 553,
+                  "error": {
+                    "message": "Error: locator.tap: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('#formClose')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"formClose\">Schließen</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n",
+                    "stack": "Error: locator.tap: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('#formClose')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"formClose\">Schließen</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\n    at /workspace/evv-quickscout/tests/e2e/release.spec.cjs:6:35",
+                    "location": {
+                      "file": "/workspace/evv-quickscout/tests/e2e/release.spec.cjs",
+                      "column": 35,
+                      "line": 6
+                    },
+                    "snippet": "  4 |  await page.setViewportSize({width,height:1180});await page.goto('/');await page.locator('#startReceive').tap();await page.locator('#formationEditor').tap();\n  5 |  await page.evaluate(()=>{window.accidentalActions=[];for(const id of ['scoreFix','voiceBtn','newMatch','nextSet','undo']){const b=document.getElementById(id),handler=b.onclick;b.onclick=function(e){window.accidentalActions.push(id);return handler?.call(this,e)}}});\n> 6 |  await page.locator('#formClose').tap();await expect(page.locator('#modal')).toBeHidden();\n    |                                   ^\n  7 |  // A subsequent deliberate action must work, rather than a global click mask.\n  8 |  await page.locator('#turnaroundReport').tap();await expect(page.locator('#analysisResults')).toBeVisible();\n  9 |  expect(await page.evaluate(()=>window.accidentalActions)).toEqual([]);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspace/evv-quickscout/tests/e2e/release.spec.cjs",
+                        "column": 35,
+                        "line": 6
+                      },
+                      "message": "Error: locator.tap: Test ended.\nCall log:\n\u001b[2m  - waiting for locator('#formClose')\u001b[22m\n\u001b[2m    - locator resolved to <button id=\"formClose\">Schließen</button>\u001b[22m\n\u001b[2m  - attempting tap action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\n\n  4 |  await page.setViewportSize({width,height:1180});await page.goto('/');await page.locator('#startReceive').tap();await page.locator('#formationEditor').tap();\n  5 |  await page.evaluate(()=>{window.accidentalActions=[];for(const id of ['scoreFix','voiceBtn','newMatch','nextSet','undo']){const b=document.getElementById(id),handler=b.onclick;b.onclick=function(e){window.accidentalActions.push(id);return handler?.call(this,e)}}});\n> 6 |  await page.locator('#formClose').tap();await expect(page.locator('#modal')).toBeHidden();\n    |                                   ^\n  7 |  // A subsequent deliberate action must work, rather than a global click mask.\n  8 |  await page.locator('#turnaroundReport').tap();await expect(page.locator('#analysisResults')).toBeVisible();\n  9 |  expect(await page.evaluate(()=>window.accidentalActions)).toEqual([]);\n    at /workspace/evv-quickscout/tests/e2e/release.spec.cjs:6:35"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:35:43.937Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspace/evv-quickscout/test-results/release-Dialog-820px-ein-T-0d241-keine-Hintergrundaktion-aus/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspace/evv-quickscout/tests/e2e/release.spec.cjs",
+                    "column": 35,
+                    "line": 6
+                  }
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-03bade8858efb43c0ec3",
+          "file": "release.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Dialog 1440px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-14b193d1d28e6cdee52e",
+          "file": "release.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Release 390px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-4c54bbec17bfc1b66189",
+          "file": "release.spec.cjs",
+          "line": 12,
+          "column": 35
+        },
+        {
+          "title": "Release 820px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-2e21ca17578893529860",
+          "file": "release.spec.cjs",
+          "line": 12,
+          "column": 35
+        },
+        {
+          "title": "Release 1024px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-9387562370164e83edaa",
+          "file": "release.spec.cjs",
+          "line": 12,
+          "column": 35
+        },
+        {
+          "title": "Manipuliertes Undo im Import: keine Mutation; ursprünglicher Stand bleibt bedienbar",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-b954878b2937307e54a0",
+          "file": "release.spec.cjs",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "review.spec.cjs",
+      "file": "review.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Update v7.9.2: alter Stand, Reload und Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-6f128657f40b88143699",
+          "file": "review.spec.cjs",
+          "line": 9,
+          "column": 47
+        },
+        {
+          "title": "Update pre-pr-main: alter Stand, Reload und Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-dd997b93d249c0436c71",
+          "file": "review.spec.cjs",
+          "line": 9,
+          "column": 47
+        },
+        {
+          "title": "Libero aus und wieder ein: UI und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-58b67a2998309396b343",
+          "file": "review.spec.cjs",
+          "line": 19,
+          "column": 1
+        },
+        {
+          "title": "Bestätigte Sprachannahme und READ-ONLY-Sprache (Speech-API simuliert)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-5a4f8271c8c04b4aa448",
+          "file": "review.spec.cjs",
+          "line": 25,
+          "column": 1
+        },
+        {
+          "title": "Undo ausstehender Zielzone entfernt den alten Dialog",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-ef9c022b47e3ee5f59e3",
+          "file": "review.spec.cjs",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: {\"st\":",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-7da73d003f9020bcbe8b",
+          "file": "review.spec.cjs",
+          "line": 38,
+          "column": 36
+        },
+        {
+          "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: null",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-3b3ca18cf9f59bc4a0d9",
+          "file": "review.spec.cjs",
+          "line": 38,
+          "column": 36
+        },
+        {
+          "title": "Import v7.9.2: bestätigtes synthetisches Backup behält Spielstand",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-4eaab09a7e9d41f721d3",
+          "file": "review.spec.cjs",
+          "line": 43,
+          "column": 47
+        },
+        {
+          "title": "Import pre-pr-main: bestätigtes synthetisches Backup behält Spielstand",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "a5bf2704c55bf0d520fc-dfc45c5b7863550a2fbe",
+          "file": "review.spec.cjs",
+          "line": 43,
+          "column": 47
+        }
+      ]
+    },
+    {
+      "title": "scouting.spec.cjs",
+      "file": "scouting.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "R1 K1 Angriffspunkt + Zielzone + Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-75276c9c85ee6baeb35b",
+          "file": "scouting.spec.cjs",
+          "line": 33,
+          "column": 2
+        },
+        {
+          "title": "R1 K2 Aufschlag und Blockpunkt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-2aa601eb075f5329fa04",
+          "file": "scouting.spec.cjs",
+          "line": 38,
+          "column": 2
+        },
+        {
+          "title": "R1 lange Rallye mit zwei Transitions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-074b529ddefcad02ee79",
+          "file": "scouting.spec.cjs",
+          "line": 43,
+          "column": 2
+        },
+        {
+          "title": "R1 A0 und D0 beider Seiten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-74d2c7f0f2acce5659d7",
+          "file": "scouting.spec.cjs",
+          "line": 52,
+          "column": 2
+        },
+        {
+          "title": "R1 Spielerwechsel und Rückwechsel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-e8c435ffbb7dc5f8015d",
+          "file": "scouting.spec.cjs",
+          "line": 59,
+          "column": 2
+        },
+        {
+          "title": "R1 Satzwechsel, Archiv und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-0208ef808ba7da388b70",
+          "file": "scouting.spec.cjs",
+          "line": 65,
+          "column": 2
+        },
+        {
+          "title": "R2 K1 Angriffspunkt + Zielzone + Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-7b48e113d9ef014c43f4",
+          "file": "scouting.spec.cjs",
+          "line": 33,
+          "column": 2
+        },
+        {
+          "title": "R2 K2 Aufschlag und Blockpunkt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-e724850807d9f704e73e",
+          "file": "scouting.spec.cjs",
+          "line": 38,
+          "column": 2
+        },
+        {
+          "title": "R2 lange Rallye mit zwei Transitions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-a49f8186600f33fb3727",
+          "file": "scouting.spec.cjs",
+          "line": 43,
+          "column": 2
+        },
+        {
+          "title": "R2 A0 und D0 beider Seiten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-d7868174e9e726ceae3d",
+          "file": "scouting.spec.cjs",
+          "line": 52,
+          "column": 2
+        },
+        {
+          "title": "R2 Spielerwechsel und Rückwechsel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-d8df605569d0cdbf2703",
+          "file": "scouting.spec.cjs",
+          "line": 59,
+          "column": 2
+        },
+        {
+          "title": "R2 Satzwechsel, Archiv und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-f08103a18a91c3f6043a",
+          "file": "scouting.spec.cjs",
+          "line": 65,
+          "column": 2
+        },
+        {
+          "title": "R3 K1 Angriffspunkt + Zielzone + Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-f48590606efe7d70230f",
+          "file": "scouting.spec.cjs",
+          "line": 33,
+          "column": 2
+        },
+        {
+          "title": "R3 K2 Aufschlag und Blockpunkt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-a642685509a91c760dcf",
+          "file": "scouting.spec.cjs",
+          "line": 38,
+          "column": 2
+        },
+        {
+          "title": "R3 lange Rallye mit zwei Transitions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-5f1cf7d5bc3b977ada3c",
+          "file": "scouting.spec.cjs",
+          "line": 43,
+          "column": 2
+        },
+        {
+          "title": "R3 A0 und D0 beider Seiten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-230307626d7fd51b7c7f",
+          "file": "scouting.spec.cjs",
+          "line": 52,
+          "column": 2
+        },
+        {
+          "title": "R3 Spielerwechsel und Rückwechsel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-bb512a30167db30a0752",
+          "file": "scouting.spec.cjs",
+          "line": 59,
+          "column": 2
+        },
+        {
+          "title": "R3 Satzwechsel, Archiv und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-fa6acd20d3f10994957a",
+          "file": "scouting.spec.cjs",
+          "line": 65,
+          "column": 2
+        },
+        {
+          "title": "R4 K1 Angriffspunkt + Zielzone + Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-3c4075cabcec71c4c814",
+          "file": "scouting.spec.cjs",
+          "line": 33,
+          "column": 2
+        },
+        {
+          "title": "R4 K2 Aufschlag und Blockpunkt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-a4df571947adc1cc8727",
+          "file": "scouting.spec.cjs",
+          "line": 38,
+          "column": 2
+        },
+        {
+          "title": "R4 lange Rallye mit zwei Transitions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-e7681d9bbd029fd134a9",
+          "file": "scouting.spec.cjs",
+          "line": 43,
+          "column": 2
+        },
+        {
+          "title": "R4 A0 und D0 beider Seiten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-0c251da3dcdf352f302a",
+          "file": "scouting.spec.cjs",
+          "line": 52,
+          "column": 2
+        },
+        {
+          "title": "R4 Spielerwechsel und Rückwechsel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-aa7cd392e0bcedfa10ab",
+          "file": "scouting.spec.cjs",
+          "line": 59,
+          "column": 2
+        },
+        {
+          "title": "R4 Satzwechsel, Archiv und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-3e287f1fe806d4dbca73",
+          "file": "scouting.spec.cjs",
+          "line": 65,
+          "column": 2
+        },
+        {
+          "title": "R5 K1 Angriffspunkt + Zielzone + Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-40b32a1766ba4deaa718",
+          "file": "scouting.spec.cjs",
+          "line": 33,
+          "column": 2
+        },
+        {
+          "title": "R5 K2 Aufschlag und Blockpunkt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-c410b5e44ae81e734d2b",
+          "file": "scouting.spec.cjs",
+          "line": 38,
+          "column": 2
+        },
+        {
+          "title": "R5 lange Rallye mit zwei Transitions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-1d80cc216933dd85a022",
+          "file": "scouting.spec.cjs",
+          "line": 43,
+          "column": 2
+        },
+        {
+          "title": "R5 A0 und D0 beider Seiten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-b41a095b0d80432b3a70",
+          "file": "scouting.spec.cjs",
+          "line": 52,
+          "column": 2
+        },
+        {
+          "title": "R5 Spielerwechsel und Rückwechsel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-fa224f7b4205b6f6eac9",
+          "file": "scouting.spec.cjs",
+          "line": 59,
+          "column": 2
+        },
+        {
+          "title": "R5 Satzwechsel, Archiv und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-c5eca18d55c970cc4390",
+          "file": "scouting.spec.cjs",
+          "line": 65,
+          "column": 2
+        },
+        {
+          "title": "R6 K1 Angriffspunkt + Zielzone + Undo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-e05915518b208343a568",
+          "file": "scouting.spec.cjs",
+          "line": 33,
+          "column": 2
+        },
+        {
+          "title": "R6 K2 Aufschlag und Blockpunkt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-965bfed923d8c25c8b36",
+          "file": "scouting.spec.cjs",
+          "line": 38,
+          "column": 2
+        },
+        {
+          "title": "R6 lange Rallye mit zwei Transitions",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-3802cb09155258cf0723",
+          "file": "scouting.spec.cjs",
+          "line": 43,
+          "column": 2
+        },
+        {
+          "title": "R6 A0 und D0 beider Seiten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-280323b18f4a45c52daa",
+          "file": "scouting.spec.cjs",
+          "line": 52,
+          "column": 2
+        },
+        {
+          "title": "R6 Spielerwechsel und Rückwechsel",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-55436cdc245e880b0514",
+          "file": "scouting.spec.cjs",
+          "line": 59,
+          "column": 2
+        },
+        {
+          "title": "R6 Satzwechsel, Archiv und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [],
+              "status": "skipped"
+            }
+          ],
+          "id": "b7f155b2169f84da6d5e-3ad70195d93c871d24b9",
+          "file": "scouting.spec.cjs",
+          "line": 65,
+          "column": 2
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T22:33:48.629Z",
+    "duration": 116105.446,
+    "expected": 36,
+    "skipped": 53,
+    "unexpected": 11,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "source": {
+    "branch": "release/v8-final-candidate",
+    "commit": "b57f22608ce23ff9b242989359c7cd0f39fd776f",
+    "assets": {
+      "index.html": "8fc9ec4d03f13eeb4d5b222a9f07149dd744c3f2813d6dabbf7f867bda38c1da",
+      "app.js": "5c944106b84dd9211c28926afebc623a28ad746b6a1e894907c63d7b499fa7e8",
+      "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
+      "styles.css": "17fc7ce90d28e6f15f4b884e374e8cd7bc8fe18954cbfacf24b159c765d58328",
+      "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
+      "sw.js": "3d1865145b188ee9254474e697ffb023845b5821df87e422f3ecca1d49e880c3",
+      "manifest.webmanifest": "d0969adf8316c5023195181bd5b31dd218a16430e9ffab6396e37eee6573422c"
+    }
+  },
+  "node": {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "startedAt": "2026-10-27T22:29:45.203Z",
+    "finishedAt": "2026-10-27T22:33:47.792Z",
+    "log": "artifacts/node.tap"
+  },
+  "browser": {
+    "command": [
+      "npm",
+      "run",
+      "test:e2e"
+    ],
+    "exitCode": 130,
+    "signal": null,
+    "startedAt": "2026-10-27T22:33:47.793Z",
+    "finishedAt": "2026-10-27T22:35:44.764Z",
+    "log": "artifacts/browser.log"
+  }
+}

@@ -128,3 +128,12 @@ Detail-/Quick-Wechsel und die Unterscheidung eigener/gegnerischer Abwehr ab.
 Erstfehlerprotokolle und Schlusslauf werden unter docs/qa/practice/ aufbewahrt.
 Den neuen SW-Namensraum `practice-2` in der echten Cache-Lebenszyklusprüfung
 beachten. Keine Geräte- oder macOS-Abnahme aus Linux-Emulation ableiten.
+
+Testkorrekturen während RC2: dynamische `:last:not([disabled])`-Locatoren
+werden nach der Auswahl über die zuvor gelesene Spieler-ID aufgelöst; sonst
+wechselte der Locator bei der erneuten Freigabe anderer Spieler. Mausziele
+werden in die sichtbare Feldmitte gescrollt (feste Kopfzeile) und Zielklicks
+auf ganzzahlige CSS-Koordinaten gesetzt, wie WebKit sie als Pointerevent liefert.
+Bewegung und Zielposition bleiben mit derselben Toleranz (<0,5 px) geprüft.
+Der erste vollständige Browserlauf und die erste WebKit-Serie wurden zur
+Korrektur dieser Testfehler unterbrochen und zählen nicht als bestanden.

@@ -20,10 +20,10 @@ test('Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zw
 });
 test.describe('Desktop ohne Touch-Hardware',()=>{test.use({hasTouch:false});
 test('Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick',async({page})=>{
- await quick(page);await page.locator('[data-tab="coach"]').click();const court=page.locator('.sixCourt').first(),player=court.locator('[data-six-player="4"]');await player.scrollIntoViewIfNeeded();const before=await player.boundingBox();
+ await quick(page);await page.locator('[data-tab="coach"]').click();const court=page.locator('.sixCourt').first(),player=court.locator('[data-six-player="4"]');await player.evaluate(el=>el.scrollIntoView({block:"center"}));const before=await player.boundingBox();
  await page.mouse.move(before.x+before.width/2,before.y+before.height/2);await page.mouse.down();const pressed=await player.boundingBox();expect(Math.abs(pressed.x-before.x)).toBeLessThan(2);expect(Math.abs(pressed.y-before.y)).toBeLessThan(2);
  await page.mouse.move(before.x+before.width/2+24,before.y+before.height/2+27,{steps:8});await page.mouse.up();const moved=await player.boundingBox();expect(moved.x-before.x).toBeCloseTo(24,0);expect(moved.y-before.y).toBeCloseTo(27,0);
- await player.click();await expect(player).toHaveAttribute('aria-pressed','true');const c=await court.boundingBox();await page.mouse.click(c.x+c.width*.5,c.y+c.height*.5);const target=await player.boundingBox();expect(target.x+target.width/2).toBeCloseTo(c.x+c.width*.5,0);expect(target.y+target.height/2).toBeCloseTo(c.y+c.height*.5,0);
+ await player.click();await expect(player).toHaveAttribute('aria-pressed','true');const c=await court.boundingBox(),tx=Math.round(c.x+c.width*.5),ty=Math.round(c.y+c.height*.5);await page.mouse.click(tx,ty);const target=await player.boundingBox();expect(target.x+target.width/2).toBeCloseTo(tx,0);expect(target.y+target.height/2).toBeCloseTo(ty,0);
  const positions=await page.evaluate(()=>EVV_QS_TEST.state().sixBoards);await page.reload();expect(await page.evaluate(()=>EVV_QS_TEST.state().sixBoards)).toEqual(positions);
 });
 });
@@ -42,10 +42,10 @@ test('Formationseditor: außermittig greifen ohne Sprung, Auswahl/Zielklick und 
 });
 for(const serving of [false,true])for(let rotation=1;rotation<=6;rotation++)test(`Touch R${rotation} ${serving?'K2':'K1'}: drei Eingaben mit korrekter Spielerzuordnung`,async({page},info)=>{
  await page.goto('/');await page.locator('#startRotation').selectOption({label:'R'+rotation});await page.locator(serving?'#startServe':'#startReceive').tap();await page.locator('#modeQuick').tap();
- await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(player).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick="kill"]').tap();
+ await page.locator('#quickTransition').tap();const player=page.locator('[data-quick-player]:not([disabled])').last(),id=await player.getAttribute('data-quick-player');await player.tap();await expect(page.locator(`[data-quick-player="${id}"]`)).toHaveAttribute('aria-pressed','true');await page.locator('[data-quick="kill"]').tap();
  const r=await page.evaluate(()=>EVV_QS_TEST.state().rallies[0]);expect(r.attacker).toBe(id);expect(r.chain.filter(c=>c.type==='Attack')).toEqual([expect.objectContaining({player:id,result:'KILL'})]);expect(r.turnaround).toEqual({attacks:1,transitions:1});expect(r.phase).toBe(serving?'K2':'K1');expect(r.rotation).toBe(rotation);
  await info.attach('inputs',{body:JSON.stringify({kind:`transitionPlayerKill-R${rotation}-${r.phase}`,width:820,inputs:3,limit:3,player:id}),contentType:'application/json'});
 });
 test('Abgebrochene Mausgeste auf Coach-Taktik verwirft die Zwischenposition',async({page})=>{
- await quick(page);await page.locator('[data-tab="coach"]').click();const player=page.locator('.sixCourt').first().locator('[data-six-player="4"]');await player.scrollIntoViewIfNeeded();const before=await page.evaluate(()=>EVV_QS_TEST.state().sixBoards),box=await player.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+25,box.y+box.height/2+25,{steps:5});await player.dispatchEvent('pointercancel');await page.mouse.up();expect(await page.evaluate(()=>EVV_QS_TEST.state().sixBoards)).toEqual(before);
+ await quick(page);await page.locator('[data-tab="coach"]').click();const player=page.locator('.sixCourt').first().locator('[data-six-player="4"]');await player.evaluate(el=>el.scrollIntoView({block:"center"}));const before=await page.evaluate(()=>EVV_QS_TEST.state().sixBoards),box=await player.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2+25,box.y+box.height/2+25,{steps:5});await player.dispatchEvent('pointercancel');await page.mouse.up();expect(await page.evaluate(()=>EVV_QS_TEST.state().sixBoards)).toEqual(before);
 });
