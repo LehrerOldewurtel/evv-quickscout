@@ -3,8 +3,8 @@ Keine Aussage absoluter Fehlerfreiheit oder uneingeschränkter Spieltagsfreigabe
 
 - Automatisierte Chromium-Prüfung und Touch-/Viewport-Emulation sind keine Tests
   auf echten Apple-Geräten. iPad/iPhone/Safari/Pencil/Mikrofon müssen manuell geprüft werden.
-- Firefox/WebKit: nicht installiert; offizielle Download-Domains im Cloud-Netz
-  beim aktuellen Auftrag mit HTTP 403 gesperrt. Nicht als bestanden gewertet.
+- Chromium vollständig und WebKit gezielt unter Linux emuliert geprüft; keine echte Safari-/iPad-Abnahme.
+- Firefox heruntergeladen, aber Browserstart blockiert (Timeout, /proc/self/uid_map EROFS); keine bestandenen Firefox-App-Tests.
 - WLAN-HTTP am iPad ermöglicht keinen zugesicherten Service-Worker-/Offlinebetrieb.
   Für Geräte-Offlineabnahme ist ein eigener HTTPS-Test-Origin erforderlich.
 - Browser-/Betriebssystemabsturz und Speicherverdrängung sind nicht identisch mit
@@ -18,7 +18,7 @@ Keine Aussage absoluter Fehlerfreiheit oder uneingeschränkter Spieltagsfreigabe
   als unvollständige Rallye erfasst; kein eigener Angriff wird zugerechnet.
 - Historische acht inkompatible Testskripte bleiben als fehlgeschlagenes Archiv
   dokumentiert; relevante Verhaltenstests wurden migriert, nicht gestrichen.
-- GitHub-API/PR-Erstellung und öffentliche Tunnel waren vom Cloud-Netz gesperrt.
-  Aktuelle PR-Checks und tatsächliche Veröffentlichung werden nicht behauptet.
+- Draft-PR #5 ist angelegt; aktuellen Remote-CI-Status am PR prüfen. Keine produktive Veröffentlichung.
+  Öffentliche Vorschau nicht verbunden; lokales Testpaket als Alternative.
 - Keine automatische Rückwärtsmigration beliebiger App-/Datenversionen.
   Cache-/Worker-Rollback ist nur bei kompatiblem Datenschema geprüft.

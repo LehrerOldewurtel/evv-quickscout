@@ -75,3 +75,10 @@ Aktueller Legacy-Audit erneut ausgeführt: acht ursprüngliche Inkompatibilität
 Keine historischen Testdateien entfernt oder Assertions abgeschwächt. Der neue Produktfix
 validiert Inhalte der Undo-Snapshots vor Import/Reload statt erst beim späteren Undo.
 Negative Erstläufe, Diagnose und aktuelle Ergebnisse werden im finalen Bericht referenziert.
+
+
+### Abschlussnachtrag: API und Browserzugang wieder verfügbar
+
+Der API-Zugriff wurde nach den anfänglichen CONNECT-403-Fehlern tatsächlich erfolgreich: Draft-PR #5 ist angelegt. PRs #1–#4 wurden offen/mergeable und mit erfolgreichen QA-Checks gelesen. Der historische erste Release-Commit 2541d4c bestand die Remote-Anwendungsregression, scheiterte aber beim separaten Paketprüfer; dessen konkrete Logdownload-Domain blieb gesperrt. Im anschließenden unabhängigen WebKit-Lauf wurde ein reales Touch-Click-through nachgewiesen, mit Negativtests korrigiert und zusammen mit Drag-Speichern abgesichert. Aktuelle Freigabe bezieht sich auf den nachfolgenden Commit/BUILD.json und dessen Tests, nicht auf den älteren CI-Fehlschlag.
+
+WebKit wurde mit offiziellen Downloads und signatur-/hashgeprüften lokalen Debian-Bibliotheken lauffähig gemacht. Die zusätzliche Auswahl umfasst 19 bestandene Tests. Firefox wurde heruntergeladen und mehrfach unabhängig von der App gestartet; alle Kontrollstarts blieben durch die Hostumgebung blockiert. Aktuelle Testzahlen, verbleibende Geräte-/Firefoxgrenzen und der echte ZIP-Prüfer sind in FINAL_RELEASE_REPORT.md dokumentiert. Kein produktives Deployment, kein Merge, keine öffentliche Produktversionsänderung.

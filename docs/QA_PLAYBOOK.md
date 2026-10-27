@@ -95,3 +95,20 @@ inklusive Schnell-/Detailmodus, Taktik, Analyse, Statistik, Speicherung und Offl
 Ein synthetischer Sentinel im normalen Speicherschlüssel beweist die Speichertrennung.
 Der abschließende ZIP-Hash und Paketprüfung stehen neben dem ZIP in .sha256/.verification.json.
 Ein Download darf erst nach erfolgreichem Prüferlauf als verifiziert bezeichnet werden.
+
+
+## Touch-Nachtest und zusätzliche WebKit-Abnahme
+
+Der Schlusslauf umfasst 151 Node- und 79 Chromium-Tests. Zusätzlich wurden 19 Hybrid-/Releasefälle mit WebKit ausgeführt. Der Capture-Schutz in touchButton erhält Touch-Speichern nach Drag, fängt retargetete Kompatibilitätsklicks ab und lässt die nächste physische/Keyboard-Eingabe frei. Die bestehende Drag-Prüfung wurde nicht entfernt. Erstfehler und Gegenprüfungen stehen unter qa/final/.
+
+Rootless-Setup unter Debian 13: `bash scripts/setup-extra-browsers.sh`. APT verwendet signierte Debian-Metadaten; vor Extraktion wird jedes Paket zusätzlich gegen dessen SHA256 geprüft. Keine Systeminstallation, kein Verändern der Browserbinärdateien. Anschließend:
+
+```sh
+export PLAYWRIGHT_BROWSERS_PATH=/workspace/.cache/ms-playwright
+export XDG_CACHE_HOME=/workspace/.cache
+export EVV_BROWSER_LIBS=/workspace/.evv-webkit-libs/usr/lib/x86_64-linux-gnu
+npx playwright test --config playwright.webkit.config.cjs tests/e2e/release.spec.cjs tests/e2e/hybrid.spec.cjs
+EVV_QA_BROWSERS=chromium,webkit node scripts/verify-package.cjs artifacts/EVV-QuickScout-V8-RC.zip
+```
+
+WebKit startet über die unterstützte executablePath/env-Option mit den unveränderten offiziellen WPE-Binärdateien: der mitgelieferte Wrapper überschreibt ansonsten den lokalen Bibliothekspfad. Der Paketprüfer beendet bei WebKit tatsächlich seinen eigenen Server für die Offlineprüfung; die Playwright-Offline-Umschaltung führte zu einem internen Navigationsfehler. Der vollständige Chromium-Offline-/Cache-Lauf bleibt zusätzlich bestehen. Dies ist keine echte iPad-/Safari-Abnahme. Firefoxs unabhängige Kontrollseite startete auch mit Software-Rendering/Xvfb nicht (Host-Sandbox-/Renderer-Timeout); keine Firefox-App-Tests als bestanden ausgeben.

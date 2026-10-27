@@ -1,0 +1,15 @@
+{
+  "status": "environment_blocked",
+  "applicationTestsExecuted": 0,
+  "observed": [
+    "browser launch timeout",
+    "Sandbox: writing /proc/self/uid_map: EROFS",
+    "headless software-renderer errors"
+  ],
+  "attemptedConfigurations": [
+    "standard headless",
+    "writable XDG cache and software rendering",
+    "headed under a workspace-local Xvfb"
+  ],
+  "interpretation": "The independent data-URL control did not start; this is not an application test failure or a Firefox pass."
+}

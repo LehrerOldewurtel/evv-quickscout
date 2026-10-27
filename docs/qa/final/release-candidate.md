@@ -1,11 +1,11 @@
 # Automatischer QA-Lauf
 
-Erzeugt: 2026-10-27T17:39:22.763Z. Rohdaten: release-candidate.json.
+Erzeugt: 2026-10-27T18:14:54.019Z. Rohdaten: release-candidate.json.
 
 | Prüfung | Bestanden | Fehlgeschlagen | Übersprungen |
 |---|---:|---:|---:|
-| Node | 149 | 0 | 0 |
-| Playwright | 76 | 0 | 0 |
+| Node | 151 | 0 | 0 |
+| Playwright | 79 | 0 | 0 |
 
 Detaillierte Simulation: 100 Matches, 400 Sätze, 17213 Rallyes, 271405 Kontakte, 1220 Undo/Wiederholungen, 800 Wechsel/Rückwechsel.
 

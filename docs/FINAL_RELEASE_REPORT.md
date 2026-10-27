@@ -1,158 +1,160 @@
 # EVV QuickScout V8 · finaler Release-Kandidat
 
-Stand des aktuellen vollständigen QA-Laufs: 27.10.2026 18:39 CET. Arbeitsbranch
-`release/v8-final-candidate`, Basis `c49a511b4563747d07edea2e4ed36ab0d7bfa323`.
-Den endgültigen Build-Commit und die Asset-SHA256 enthält `BUILD.json` im ZIP.
-Produktversion unverändert **7.19.0-k1-auto-mb**. Kein stabiler V8-Versionsbump.
+Aktueller Schlusslauf: 27.10.2026 19:14 CET. Branch `release/v8-final-candidate`.
+Basis `c49a511b4563747d07edea2e4ed36ab0d7bfa323`; endgültiger Commit und Asset-SHA256 im `BUILD.json` des ZIP.
+Produktversionskennung unverändert **7.19.0-k1-auto-mb**; keine stabile V8-Freigabe.
 
-## Entscheidung und Grenzen
+## Entscheidung
 
-**GO für die kontrollierte manuelle Release-Abnahme, sobald die zum ZIP gehörende
-`.verification.json` `passed: true` meldet.** Die vollständige automatische
-Anwendungsregression ist grün; im geprüften Umfang sind keine bekannten P0-/P1-Defekte offen.
-Keine uneingeschränkte Spieltags-, Apple-Geräte- oder Produktionsfreigabe.
-Eine endgültige Veröffentlichung erfordert weiterhin die ausdrückliche Nutzerfreigabe.
+**GO zur kontrollierten manuellen Release-Abnahme, verbindlich zusammen mit einem positiven,
+zum ZIP-Hash passenden `.verification.json`-Paketprotokoll.** Keine uneingeschränkte
+Spieltags-/Produktionsfreigabe. Im abschließend geprüften Umfang sind keine bekannten
+P0-/P1-Fehler offen. Kein Merge oder Deployment ohne ausdrückliche Nutzerfreigabe.
 
-## Basis und erhaltene Funktionen
+## Repository und PR
 
-Die Abstammung enthält vollständig: QA-Foundation `935905e`, Hybrid-Live `72caf77`,
-Taktik/Zuverlässigkeit `b01e625`, Spieltags-Generalprobe `c49a511`.
-Keine PRs wurden nach main gemergt. Remote-main bleibt
+Der Release-Branch enthält vollständig QA-Foundation `935905e`, Hybrid-Live `72caf77`,
+Taktik/Zuverlässigkeit `b01e625` und Spieltags-Generalprobe `c49a511` (Git-Abstammung geprüft).
+Keiner dieser PRs wurde nach main gemergt. Remote-main bleibt
 `f6b316bfbbcf30d4758fc954ef006bff59a1fc9e`.
-Git-PR-Referenzen #1–#4 zeigen diese Entwicklungsstände. Aktueller PR-Status und
-remote CI-Checks sind wegen gesperrter GitHub-API nicht neu verifiziert.
 
-Erhalten und automatisiert geprüft: Schnell-/Detailmodus mit gemeinsamer Kontaktkette,
-sechs aktive Spieler, R1–R6 und K1/K2, direkte A0/D0-/Aufschlag-/Angriffsfehler,
-Kill/Block/Gegnerfehler, Spielerberechtigungen, sechs reguläre Wechsel mit Paar-Rückwechsel,
-zwei Liberos ohne Libero-Aufschlag, Satzvorlagen und Kontingent-Reset,
-getrennte Regel-/Taktikpositionen, Formationsbibliothek und Pointer-Bedienung,
-Turnaround-Zähler und getrennte Chancen-/Rallyequoten, Satz-/Spieler-/Rotationsstatistiken,
-Autosave/Restart/Export/Import und Service-Worker-Lebenszyklus.
+Die API war zunächst gesperrt und ist inzwischen wieder erreichbar. Alle fünf bestehenden
+PRs wurden gelesen: #1–#4 offen, mergeable und mit erfolgreichen damaligen QA-Checks;
+**[Draft-PR #5](https://github.com/LehrerOldewurtel/evv-quickscout/pull/5)** wurde tatsächlich
+gegen main angelegt. Erster Release-Commit `2541d4c`: Remote-Unit-/Browserregression grün,
+anschließende Paketprüfung fehlgeschlagen. Im unabhängigen WebKit-Nachtest wurde danach
+der unten dokumentierte Touchfehler belegt. Der jeweils aktuelle Remote-CI-Status ist
+am PR zu prüfen; dieses statische Dokument behauptet keinen noch laufenden CI-Erfolg.
 
-## Neue Korrekturen und Sicherungen
+## Erhaltene Funktionen und neue Korrekturen
 
-1. **Beschädigte Undo-Historie im Import/Reload:** Die bisherige oberflächliche Prüfung
-akzeptierte etwa `rallies: null`, ungültige Rollen/Rotationen oder einen eingeschleusten
-`rallyUndo`-Wert im Snapshot. Ein späteres Undo konnte den Zustand unbrauchbar machen.
-Negativtest zuerst fehlgeschlagen; Snapshots werden jetzt vor Mutation wie Live-Zustände
-validiert. Doppelte Spieler und rekursiv eingeschleuste Undo-Stacks werden abgewiesen.
-Browserprüfung: Import bleibt abgelehnt, ursprünglicher Stand und gespeicherte Bytes
-bleiben identisch, reguläres Undo funktioniert anschließend.
-2. **Testinfrastruktur für 100 Matches:** Der erste Vollversuch brach nach 39 bestandenen
-Matches am standardmäßigen Node-Heap-Limit ab. Synchrone Tests hielten geschlossene
-JSDOM-Kontexte bis zum Event-Loop-Wechsel. Der Test gibt nach jedem Match die Event Loop
-frei. Beide folgenden 100er-Läufe bestanden ohne erhöhtes Heap-Limit und ohne gestrichene
-Assertions. Das ist keine behauptete Produkt-Memory-Korrektur.
-3. **Releaseauslieferung:** reproduzierbarer ZIP-Builder, SHA256-Manifest, isolierter
-Mac-Teststarter und tatsächlicher ZIP-Entpack-/Browserprüfer. CI für `release/**` ergänzt;
-kein Deployment-Job. Ass-Testgrenze von 2 auf die geforderte 1 Eingabe verschärft.
+Erhalten und geprüft: gemeinsame Schnell-/Detail-Erfassung, sechs aktive Spieler,
+R1–R6/K1/K2, Aufschlag/Annahme/Zuspiel/Angriff/Block/Abwehr, direkte A0/D0-/Aufschlag-
+und Angriffsfehler, Gegnerfehler ohne eigenen Kill, Undo, Rollen/Berechtigungen,
+normales Sechs-Wechsel-Regelwerk mit Paar-Rückwechsel, zwei Liberos ohne Libero-Aufschlag,
+Satzvorlagen und Kontingentreset, Regel-/Taktikpositionen getrennt, Formationen R1–R6,
+Lauf-/Ballwege, Turnaround-/Spieler-/Satz-/Rotationsstatistik und lokale Datensicherung.
 
-Rot-/Grünbelege und aktueller Legacy-Audit stehen unter `docs/qa/final/`.
+1. **Beschädigte Undo-Snapshots:** Import/Reload akzeptierten etwa `rallies: null`, ungültige
+Rotation/Rollen, doppelte Spieler oder eingeschleuste Undo-Stacks im Snapshot. Jetzt wird
+jeder Snapshot vor Zustandsmutation wie Live-Zustand validiert. Abgelehnter Import lässt
+den vorherigen Stand und dessen gespeicherte Bytes unverändert; reguläres Undo bleibt nutzbar.
+2. **Touch-Click-through und verlorenes Speichern nach Drag:** WebKit konnte nach einem
+`pointerup`-Dialogschluss den Kompatibilitätsklick an Sprache/Punktkorrektur darunter senden.
+Die reine Klick-Zwischenlösung verlor in Chromium nach Drag die Speicheraktion (zwei
+bestehende Tests schlugen fehl). Die endgültige Lösung verarbeitet Touch bei `pointerup`
+und fängt genau dessen Kompatibilitätsklick in der Dokument-Capturephase ab. Neue Pointer-
+Eingabe und Tastatur lösen die Sperre sofort. Kein genereller Zeitfilter für weitere Taps.
+Regressionsprüfungen beobachten tatsächlich aufgerufene Hintergrundhandler, nicht bloß
+den vom Browser erzeugten, anschließend abgefangenen Rohklick.
+3. **100-Match-Testinfrastruktur:** Erster Versuch nach 39 bestandenen Matches am normalen
+Node-Heap abgebrochen. Synchrone Tests hielten geschlossene JSDOM-Kontexte bis zur nächsten
+Event Loop. Ein Yield nach jedem Match behebt dies ohne erhöhtes Heap-Limit oder gestrichene
+Assertions. Kein behaupteter Produkt-Memoryfix.
+4. **Reale Auslieferung:** ZIP-Builder mit aktuellen QA-/Asset-Hash-Gates, isolierter Mac-
+Teststarter, SHA256-Manifest und Entpack-/Browserprüfung. CI für `release/**` und Paketprüfung
+ergänzt; kein Deployment-Job. Ass-Grenze von zwei auf die geforderte eine Eingabe verschärft.
 
-## Tatsächlich ausgeführte Schlussregression
+Rot-/Grünbelege, Ereignisaufzeichnung und vollständige aktuelle Rohdaten: `docs/qa/final/`.
 
-| Prüfung | Bestanden | Fehlgeschlagen | Übersprungen |
+## Tatsächlich bestandene Prüfungen
+
+| Schlusslauf | Bestanden | Fehlgeschlagen | Übersprungen |
 |---|---:|---:|---:|
-| Node (einschließlich 100 Matchtests) | 149 | 0 | 0 |
-| Playwright / Chromium | 76 | 0 | 0 |
+| Node einschließlich detaillierter Matchtests | 151 | 0 | 0 |
+| vollständige Chromium-Suite | 79 | 0 | 0 |
+| zusätzliche WebKit-Auswahl: Hybrid + Release | 19 | 0 | 0 |
 
-Keine flaky Browsertests. Installation per unverändertem Lockfile, alle vier JS-Syntaxprüfungen
-und `git diff --check` erfolgreich. Alle Testdaten synthetisch; frische Testprofile.
+Keine flaky aktuellen Browserfälle. WebKit-Auswahl ist kein behaupteter vollständiger Lauf
+aller Chromium-spezifischen Tests. Firefox wurde offiziell heruntergeladen, konnte aber
+selbst eine unabhängige data-URL-Kontrollseite nicht starten: Timeout/Rendererfehler und
+`/proc/self/uid_map: EROFS`, auch mit virtuellem Bildschirm. **Null Firefox-App-Tests**;
+dieser Umgebungsblocker ist weder ein App-Fehlschlag noch ein Firefox-PASS.
+Lockfile-Installation, vier JS-Syntaxprüfungen und `git diff --check` bestanden.
 
-| Serie im Schlusslauf | Matches | Sätze | Rallyes |
+| Serie im abschließenden Gesamtlauf | Matches | Sätze | Rallyes |
 |---|---:|---:|---:|
-| Detaillierte Kontaktketten, Seeds 501–600 | 100 | 400 | 17213 |
-| Beibehaltene Punktesimulation | 100 | 400 | 19990 |
-| Vollständige echte UI-Bedienabläufe | 3 | 9 | 288 |
+| detaillierte Kontaktketten, Seeds 501–600 | 100 | 400 | 17213 |
+| beibehaltene Quick-Punktesimulation | 100 | 400 | 19.990 |
+| vollständige echte UI-Bedienabläufe | 3 | 9 | 288 |
 
-Die detaillierte Serie umfasst **271405 Kontakte**, **1220 Undo/Wiederholungen**,
-**800 Wechsel/Rückwechsel**, **331 Wiederaufnahmen in laufenden
-Kontaktketten** und **80 verlängerte Sätze**. 50 Drei- und 50 Fünfsatzmatches;
-beide Mannschaften gewinnen je 50 Matches. Neue Startsechsen/Rotationen je Satz,
-Libero-Ersetzungen und Formationen R1–R6 werden mitgeprüft.
+Die detaillierte Serie enthält **271405 Kontakte**, **1220 Undo/Wiederholungen**,
+**800 Wechsel/Rückwechsel**, **331 Wiederaufnahmen innerhalb laufender
+Kontaktketten**, 50 Drei- und 50 Fünfsatzmatches sowie 80 verlängerte Sätze. Beide Teams
+gewinnen je 50 Matches. Startsechsen/Rotationen je Satz, Liberos und Formationen mitgeprüft.
 
-Der Simulator erzeugt legale synthetische Kontaktpläne und Zielendstände vor Ausführung.
-Erzwungene Anfangssequenzen sichern die Ereignisabdeckung; danach folgen gewichtete,
-legale Punktefolgen. Keine behauptete empirische Häufigkeitsverteilung realer Ligaspiele.
-Ein unabhängiges Modell prüft nach jeder Rallye Score, Aufschlagrecht, Rotation,
-Kontaktfolge, aktuelle und archivierte Historie, erfasste Spielerzähler und Turnaround-Statistik.
+Ein unabhängiges Sollmodell erzeugt Kontaktpläne und Endstände vor der Ausführung und
+vergleicht nach jeder Rallye Score, Aufschlagrecht, Rotation, K1/K2, Kontaktfolge,
+Historie, erfasste Spielerzähler und Turnaround-Statistik. Erzwungene Anfangssequenzen
+sichern Abdeckung; folgende Punkte sind gewichtet und regelkonform. Synthetische
+Abnahmeszenarien, keine empirische Verteilung echter Ligaspiele. Aufschlagfehler/Asse,
+A0/D0, mehrere Angriffe/Transitions, Block und Gegnerfehler sind tatsächlich enthalten.
+Quick-Gegneraufschlagfehler bleiben als unvollständig beobachtet markiert.
 
-Zusätzlicher vollständiger Replay-Lauf: nochmals 100 detaillierte Matches, 400 Sätze,
-17.213 Rallyes; **100/100 Plan-Digests identisch**. Dies sind dieselben 100 Seeds,
-keine weiteren 100 unterschiedlichen Szenarien. Die früheren Teil-/Diagnoseläufe sind
-nicht als bestandene zusätzliche Abnahmeserien gezählt.
-Die beibehaltenen 100 isolierten Kontaktketten sind ebenfalls keine vollständigen Matches.
+Replayvergleich: 100/100 Plan-Digests stimmen mit zwei unabhängigen vollständigen
+Referenzläufen überein. Insgesamt liefen während der Entwicklung vier vollständige
+100er-Detailserien; eine Gesamt-QA enthielt dabei noch zwei UI-Fehlschläge. Dies sind
+**100 unterschiedliche Seeds**, keine 400 unabhängigen Szenarien. Der abgebrochene
+Heaplauf und gezielte Teilläufe werden nicht als zusätzliche abgeschlossene Abnahmeserien
+gezählt. Die beibehaltenen 100 isolierten Kontaktketten sind keine vollständigen Matches.
 
-Enden der detaillierten Rallyes: `{"A0": 1440, "D0": 3028, "ace": 916, "attackError": 3064, "block": 2291, "kill": 2260, "opponentError": 2361, "opponentServeError": 768, "serveError": 1085}`.
-Gegneraufschlagfehler über Quick werden als unvollständig beobachtet gespeichert;
-keine erfundene eigene Annahme oder eigener Kill.
+## Gemessene Bedienung
 
-## Tatsächliche Eingaben und Browsergrenzen
+Ab eingerichtetem Schnellmodus auf 390/820 px: Ass **1**, A0 **2**, D0 **2**, Kill **2**,
+Transition **1**, Transition → Kill **3**. Undo **1** auf 390/820/1024 px.
+Alle Zielwerte erreicht, geprüfte Touchflächen mindestens 44×44 CSS-Pixel.
+Dialog-Sicherheit zusätzlich auf 390/820/1440 px. Die drei vollständigen UI-Matches
+benötigen 245/244/244 Taps plus 18/18/19 Auswahlaktionen, je zwei Texteingaben und einen Drag.
+Native Select-Menü-Taps sind keine behauptete Messung. UI-Abläufe umfassen Setup,
+Spieler/Libero, beide Modi, Wechsel, Taktik, Vorlage/Satzwechsel, Matchende, Statistik,
+Dateiexport/Reimport und Reload. Ein Test schließt/startet den Chromium-Prozess mit einem
+eigens angelegten Testprofil. Alles Browseremulation auf Linux, keine Apple-Geräteabnahme.
 
-Ab eingerichtetem Schnellmodus auf 390/820 px: Ass **1**, A0 **2**, D0 **2**,
-Angriffspunkt **2**, Abwehr/Transition **1**, Transition → Kill **3**.
-Undo **1** auf 390/820/1024 px. Alle geforderten Grenzen erreicht.
-Geprüfte Schnellmodus-/Spieler-/Modus-Touchziele mindestens 44×44 CSS-Pixel.
-Volle UI-Matches: 245/244/244 Taps bei 390/820/1024 px plus 18/18/19 Auswahlaktionen,
-je zwei Texteingaben und eine Ziehbewegung. Native Select-Menü-Taps sind nicht gemessen.
+## Datensicherheit und Paket
 
-Die UI-Matches bedienen Setup, Spieler-/Libero-Auswahl, beide Modi, Rallyes,
-Wechsel/Rückwechsel, Taktik, Formation speichern, Satzvorlage, Matchende,
-Statistik, Dateiexport, tatsächlichen Reimport und Reload. Ein separater Test
-schließt und startet den Chromium-Prozess mit einem eigens angelegten Testprofil.
-Dies ist Browseremulation auf Linux, keine echte Mac-/iPad-Geräteabnahme.
-
-## Daten, Migration und Offline
-
-V7.9.2- und frühere-main-Fixtures, Undo nach Migration, beschädigte/importierte Daten,
+Migration von V7.9.2-/vorherigen-main-Fixtures, atomarer Undo, beschädigte Imports,
 Rohdatenrettung und Quota-Warnung bestanden. Größter synthetischer Speicherstand:
-2,427,962 UTF-16-Codeeinheiten. Reale Gerätequota bleibt variabel.
-Bei Speicherfehlern wird der letzte dauerhaft gespeicherte Stand bewahrt und Export verlangt.
-Cacheprüfung: funktionierendes Upgrade, absichtlich fehlgeschlagene Installation,
-503-Fallback, tatsächliche Netzunterbrechung und kompatibler Worker-Rollback.
-Kein allgemeiner App-/Schema-Downgrade zugesichert.
+2427962 UTF-16-Codeeinheiten; reale Gerätequota bleibt variabel.
+Bei Speicherfehlern bleibt der letzte dauerhafte Stand erhalten, Export wird verlangt.
+Service Worker: Upgrade, absichtlich fehlerhafte Installation, 503-Fallback, tatsächliche
+Netzunterbrechung und kompatibler Worker-Rollback geprüft. Kein allgemeiner Schema-Downgrade.
 
-## Paket und separate Testversion
+Das ZIP enthält alle sieben Webdateien, TEST_START.py, ANLEITUNG.txt, BUILD.json,
+Testbericht, Einschränkungen und CHECKSUMS.sha256. Der ZIP-Hash steht zusätzlich daneben.
+Die zum Download angebotene Datei wird tatsächlich in ein neues Verzeichnis entpackt,
+daraus gestartet und bei 390/820/1440 px bedient. `.verification.json` belegt den exakten
+ZIP-Hash, Prüfsummenvergleich, Modi/Taktik/Analyse/Statistik, Speicher-/Cachetrennung und
+Offline-Reload. Chromium verwendet dabei Playwrights Offline-Schalter; WebKit wird der
+reale Server beendet, da sein Offline-Schalter einen internen Navigationsfehler lieferte.
+Keine Offlineassertion wurde abgeschaltet. Bestehende Chromium-Offlinefälle bleiben erhalten.
 
-Pflichtinhalt: index.html und alle sieben benötigten Webdateien, TEST_START.py,
-ANLEITUNG.txt, BUILD.json, Testbericht, Einschränkungen und CHECKSUMS.sha256.
-ZIP-SHA256 steht zusätzlich in der gleichnamigen `.zip.sha256`-Datei.
-`node scripts/verify-package.cjs <ZIP>` prüft das echte ZIP in einem neuen temporären
-Verzeichnis, startet dessen enthaltenen Starter, prüft 390/820/1440 px und vergleicht
-die Dateiprüfsummen nach dem Browserlauf erneut. Ergebnis: `.verification.json` neben dem ZIP.
+Die Webdateien bleiben beim Verpacken byteidentisch mit den geprüften Quellen. Nur bei
+Auslieferung ergänzt der Starter einen Testhinweis und separate Speicher-/Cache-Namen;
+ein synthetischer Sentinel schützt den normalen Speicherschlüssel im Pakettest.
+WebKit verwendet unveränderte offizielle Browserbinärdateien und lokale Debian-Bibliotheken:
+APT prüft signierte Metadaten, zusätzlich wird jede .deb-SHA256 gegen diese Metadaten geprüft.
+Keine TLS-, Signatur- oder Artefaktprüfung deaktiviert. Reproduktion:
+`bash scripts/setup-extra-browsers.sh`, `playwright.webkit.config.cjs` und Paketprüfer mit
+`EVV_BROWSER_LIBS` gemäß QA-Playbook. Kein Administratorzugriff erforderlich.
 
-Die Webdateien im Archiv sind identisch mit den QA-geprüften Quellen.
-Nur bei Auslieferung ergänzt TEST_START.py einen Testhinweis sowie getrennte
-localStorage-/Cache-Namen. Es werden ausschließlich freigegebene Webdateien ausgeliefert.
-Die normale lokale Speicherung wird im Pakettest durch einen synthetischen Sentinel geschützt.
+Mac: ZIP entpacken, Terminal darin öffnen, **`python3 TEST_START.py --lan`** starten.
+Die ausgegebene Mac-/WLAN-Adresse am Mac bzw. iPad öffnen; beide im selben vertrauten WLAN.
+Python 3 muss installiert sein, Terminal bleibt offen. Ohne iPad genügt Start ohne `--lan`.
+Keine Routerfreigabe, keine produktiven Spieldaten/Backups, keine Cloud-Synchronisierung.
 
-Mac: ZIP entpacken, Terminal dort öffnen, `python3 TEST_START.py --lan` starten.
-Die tatsächlich ausgegebene Mac-Adresse bzw. WLAN-Adresse auf dem iPad öffnen;
-beide Geräte im selben vertrauenswürdigen WLAN, Terminal offen lassen.
-Python 3 muss vorhanden sein. Ohne iPad genügt `python3 TEST_START.py`.
-Keine Routerfreigaben, kein produktiver Upload, keine echten Backups importieren.
+## Verbleibende Risiken
 
-## Noch offene Risiken und externe Blocker
+- Echte iPad/iPhone/Safari/Pencil/Mikrofon-Abnahme offen; WebKit-Linux ist kein Apple-Gerät.
+- WLAN-HTTP am iPad garantiert keine Offline-PWA/Mikrofonfunktion; dafür eigener HTTPS-Test-Origin.
+- Betriebssystemabbruch, Stromverlust, Speicherverdrängung, Gerätequota und Geräteverlust
+  sind nicht vollständig abgedeckt. Regelmäßig exportieren; kein serverseitiges Backup.
+- Sonder-/Verletzungswechsel und vollständige DVV/FIVB-Sonderfallabnahme offen;
+  normales Sechs-Wechsel-Regelwerk geprüft. Keine native iOS-/Android-Hülle.
+- Acht historische Skripte weiterhin inkompatibel archiviert, ein historischer Test bestanden.
+  Aktuelle Ersatztests grün; keine Tests zur Grünfärbung entfernt.
+- Firefox-Funktionstests durch beschriebenen Hostblocker nicht ausgeführt.
+- Öffentliche Vorschau nicht verbunden; das geprüfte lokale Paket ist die sichere Alternative.
 
-- Echte iPad-/iPhone-/Safari-/Pencil-/Mikrofonabnahme offen. WebKit und Firefox wurden
-nicht ausgeführt: offizielle Downloadserver liefern hier CONNECT HTTP 403.
-- Offline am iPad über WLAN-HTTP ist nicht zugesichert. Dafür ist ein separater HTTPS-Test-Origin
-nötig; die automatisierten Loopback-Offlinetests ersetzen das nicht.
-- Betriebssystemabbruch, Stromverlust, Speicherverdrängung und gerätespezifische Quota
-sind nicht durch geordneten Chromium-Neustart vollständig abgedeckt. Kein Cloud-Backup.
-- Sonder-/Verletzungswechsel und eine vollständige DVV/FIVB-Abnahme aller Sonderfälle offen.
-Keine native iOS-/Android-Hülle im Lieferumfang.
-- Acht archivierte Legacy-Skripte weiterhin inkompatibel, ein historischer Test bestanden.
-Aktuelle Ersatztests sind grün; keine Legacy-Datei zur Grünfärbung entfernt.
-- Öffentliche Vorschau nicht verbunden; geprüfter Tunnel-Zugang gesperrt. Geprüftes
-lokales Paket ist die sichere Alternative.
-- GitHub API mit CONNECT HTTP 403 gesperrt. Release-Branch kann per nativem Git gepusht werden;
-PR-Anlage und aktuelle Remote-Check-Abfrage bleiben bis zur Netzwerkfreigabe blockiert.
-Kein PR oder erfolgreicher Remote-CI-Lauf wird ohne tatsächliche Bestätigung behauptet.
-
-Benötigte API-/Browser-Domains sowie install_script/start_skill wurden im Cloud-Entwurf
-gespeichert. Sie müssen in den Umgebungseinstellungen geprüft/gespeichert und die
-**Cloud-Umgebung** veröffentlicht werden; dies veröffentlicht keine QuickScout-Webseite.
-Danach API-Zugriff erneut prüfen, den vorbereiteten PR gegen main anlegen und reviewen;
-kein Merge ohne ausdrückliche Freigabe.
+Installations-/Startanleitung und erforderliche Netzwerkdomains sind im Cloud-Entwurf
+gespeichert. Für deren dauerhafte Übernahme Umgebungseinstellungen prüfen/speichern und
+die **Cloud-Umgebung** veröffentlichen; dies veröffentlicht keine QuickScout-Webseite.

@@ -68,3 +68,8 @@ Produktionsdaten wurden weder geladen noch verändert; Browserfälle verwenden f
 ## Finaler Release-Kandidat · 27.10.2026
 
 Aktueller Schlusslauf: 149/149 Node-Tests und 76/76 Chromium-Browsertests, keine übersprungenen oder flaky Fälle. 100 detaillierte Matches, 400 Sätze, 17.213 Rallyes, 271.405 Kontakte; separater vollständiger Replay mit identischen 100 Plan-Digests. Legacy: ein Erfolg, acht unveränderte historische Inkompatibilitäten. Details, Erstfehler, Einschränkungen und Paketgate: [FINAL_RELEASE_REPORT.md](FINAL_RELEASE_REPORT.md), Rohdaten unter [qa/final](qa/final/release-candidate.json).
+
+
+## Abschließender Touch-/Release-Nachtest
+
+Aktueller vollständiger Lauf: 151 Node-Tests, 79 Chromium-Browsertests, zusätzlich 19 ausgewählte WebKit-Tests bestanden. Nachgewiesenes Durchklicken beim Dialogschluss und verlorenes Speichern nach Drag sind zusammen abgesichert. Firefox startet keine Kontrollseite (Hostblocker). Maßgeblich sind FINAL_RELEASE_REPORT.md und docs/qa/final/.

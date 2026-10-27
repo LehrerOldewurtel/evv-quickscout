@@ -184,7 +184,19 @@ function formationPlayers(rotation){
  if(mb&&lib&&st.liberoAutoEnabled!==false&&!(mb.pos===1&&st.serving))mb.id=lib;
  return players;
 }
-function touchButton(id,handler){const b=$(id);let handled=-Infinity;b.onpointerup=e=>{if(e.pointerType!=='mouse'){handled=performance.now();e.preventDefault();handler()}};b.onclick=e=>{if(e.detail===0||performance.now()-handled>500)handler()}}
+function touchButton(id,handler){
+ const b=$(id);b.style.touchAction='manipulation';b.onclick=handler;
+ b.onpointerup=e=>{
+  if(e.pointerType==='mouse')return;
+  e.preventDefault();let timer;
+  const clear=()=>{document.removeEventListener('click',compatibilityClick,true);document.removeEventListener('pointerdown',clear,true);clearTimeout(timer)};
+  const compatibilityClick=click=>{clear();if(click.detail!==0){click.preventDefault();click.stopImmediatePropagation()}};
+  // WebKit can retarget this click after a dialog disappears. Catch the same
+  // gesture at document level; a new pointerdown or keyboard click stays free.
+  document.addEventListener('click',compatibilityClick,true);document.addEventListener('pointerdown',clear,true);timer=setTimeout(clear,1000);
+  handler();
+ };
+}
 function formationEditor(rotation=st.rot,kind='receive'){
  let working=formationFor(rotation,kind),selected=1,gesture=null;
  modal(`<h2>Formationseditor · 9 × 18 m</h2><div class="grid2"><label>Rotation<select id="formRotation">${[1,2,3,4,5,6].map(n=>`<option value="${n}">R${n}</option>`).join('')}</select></label><label>Formation<select id="formKind"><option value="receive">Annahme</option><option value="defense-IV">Abwehr IV</option><option value="defense-III">Abwehr III</option><option value="defense-II">Abwehr II</option></select></label></div><label>Werkzeug<select id="formTool"><option value="move">Spieler verschieben</option><option value="route">Laufweg des gewählten Spielers</option><option value="ball">Ballweg</option></select></label><p>Spieler antippen zur Auswahl. Pfeile durch Ziehen zeichnen. Taktische Ziele ändern keine Regelposition.</p><svg id="formationSvg" viewBox="0 0 900 1800" role="img" aria-label="Volleyballfeld 9 mal 18 Meter"></svg><div class="grid3"><button id="formSave" class="primary">Speichern</button><button id="formReset">Zurücksetzen</button><button id="formUndo">Letzten Pfeil löschen</button></div><div class="grid2"><label>Kopieren nach<select id="formCopyRot">${[1,2,3,4,5,6].map(n=>`<option value="${n}">R${n}</option>`).join('')}</select></label><button id="formCopy">Kopie speichern</button></div><button id="formClose">Schließen</button>`);

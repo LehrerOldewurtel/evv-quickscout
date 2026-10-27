@@ -1,0 +1,11 @@
+✔ Import prüft verschachtelte Undo-Historie vor Mutation und bewahrt Rohdaten (356.052703ms)
+✔ Touch-Schließen aktiviert keine darunterliegende Punktkorrektur (42.486092ms)
+✔ Touch-Speichern nach Drag: kein verlorener oder doppelter Save; nächste Eingabe bleibt frei (42.477889ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 798.975958

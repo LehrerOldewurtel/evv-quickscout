@@ -1,0 +1,138 @@
+[
+  {
+    "width": 390,
+    "modalAfterClose": "modal hidden",
+    "lastEvents": [
+      {
+        "type": "pointerdown",
+        "id": "formSave",
+        "button": "formSave",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "pointerup",
+        "id": "formSave",
+        "button": "formSave",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "click",
+        "id": "formSave",
+        "button": "formSave",
+        "pointer": "mouse",
+        "detail": 1,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "pointerdown",
+        "id": "formClose",
+        "button": "formClose",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "pointerup",
+        "id": "formClose",
+        "button": "formClose",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      }
+    ]
+  },
+  {
+    "width": 820,
+    "modalAfterClose": "modal hidden",
+    "lastEvents": [
+      {
+        "type": "pointerup",
+        "id": "formSave",
+        "button": "formSave",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "click",
+        "id": "formSave",
+        "button": "formSave",
+        "pointer": "mouse",
+        "detail": 1,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "pointerdown",
+        "id": "formClose",
+        "button": "formClose",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "pointerup",
+        "id": "formClose",
+        "button": "formClose",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "click",
+        "id": "voiceBtn",
+        "button": "voiceBtn",
+        "pointer": "mouse",
+        "detail": 1
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "modalAfterClose": "modal",
+    "lastEvents": [
+      {
+        "type": "pointerup",
+        "id": "formSave",
+        "button": "formSave",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "click",
+        "id": "formSave",
+        "button": "formSave",
+        "pointer": "mouse",
+        "detail": 1,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "pointerdown",
+        "id": "formClose",
+        "button": "formClose",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "pointerup",
+        "id": "formClose",
+        "button": "formClose",
+        "pointer": "touch",
+        "detail": 0,
+        "modal": "Formationseditor \u00b7 9 \u00d7 18 m"
+      },
+      {
+        "type": "click",
+        "id": "scoreFix",
+        "button": "scoreFix",
+        "pointer": "mouse",
+        "detail": 1
+      }
+    ]
+  }
+]

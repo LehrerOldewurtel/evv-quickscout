@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-27T17:39:22.763Z",
+  "generatedAt": "2026-10-27T18:14:54.019Z",
   "run": {
     "source": {
       "branch": "release/v8-final-candidate",
-      "commit": "c49a511b4563747d07edea2e4ed36ab0d7bfa323",
+      "commit": "2541d4cd9cc2e99499db244b5b255ad5fd35e1f9",
       "assets": {
         "index.html": "8fc9ec4d03f13eeb4d5b222a9f07149dd744c3f2813d6dabbf7f867bda38c1da",
-        "app.js": "66dca5b2c6d74492450c29ce5ff1027764548c377727a4afa1a02cfa56f719f1",
+        "app.js": "0e7f417b1c52d149c46aa9f13eff9596b2205bbbd1f5919c8dd1934eb32177a9",
         "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
         "styles.css": "cef1e07c2bd765ebb19e7b5715a37ed97e9c527216548e632dc66713f58f19e4",
         "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
@@ -21,8 +21,8 @@
       ],
       "exitCode": 0,
       "signal": null,
-      "startedAt": "2026-10-27T17:32:53.187Z",
-      "finishedAt": "2026-10-27T17:37:02.064Z",
+      "startedAt": "2026-10-27T18:08:20.708Z",
+      "finishedAt": "2026-10-27T18:12:30.559Z",
       "log": "artifacts/node.tap"
     },
     "browser": {
@@ -33,22 +33,22 @@
       ],
       "exitCode": 0,
       "signal": null,
-      "startedAt": "2026-10-27T17:37:02.064Z",
-      "finishedAt": "2026-10-27T17:39:22.759Z",
+      "startedAt": "2026-10-27T18:12:30.560Z",
+      "finishedAt": "2026-10-27T18:14:54.013Z",
       "log": "artifacts/browser.log"
     }
   },
   "node": {
-    "tests": 149,
-    "passed": 149,
+    "tests": 151,
+    "passed": 151,
     "failed": 0,
     "skipped": 0,
     "cancelled": 0
   },
   "browser": {
-    "startTime": "2026-10-27T17:37:03.012Z",
-    "duration": 139723.094,
-    "expected": 76,
+    "startTime": "2026-10-27T18:12:31.824Z",
+    "duration": 142153.76700000002,
+    "expected": 79,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0,
@@ -59,7 +59,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 5175,
+            "duration": 4879,
             "attachments": []
           }
         ]
@@ -70,7 +70,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 7587,
+            "duration": 7035,
             "attachments": []
           }
         ]
@@ -81,7 +81,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2019,
+            "duration": 1916,
             "attachments": []
           }
         ]
@@ -92,7 +92,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2447,
+            "duration": 2063,
             "attachments": []
           }
         ]
@@ -103,7 +103,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1578,
+            "duration": 1334,
             "attachments": []
           }
         ]
@@ -114,7 +114,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1276,
+            "duration": 1570,
             "attachments": []
           }
         ]
@@ -125,7 +125,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 881,
+            "duration": 941,
             "attachments": []
           }
         ]
@@ -136,7 +136,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 661,
+            "duration": 859,
             "attachments": []
           }
         ]
@@ -147,7 +147,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1302,
+            "duration": 1350,
             "attachments": []
           }
         ]
@@ -158,7 +158,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 7623,
+            "duration": 6648,
             "attachments": [
               {
                 "name": "cache-lifecycle",
@@ -174,7 +174,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 917,
+            "duration": 954,
             "attachments": [
               {
                 "name": "inputs",
@@ -190,7 +190,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1033,
+            "duration": 991,
             "attachments": [
               {
                 "name": "inputs",
@@ -206,7 +206,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1199,
+            "duration": 1003,
             "attachments": [
               {
                 "name": "inputs",
@@ -222,7 +222,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 917,
+            "duration": 1125,
             "attachments": [
               {
                 "name": "inputs",
@@ -238,7 +238,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 965,
+            "duration": 924,
             "attachments": [
               {
                 "name": "inputs",
@@ -254,7 +254,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1317,
+            "duration": 1252,
             "attachments": [
               {
                 "name": "inputs",
@@ -270,7 +270,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1374,
+            "duration": 1040,
             "attachments": [
               {
                 "name": "inputs",
@@ -286,7 +286,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1606,
+            "duration": 1509,
             "attachments": [
               {
                 "name": "inputs",
@@ -302,7 +302,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1598,
+            "duration": 1342,
             "attachments": [
               {
                 "name": "inputs",
@@ -318,7 +318,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1211,
+            "duration": 1352,
             "attachments": [
               {
                 "name": "inputs",
@@ -334,7 +334,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1237,
+            "duration": 1213,
             "attachments": [
               {
                 "name": "inputs",
@@ -350,7 +350,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1414,
+            "duration": 1521,
             "attachments": [
               {
                 "name": "inputs",
@@ -366,7 +366,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 35743,
+            "duration": 37591,
             "attachments": [
               {
                 "name": "matchday",
@@ -382,7 +382,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 42046,
+            "duration": 40153,
             "attachments": [
               {
                 "name": "matchday",
@@ -398,7 +398,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 33260,
+            "duration": 36261,
             "attachments": [
               {
                 "name": "matchday",
@@ -414,7 +414,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2045,
+            "duration": 2359,
             "attachments": []
           }
         ]
@@ -425,7 +425,40 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2315,
+            "duration": 2349,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Dialog 390px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 902,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Dialog 820px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1048,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Dialog 1440px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1536,
             "attachments": []
           }
         ]
@@ -436,7 +469,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1325,
+            "duration": 1089,
             "attachments": [
               {
                 "name": "inputs",
@@ -452,7 +485,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1343,
+            "duration": 1305,
             "attachments": [
               {
                 "name": "inputs",
@@ -468,7 +501,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1288,
+            "duration": 1379,
             "attachments": [
               {
                 "name": "inputs",
@@ -484,7 +517,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1150,
+            "duration": 1101,
             "attachments": []
           }
         ]
@@ -495,7 +528,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 766,
+            "duration": 712,
             "attachments": []
           }
         ]
@@ -506,7 +539,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 686,
+            "duration": 817,
             "attachments": []
           }
         ]
@@ -517,7 +550,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1431,
+            "duration": 1472,
             "attachments": []
           }
         ]
@@ -528,7 +561,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1156,
+            "duration": 1219,
             "attachments": []
           }
         ]
@@ -539,7 +572,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 666,
+            "duration": 718,
             "attachments": []
           }
         ]
@@ -550,7 +583,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 590,
+            "duration": 674,
             "attachments": []
           }
         ]
@@ -561,7 +594,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 581,
+            "duration": 665,
             "attachments": []
           }
         ]
@@ -572,7 +605,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 918,
+            "duration": 1083,
             "attachments": []
           }
         ]
@@ -583,7 +616,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 882,
+            "duration": 1107,
             "attachments": []
           }
         ]
@@ -594,7 +627,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1450,
+            "duration": 1684,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -610,7 +643,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1450,
+            "duration": 1670,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -626,7 +659,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2793,
+            "duration": 3239,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -642,7 +675,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1999,
+            "duration": 2295,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -658,7 +691,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1222,
+            "duration": 1474,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -674,7 +707,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1173,
+            "duration": 1417,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -690,7 +723,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1340,
+            "duration": 1524,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -706,7 +739,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1350,
+            "duration": 1464,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -722,7 +755,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2548,
+            "duration": 2774,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -738,7 +771,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1908,
+            "duration": 2264,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -754,7 +787,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1218,
+            "duration": 1251,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -770,7 +803,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1256,
+            "duration": 1221,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -786,7 +819,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1415,
+            "duration": 1346,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -802,7 +835,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1434,
+            "duration": 1291,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -818,7 +851,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2508,
+            "duration": 2600,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -834,7 +867,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1963,
+            "duration": 2084,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -850,7 +883,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1137,
+            "duration": 1385,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -866,7 +899,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1360,
+            "duration": 1280,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -882,7 +915,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1279,
+            "duration": 1388,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -898,7 +931,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1375,
+            "duration": 1526,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -914,7 +947,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2759,
+            "duration": 2842,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -930,7 +963,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2514,
+            "duration": 2281,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -946,7 +979,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1445,
+            "duration": 1491,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -962,7 +995,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1568,
+            "duration": 1472,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -978,7 +1011,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1595,
+            "duration": 1428,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -994,7 +1027,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1469,
+            "duration": 1320,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1010,7 +1043,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2999,
+            "duration": 2814,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1026,7 +1059,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2214,
+            "duration": 2160,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1042,7 +1075,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1376,
+            "duration": 1300,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1058,7 +1091,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1592,
+            "duration": 1334,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1074,7 +1107,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1496,
+            "duration": 1392,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1090,7 +1123,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1489,
+            "duration": 1454,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1106,7 +1139,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 3066,
+            "duration": 2922,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1122,7 +1155,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 2451,
+            "duration": 2357,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1138,7 +1171,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1451,
+            "duration": 1357,
             "attachments": [
               {
                 "name": "touch-inputs",
@@ -1154,7 +1187,7 @@
         "results": [
           {
             "status": "passed",
-            "duration": 1630,
+            "duration": 1735,
             "attachments": [
               {
                 "name": "touch-inputs",
