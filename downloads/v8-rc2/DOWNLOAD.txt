@@ -1,0 +1,25 @@
+EVV QuickScout V8 – RC2 nach Praxistest
+
+Vollständiges Paket: EVV-QuickScout-V8-RC2.zip
+Größe: 79625 Bytes
+SHA-256: 012f779a130e062ec708f4de073a420581ca26f2b975f10e9945ea57f6927aab
+
+ZIP in einen neuen Ordner entpacken. Terminal im Ordner mit TEST_START.py öffnen:
+python3 TEST_START.py --lan
+Die ausgegebene Mac-Adresse in Chrome öffnen. Für das iPad die ausgegebene WLAN-
+Adresse verwenden; beide Geräte im gleichen vertrauten WLAN, Terminal offen lassen.
+Nur Testdaten. Python 3 wird benötigt. ANLEITUNG.txt im ZIP enthält alle Schritte.
+
+Falls der direkte Artefaktdownload scheitert: alle 3 .part-Dateien in denselben
+Mac-Ordner laden, Terminal dort öffnen und zusammensetzen:
+cat EVV-QuickScout-V8-RC2.zip.part-01 EVV-QuickScout-V8-RC2.zip.part-02 EVV-QuickScout-V8-RC2.zip.part-03 > EVV-QuickScout-V8-RC2.zip
+shasum -a 256 EVV-QuickScout-V8-RC2.zip
+unzip -t EVV-QuickScout-V8-RC2.zip
+Die Prüfsumme muss der oben angegebenen entsprechen. Erst danach entpacken.
+
+Das entpackte Paket wurde mit eigenem Starter in Chromium und WebKit gestartet
+und in acht Kontexten einschließlich iPad-Querformat geprüft. Alle inneren
+Prüfsummen sind korrekt. Einzelteile wurden wieder zusammengesetzt und verglichen.
+
+Keine neue GitHub-Veröffentlichung und kein produktives Deployment.
+Eine zusätzliche GitHub-Bereitstellung wartet auf ausdrückliche Freigabe.
