@@ -137,3 +137,14 @@ auf ganzzahlige CSS-Koordinaten gesetzt, wie WebKit sie als Pointerevent liefert
 Bewegung und Zielposition bleiben mit derselben Toleranz (<0,5 px) geprüft.
 Der erste vollständige Browserlauf und die erste WebKit-Serie wurden zur
 Korrektur dieser Testfehler unterbrochen und zählen nicht als bestanden.
+
+RC2 bauen: `python3 scripts/package_release.py --evidence-dir docs/qa/practice
+--output /workspace/evv-rc2-download/EVV-QuickScout-V8-RC2.zip`
+(in einer Zeile ausführen). So enthält das Paket den zum Assethash passenden
+neuen WebKit-Bericht; der Builder prüft auch dessen Fehler-/Skip-/Flaky-Zähler.
+Die erweiterte ZIP-Abnahme prüft vier Viewports pro Browser einschließlich
+1024×768 mit sichtbarem Testhinweis.
+
+Mit den oben dokumentierten WebKit-Umgebungsvariablen die 40 Fälle reproduzieren:
+`npx playwright test --config playwright.webkit.config.cjs tests/e2e/hybrid.spec.cjs tests/e2e/practice.spec.cjs tests/e2e/release.spec.cjs`.
+Paketabnahme: `EVV_QA_BROWSERS=chromium,webkit node scripts/verify-package.cjs /workspace/evv-rc2-download/EVV-QuickScout-V8-RC2.zip`.

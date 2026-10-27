@@ -3,7 +3,8 @@ EVV QuickScout V8 – RC2 PRAXISTEST-KORREKTUREN · MANUELLE ABNAHME
 Keine stabile V8-Freigabe. Interne Produktversion unverändert 7.19.0-k1-auto-mb.
 Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
 
-1. ZIP vollständig entpacken, Terminal im entpackten Ordner öffnen.
+1. ZIP in einen neuen Ordner vollständig entpacken (alte Testversion behalten).
+   Terminal im entpackten Ordner mit TEST_START.py öffnen.
 2. Python 3 muss verfügbar sein (python3 --version). Bei Bedarf den signierten
    Installer von https://www.python.org/downloads/macos/ verwenden.
 3. Start auf dem Mac: python3 TEST_START.py

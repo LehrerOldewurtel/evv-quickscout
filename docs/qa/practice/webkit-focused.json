@@ -1,0 +1,1640 @@
+{
+  "config": {
+    "configFile": "/tmp/evv-webkit-practice.config.cjs",
+    "rootDir": "/workspace/evv-quickscout/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "artifacts/webkit-focused.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/tmp/evv-webkit-practice-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspace/evv-quickscout/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.56.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "hybrid.spec.cjs",
+      "file": "hybrid.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "390px ace: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1041,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:18.715Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYWNlIiwid2lkdGgiOjM5MCwiaW5wdXRzIjoxLCJsaW1pdCI6MX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-8fbdd09fbb106c3d2d54",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px a0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1152,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:19.852Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYTAiLCJ3aWR0aCI6MzkwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-a1d9dc26132e25534252",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px d0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:21.021Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiZDAiLCJ3aWR0aCI6MzkwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-60245e49501d6898f1c3",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px kill: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1255,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:22.366Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoia2lsbCIsIndpZHRoIjozOTAsImlucHV0cyI6MiwibGltaXQiOjJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-b9a9ef3b2611cb33c83a",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px transition: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1221,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:23.634Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbiIsIndpZHRoIjozOTAsImlucHV0cyI6MSwibGltaXQiOjF9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-a8a983aadd10b8f800df",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "390px transitionKill: höchstens 3 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1316,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:24.877Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbktpbGwiLCJ3aWR0aCI6MzkwLCJpbnB1dHMiOjMsImxpbWl0IjozfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-407421c32568948494ec",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px ace: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1281,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:26.209Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYWNlIiwid2lkdGgiOjgyMCwiaW5wdXRzIjoxLCJsaW1pdCI6MX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-cf83ec8991127be91231",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px a0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1634,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:27.509Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiYTAiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-6597932336f16569a2f3",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px d0: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1585,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:29.160Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoiZDAiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjIsImxpbWl0IjoyfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-2c00daa775cbb6297a4a",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px kill: höchstens 2 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1739,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:30.761Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoia2lsbCIsIndpZHRoIjo4MjAsImlucHV0cyI6MiwibGltaXQiOjJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-67fb0d7dc469a6ac2077",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px transition: höchstens 1 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1566,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:32.515Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbiIsIndpZHRoIjo4MjAsImlucHV0cyI6MSwibGltaXQiOjF9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-732089f49d4107eb8b66",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        },
+        {
+          "title": "820px transitionKill: höchstens 3 Eingaben",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1721,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:34.092Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvbktpbGwiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3935a2fe99244ae6db03-b5035a8813805bc0bf27",
+          "file": "hybrid.spec.cjs",
+          "line": 2,
+          "column": 135
+        }
+      ]
+    },
+    {
+      "title": "practice.spec.cjs",
+      "file": "practice.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2044,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:35.839Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJtaWNoYWVsIiwiYXR0YWNrcyI6MSwiY2hhbmNlcyI6MX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-932448af33fe533c87ef",
+          "file": "practice.spec.cjs",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2133,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:37.895Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-6fb1ec299376f96df5a1",
+          "file": "practice.spec.cjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "iPad 820x1180: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2054,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:42.104Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-e1c574914472db5435ad",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "iPad 768x1024: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1504,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:44.169Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-0ab5f2088a54e98ef4ce",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "iPad 1024x768: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1655,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:45.687Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-721fe9eaf1134175a4b3",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "iPad 1180x820: Live-Aktionen vollständig sichtbar ohne Scrollen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1846,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:47.352Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-f8b5d3ec8969ee76c375",
+          "file": "practice.spec.cjs",
+          "line": 30,
+          "column": 75
+        },
+        {
+          "title": "Touch R1 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1700,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:52.163Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjEtSzEiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-838b4decc14a2fa963d5",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R2 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1511,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:53.876Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjItSzEiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-265595e5f4bd6b317637",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R3 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1558,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:55.396Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjMtSzEiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-3a20797e1043943027ed",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R4 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1410,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:56.970Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjQtSzEiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-4a797efdf908e319b834",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R5 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1651,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:37:58.392Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjUtSzEiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-bf4f0da2426d059ac389",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R6 K1: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1767,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:00.056Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjYtSzEiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-f98ef4edd29833ec3e77",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R1 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1525,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:01.840Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjEtSzIiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-4359b4dabf00344a8f4c",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R2 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1460,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:03.374Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjItSzIiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-670ac2503411121351ff",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R3 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1406,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:04.845Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjMtSzIiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-918bd1b94af33aacd0c7",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R4 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1415,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:06.262Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjQtSzIiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-f4f48c6aa83cca81a527",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R5 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1313,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:07.684Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjUtSzIiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-7b315d2448abd19040cb",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Touch R6 K2: drei Eingaben mit korrekter Spielerzuordnung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1281,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:09.008Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidHJhbnNpdGlvblBsYXllcktpbGwtUjYtSzIiLCJ3aWR0aCI6ODIwLCJpbnB1dHMiOjMsImxpbWl0IjozLCJwbGF5ZXIiOiJqZW5zIn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-d624c77a8d13b99afd1c",
+          "file": "practice.spec.cjs",
+          "line": 43,
+          "column": 77
+        },
+        {
+          "title": "Abgebrochene Mausgeste auf Coach-Taktik verwirft die Zwischenposition",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1542,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:10.301Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b70be45a801c39b797ff-1fdf30d32d56af55f995",
+          "file": "practice.spec.cjs",
+          "line": 49,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "Desktop ohne Touch-Hardware",
+          "file": "practice.spec.cjs",
+          "line": 21,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2049,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-27T22:37:40.040Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b70be45a801c39b797ff-76eab4d98175b34d0bb6",
+              "file": "practice.spec.cjs",
+              "line": 22,
+              "column": 1
+            }
+          ]
+        },
+        {
+          "title": "Formationseditor ohne Touch-Hardware",
+          "file": "practice.spec.cjs",
+          "line": 35,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Formationseditor: außermittig greifen ohne Sprung, Auswahl/Zielklick und Maus-Speichern",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2940,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-27T22:37:49.209Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "b70be45a801c39b797ff-affb4a4b7a81162efaa6",
+              "file": "practice.spec.cjs",
+              "line": 36,
+              "column": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "release.spec.cjs",
+      "file": "release.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Dialog 390px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1024,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:11.860Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-d8d34fbce0495f5c05ea",
+          "file": "release.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Dialog 820px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1493,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:12.893Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-03bade8858efb43c0ec3",
+          "file": "release.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Dialog 1440px: ein Touch-Schließen löst keine Hintergrundaktion aus",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1762,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:14.395Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-14b193d1d28e6cdee52e",
+          "file": "release.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Release 390px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1222,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:16.169Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidW5kbyIsIndpZHRoIjozOTAsImlucHV0cyI6MSwibGltaXQiOjF9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-4c54bbec17bfc1b66189",
+          "file": "release.spec.cjs",
+          "line": 12,
+          "column": 35
+        },
+        {
+          "title": "Release 820px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1674,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:17.405Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidW5kbyIsIndpZHRoIjo4MjAsImlucHV0cyI6MSwibGltaXQiOjF9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-2e21ca17578893529860",
+          "file": "release.spec.cjs",
+          "line": 12,
+          "column": 35
+        },
+        {
+          "title": "Release 1024px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2124,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:19.098Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "inputs",
+                      "contentType": "application/json",
+                      "body": "eyJraW5kIjoidW5kbyIsIndpZHRoIjoxMDI0LCJpbnB1dHMiOjEsImxpbWl0IjoxfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-9387562370164e83edaa",
+          "file": "release.spec.cjs",
+          "line": 12,
+          "column": 35
+        },
+        {
+          "title": "Manipuliertes Undo im Import: keine Mutation; ursprünglicher Stand bleibt bedienbar",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1628,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-27T22:38:21.237Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c1a9e36699c03db8c159-b954878b2937307e54a0",
+          "file": "release.spec.cjs",
+          "line": 26,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-27T22:37:17.997Z",
+    "duration": 65062.043000000005,
+    "expected": 40,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

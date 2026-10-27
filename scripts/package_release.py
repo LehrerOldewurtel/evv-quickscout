@@ -20,6 +20,7 @@ def digest(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=ROOT / 'artifacts/EVV-QuickScout-V8-RC.zip')
+    parser.add_argument('--evidence-dir', type=Path, default=ROOT / 'docs/qa/final')
     args = parser.parse_args()
     report = json.loads((ROOT / 'artifacts/release-candidate.json').read_text())
     assert report['run']['node']['exitCode'] == report['run']['browser']['exitCode'] == 0, 'QA process failed'
@@ -44,9 +45,12 @@ def main():
         (stage / 'BUILD.json').write_text(json.dumps(build, indent=2) + '\n')
         (stage / 'TESTBERICHT.md').write_text((ROOT / 'artifacts/release-candidate.md').read_text().replace('../../RELEASE_CANDIDATE_REPORT.md', 'RELEASE_ABNAHME.md'))
         (stage / 'TESTBERICHT.json').write_bytes((ROOT / 'artifacts/release-candidate.json').read_bytes())
-        webkit_assets = ROOT / 'docs/qa/final/webkit-assets.json'
+        webkit_assets = args.evidence_dir / 'webkit-assets.json'
         if webkit_assets.is_file() and json.loads(webkit_assets.read_text()) == build['assets']:
-            (stage / 'WEBKIT_TESTBERICHT.json').write_bytes((ROOT / 'docs/qa/final/webkit-focused.json').read_bytes())
+            webkit_report = args.evidence_dir / 'webkit-focused.json'
+            webkit_stats = json.loads(webkit_report.read_text())['stats']
+            assert webkit_stats['expected'] > 0 and all(webkit_stats[k] == 0 for k in ['unexpected', 'flaky', 'skipped']), 'WebKit gate not green'
+            (stage / 'WEBKIT_TESTBERICHT.json').write_bytes(webkit_report.read_bytes())
         (stage / 'RELEASE_ABNAHME.md').write_bytes((ROOT / 'docs/FINAL_RELEASE_REPORT.md').read_bytes())
         (stage / 'CHECKSUMS.sha256').write_text(''.join(f'{digest(p)}  {p.name}\n' for p in sorted(stage.iterdir())))
         with zipfile.ZipFile(args.output, 'w', zipfile.ZIP_DEFLATED) as archive:

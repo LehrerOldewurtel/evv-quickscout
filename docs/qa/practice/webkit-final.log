@@ -1,0 +1,54 @@
+
+Running 40 tests using 1 worker
+
+(node:77102) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:77102) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/hybrid.spec.cjs:2:135 › 390px ace: höchstens 1 Eingaben (1.0s)
+  ✓   2 tests/e2e/hybrid.spec.cjs:2:135 › 390px a0: höchstens 2 Eingaben (1.2s)
+  ✓   3 tests/e2e/hybrid.spec.cjs:2:135 › 390px d0: höchstens 2 Eingaben (1.3s)
+  ✓   4 tests/e2e/hybrid.spec.cjs:2:135 › 390px kill: höchstens 2 Eingaben (1.3s)
+  ✓   5 tests/e2e/hybrid.spec.cjs:2:135 › 390px transition: höchstens 1 Eingaben (1.2s)
+  ✓   6 tests/e2e/hybrid.spec.cjs:2:135 › 390px transitionKill: höchstens 3 Eingaben (1.3s)
+  ✓   7 tests/e2e/hybrid.spec.cjs:2:135 › 820px ace: höchstens 1 Eingaben (1.3s)
+  ✓   8 tests/e2e/hybrid.spec.cjs:2:135 › 820px a0: höchstens 2 Eingaben (1.6s)
+  ✓   9 tests/e2e/hybrid.spec.cjs:2:135 › 820px d0: höchstens 2 Eingaben (1.6s)
+  ✓  10 tests/e2e/hybrid.spec.cjs:2:135 › 820px kill: höchstens 2 Eingaben (1.7s)
+  ✓  11 tests/e2e/hybrid.spec.cjs:2:135 › 820px transition: höchstens 1 Eingaben (1.6s)
+  ✓  12 tests/e2e/hybrid.spec.cjs:2:135 › 820px transitionKill: höchstens 3 Eingaben (1.7s)
+  ✓  13 tests/e2e/practice.spec.cjs:3:1 › Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf (2.0s)
+  ✓  14 tests/e2e/practice.spec.cjs:15:1 › Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion (2.1s)
+  ✓  15 tests/e2e/practice.spec.cjs:22:1 › Desktop ohne Touch-Hardware › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick (2.0s)
+  ✓  16 tests/e2e/practice.spec.cjs:30:75 › iPad 820x1180: Live-Aktionen vollständig sichtbar ohne Scrollen (2.1s)
+  ✓  17 tests/e2e/practice.spec.cjs:30:75 › iPad 768x1024: Live-Aktionen vollständig sichtbar ohne Scrollen (1.5s)
+  ✓  18 tests/e2e/practice.spec.cjs:30:75 › iPad 1024x768: Live-Aktionen vollständig sichtbar ohne Scrollen (1.7s)
+  ✓  19 tests/e2e/practice.spec.cjs:30:75 › iPad 1180x820: Live-Aktionen vollständig sichtbar ohne Scrollen (1.8s)
+  ✓  20 tests/e2e/practice.spec.cjs:36:1 › Formationseditor ohne Touch-Hardware › Formationseditor: außermittig greifen ohne Sprung, Auswahl/Zielklick und Maus-Speichern (2.9s)
+  ✓  21 tests/e2e/practice.spec.cjs:43:77 › Touch R1 K1: drei Eingaben mit korrekter Spielerzuordnung (1.7s)
+  ✓  22 tests/e2e/practice.spec.cjs:43:77 › Touch R2 K1: drei Eingaben mit korrekter Spielerzuordnung (1.5s)
+  ✓  23 tests/e2e/practice.spec.cjs:43:77 › Touch R3 K1: drei Eingaben mit korrekter Spielerzuordnung (1.6s)
+  ✓  24 tests/e2e/practice.spec.cjs:43:77 › Touch R4 K1: drei Eingaben mit korrekter Spielerzuordnung (1.4s)
+  ✓  25 tests/e2e/practice.spec.cjs:43:77 › Touch R5 K1: drei Eingaben mit korrekter Spielerzuordnung (1.7s)
+  ✓  26 tests/e2e/practice.spec.cjs:43:77 › Touch R6 K1: drei Eingaben mit korrekter Spielerzuordnung (1.8s)
+  ✓  27 tests/e2e/practice.spec.cjs:43:77 › Touch R1 K2: drei Eingaben mit korrekter Spielerzuordnung (1.5s)
+  ✓  28 tests/e2e/practice.spec.cjs:43:77 › Touch R2 K2: drei Eingaben mit korrekter Spielerzuordnung (1.5s)
+  ✓  29 tests/e2e/practice.spec.cjs:43:77 › Touch R3 K2: drei Eingaben mit korrekter Spielerzuordnung (1.4s)
+  ✓  30 tests/e2e/practice.spec.cjs:43:77 › Touch R4 K2: drei Eingaben mit korrekter Spielerzuordnung (1.4s)
+  ✓  31 tests/e2e/practice.spec.cjs:43:77 › Touch R5 K2: drei Eingaben mit korrekter Spielerzuordnung (1.3s)
+  ✓  32 tests/e2e/practice.spec.cjs:43:77 › Touch R6 K2: drei Eingaben mit korrekter Spielerzuordnung (1.3s)
+  ✓  33 tests/e2e/practice.spec.cjs:49:1 › Abgebrochene Mausgeste auf Coach-Taktik verwirft die Zwischenposition (1.5s)
+  ✓  34 tests/e2e/release.spec.cjs:3:35 › Dialog 390px: ein Touch-Schließen löst keine Hintergrundaktion aus (1.0s)
+  ✓  35 tests/e2e/release.spec.cjs:3:35 › Dialog 820px: ein Touch-Schließen löst keine Hintergrundaktion aus (1.5s)
+  ✓  36 tests/e2e/release.spec.cjs:3:35 › Dialog 1440px: ein Touch-Schließen löst keine Hintergrundaktion aus (1.8s)
+  ✓  37 tests/e2e/release.spec.cjs:12:35 › Release 390px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe (1.2s)
+  ✓  38 tests/e2e/release.spec.cjs:12:35 › Release 820px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe (1.7s)
+  ✓  39 tests/e2e/release.spec.cjs:12:35 › Release 1024px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe (2.1s)
+  ✓  40 tests/e2e/release.spec.cjs:26:1 › Manipuliertes Undo im Import: keine Mutation; ursprünglicher Stand bleibt bedienbar (1.6s)
+
+  40 passed (1.1m)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
