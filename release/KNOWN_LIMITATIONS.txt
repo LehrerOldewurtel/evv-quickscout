@@ -18,7 +18,7 @@ Keine Aussage absoluter Fehlerfreiheit oder uneingeschränkter Spieltagsfreigabe
   als unvollständige Rallye erfasst; kein eigener Angriff wird zugerechnet.
 - Historische acht inkompatible Testskripte bleiben als fehlgeschlagenes Archiv
   dokumentiert; relevante Verhaltenstests wurden migriert, nicht gestrichen.
-- Draft-PR #5 ist angelegt; aktuellen Remote-CI-Status am PR prüfen. Keine produktive Veröffentlichung.
-  Öffentliche Vorschau nicht verbunden; lokales Testpaket als Alternative.
+- RC2 ist lokal zur Prüfung vorbereitet. Keine neue GitHub-Veröffentlichung,
+  keine Remote-CI für RC2 und kein produktives Deployment durchgeführt.
 - Keine automatische Rückwärtsmigration beliebiger App-/Datenversionen.
   Cache-/Worker-Rollback ist nur bei kompatiblem Datenschema geprüft.

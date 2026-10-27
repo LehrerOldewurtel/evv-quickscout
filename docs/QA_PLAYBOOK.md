@@ -112,3 +112,19 @@ EVV_QA_BROWSERS=chromium,webkit node scripts/verify-package.cjs artifacts/EVV-Qu
 ```
 
 WebKit startet über die unterstützte executablePath/env-Option mit den unveränderten offiziellen WPE-Binärdateien: der mitgelieferte Wrapper überschreibt ansonsten den lokalen Bibliothekspfad. Der Paketprüfer beendet bei WebKit tatsächlich seinen eigenen Server für die Offlineprüfung; die Playwright-Offline-Umschaltung führte zu einem internen Navigationsfehler. Der vollständige Chromium-Offline-/Cache-Lauf bleibt zusätzlich bestehen. Dies ist keine echte iPad-/Safari-Abnahme. Firefoxs unabhängige Kontrollseite startete auch mit Software-Rendering/Xvfb nicht (Host-Sandbox-/Renderer-Timeout); keine Firefox-App-Tests als bestanden ausgeben.
+
+
+## RC2 nach Praxistest
+
+`tests/e2e/practice.spec.cjs` prüft den geführten Weg Transition → Angreifer → Kill
+mit genau drei Eingaben und Spieler-ID, offene Rallyes nach CONTINUE, Doppelklicks,
+Reload, getrennte Entwurfs-/Abschlussanalyse sowie Maus-Drag und Auswahl/Zielklick
+im SVG-Formationseditor und in den sechs Coach-Skizzen. Die Layoutprüfung misst
+alle Live-Aktionen oberhalb der festen Aktionsleiste bei 820×1180, 768×1024,
+1024×768 und 1180×820; jede Live-Touchfläche bleibt mindestens 44×44 CSS-Pixel groß.
+Die neuen Node-Regressionen liegen in hybrid.test.cjs und decken auch den
+Detail-/Quick-Wechsel und die Unterscheidung eigener/gegnerischer Abwehr ab.
+
+Erstfehlerprotokolle und Schlusslauf werden unter docs/qa/practice/ aufbewahrt.
+Den neuen SW-Namensraum `practice-2` in der echten Cache-Lebenszyklusprüfung
+beachten. Keine Geräte- oder macOS-Abnahme aus Linux-Emulation ableiten.

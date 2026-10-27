@@ -35,9 +35,9 @@ async function stopServer(){if(server){const child=server;server=null;if(child.e
  }
  browser=await engines[browserName].launch({...options,timeout:20000});
  const inputMethod=browserName==='firefox'?'click':'tap';
- for(const width of [390,820,1440]){
+ for(const [width,height] of [[390,1180],[820,1180],[1024,768],[1440,1180]]){
   if(!server)origin=await startServer();
-  const context=await browser.newContext({viewport:{width,height:1180},hasTouch:browserName!=='firefox'});const page=await context.newPage(),errors=[];
+  const context=await browser.newContext({viewport:{width,height},hasTouch:browserName!=='firefox'});const page=await context.newPage(),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   if(process.env.EVV_DEBUG_TOUCH)await page.addInitScript(()=>{window.evvEvents=[];for(const type of ['pointerdown','pointerup','click'])document.addEventListener(type,e=>window.evvEvents.push({type,id:e.target.id,button:e.target.closest('button')?.id,pointer:e.pointerType,detail:e.detail,modal:document.querySelector('#modalBox h2')?.textContent}),true)});
   await page.addInitScript(()=>localStorage.setItem('evvQuickScoutV77','synthetic-production-sentinel'));
@@ -47,7 +47,9 @@ async function stopServer(){if(server){const child=server;server=null;if(child.e
   assert((await page.request.get(origin+'BUILD.json')).status()===404,'Private file exposed');
   await page.locator('#oppName').fill('TEST ZIP '+width);await page.locator('#startReceive')[inputMethod]();await page.locator('#modeQuick')[inputMethod]();
   assert(await page.locator('[data-quick-player]').count()===6,'Six players');
-  await page.locator('#quickTransition')[inputMethod]();await page.locator('[data-quick="kill"]')[inputMethod]();await page.locator('[data-quick-player]:not([disabled])').first()[inputMethod]();
+  await page.locator('#quickTransition')[inputMethod]();await page.locator('[data-quick-player]:not([disabled])').first()[inputMethod]();
+  if(width>=768){await page.evaluate(()=>scrollTo(0,0));const dock=await page.locator('.bottom').boundingBox();for(const selector of ['[data-quick]','[data-quick-player]','#quickTransition','#quickUndo'])for(const el of await page.locator(selector).all()){const box=await el.boundingBox();assert(box.y>=0&&box.y+box.height<=dock.y,`Packaged action clipped at ${width}x${height}: ${selector}`)}}
+  await page.locator('[data-quick="kill"]')[inputMethod]();
   const scored=await page.evaluate(()=>EVV_QS_TEST.state());assert(scored.e===1&&scored.rot===2,'Point/rotation');assert(scored.rallies[0].turnaround.attacks===1&&scored.rallies[0].turnaround.transitions===1,'Turnaround');
   await page.locator('#modeDetail')[inputMethod]();assert(await page.locator('#modeDetail').getAttribute('aria-pressed')==='true','Detail mode');
   await page.locator('#formationEditor')[inputMethod]();assert(await page.locator('[data-form-slot]').count()===6,'Tactics');await page.locator('#formRotation').selectOption('2');await page.locator('#formSave')[inputMethod]();await page.locator('#formClose')[inputMethod]();
@@ -58,7 +60,7 @@ async function stopServer(){if(server){const child=server;server=null;if(child.e
   await page.evaluate(async()=>{await navigator.serviceWorker.ready;if(!navigator.serviceWorker.controller)await new Promise(r=>navigator.serviceWorker.addEventListener('controllerchange',r,{once:true}))});
   const keys=await page.evaluate(()=>caches.keys());assert(keys.some(k=>k.startsWith('evv-quickscout-final-rc-test-v')),'Cache isolation');
   if(browserName==='webkit')await stopServer();else await context.setOffline(true);await page.reload();assert((await page.evaluate(()=>EVV_QS_TEST.state())).e===1,'Offline persistence');
-  assert(errors.length===0,JSON.stringify(errors));contexts.push({browser:browserName,inputMethod,offlineMethod:browserName==='webkit'?'actual server termination':'Playwright offline switch',width,passed:true,checks:['quick','detail','tactics','analysis','statistics','test storage','service worker','offline reload','checksums']});await context.close();
+  assert(errors.length===0,JSON.stringify(errors));contexts.push({browser:browserName,inputMethod,offlineMethod:browserName==='webkit'?'actual server termination':'Playwright offline switch',width,height,passed:true,checks:['quick','detail','tactics','analysis','statistics','test storage','service worker','offline reload','checksums']});await context.close();
  }
  await browser.close();browser=null;
  }

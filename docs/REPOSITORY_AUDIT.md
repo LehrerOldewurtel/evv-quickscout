@@ -82,3 +82,30 @@ Negative Erstläufe, Diagnose und aktuelle Ergebnisse werden im finalen Bericht 
 Der API-Zugriff wurde nach den anfänglichen CONNECT-403-Fehlern tatsächlich erfolgreich: Draft-PR #5 ist angelegt. PRs #1–#4 wurden offen/mergeable und mit erfolgreichen QA-Checks gelesen. Der historische erste Release-Commit 2541d4c bestand die Remote-Anwendungsregression, scheiterte aber beim separaten Paketprüfer; dessen konkrete Logdownload-Domain blieb gesperrt. Im anschließenden unabhängigen WebKit-Lauf wurde ein reales Touch-Click-through nachgewiesen, mit Negativtests korrigiert und zusammen mit Drag-Speichern abgesichert. Aktuelle Freigabe bezieht sich auf den nachfolgenden Commit/BUILD.json und dessen Tests, nicht auf den älteren CI-Fehlschlag.
 
 WebKit wurde mit offiziellen Downloads und signatur-/hashgeprüften lokalen Debian-Bibliotheken lauffähig gemacht. Die zusätzliche Auswahl umfasst 19 bestandene Tests. Firefox wurde heruntergeladen und mehrfach unabhängig von der App gestartet; alle Kontrollstarts blieben durch die Hostumgebung blockiert. Aktuelle Testzahlen, verbleibende Geräte-/Firefoxgrenzen und der echte ZIP-Prüfer sind in FINAL_RELEASE_REPORT.md dokumentiert. Kein produktives Deployment, kein Merge, keine öffentliche Produktversionsänderung.
+
+
+## Nachtrag RC2: Ursachen aus dem ersten Praxistest
+
+- Quick-Transition setzte nur den Detailzustand evvBall2; es gab keine eigene
+  Angreifer-/Ergebnisführung. Spielerwahl erzeugt jetzt noch keinen Angriff.
+- CONTINUE konnte im Quickpfad erneut als eigener Angriff erfasst werden; beim
+  Moduswechsel störte zusätzlich der Detailkontakt AttackResult die Erkennung.
+  Die Sperre orientiert sich jetzt an eigenen Kontakten und dem Ballbesitzschritt.
+- Die Transitionsperre berücksichtigte fälschlich auch gegnerische Defense-Kontakte.
+- Ein offener Detailangriff behielt im Kontakt den ursprünglichen Spieler,
+  während das Abschlussfeld attacker einen anderen Quick-Spieler bekommen konnte.
+  Der bereits erfasste Kontakt ist jetzt die gemeinsame Quelle für die Zuordnung.
+- SVG-Mausziehen setzte die Spielermitte ohne Greifpunktversatz auf den Cursor;
+  Zielklicks auf freien SVG-Hintergrund wurden verworfen. Der reproduzierte Sprung
+  war rund 14 CSS-Pixel groß. Pointer Capture bleibt auf dem stabilen SVG,
+  Bewegungsschwelle/Greifpunktversatz und Auswahl/Zielklick sind implementiert.
+- Coach-Skizzen hatten keine Auswahl/Zielklick-Alternative, speicherten
+  abgebrochene Ziehgesten und berechneten Positionen einschließlich Rahmen.
+  Abbruch stellt den Ausgangszustand wieder her; Rahmen und Innenfläche sind getrennt.
+- Der erste Layouttest zeigte Live-Aktionen weit unterhalb der iPad-Aktionsleiste.
+  Kompakte Kopfzeile, Nebeneinander von Feld und Aktionen sowie 44-Pixel-Mindestziele
+  ersetzen die unnötige Feld-/Knopfhöhe. Es wird kein Zoom oder Scrollverbot eingesetzt.
+- Statistikformeln bleiben unverändert; Entwurf und abgeschlossene Rallyes
+  werden ausdrücklich getrennt angezeigt. Neue Tests kontrollieren beide Datenstände.
+
+Keine Produktivdaten, kein main-Update, keine Veröffentlichung von RC2.

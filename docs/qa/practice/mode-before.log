@@ -1,0 +1,81 @@
+✔ 100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontaktmodell (213.640641ms)
+✔ Transition-Doppeltap, Ereignis-ID und alter Handler zählen nicht doppelt (49.086598ms)
+✔ Taktische Formationen R1–R6 verändern keine Regelpositionen (39.826708ms)
+✔ Detail-Angriff bleibt beim Moduswechsel ein Angriff; Formation überlebt Reload (98.898906ms)
+✔ Schnellmodus verhindert zweiten Angriff nach CONTINUE ohne neue Ballkontrolle (25.024932ms)
+✖ Detail-CONTINUE beim Wechsel verhindert weiteren Angriff ohne Transition (20.950148ms)
+✖ Angefangener Detailangriff behält Spieler und zählt beim Wechsel nur einmal (20.353358ms)
+✖ Gegner-Abwehr verhindert keine neue eigene Transition (30.689703ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 5
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 882.201319
+
+✖ failing tests:
+
+test at tests/hybrid.test.cjs:26:1
+✖ Detail-CONTINUE beim Wechsel verhindert weiteren Angriff ohne Transition (20.950148ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/hybrid.test.cjs:26:361)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hybrid.test.cjs:27:1
+✖ Angefangener Detailangriff behält Spieler und zählt beim Wechsel nur einmal (20.353358ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'janik' !== 'michael'
+  
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/hybrid.test.cjs:27:460)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'janik',
+    expected: 'michael',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/hybrid.test.cjs:28:1
+✖ Gegner-Abwehr verhindert keine neue eigene Transition (30.689703ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/hybrid.test.cjs:28:260)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,4 +1,4 @@
-EVV QuickScout V8 – RELEASE-KANDIDAT ZUR MANUELLEN ABNAHME
+EVV QuickScout V8 – RC2 PRAXISTEST-KORREKTUREN · MANUELLE ABNAHME
 
 Keine stabile V8-Freigabe. Interne Produktversion unverändert 7.19.0-k1-auto-mb.
 Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
@@ -20,11 +20,15 @@ Bedienung:
 - Gegner TEST nennen, Startsechs und Rollen prüfen, zwei Liberos auswählen.
 - K1 (Annahme) oder K2 (Aufschlag) starten.
 - Schnellmodus: Ass 1 Eingabe, A0/D0/Kill 2, Transition 1,
-  Transition gefolgt von Kill 3, Undo 1 (ab eingerichtetem Schnellmodus).
+  Transition → Angreifer auswählen → Angriffspunkt: 3 Eingaben, Undo 1.
+  „Angriff verteidigt“ hält die Rallye offen; vor dem nächsten eigenen Angriff
+  die nächste kontrollierte Abwehr als Transition erfassen. Keine Punkte schätzen.
 - Detailmodus verwendet dieselbe Rallye. Gegnerfehler sind keine eigenen Kills.
-- Taktik: Rotation und Annahme/Abwehr IV/III/II wählen; Spieler ziehen,
+- Taktik: Rotation und Annahme/Abwehr IV/III/II wählen; Spieler ziehen
+  oder Spieler auswählen und anschließend die Zielposition anklicken,
   Lauf-/Ballwege zeichnen; ausdrücklich speichern. Regelpositionen bleiben gleich.
-- Analyse: Satz/Rotation/K1-K2 filtern und Turnaround-Zähler prüfen.
+- Analyse: Satz/Rotation/K1-K2 filtern. Abgeschlossene Rallyes bilden die Quoten;
+  die aktuelle Rallye steht separat darunter. Die Historie enthält nur Abschlüsse.
 - Auswertung: Spieler-, Satz-, Rotations- und Mannschaftsstatistiken.
 - Nach Satzende neue Startsechs prüfen, Vorlage/Libero übernehmen, K1/K2 starten.
 - Export vor Browserdatenlöschung oder Gerätewechsel. Keine Cloud-Synchronisierung.

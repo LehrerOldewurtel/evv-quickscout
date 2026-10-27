@@ -1,0 +1,16 @@
+✔ 100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontaktmodell (221.708851ms)
+✔ Transition-Doppeltap, Ereignis-ID und alter Handler zählen nicht doppelt (63.984879ms)
+✔ Taktische Formationen R1–R6 verändern keine Regelpositionen (40.753486ms)
+✔ Detail-Angriff bleibt beim Moduswechsel ein Angriff; Formation überlebt Reload (99.772257ms)
+✔ Schnellmodus verhindert zweiten Angriff nach CONTINUE ohne neue Ballkontrolle (22.536635ms)
+✔ Detail-CONTINUE beim Wechsel verhindert weiteren Angriff ohne Transition (19.053067ms)
+✔ Angefangener Detailangriff behält Spieler und zählt beim Wechsel nur einmal (32.198123ms)
+✔ Gegner-Abwehr verhindert keine neue eigene Transition (31.996047ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 971.078042

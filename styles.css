@@ -134,3 +134,42 @@ button{min-height:46px;-webkit-tap-highlight-color:transparent}button:focus-visi
 /* Tactics court preserves the actual 9:18 aspect ratio on every viewport. */
 #formationSvg{display:block;width:min(100%,350px);height:auto;aspect-ratio:1/2;margin:14px auto;touch-action:none;user-select:none}
 #formationSvg [data-form-slot]{cursor:grab}#formationSvg text{pointer-events:none}#storageWarning{position:sticky;top:0;z-index:50;background:#fff0c2;color:#572700;padding:12px;font-weight:bold}.hybridModes{flex-wrap:wrap}.hybridModes button{min-width:90px}
+
+/* Practice RC: compact rally workspace with stable player geometry. */
+.quickLive{background:#edf2f7;padding-bottom:72px;color:#15283f}
+.quickLive .appHeader{padding:5px 12px;background:#102b46;color:#fff;border-bottom:3px solid #ed8734}
+.quickLive .brandRow{color:#c6d8e9}.quickLive .build{background:#24435f;color:#fff}
+.quickLive .team.home,.quickLive .team.away{color:#fff}.quickLive .team strong{font-size:36px}
+.quickLive .scoreline{margin:1px auto}.quickLive .statusline{margin:0}
+.quickLive .lineups{display:none}.quickLive .lineupsExpanded .lineups{display:grid;color:#15283f}
+.quickLive .compactLineups{display:block;min-height:24px;margin:3px auto 0;padding:2px 12px;font-size:11px}
+.quickLive main{padding:4px 10px}.quickLive .card{margin:5px 0;padding:8px 10px;border-radius:14px}
+.quickLive .tabs,.quickLive .setnav{padding:4px;gap:5px}
+.quickLive .tabs button,.quickLive .setnav button{min-height:36px;padding:4px 10px}
+.quickLive .hybridModes{position:static;gap:5px;flex-wrap:nowrap}
+.quickLive .hybridModes button{min-height:44px;min-width:0;padding:5px;font-size:13px}
+.quickLive #flow h2{margin:0;text-align:left;font-size:17px}
+#activeFormation{font-size:11px;text-align:left;color:#52657a;margin:3px 0}
+#quickHint{background:#eaf2fb;border-left:4px solid #1974b9;border-radius:6px;padding:6px 8px;margin:5px 0 8px;text-align:left;font-size:13px;font-weight:700;min-height:30px}
+.quickArena{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:12px}
+.quickLive .liveCourt{height:178px;margin:0;border:2px solid #fff;background:linear-gradient(0deg,transparent 49%,#ffffffa0 49%,#ffffffa0 50%,transparent 50%),#efbe8d;outline:1px solid #aa713c;border-radius:10px}
+.quickLive .liveNet{font-size:10px;line-height:16px;border-top:3px solid #163956;color:#163956}
+.quickLive .livePlayer{min-height:48px;border:1px solid #8fa8bd;border-radius:10px;font-size:13px;background:#fff;color:#15283f;box-shadow:0 2px 5px #17334b16}
+.quickLive .livePlayer small{font-size:10px;color:#52657a}
+.quickLive .livePlayer[aria-pressed="true"]{outline:3px solid #1974b9;background:#e2f0ff}
+.quickLive .quickActions{grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.quickLive .quickActions button{min-height:44px;padding:5px;font-size:12px;border-radius:9px}
+#quickMetrics{margin:8px 0;font-size:12px;font-variant-numeric:tabular-nums;text-align:left;color:#3d536a}
+.quickFooter{display:grid;grid-template-columns:1fr 100px;gap:8px}
+.quickLive .transitionButton,.quickLive #quickUndo{min-height:44px;margin:0;font-size:13px;border-radius:9px}
+.quickLive #recent h3{margin:0 0 3px;font-size:12px}.quickLive #recent .history{font-size:11px;line-height:1.3}
+.quickLive .bottom:not(.expanded){grid-template-columns:repeat(4,minmax(0,1fr));padding:5px 8px calc(5px + env(safe-area-inset-bottom));gap:5px}
+.quickLive .bottom:not(.expanded) #newMatch,.quickLive .bottom:not(.expanded) #scoreFix,.quickLive .bottom:not(.expanded) #voiceBtn,.quickLive .bottom:not(.expanded) #exportData,.quickLive .bottom:not(.expanded) #importData,.quickLive .bottom:not(.expanded) #printReport,.quickLive .bottom:not(.expanded) #nextSet{display:none}
+.quickLive .bottom button{min-height:44px}
+.livePlayer,.livePlayer:active,.sixCourt .sixPlayer,.sixCourt .sixPlayer:active{transform:translate(-50%,-50%);transition:none;cursor:grab;-webkit-user-select:none;user-select:none}
+.sixCourt .sixPlayer[aria-pressed="true"]{outline:3px solid #1974b9;background:#e2f0ff}.sixCourt .sixPlayer.dragging{cursor:grabbing}
+@media(max-width:600px){.quickArena{grid-template-columns:1fr;gap:9px}.quickLive .liveCourt{height:164px}.quickLive .quickActions{grid-template-columns:repeat(3,minmax(0,1fr))}.quickLive .quickActions button{font-size:11px}.quickLive .hybridModes button{font-size:11px}.quickLive .livePlayer{font-size:12px}.quickLive .team strong{font-size:30px}}
+
+.quickLive .brand{color:#d5e5f4}.quickLive .brandRow{line-height:16px}
+.quickLive .build{padding:2px 6px}.quickLive .scoreline{min-height:39px}
+.quickLive .team strong{line-height:1}.quickLive .statusline span{padding:3px 6px}
