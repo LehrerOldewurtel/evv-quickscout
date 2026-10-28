@@ -4,6 +4,10 @@
 
 SHA-256: `4f9b2817f13d13815b7d0b0d34e06259766cc9e69dbb3ece3bb105f917e14ddf`
 
+Erneuter GitHub-Download bestätigt: HTTP 200, bytegleich zum tatsächlich
+gestarteten Paket. Alle vier Teilstücke wurden ebenfalls heruntergeladen und
+bytegleich zusammengesetzt. [Download-Prüfprotokoll](DOWNLOAD_VERIFIED.json).
+
 Editierbare Trainerziele/Vorlagen, Pacer, Zuspieler-Cockpit und Dankeball-Verwertung.
 Bestehende Erfassung, Statistiken und vier Abwehrsysteme bleiben erhalten.
 

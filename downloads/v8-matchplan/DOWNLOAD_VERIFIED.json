@@ -1,0 +1,41 @@
+{
+  "verifiedAt": "2026-10-28T22:18:37.042287+00:00",
+  "url": "https://github.com/LehrerOldewurtel/evv-quickscout/raw/refs/heads/dev/v8-matchplan-pacer/downloads/v8-matchplan/EVV-QuickScout-V8-Matchplan.zip",
+  "httpStatus": 200,
+  "bytes": 128625,
+  "sha256": "4f9b2817f13d13815b7d0b0d34e06259766cc9e69dbb3ece3bb105f917e14ddf",
+  "byteIdenticalToStartedPackage": true,
+  "crc": true,
+  "innerChecksums": 18,
+  "startedBrowserContexts": 8,
+  "partsDownloadedAndReassembled": true,
+  "parts": [
+    {
+      "name": "EVV-QuickScout-V8-Matchplan.zip.part-01",
+      "httpStatus": 200,
+      "bytes": 32768,
+      "sha256": "2e19479a8d16c39ecea3f6a69bad3a3882fe76912dc4f7528c7d6040a8f5f4c4"
+    },
+    {
+      "name": "EVV-QuickScout-V8-Matchplan.zip.part-02",
+      "httpStatus": 200,
+      "bytes": 32768,
+      "sha256": "468a552eb173aec7d9cad1cc209bca98be8087a646f13345be566bb15eb1de9f"
+    },
+    {
+      "name": "EVV-QuickScout-V8-Matchplan.zip.part-03",
+      "httpStatus": 200,
+      "bytes": 32768,
+      "sha256": "3a9055a3ba23c7b33ae07528b506d89f5f5037be35aee18b54ea7841d70aecdd"
+    },
+    {
+      "name": "EVV-QuickScout-V8-Matchplan.zip.part-04",
+      "httpStatus": 200,
+      "bytes": 30321,
+      "sha256": "0ea8b16a0844bfb5c822b933db7655a121f571e5b2c49d4d0a9b0cd4c0557471"
+    }
+  ],
+  "productionDeployment": false,
+  "mainUnchanged": "f6b316bfbbcf30d4758fc954ef006bff59a1fc9e",
+  "releaseBranchUnchanged": "c66e671bf23afcdfdfaea6535cc62a320c009915"
+}
