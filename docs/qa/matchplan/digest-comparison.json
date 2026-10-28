@@ -1,0 +1,10 @@
+{
+  "baseline": "docs/qa/defense/100-matchdays.json",
+  "current": "100-matchdays.json",
+  "matched": 100,
+  "total": 100,
+  "unchanged": [
+    "original contact chains",
+    "match scores"
+  ]
+}

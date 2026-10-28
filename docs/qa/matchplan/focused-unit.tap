@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: Pacer interpoliert nachvollziehbar und ist unabhängig vom Satzgewinn
+ok 1 - Pacer interpoliert nachvollziehbar und ist unabhängig vom Satzgewinn
+  ---
+  duration_ms: 137.608984
+  type: 'test'
+  ...
+# Subtest: Zuspielanalyse unterscheidet dokumentierte Qualität, Ziele und unbekannten Zuspieler
+ok 2 - Zuspielanalyse unterscheidet dokumentierte Qualität, Ziele und unbekannten Zuspieler
+  ---
+  duration_ms: 41.772882
+  type: 'test'
+  ...
+# Subtest: Unabhängige Zuspiel-Sollwerte: Qualitäten, Phasen, Ergebnisse, keine doppelten Angriffe
+ok 3 - Unabhängige Zuspiel-Sollwerte: Qualitäten, Phasen, Ergebnisse, keine doppelten Angriffe
+  ---
+  duration_ms: 35.231974
+  type: 'test'
+  ...
+# Subtest: Dankeball: direkte Kills, organisierter erster Angriff und spätere Siege bleiben getrennt
+ok 4 - Dankeball: direkte Kills, organisierter erster Angriff und spätere Siege bleiben getrennt
+  ---
+  duration_ms: 30.437033
+  type: 'test'
+  ...
+# Subtest: Mehrere Dankebälle und doppelte Kennzeichnungen erzeugen keinen zusätzlichen Punkt
+ok 5 - Mehrere Dankebälle und doppelte Kennzeichnungen erzeugen keinen zusätzlichen Punkt
+  ---
+  duration_ms: 26.480609
+  type: 'test'
+  ...
+# Subtest: Neuer Detailkontakt erfasst aktuellen Zuspieler, erhält alle alten Kontaktobjekte und kennt Setterwechsel
+ok 6 - Neuer Detailkontakt erfasst aktuellen Zuspieler, erhält alle alten Kontaktobjekte und kennt Setterwechsel
+  ---
+  duration_ms: 90.159304
+  type: 'test'
+  ...
+# Subtest: Dankeball-Markierung ist optional und idempotent; Reload und Undo erhalten die vorhandene Engine
+ok 7 - Dankeball-Markierung ist optional und idempotent; Reload und Undo erhalten die vorhandene Engine
+  ---
+  duration_ms: 63.905504
+  type: 'test'
+  ...
+# Subtest: Pacer: monotone Kurven, Zwischenpunkte, End-Steigung und Satz 5 sind nachvollziehbar
+ok 8 - Pacer: monotone Kurven, Zwischenpunkte, End-Steigung und Satz 5 sind nachvollziehbar
+  ---
+  duration_ms: 20.509321
+  type: 'test'
+  ...
+# Subtest: Matchplan-Vorlagen werden pro Spiel gespeichert, beim neuen Spiel nur als Vorlagen übernommen
+ok 9 - Matchplan-Vorlagen werden pro Spiel gespeichert, beim neuen Spiel nur als Vorlagen übernommen
+  ---
+  duration_ms: 64.92272
+  type: 'test'
+  ...
+# Subtest: Unbekannte historische Zuspieler werden nicht aus der heutigen Aufstellung ergänzt
+ok 10 - Unbekannte historische Zuspieler werden nicht aus der heutigen Aufstellung ergänzt
+  ---
+  duration_ms: 18.782233
+  type: 'test'
+  ...
+# Subtest: Kontext- und Plan-Importvalidierung verhindert Mutation bei ungültigen Angaben
+ok 11 - Kontext- und Plan-Importvalidierung verhindert Mutation bei ungültigen Angaben
+  ---
+  duration_ms: 19.802313
+  type: 'test'
+  ...
+# Subtest: Startphase nutzt dokumentierten Zwischenstand, begründet K1-Hinweis und reagiert auf Undo
+ok 12 - Startphase nutzt dokumentierten Zwischenstand, begründet K1-Hinweis und reagiert auf Undo
+  ---
+  duration_ms: 53.369564
+  type: 'test'
+  ...
+# Subtest: Vorzeitig erreichtes Startziel bleibt ein belegter Zwischenstand, keine Gewinnvorhersage
+ok 13 - Vorzeitig erreichtes Startziel bleibt ein belegter Zwischenstand, keine Gewinnvorhersage
+  ---
+  duration_ms: 57.382924
+  type: 'test'
+  ...
+# Subtest: K1/K2-Vergleich hält gleiche Filter und zeigt Prozentpunkte nur bei beidseitigen Daten
+ok 14 - K1/K2-Vergleich hält gleiche Filter und zeigt Prozentpunkte nur bei beidseitigen Daten
+  ---
+  duration_ms: 16.983006
+  type: 'test'
+  ...
+# Subtest: Unbekannte und reine Sprach-/Altabschlüsse werden sichtbar gehalten statt Zuspieler zu erfinden
+ok 15 - Unbekannte und reine Sprach-/Altabschlüsse werden sichtbar gehalten statt Zuspieler zu erfinden
+  ---
+  duration_ms: 17.670374
+  type: 'test'
+  ...
+# Subtest: Leere oder unvollständige Dankeball-Daten erzeugen keine künstlichen Direkt- oder Punktquoten
+ok 16 - Leere oder unvollständige Dankeball-Daten erzeugen keine künstlichen Direkt- oder Punktquoten
+  ---
+  duration_ms: 18.968835
+  type: 'test'
+  ...
+# Subtest: Eigene erste Ballberührung des Zuspielers verhindert falsche automatische Zuspieler-Zuordnung
+ok 17 - Eigene erste Ballberührung des Zuspielers verhindert falsche automatische Zuspieler-Zuordnung
+  ---
+  duration_ms: 45.561542
+  type: 'test'
+  ...
+# Subtest: Satz 5 verwendet seine eigene Zielkurve ohne Erst-Satz-Ergebnis zu erfinden
+ok 18 - Satz 5 verwendet seine eigene Zielkurve ohne Erst-Satz-Ergebnis zu erfinden
+  ---
+  duration_ms: 45.690387
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1182.151517

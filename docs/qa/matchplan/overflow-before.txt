@@ -1,0 +1,6 @@
+Reproducer: node scripts/capture-matchplan.cjs
+Erster Screenshot-Lauf vor Textumbruch-Korrektur:
+Error: Horizontal overflow 820
+    at scripts/capture-matchplan.cjs
+Ergebnis: Abbruch nach zweitem Viewport. Nicht als bestandener Lauf gezählt.
+Die korrekt ausgeführte Browser-Regression steht in overflow-after.log.

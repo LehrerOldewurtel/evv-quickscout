@@ -1,4 +1,4 @@
-EVV QuickScout V8 – VIER EVV-ABWEHRSYSTEME
+EVV QuickScout V8 – MATCHPLAN & LIVE-PACER
 
 Entwicklungskandidat, keine stabile V8-Freigabe. Produktkennung bleibt 7.19.0-k1-auto-mb.
 Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
@@ -6,7 +6,7 @@ Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
 MAC / IPAD STARTEN
 1. ZIP vollständig in einen neuen Ordner entpacken. Alte Testpakete behalten.
 2. Wenn der neue Ordner in Downloads liegt, diese ganze Zeile im Terminal ausführen:
-   python3 "$HOME/Downloads/EVV-QuickScout-V8-Abwehr/TEST_START.py" --lan --port 18766
+   python3 "$HOME/Downloads/EVV-QuickScout-V8-Matchplan/TEST_START.py" --lan --port 18767
    Der Ordnername muss genau passen. Alternativ Terminal im entpackten Ordner öffnen.
 3. Python 3 muss installiert sein: python3 --version
    Falls nötig: https://www.python.org/downloads/macos/ (signierter Installer).
@@ -16,6 +16,19 @@ MAC / IPAD STARTEN
 6. Terminal geöffnet lassen. Ctrl+C beendet den Testserver.
    Bei belegtem Port: python3 TEST_START.py --lan --port 18765
    macOS-Firewall ggf. für das lokale WLAN erlauben. Kein Router-Portforwarding.
+
+MATCHPLAN & LIVE-PACER
+- PACER im Live-Kopf öffnet Sollstand, Delta und Matchplan.
+- Coach: sechs Direktzugänge zu Pacer, K1, K2, A+-Mitte, Dankeball und Rotation.
+- Matchplan bearbeiten: Ziele/Kurven anpassen und speichern; Vorlagen bei Bedarf benennen.
+- Mehr → Kontext: optional tatsächlichen Zuspieler, Qualität/Ziel ergänzen.
+  Bekannte Annahme/Zielkontakte werden nicht überschrieben.
+- Mehr → Dankeball: nur einen tatsächlich eingehenden Dankeball markieren.
+  Angriff verteidigt lässt die Rallye offen; spätere Kills bleiben vom direkten Kill getrennt.
+- Zuspielanalyse: Zuspieler, Qualität, K1/K2 und LIVE/MATCH vergleichen.
+  Unbekannte alte Zuordnungen bleiben unbekannt. Alle Nenner stehen an den Quoten.
+- Vorschlagsziele sind keine Normwerte. Pacer ist ein Sollpfad, keine Siegprognose.
+- Vollständige Definitionen: MATCHPLAN_SYSTEM.md.
 
 VIER GEMEINSAME ABWEHRFORMATIONEN
 - Taktik → ABWEHR IV / II / III / HINTERFELD I direkt auswählen.

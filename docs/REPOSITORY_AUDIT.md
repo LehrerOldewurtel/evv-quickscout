@@ -139,3 +139,14 @@ Auf bestehendem Entwicklungsbranch vier EVV-Systeme ergänzt; keine Änderung an
 Referenzbild-Abnahme: `DEFENSE_SYSTEM.md`. Tatsächliche Ergebnisse folgen im
 `DEFENSE_REPORT.md`, Rohbelege unter `qa/defense/`. Vorhandene Rotationsbilder
 werden weder kopiert noch durch globale Writes überschrieben.
+
+## Matchplan-Kandidat · 28.10.2026
+
+Branch `dev/v8-matchplan-pacer`; Punkt-/Rotations-/Wechselberechnungen erhalten.
+Neue optionale `coaching`-Metadaten werden gegen Kontaktindizes und zulässige
+Werte validiert. Keine historische Zuspielerrekonstruktion und keine künstlichen
+Kontakte. Plan-/Vorlagenvalidierung erfolgt vor Speicheränderung. Gegnerannahme,
+A0 und unbekannte Werte werden getrennt von eigener A+-Annahme behandelt.
+Dankeball-Chance und späterer Rallyesieg haben ausdrücklich verschiedene Nenner.
+Pacer interpoliert dokumentiert und behauptet keine Siegprognose. Tatsächliche
+Resultate und Quellen stehen im aktuellen MATCHPLAN_REPORT und dessen Rohlogs.

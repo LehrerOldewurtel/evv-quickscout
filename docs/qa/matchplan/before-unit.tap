@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: Pacer interpoliert nachvollziehbar und ist unabhängig vom Satzgewinn
+not ok 1 - Pacer interpoliert nachvollziehbar und ist unabhängig vom Satzgewinn
+  ---
+  duration_ms: 114.666524
+  type: 'test'
+  location: '/workspace/evv-quickscout/tests/matchplan.test.cjs:2:1'
+  failureType: 'testCodeFailure'
+  error: 'a.pacerAt is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/workspace/evv-quickscout/tests/matchplan.test.cjs:2:129)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: Zuspielanalyse unterscheidet dokumentierte Qualität, Ziele und unbekannten Zuspieler
+not ok 2 - Zuspielanalyse unterscheidet dokumentierte Qualität, Ziele und unbekannten Zuspieler
+  ---
+  duration_ms: 35.325046
+  type: 'test'
+  location: '/workspace/evv-quickscout/tests/matchplan.test.cjs:3:1'
+  failureType: 'testCodeFailure'
+  error: 'h.api.setterAnalysis is not a function'
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (/workspace/evv-quickscout/tests/matchplan.test.cjs:3:485)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 468.120525

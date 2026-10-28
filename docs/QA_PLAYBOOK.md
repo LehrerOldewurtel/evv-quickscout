@@ -211,3 +211,26 @@ Abwehrbilder besitzen jetzt EVV-Standards, K1 bleibt neutral. Abwehr verwendet d
 tatsächlich aktive Libero-Konfiguration statt pauschal eigenes Aufschlagrecht
 anzunehmen. Cache-Lifecycle erwartet den neuen Kandidaten-Suffix `defense-1`.
 Kein Spielregel-Oracle und keine Match-Sollwerte wurden gelockert.
+
+## Matchplan & Live-Pacer
+
+`tests/matchplan.test.cjs` prüft unabhängige Nenner/Zähler für Zuspielverteilung,
+Annahmequalitäten einschließlich A0/Unbekannt, K1/K2 und Unterschiede in
+Prozentpunkten, Spielerwechsel, explizite Freeball-Chancen, bekannte/unbekannte
+Ausgänge, Mehrfach-Chancen, Undo, Importvalidierung, Vorlagen und Kurzsatz-Pacer.
+`tests/e2e/matchplan.spec.cjs` bedient Quick/Detail ohne State-Injektion, prüft
+Korrekturen nach Angreiferauswahl, Quick→Detail mit Dankeball, mehrere Chancen,
+aktiven Zuspielerwechsel, Reload, Satzwechsel und vier Viewports. Ein gefüllter
+20:15-Coach-Screen sichert den Textumbruch bei 820px gegen Regression ab.
+
+Vollständige Ausführung: `node scripts/release-qa.cjs`. Aktuelle zusätzliche
+WebKit-Evidenz in `docs/qa/matchplan/`, mit denselben sieben Asset-Hashes wie der
+Release-Lauf. Die Paketprüfung startet ausschließlich das tatsächlich entpackte
+ZIP und prüft Chromium/WebKit, vier Viewports, Testablagen und Offline-Reload.
+100 detaillierte Matchdigests gegen den vorigen Abwehrkandidaten vergleichen:
+Kontaktketten und Matchresultate müssen gleich bleiben; neue Metadaten sind
+additiv. Linux-Browser sind keine physische Apple-Geräteabnahme.
+
+Der neue Farbschema-Test prüft tatsächlich gerenderte Text-/Hintergrundfarben
+und mindestens 4,5:1 Kontrast bei grünem, gelbem und rotem Status. Dunkelmodus
+und automatische dunkle Systemeinstellung werden über die UI gewählt.

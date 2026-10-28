@@ -1,0 +1,38 @@
+{
+  "source": {
+    "branch": "dev/v8-matchplan-pacer",
+    "commit": "b5780bea2840136b0c6cee45ea86f07b9671b55e",
+    "assets": {
+      "index.html": "8fc9ec4d03f13eeb4d5b222a9f07149dd744c3f2813d6dabbf7f867bda38c1da",
+      "app.js": "ceb1e0d7eeb14bc85b7df474f434db0e4e2db82761b5d723feb0cea0721ad07f",
+      "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
+      "styles.css": "56a8eb484f3bf614e3cb3034384b5bf28fffc6e719ce67e96c87d52e94b4bd68",
+      "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
+      "sw.js": "514add65e1fca17f3e450cb616fb33b279477ce7fcb28736f938f2eeca540b95",
+      "manifest.webmanifest": "d0969adf8316c5023195181bd5b31dd218a16430e9ffab6396e37eee6573422c"
+    }
+  },
+  "node": {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "startedAt": "2026-10-28T22:07:52.413Z",
+    "finishedAt": "2026-10-28T22:12:32.220Z",
+    "log": "artifacts/node.tap"
+  },
+  "browser": {
+    "command": [
+      "npm",
+      "run",
+      "test:e2e"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "startedAt": "2026-10-28T22:12:32.221Z",
+    "finishedAt": "2026-10-28T22:17:12.552Z",
+    "log": "artifacts/browser.log"
+  }
+}

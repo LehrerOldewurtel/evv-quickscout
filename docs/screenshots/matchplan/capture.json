@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-10-28T22:12:19.226Z",
+  "syntheticOnly": true,
+  "source": "http://127.0.0.1:4190",
+  "shots": [
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "live"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "pacer"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "setter"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "freeball"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "plan-editor"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "coach"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "coach-dark"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "pacer-dark"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "live"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "pacer"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "setter"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "freeball"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "plan-editor"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "coach"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "coach-dark"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "pacer-dark"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "live"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "pacer"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "setter"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "freeball"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "plan-editor"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "coach"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "coach-dark"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "pacer-dark"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "live"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "pacer"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "setter"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "freeball"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "plan-editor"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "coach"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "coach-dark"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "pacer-dark"
+    }
+  ],
+  "assets": {
+    "index.html": "8fc9ec4d03f13eeb4d5b222a9f07149dd744c3f2813d6dabbf7f867bda38c1da",
+    "app.js": "ceb1e0d7eeb14bc85b7df474f434db0e4e2db82761b5d723feb0cea0721ad07f",
+    "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
+    "styles.css": "56a8eb484f3bf614e3cb3034384b5bf28fffc6e719ce67e96c87d52e94b4bd68",
+    "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
+    "sw.js": "514add65e1fca17f3e450cb616fb33b279477ce7fcb28736f938f2eeca540b95",
+    "manifest.webmanifest": "d0969adf8316c5023195181bd5b31dd218a16430e9ffab6396e37eee6573422c"
+  }
+}

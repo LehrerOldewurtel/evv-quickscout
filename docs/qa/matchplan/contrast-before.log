@@ -1,0 +1,42 @@
+
+Running 1 test using 1 worker
+
+(node:265092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:265092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/matchplan.spec.cjs:40:1 › Matchplan-Status bleibt bei dunklem und systemgesteuertem Farbschema lesbar (3.2s)
+
+
+  1) tests/e2e/matchplan.spec.cjs:40:1 › Matchplan-Status bleibt bei dunklem und systemgesteuertem Farbschema lesbar 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: >= [32m4.5[39m
+    Received:    [31m1.7207548073367502[39m
+
+      41 |  await quick(page);for(let i=0;i<5;i++)await page.locator('[data-quick="opponentError"]').click();
+      42 |  const contrast=async selector=>page.locator(selector).evaluate(el=>{const rgb=s=>s.match(/[\d.]+/g).slice(0,3).map(Number),lum=rgb=>rgb.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4}).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);let p=el,bg;do{bg=getComputedStyle(p).backgroundColor;p=p.parentElement}while(bg==='rgba(0, 0, 0, 0)'&&p);const a=lum(rgb(getComputedStyle(el).color)),b=lum(rgb(bg));return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)});
+    > 43 |  for(const theme of ['dark','auto']){await page.emulateMedia({colorScheme:'dark'});await page.locator('#turnaroundReport').click();await page.locator('#analysisSettings').click();await page.locator('#cockpitTheme').selectOption(theme);await page.locator('#signalSave').click();expect(await contrast('#matchPlanLive')).toBeGreaterThanOrEqual(4.5);await page.locator('#matchPlanLive').click();expect(await contrast('.planValue.green')).toBeGreaterThanOrEqual(3);await page.locator('#planClose').click()}
+         |                                                                                                                                                                                                                                                                                                                               ^
+      44 | });
+      45 |
+        at /workspace/evv-quickscout/tests/e2e/matchplan.spec.cjs:43:319
+
+    Error Context: ../../tmp/evv-contrast-results/matchplan-Matchplan-Status-f4e3a-steuertem-Farbschema-lesbar/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-contrast-results/matchplan-Matchplan-Status-f4e3a-steuertem-Farbschema-lesbar/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-contrast-results/matchplan-Matchplan-Status-f4e3a-steuertem-Farbschema-lesbar/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/matchplan.spec.cjs:40:1 › Matchplan-Status bleibt bei dunklem und systemgesteuertem Farbschema lesbar 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

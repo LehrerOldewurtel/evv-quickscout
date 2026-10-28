@@ -35,3 +35,9 @@ TRAINER-COCKPIT – ENTWICKLUNGSKANDIDAT ZUR MANUELLEN ABNAHME
   Bei uneindeutiger MB-Aufstellung wird gekennzeichnet auf Regelplätze zurückgefallen.
 - Alte individuelle Bilder bleiben positionsgebunden. Sie werden nicht automatisch
   umgedeutet; der gemeinsame Standard wird erst nach bewusster Ablösung verwendet.
+
+- Matchplan: Alte fehlende Zuspieler/Angriffswege werden nicht nachträglich geraten.
+  Reine Sprach-/Legacy-Zusammenfassungen ohne Kontaktkontext bleiben Datenlücken.
+- Dankeball-Quoten verwenden nur ausdrücklich beobachtete Chancen; unklare
+  Ergebnisse/Organisation bleiben sichtbar, Nenner können deshalb verschieden sein.
+- Pacer und Ziele sind editierbare Vorschläge, keine Siegprognose oder Normwerte.

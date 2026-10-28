@@ -139,3 +139,19 @@ und die sichere Speicherhierarchie aus `DEFENSE_SYSTEM.md`. Individuelle Bilder
 bleiben vorrangig. Die früheren Hinweise zu fehlenden Vorlagen betreffen nun K1,
 ausdrücklich deaktivierte Standards und sonstige nicht eingerichtete Bilder.
 Aktuelle Testergebnisse: `DEFENSE_REPORT.md`.
+
+## Matchplan & Live-Pacer
+
+Der bestehende Live-Kopf erhält einen kleinen PACER-Zugang in derselben Zeile
+wie die Aufstellungsanzeige. Sechs anklickbare Karten liegen im Coach-Bereich;
+auf dem Telefon werden sie in zwei Reihen dargestellt. Häufige Rallye-Aktionen
+behalten ihren Platz. Dankeball-Markierung und Zuspiel-Kontext stehen optional
+unter Mehr. Ein vorhandenes Zuspiel/Annahmeziel wird nicht doppelt abgefragt.
+
+Karten zeigen Zähler/Nenner, Prozent und bei kleinen Stichproben eine neutrale
+Bewertung. Pacer zeigt tatsächlichen Stand, Sollwert und Punktedifferenz, keine
+Siegwahrscheinlichkeit. Alle Trainerziele sind als editierbare Vorschläge
+gekennzeichnet. Neue grüne/gelbe/rote Statuswerte unterstützen dunkles und
+systemgesteuertes Farbschema; Browserprüfungen sichern mindestens 4,5:1
+Textkontrast. Quellen und fehlende Beobachtungen bleiben in Details sichtbar.
+Definitionen und Speicherverhalten: [MATCHPLAN_SYSTEM.md](MATCHPLAN_SYSTEM.md).

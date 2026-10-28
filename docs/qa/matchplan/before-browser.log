@@ -1,0 +1,59 @@
+[2m[WebServer] [22m(node:240363) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:48] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:240378) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:240378) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /favicon.ico HTTP/1.1" 404 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 21:15:49] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✘  1 tests/e2e/matchplan.spec.cjs:2:1 › Matchplan und Zuspieler-Cockpit sind ohne Pflichtmaske erreichbar (30.1s)
+
+
+  1) tests/e2e/matchplan.spec.cjs:2:1 › Matchplan und Zuspieler-Cockpit sind ohne Pflichtmaske erreichbar 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('#matchPlanLive')[22m
+
+
+      1 | const {test,expect}=require('@playwright/test');
+    > 2 | test('Matchplan und Zuspieler-Cockpit sind ohne Pflichtmaske erreichbar',async({page})=>{await page.goto('/');await page.locator('#startReceive').click();await page.locator('#modeQuick').click();await page.locator('#matchPlanLive').click();await expect(page.locator('#pacerDeviation')).toBeVisible();await page.locator('#planSetter').click();await expect(page.locator('#setterAnalysis')).toBeVisible();});
+        |                                                                                                                                                                                                                                         ^
+      3 |
+        at /workspace/evv-quickscout/tests/e2e/matchplan.spec.cjs:2:233
+
+    Error Context: test-results/matchplan-Matchplan-und-Zu-8601d-hne-Pflichtmaske-erreichbar/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/matchplan-Matchplan-und-Zu-8601d-hne-Pflichtmaske-erreichbar/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/matchplan-Matchplan-und-Zu-8601d-hne-Pflichtmaske-erreichbar/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/matchplan.spec.cjs:2:1 › Matchplan und Zuspieler-Cockpit sind ohne Pflichtmaske erreichbar 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
