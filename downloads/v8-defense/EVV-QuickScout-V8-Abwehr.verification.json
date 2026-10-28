@@ -1,0 +1,163 @@
+{
+  "generatedAt": "2026-10-28T19:42:48.725Z",
+  "zip": "/workspace/evv-quickscout/downloads/v8-defense/EVV-QuickScout-V8-Abwehr.zip",
+  "sha256": "be61f3ca0b3a8104b64a516a48472c6a3cd639fc0ed8c816d1bba6eb1f784867",
+  "extractedTo": "/tmp/evv-verify-zip-XpCKxi/EVV-QuickScout-V8-Abwehr",
+  "requiredFiles": 16,
+  "manifestFiles": 17,
+  "contexts": [
+    {
+      "browser": "chromium",
+      "inputMethod": "tap",
+      "offlineMethod": "Playwright offline switch",
+      "width": 390,
+      "height": 1180,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "inputMethod": "tap",
+      "offlineMethod": "Playwright offline switch",
+      "width": 820,
+      "height": 1180,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "inputMethod": "tap",
+      "offlineMethod": "Playwright offline switch",
+      "width": 1024,
+      "height": 768,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "inputMethod": "tap",
+      "offlineMethod": "Playwright offline switch",
+      "width": 1440,
+      "height": 1180,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "inputMethod": "tap",
+      "offlineMethod": "actual server termination",
+      "width": 390,
+      "height": 1180,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "inputMethod": "tap",
+      "offlineMethod": "actual server termination",
+      "width": 820,
+      "height": 1180,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "inputMethod": "tap",
+      "offlineMethod": "actual server termination",
+      "width": 1024,
+      "height": 768,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "inputMethod": "tap",
+      "offlineMethod": "actual server termination",
+      "width": 1440,
+      "height": 1180,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    }
+  ],
+  "passed": true
+}
