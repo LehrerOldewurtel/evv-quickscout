@@ -241,3 +241,16 @@ button.metricCard{width:100%;font:inherit;text-align:left;cursor:pointer}button.
 @media(max-width:600px){.tacticPlayer,.combinedSide .tacticPlayer{width:44px!important;height:44px!important;min-width:44px!important;max-width:44px!important;min-height:44px!important}.tacticsFooter{flex-wrap:wrap}.tacticsFooter button{flex-basis:40%}}
 .modal:has(>.presentation){padding:0;align-items:stretch;justify-content:stretch}
 @media(max-width:600px){.sixBoardGrid{grid-template-columns:minmax(0,1fr)}.presentation .cockpitHeading{gap:6px}.presentation .cockpitHeading h2{font-size:20px}}
+/* Four shared EVV defensive systems, with opt-in coaching areas. */
+.formationTabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.formationTabs [data-formation-kind="defense-I"]{grid-column:span 2}
+#tacticsTasks{min-height:40px;font-size:12px}.blockShadow{fill:#dbaa22;opacity:.18;stroke:#a87608;stroke-width:.35}.defenseZone{fill:#2379bd;fill-opacity:.08;stroke:#2379bd;stroke-dasharray:1 1;stroke-width:.35}.attackOrigin{fill:#b63a4f}
+.courtAthlete .tacticalTask{font-size:10px;line-height:1.1;font-weight:650;background:#ffffffdf;border-radius:4px;color:#17334f;padding:1px;margin:2px auto;max-width:110px}
+#defenseOptions{padding:8px;border:1px solid var(--cockpit-line);border-radius:12px;margin:8px 0}#defenseOptions[hidden]{display:none}#formProposed{width:20px;min-height:20px;vertical-align:middle}
+@media(min-width:800px) and (max-height:900px){.presentation .formationTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.matchTactics>#tacticsTasks{grid-column:1}}
+.athleteLabels{position:absolute;top:100%;left:0;width:100%}.deepAthlete .athleteLabels{top:auto;bottom:100%}.blockAthlete b{box-shadow:0 0 0 3px #dbaa22}
+.defenseLegend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:6px 0}.defenseLegend span{font-size:11px;padding:4px;background:var(--cockpit-bg);border-radius:6px}.defenseLegend small{display:block;font-size:10px}.matchTactics>#tacticsLegend{grid-column:1}
+@media(orientation:portrait){.presentation .sharedCourt{width:min(70vw,calc((100dvh - 390px)/1.42))}}
+@media(min-width:700px){.presentation .matchTactics{display:grid;grid-template-columns:minmax(210px,30%) minmax(0,1fr);gap:8px;min-height:100%;align-content:start}.presentation .matchTactics>.cockpitHeading{grid-column:1;flex-wrap:wrap}.presentation #matchCourt{grid-column:2;grid-row:1/12;align-self:center}.presentation .sharedCourt{width:min(100%,calc((100dvh - 36px)/1.42));max-height:none;margin:0 auto}.presentation .formationTabs{grid-template-columns:repeat(2,minmax(0,1fr))}.presentation .scopeTabs{flex-wrap:wrap}.presentation #tacticsContext{font-size:11px}.presentation .defenseLegend{grid-template-columns:minmax(0,1fr)}}
+.presentation .defenseLegend{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px}.presentation .defenseLegend small{display:none}.presentation .defenseLegend span{font-size:10px;padding:3px}
+.edgeLeftAthlete .athleteLabels{left:25%}.edgeRightAthlete .athleteLabels{left:-25%}
+.evvAthlete.deepAthlete .athleteLabels{top:0;bottom:auto;left:70%}.evvAthlete.deepAthlete.farRightAthlete .athleteLabels{left:auto;right:70%}
