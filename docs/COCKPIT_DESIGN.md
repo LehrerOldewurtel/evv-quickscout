@@ -31,7 +31,9 @@ Chancen oder Kontakte werden aus einem bloßen Punkt abgeleitet.
 
 Die Live-Ampel bewertet ausschließlich die aktuelle Rotation im aktuellen Satz,
 und darin die aktuell relevante Phase (K1 bei Annahme, K2 bei eigenem Aufschlag).
-Sie mischt die beiden Phasen nicht. Die Rotationskarte zeigt beide separat.
+Sie mischt die beiden Phasen nicht. Die Rotationskarte zeigt beide separat. Aus dem Rotationsvergleich übernimmt sie
+dessen Zeitraum und Filter; ihre K1-/K2-Karten führen unmittelbar zur passenden
+Taktik. Eine historische Kennzahl wird nicht stillschweigend auf den aktuellen Satz reduziert.
 
 | Vereinsprofil | Rot unter | Grün ab |
 |---|---:|---:|

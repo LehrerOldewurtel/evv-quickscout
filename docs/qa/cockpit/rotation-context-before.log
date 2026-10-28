@@ -1,0 +1,54 @@
+
+Running 1 test using 1 worker
+
+[1A[2K(node:143404) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:143404) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] tests/e2e/cockpit.spec.cjs:39:1 › Rotationskarte übernimmt den Match-Zeitraum und führt gezielt zur K1- oder K2-Taktik
+[1A[2K  1) tests/e2e/cockpit.spec.cjs:39:1 › Rotationskarte übernimmt den Match-Zeitraum und führt gezielt zur K1- oder K2-Taktik 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator:  locator('.rotationCoaching [data-metric="k2"] small')
+    Expected: [32m"[7m25[27m / [7m25[27m"[39m
+    Received: [31m"[7m0[27m / [7m0[27m"[39m
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toHaveText" with timeout 5000ms[22m
+    [2m  - waiting for locator('.rotationCoaching [data-metric="k2"] small')[22m
+    [2m    9 × locator resolved to <small>0 / 0</small>[22m
+    [2m      - unexpected value "0 / 0"[22m
+
+
+      38 | });
+      39 | test('Rotationskarte übernimmt den Match-Zeitraum und führt gezielt zur K1- oder K2-Taktik',async({page})=>{
+    > 40 |  await start(page,true);for(let i=0;i<25;i++)await end(page,'ace');await page.locator('#prep').tap();await page.locator('#nsRec').tap();const before=await page.evaluate(()=>EVV_QS_TEST.state());await page.locator('#turnaroundReport').tap();await page.locator('[data-scope="rotations"]').tap();await page.locator('[data-rotation-card="1"]').tap();await expect(page.locator('.rotationCoaching [data-metric="k2"] small')).toHaveText('25 / 25');await page.locator('#rotationK1Tactics').tap();await expect(page.locator('[data-formation-kind="receive"]')).toHaveAttribute('aria-pressed','true');await page.locator('#tacticsClose').tap();expect(await page.evaluate(()=>EVV_QS_TEST.state())).toEqual(before);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+      41 | });
+      42 |
+        at /workspace/evv-quickscout/tests/e2e/cockpit.spec.cjs:40:420
+
+    Error Context: ../../tmp/evv-cockpit-chromium-results/cockpit-Rotationskarte-übe-159aa-ielt-zur-K1--oder-K2-Taktik/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-cockpit-chromium-results/cockpit-Rotationskarte-übe-159aa-ielt-zur-K1--oder-K2-Taktik/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-cockpit-chromium-results/cockpit-Rotationskarte-übe-159aa-ielt-zur-K1--oder-K2-Taktik/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  1 failed
+    tests/e2e/cockpit.spec.cjs:39:1 › Rotationskarte übernimmt den Match-Zeitraum und führt gezielt zur K1- oder K2-Taktik 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
