@@ -148,3 +148,19 @@ Die erweiterte ZIP-Abnahme prüft vier Viewports pro Browser einschließlich
 Mit den oben dokumentierten WebKit-Umgebungsvariablen die 40 Fälle reproduzieren:
 `npx playwright test --config playwright.webkit.config.cjs tests/e2e/hybrid.spec.cjs tests/e2e/practice.spec.cjs tests/e2e/release.spec.cjs`.
 Paketabnahme: `EVV_QA_BROWSERS=chromium,webkit node scripts/verify-package.cjs /workspace/evv-rc2-download/EVV-QuickScout-V8-RC2.zip`.
+
+## Trainer-Cockpit
+
+Definitionen und Grenzen stehen in COCKPIT_DESIGN.md. Neue reine Berechnungstests:
+`node --test tests/cockpit.test.cjs`; sichtbare Abläufe: `tests/e2e/cockpit.spec.cjs`.
+Die bestehenden `practice`-Tests öffnen frühere Coach-Skizzen nun explizit über
+Taktik → Weitere Skizzen; sie prüfen weiterhin Drag, Zielklick und Abbruch.
+Die Analyse-Assertions prüfen dieselben Chancen/Kills an den neuen Kennzahlkarten.
+Keine Assertions zur alten Spiellogik wurden entfernt.
+
+Screenshots reproduzieren: lokalen Server auf Loopback starten, danach
+`EVV_SCREENSHOT_ORIGIN=http://127.0.0.1:4183 node scripts/capture-cockpit.cjs`.
+Für Vorher-Bilder den unveränderten RC2-Stand c66e671 separat lokal ausliefern
+und `EVV_SCREENSHOT_BASELINE=1` setzen. Das Skript bedient echte UI-Eingaben,
+setzt keine Matchdaten per evaluate und erstellt frische Browserkontexte.
+Ergebnisse: docs/screenshots/cockpit/before und after (vier Viewports).

@@ -1,0 +1,77 @@
+[1A[2K[2m[WebServer] [22m(node:124533) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:25] "GET / HTTP/1.1" 200 -
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:124549) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:124549) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:31:26] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K  1) tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoHaveLength[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected length: [32m6[39m
+    Received length: [31m0[39m
+    Received array:  [31m[][39m
+
+      26 | });
+      27 | test('Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein',async({page})=>{
+    > 28 |  await page.setViewportSize({width:390,height:844});await start(page);await page.locator('#formationEditor').tap();await page.locator('#formSave').tap();const f=await page.evaluate(()=>EVV_QS_TEST.formationFor(1,'receive'));expect(Object.keys(f.targets)).toHaveLength(6);await page.locator('#modalBox').evaluate(e=>e.scrollTop=e.scrollHeight);await page.locator('#formClose').tap();await page.locator('#turnaroundReport').tap();expect(await page.locator('#modalBox').evaluate(e=>e.scrollTop)).toBe(0);const title=await page.locator('#analysisHost h2').boundingBox(),box=await page.locator('#modalBox').boundingBox();expect(title.y).toBeGreaterThanOrEqual(box.y);await expect(page.locator('#analysisClose')).toBeVisible();
+         |                                                                                                                                                                                                                                                                ^
+      29 | });
+      30 |
+        at /workspace/evv-quickscout/tests/e2e/cockpit.spec.cjs:28:256
+
+    Error Context: test-results/cockpit-Neue-Dialoge-öffne-5b38a-chtbaren-Feldpositionen-ein/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cockpit-Neue-Dialoge-öffne-5b38a-chtbaren-Feldpositionen-ein/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cockpit-Neue-Dialoge-öffne-5b38a-chtbaren-Feldpositionen-ein/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  1 failed
+    tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

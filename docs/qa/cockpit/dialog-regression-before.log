@@ -1,0 +1,446 @@
+[1A[2K[2m[WebServer] [22m(node:124734) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:09] "GET / HTTP/1.1" 200 -
+
+
+Running 15 tests using 2 workers
+
+[1A[2K(node:124749) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:124750) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:124749) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:124750) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/15] tests/e2e/release.spec.cjs:3:35 › Dialog 390px: ein Touch-Schließen löst keine Hintergrundaktion aus
+[1A[2K[2/15] tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 1024x768: Live, Analyse, beide Teams und Vorschau ohne Mutation
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:10] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:11] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[3/15] tests/e2e/release.spec.cjs:3:35 › Dialog 820px: ein Touch-Schließen löst keine Hintergrundaktion aus
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:12] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[4/15] tests/e2e/release.spec.cjs:3:35 › Dialog 1440px: ein Touch-Schließen löst keine Hintergrundaktion aus
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:13] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:13] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:13] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:13] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:13] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:14] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:14] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:14] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:14] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:14] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:14] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:14] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[5/15] tests/e2e/release.spec.cjs:12:35 › Release 390px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:15] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:15] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:15] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:15] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:15] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:15] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:15] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET / HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET /styles.css?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:16] "GET /app.js?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[6/15] tests/e2e/release.spec.cjs:12:35 › Release 820px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe
+[1A[2K[7/15] tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 820x1180: Live, Analyse, beide Teams und Vorschau ohne Mutation
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:17] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[8/15] tests/e2e/release.spec.cjs:12:35 › Release 1024px: Touchziele, sichtbarer Stand, Undo mit einer Eingabe
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:19] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[9/15] tests/e2e/release.spec.cjs:26:1 › Manipuliertes Undo im Import: keine Mutation; ursprünglicher Stand bleibt bedienbar
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:20] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET / HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET /styles.css?v=7180 HTTP/1.1" 304 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET /app.js?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[10/15] tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 390x844: Live, Analyse, beide Teams und Vorschau ohne Mutation
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:22] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:23] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:23] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:23] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:23] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:23] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:23] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:23] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:25] "GET / HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:25] "GET /styles.css?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:25] "GET /app.js?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[11/15] tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 1440x1000: Live, Analyse, beide Teams und Vorschau ohne Mutation
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:26] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET / HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /styles.css?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /app.js?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[12/15] tests/e2e/cockpit.spec.cjs:15:1 › Editor speichert Ziel, Laufweg, Ballweg und Angriffsroute; Spielbetrieb ist gesperrt
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:31] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET / HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /styles.css?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /app.js?v=7180 HTTP/1.1" 304 -
+
+[1A[2K[13/15] tests/e2e/cockpit.spec.cjs:21:1 › Ampel: konfigurierbare getrennte Phasen, stabiles Signal, Undo und dunkle Darstellung
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:34] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:35] "GET / HTTP/1.1" 304 -
+
+[1A[2K[14/15] tests/e2e/cockpit.spec.cjs:24:1 › Spielerwechsel und Libero erscheinen im taktischen Livefeld ohne Änderung der Regelpositionen
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:36] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[15/15] tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:32:37] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K  1) tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m92[39m
+
+      26 | });
+      27 | test('Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein',async({page})=>{
+    > 28 |  await page.setViewportSize({width:390,height:844});await start(page);await page.locator('#formationEditor').tap();await page.locator('#formSave').tap();const f=await page.evaluate(()=>EVV_QS_TEST.formationFor(1,'receive'));expect(Object.keys(f.targets)).toHaveLength(6);await page.locator('#modalBox').evaluate(e=>e.scrollTop=e.scrollHeight);await page.locator('#formClose').tap();await page.locator('#turnaroundReport').tap();expect(await page.locator('#modalBox').evaluate(e=>e.scrollTop)).toBe(0);const title=await page.locator('#analysisHost h2').boundingBox(),box=await page.locator('#modalBox').boundingBox();expect(title.y).toBeGreaterThanOrEqual(box.y);await expect(page.locator('#analysisClose')).toBeVisible();
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^
+      29 | });
+      30 |
+        at /workspace/evv-quickscout/tests/e2e/cockpit.spec.cjs:28:494
+
+    Error Context: test-results/cockpit-Neue-Dialoge-öffne-5b38a-chtbaren-Feldpositionen-ein/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cockpit-Neue-Dialoge-öffne-5b38a-chtbaren-Feldpositionen-ein/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cockpit-Neue-Dialoge-öffne-5b38a-chtbaren-Feldpositionen-ein/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  1 failed
+    tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein 
+  14 passed (29.0s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

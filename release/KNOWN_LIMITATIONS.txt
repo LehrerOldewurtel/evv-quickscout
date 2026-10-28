@@ -1,24 +1,24 @@
-Dieser Kandidat ist eine statische Web-App, keine native iOS-/Android-Hülle.
-Keine Aussage absoluter Fehlerfreiheit oder uneingeschränkter Spieltagsfreigabe.
+TRAINER-COCKPIT – ENTWICKLUNGSKANDIDAT ZUR MANUELLEN ABNAHME
 
-- Automatisierte Chromium-Prüfung und Touch-/Viewport-Emulation sind keine Tests
-  auf echten Apple-Geräten. iPad/iPhone/Safari/Pencil/Mikrofon müssen manuell geprüft werden.
-- Chromium vollständig und WebKit gezielt unter Linux emuliert geprüft; keine echte Safari-/iPad-Abnahme.
-- Firefox heruntergeladen, aber Browserstart blockiert (Timeout, /proc/self/uid_map EROFS); keine bestandenen Firefox-App-Tests.
-- WLAN-HTTP am iPad ermöglicht keinen zugesicherten Service-Worker-/Offlinebetrieb.
-  Für Geräte-Offlineabnahme ist ein eigener HTTPS-Test-Origin erforderlich.
-- Browser-/Betriebssystemabsturz und Speicherverdrängung sind nicht identisch mit
-  dem geprüften geordneten Browserprozess-Neustart. Speicherquota ist geräteabhängig.
-- Spielstände bleiben browserlokal. Browserdatenlöschung/Geräteverlust kann Daten
-  vernichten; regelmäßig exportieren. Kein serverseitiges Backup.
-- Geprüft ist das normale Sechs-Wechsel-Regelwerk mit Paar-Rückwechsel und zwei
-  gemeldeten Liberos. Verletzungs-/Ausnahmewechsel und vollständige DVV/FIVB-Abnahme
-  aller Sonderfälle sind nicht zugesichert. Liberos schlagen hier nicht auf.
-- Unbeobachtete Kontakte werden nicht erfunden. Quick-Gegneraufschlagfehler werden
-  als unvollständige Rallye erfasst; kein eigener Angriff wird zugerechnet.
-- Historische acht inkompatible Testskripte bleiben als fehlgeschlagenes Archiv
-  dokumentiert; relevante Verhaltenstests wurden migriert, nicht gestrichen.
-- RC2 ist lokal zur Prüfung vorbereitet. Keine neue GitHub-Veröffentlichung,
-  keine Remote-CI für RC2 und kein produktives Deployment durchgeführt.
-- Keine automatische Rückwärtsmigration beliebiger App-/Datenversionen.
-  Cache-/Worker-Rollback ist nur bei kompatiblem Datenschema geprüft.
+- Linux-Chromium/WebKit und Touch-/Viewport-Emulation ersetzen keinen echten
+  Mac-/iPad-/Safari-/Apple-Pencil-Test. Mikrofon und native Gerätesonderfälle
+  bleiben Bestandteil der praktischen Abnahme.
+- Keine native iOS-/Android-Hülle und keine Synchronisierung zwischen Geräten.
+- WLAN-HTTP sichert auf dem iPad keinen Offline-/Mikrofonbetrieb zu; dafür ist
+  ein separater HTTPS-Test-Origin mit echter Geräteabnahme erforderlich.
+- Auf kleinen Telefonen, bei Zoom/Schriftvergrößerung und in optionalen Details
+  ist Scrollen vorgesehen. Die Live-Eingabe bleibt unverändert schnell.
+- Ampelgrenzen und Leistungsprofile sind nachvollziehbare Coaching-Orientierungen,
+  keine wissenschaftlichen Leistungsnormen. Kleine Stichproben bleiben neutral.
+- Gegnerpositionen müssen für jeden Satz ausdrücklich konfiguriert/bestätigt werden.
+  Ohne vollständige Zuordnung wird keine Gegneraufstellung erfunden. Libero-Ersetzung
+  beim Gegner erfolgt nur für die angegebene Zuordnung. Keine automatische Erkennung.
+- Unbekannte Trikotnummern bleiben ?. Über EVV-Nummern bzw. Gegner aufstellen ergänzen.
+- Positionsvorlagen sind feldplatzgebunden. Die Vorschau berücksichtigt den aktuellen
+  Kader; sie rekonstruiert keine historischen Aufstellungen früherer Rallyes.
+- Bestehendes reguläres Sechs-Wechsel-Regelwerk mit Rückwechselpaaren und zwei Liberos.
+  Keine vollständige DVV/FIVB-Abnahme aller Verletzungs-/Ausnahmefälle zugesichert.
+- Browserdatenlöschung/Geräteverlust kann lokale Daten vernichten. Regelmäßig exportieren.
+- Keine Veröffentlichung der produktiven Webseite und kein Merge ohne Freigabe.
+- Testergebnisse ausschließlich im aktuellen TESTBERICHT; frühere Logs sind keine
+  aktuelle Evidenz. Firefox-Kontrollstart und Grenzen stehen im Abnahmebericht.

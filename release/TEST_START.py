@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent
 ASSETS = {'index.html', 'app.js', 'compact.js', 'styles.css', 'version.js', 'sw.js', 'manifest.webmanifest'}
-STORAGE = 'evvQuickScout_FINAL_RC_TEST'
+STORAGE = 'evvQuickScout_COCKPIT_TEST'
 
 
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -22,9 +22,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return
         body = (ROOT / name).read_bytes()
         if name == 'app.js':
-            body = body.replace(b'evvQuickScoutV77', STORAGE.encode())
+            body = body.replace(b'evvQuickScoutV77', STORAGE.encode()).replace(b'evvQuickScoutCockpitPreferences', b'evvQuickScout_COCKPIT_PREFERENCES')
         elif name == 'sw.js':
-            body = body.replace(b'evv-quickscout-v', b'evv-quickscout-final-rc-test-v')
+            body = body.replace(b'evv-quickscout-v', b'evv-quickscout-cockpit-test-v')
         elif name == 'index.html':
             banner = ('<aside style="background:#ffdf80;color:#181818;padding:10px;text-align:center;'
                       'font:600 15px sans-serif">V8 RELEASE-KANDIDAT · TESTBETRIEB · '

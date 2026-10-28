@@ -36,7 +36,7 @@ for(const width of [390,820,1024])test(`Generalprobe ${width}px: komplettes Matc
 test('Coaching öffnet gewählte Rotation und Annahme/Abwehr ohne automatische Mutation',async({page})=>{
  await page.goto('/');await page.locator('#startReceive').tap();const before=await state(page);
  for(const kind of ['receive','defense-IV','defense-III','defense-II']){
- await page.locator('#turnaroundReport').tap();await expect(page.locator('#analysisFormation')).toBeDisabled();await page.locator('#analysisRot').selectOption('4');await page.locator('#analysisFormationKind').selectOption(kind);await page.locator('#analysisFormation').tap();await expect(page.locator('#formRotation')).toHaveValue('4');await expect(page.locator('#formKind')).toHaveValue(kind);expect(await state(page)).toEqual(before);await page.locator('#formClose').tap();
+ await page.locator('#turnaroundReport').tap();await page.locator('#analysisDetails summary').click();await expect(page.locator('#analysisFormation')).toBeDisabled();await page.locator('#analysisRot').selectOption('4');await page.locator('#analysisFormationKind').selectOption(kind);await page.locator('#analysisFormation').tap();await expect(page.locator('#formRotation')).toHaveValue('4');await expect(page.locator('#formKind')).toHaveValue(kind);expect(await state(page)).toEqual(before);await page.locator('#formClose').tap();
  }
 });
 test('Echter Chromium-Neustart: Mehrfach-Transition-Rallye und eindeutige Kontakte',async({playwright},info)=>{

@@ -1,51 +1,54 @@
-EVV QuickScout V8 – RC2 PRAXISTEST-KORREKTUREN · MANUELLE ABNAHME
+EVV QuickScout V8 – TRAINER-COCKPIT ZUR PRAXISABNAHME
 
-Keine stabile V8-Freigabe. Interne Produktversion unverändert 7.19.0-k1-auto-mb.
+Entwicklungskandidat, keine stabile V8-Freigabe. Produktkennung bleibt 7.19.0-k1-auto-mb.
 Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
 
-1. ZIP in einen neuen Ordner vollständig entpacken (alte Testversion behalten).
-   Terminal im entpackten Ordner mit TEST_START.py öffnen.
-2. Python 3 muss verfügbar sein (python3 --version). Bei Bedarf den signierten
-   Installer von https://www.python.org/downloads/macos/ verwenden.
-3. Start auf dem Mac: python3 TEST_START.py
-   Für das iPad im selben vertrauten WLAN: python3 TEST_START.py --lan
-4. Die tatsächlich ausgegebenen Adressen in Safari am Mac/iPad öffnen.
-   Eventuell macOS-Firewallzugriff für das lokale WLAN erlauben.
-   Bei mehreren WLAN-Adressen die aktive Verbindung des Mac verwenden.
-   Gastnetz/Client-Isolation kann die Verbindung zwischen Geräten verhindern.
-5. Terminal geöffnet lassen; Ctrl+C beendet den Server. Bei belegtem Port:
-   python3 TEST_START.py --lan --port 18765
-Kein Router-Portforwarding einrichten. Kein öffentlicher Server wird gestartet.
+MAC / IPAD STARTEN
+1. ZIP vollständig in einen neuen Ordner entpacken. Alte Testpakete behalten.
+2. Terminal im entpackten Ordner mit TEST_START.py öffnen.
+3. Python 3 muss installiert sein: python3 --version
+   Falls nötig: https://www.python.org/downloads/macos/ (signierter Installer).
+4. Start: python3 TEST_START.py --lan
+5. Die ausgegebene Mac-Adresse in Chrome oder Safari öffnen. Auf dem iPad die
+   ausgegebene WLAN-Adresse öffnen. Beide Geräte müssen im selben vertrauten WLAN sein.
+6. Terminal geöffnet lassen. Ctrl+C beendet den Testserver.
+   Bei belegtem Port: python3 TEST_START.py --lan --port 18765
+   macOS-Firewall ggf. für das lokale WLAN erlauben. Kein Router-Portforwarding.
 
-Bedienung:
-- Gegner TEST nennen, Startsechs und Rollen prüfen, zwei Liberos auswählen.
-- K1 (Annahme) oder K2 (Aufschlag) starten.
-- Schnellmodus: Ass 1 Eingabe, A0/D0/Kill 2, Transition 1,
-  Transition → Angreifer auswählen → Angriffspunkt: 3 Eingaben, Undo 1.
-  „Angriff verteidigt“ hält die Rallye offen; vor dem nächsten eigenen Angriff
-  die nächste kontrollierte Abwehr als Transition erfassen. Keine Punkte schätzen.
-- Detailmodus verwendet dieselbe Rallye. Gegnerfehler sind keine eigenen Kills.
-- Taktik: Rotation und Annahme/Abwehr IV/III/II wählen; Spieler ziehen
-  oder Spieler auswählen und anschließend die Zielposition anklicken,
-  Lauf-/Ballwege zeichnen; ausdrücklich speichern. Regelpositionen bleiben gleich.
-- Analyse: Satz/Rotation/K1-K2 filtern. Abgeschlossene Rallyes bilden die Quoten;
-  die aktuelle Rallye steht separat darunter. Die Historie enthält nur Abschlüsse.
-- Auswertung: Spieler-, Satz-, Rotations- und Mannschaftsstatistiken.
-- Nach Satzende neue Startsechs prüfen, Vorlage/Libero übernehmen, K1/K2 starten.
-- Export vor Browserdatenlöschung oder Gerätewechsel. Keine Cloud-Synchronisierung.
+KURZER PRAXISTEST
+- Gegner „TEST“ nennen, Startsechs/Rollen/Libero prüfen und K1 oder K2 starten.
+- Schnellmodus: Ass 1 Eingabe; A0/D0/Kill 2; Transition → Spieler → Ergebnis 3.
+  „Angriff verteidigt“ hält die Rallye offen. Undo nimmt den letzten Abschluss zurück.
+- „Analyse“: sechs Hauptkennzahlen zuerst sichtbar. LIVE = aktueller Satz,
+  MATCH = gesamtes Spiel, ROTATIONEN = Vergleich. Details/Filter nur bei Bedarf.
+- Die Ampel am Spielstand antippen: aktuelle Phase, Stichprobe und kurze Empfehlung.
+  „Taktik anzeigen“ führt direkt zur passenden Formationsvorschau.
+- „Taktik“: nur ansehen. K1 und Abwehr IV/III/II direkt wechseln. Ausgangsstellung
+  und taktische Stellung vergleichen. Unabhängige Vorschauen verändern keinen Punkt.
+- „EVV-Nummern“ ergänzt fehlende Trikots. „Gegner aufstellen“ konfiguriert sechs
+  aktuelle Positionen/Rotation und optional einen Libero. In jedem neuen Satz
+  die Gegneraufstellung bestätigen. Fehlende Daten werden nicht geraten.
+- „Trainer-Editor“: Spieler ziehen oder auswählen und Zielposition anklicken.
+  Lauf-, Ball- und Angriffsrouten über das Werkzeug wählen. „Speichern“ bestätigt
+  alle sechs sichtbaren Positionen. Vorlagen können kopiert und zurückgesetzt werden.
+  „Spielbetrieb anzeigen“ zeigt das gespeicherte Ergebnis; Regelpositionen bleiben gleich.
+- Einen regulären Wechsel durchführen, das Taktikfeld kontrollieren und per Undo
+  einen Punkt zurücknehmen. Nach Satzende neue Startsechs prüfen und K1/K2 starten.
+- Export erstellen, neu laden und gespeicherten synthetischen Stand kontrollieren.
+- „Darstellung & Ampel“: System/Hell/Dunkel, Leistungsprofil, Mindeststichprobe und
+  Grenzwerte einstellen. Die Grenzen sind Coaching-Orientierungen, keine Leistungsnorm.
 
-Trennung und Offline:
-Der Starter nutzt einen eigenen Speicher- und Cache-Namensraum und einen sichtbaren
-Testhinweis. Die App-Quelldateien im ZIP bleiben unverändert; diese Anpassungen
-erfolgen nur bei der Auslieferung. main/GitHub Pages werden nicht verändert.
-Mac und iPad speichern unabhängig, keine Synchronisierung.
-HTTP über WLAN ist für Funktionstests geeignet. Safari erlaubt Service Worker,
-Offline-PWA und Mikrofon im WLAN üblicherweise nur mit HTTPS. Diese Funktionen
-benötigen eine getrennte HTTPS-Testinstallation und manuelle Geräteabnahme.
-Im sicheren Loopback-Kontext wurde Installation/Offline automatisiert geprüft.
+DATENTRENNUNG UND GRENZEN
+Der Starter nutzt evvQuickScout_COCKPIT_TEST, eigene Präferenzen und einen eigenen
+Cache-Namensraum. Produktion und frühere RC-Testdaten werden nicht überschrieben.
+Mac und iPad speichern unabhängig; keine Cloud-Synchronisierung.
+HTTP im WLAN ist für Funktionstests gedacht. Safari benötigt für verlässlichen
+Offline-/Mikrofonbetrieb einen separaten HTTPS-Test-Origin und echte Geräteabnahme.
+Auf kleinen Telefonen, bei Zoom und in langen optionalen Details darf gescrollt werden.
+Keine Veröffentlichung und kein Merge ohne Freigabe.
 
-Paketprüfung ohne Zusatzpakete:
+PRÜFSUMMEN IM ENTPACKTEN ORDNER
 python3 -c "import hashlib,pathlib; p=pathlib.Path('.'); rows=(p/'CHECKSUMS.sha256').read_text().splitlines(); assert all(hashlib.sha256((p/n).read_bytes()).hexdigest()==h for h,n in (r.split('  ',1) for r in rows)); print('Prüfsummen OK')"
 
-BUILD.json nennt Branch, Commit und Quellen-Hash. TESTBERICHT.md und
-KNOWN_LIMITATIONS.txt nennen die tatsächlich ausgeführten Tests und offenen Risiken.
+BUILD.json nennt Branch/Commit und Asset-Hashes. TESTBERICHT.md/.json und
+RELEASE_ABNAHME.md beschreiben die tatsächlich ausgeführten Prüfungen.

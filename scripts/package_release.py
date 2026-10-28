@@ -20,7 +20,7 @@ def digest(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=ROOT / 'artifacts/EVV-QuickScout-V8-RC.zip')
-    parser.add_argument('--evidence-dir', type=Path, default=ROOT / 'docs/qa/final')
+    parser.add_argument('--evidence-dir', type=Path, default=ROOT / 'docs/qa/cockpit')
     args = parser.parse_args()
     report = json.loads((ROOT / 'artifacts/release-candidate.json').read_text())
     assert report['run']['node']['exitCode'] == report['run']['browser']['exitCode'] == 0, 'QA process failed'
@@ -33,7 +33,7 @@ def main():
              'commit': git('rev-parse', 'HEAD'), 'productVersionUnchanged': True,
              'workingTreeDirty': bool(git('status', '--porcelain')),
              'qaGeneratedAt': report['generatedAt'], 'qaSourceCommit': report['run']['source']['commit'],
-             'assets': {f: digest(ROOT / f) for f in ASSETS}, 'storageNamespace': 'evvQuickScout_FINAL_RC_TEST',
+             'assets': {f: digest(ROOT / f) for f in ASSETS}, 'storageNamespace': 'evvQuickScout_COCKPIT_TEST', 'preferencesNamespace': 'evvQuickScout_COCKPIT_PREFERENCES',
              'productionDeployment': False}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='evv-package-') as tmp:

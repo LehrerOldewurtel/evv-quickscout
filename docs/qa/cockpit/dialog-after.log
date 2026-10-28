@@ -1,0 +1,48 @@
+[1A[2K[2m[WebServer] [22m(node:125904) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:21] "GET / HTTP/1.1" 200 -
+
+
+Running 1 test using 1 worker
+
+[1A[2K(node:125919) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:125919) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 13:33:22] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K  1 passed (2.8s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
