@@ -1,0 +1,13 @@
+{
+  "verifiedAt": "2026-10-28T19:46:30.066966+00:00",
+  "url": "https://github.com/LehrerOldewurtel/evv-quickscout/raw/refs/heads/dev/v8-practice-fixes/downloads/v8-defense/EVV-QuickScout-V8-Abwehr.zip",
+  "httpStatus": 200,
+  "bytes": 110857,
+  "sha256": "be61f3ca0b3a8104b64a516a48472c6a3cd639fc0ed8c816d1bba6eb1f784867",
+  "byteIdenticalToStartedPackage": true,
+  "crc": true,
+  "innerChecksums": 17,
+  "startedBrowserContexts": 8,
+  "productionDeployment": false,
+  "mainUnchanged": "f6b316bfbbcf30d4758fc954ef006bff59a1fc9e"
+}
