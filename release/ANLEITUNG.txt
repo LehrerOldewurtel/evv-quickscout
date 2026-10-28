@@ -19,6 +19,7 @@ KURZER PRAXISTEST
 - Gegner „TEST“ nennen, Startsechs/Rollen/Libero prüfen und K1 oder K2 starten.
 - Schnellmodus: Ass 1 Eingabe; A0/D0/Kill 2; Transition → Spieler → Ergebnis 3.
   „Angriff verteidigt“ hält die Rallye offen. Undo nimmt den letzten Abschluss zurück.
+- Auf dem iPhone öffnet „Mehr“ die Satznavigation und weitere Aktionen.
 - „Analyse“: sechs Hauptkennzahlen zuerst sichtbar. LIVE = aktueller Satz,
   MATCH = gesamtes Spiel, ROTATIONEN = Vergleich. Details/Filter nur bei Bedarf.
 - Die Ampel am Spielstand antippen: aktuelle Phase, Stichprobe und kurze Empfehlung.
@@ -31,6 +32,7 @@ KURZER PRAXISTEST
 - „Trainer-Editor“: Spieler ziehen oder auswählen und Zielposition anklicken.
   Lauf-, Ball- und Angriffsrouten über das Werkzeug wählen. „Speichern“ bestätigt
   alle sechs sichtbaren Positionen. Vorlagen können kopiert und zurückgesetzt werden.
+  „Zurücksetzen“ + Speichern entfernt die Vorlage.
   „Spielbetrieb anzeigen“ zeigt das gespeicherte Ergebnis; Regelpositionen bleiben gleich.
 - Einen regulären Wechsel durchführen, das Taktikfeld kontrollieren und per Undo
   einen Punkt zurücknehmen. Nach Satzende neue Startsechs prüfen und K1/K2 starten.

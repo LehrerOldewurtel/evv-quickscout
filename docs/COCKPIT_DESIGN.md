@@ -66,6 +66,8 @@ abgeleitet. Das taktische Verschieben verändert keine regeltechnische Feldposit
 Fehlende Vorlagen werden als nicht eingerichtet angezeigt, Teilvorlagen als solche;
 dann sind fehlende Spielerziele ausdrücklich als Basisposition markiert.
 Erst „Speichern“ im Editor bestätigt alle sechs dort sichtbaren Positionen.
+„Zurücksetzen“ und anschließendes Speichern löscht dagegen ausdrücklich die Vorlage;
+dieser bestehende Bedienweg bleibt erhalten.
 Laufwege, Ballwege und optionale Angriffsrouten gehören zur gleichen Bibliothek.
 Speichern, Kopieren, Reset und Pfeil-Undo erfolgen ausschließlich im Editor.
 
@@ -78,6 +80,9 @@ markiert die Zuordnung als fehlend. Es werden weder Trikots noch Startaufstellun
 oder Gegner-Liberos geraten. EVV-Nummern können ebenfalls vervollständigt werden.
 
 ## Trennung und Darstellung
+
+Auf dem iPhone öffnet „Mehr“ auch die selten benötigte Satznavigation;
+Transition und Undo bleiben in der geprüften 390×844-Ansicht ohne Scrollen erreichbar.
 
 System/Hell/Dunkel und Ampelgrenzen sind reine lokale Bedienpräferenzen, getrennt
 vom Matchzustand. Blau/Rot bezeichnet Mannschaften; Leistungsbewertung verwendet

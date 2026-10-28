@@ -1,0 +1,45 @@
+
+Running 1 test using 1 worker
+
+[1A[2K(node:136243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:136243) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/1] tests/e2e/cockpit.spec.cjs:36:1 › iPhone: Transition und Undo ohne Scrollen; Satznavigation bleibt über Mehr erreichbar
+[1A[2K  1) tests/e2e/cockpit.spec.cjs:36:1 › iPhone: Transition und Undo ohne Scrollen; Satznavigation bleibt über Mehr erreichbar 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m789[39m
+    Received:    [31m824[39m
+
+      35 | });
+      36 | test('iPhone: Transition und Undo ohne Scrollen; Satznavigation bleibt über Mehr erreichbar',async({page})=>{
+    > 37 |  await page.setViewportSize({width:390,height:844});await start(page);await page.evaluate(()=>scrollTo(0,0));const dock=await page.locator('.bottom').boundingBox();for(const selector of ['#quickTransition','#quickUndo']){const b=await page.locator(selector).boundingBox();expect(b.y+b.height).toBeLessThanOrEqual(dock.y)}const before=await page.evaluate(()=>EVV_QS_TEST.state());await page.locator('#moreActions').tap();await expect(page.locator('#setNav')).toBeVisible();await page.locator('[data-view="match"]').tap();expect(await page.evaluate(()=>EVV_QS_TEST.state())).toEqual(before);
+         |                                                                                                                                                                                                                                                                                                      ^
+      38 | });
+      39 |
+        at /workspace/evv-quickscout/tests/e2e/cockpit.spec.cjs:37:294
+
+    Error Context: ../../tmp/evv-cockpit-webkit-results/cockpit-iPhone-Transition--d98d0-bleibt-über-Mehr-erreichbar/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-cockpit-webkit-results/cockpit-iPhone-Transition--d98d0-bleibt-über-Mehr-erreichbar/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-cockpit-webkit-results/cockpit-iPhone-Transition--d98d0-bleibt-über-Mehr-erreichbar/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  1 failed
+    tests/e2e/cockpit.spec.cjs:36:1 › iPhone: Transition und Undo ohne Scrollen; Satznavigation bleibt über Mehr erreichbar 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

@@ -223,3 +223,5 @@ button[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--cockpit-blue);backg
 .modalbox{overflow-anchor:none}
 .tacticsFooter{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .courtCaption{font-size:10px;color:var(--cockpit-muted);line-height:1.4;margin:4px 0;text-align:center}
+.eyebrow{color:var(--cockpit-muted)}
+@media(max-width:600px){.quickLive #setNav{display:none}.quickLive:has(.bottom.expanded) #setNav{display:flex}.quickLive .liveCourt{height:148px}}
