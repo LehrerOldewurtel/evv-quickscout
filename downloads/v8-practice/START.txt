@@ -1,0 +1,65 @@
+EVV QuickScout V8 – PRAXISTEST-KORREKTUREN
+
+Entwicklungskandidat, keine stabile V8-Freigabe. Produktkennung bleibt 7.19.0-k1-auto-mb.
+Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
+
+MAC / IPAD STARTEN
+1. ZIP vollständig in einen neuen Ordner entpacken. Alte Testpakete behalten.
+2. Wenn der neue Ordner in Downloads liegt, diese ganze Zeile im Terminal ausführen:
+   python3 "$HOME/Downloads/EVV-QuickScout-V8-Praxistest/TEST_START.py" --lan
+   Der Ordnername muss genau passen. Alternativ Terminal im entpackten Ordner öffnen.
+3. Python 3 muss installiert sein: python3 --version
+   Falls nötig: https://www.python.org/downloads/macos/ (signierter Installer).
+4. Start: python3 TEST_START.py --lan
+5. Die ausgegebene Mac-Adresse in Chrome oder Safari öffnen. Auf dem iPad die
+   ausgegebene WLAN-Adresse öffnen. Beide Geräte müssen im selben vertrauten WLAN sein.
+6. Terminal geöffnet lassen. Ctrl+C beendet den Testserver.
+   Bei belegtem Port: python3 TEST_START.py --lan --port 18765
+   macOS-Firewall ggf. für das lokale WLAN erlauben. Kein Router-Portforwarding.
+
+KURZER PRAXISTEST
+- Gegner „TEST“ nennen, Startsechs/Rollen/Libero prüfen und K1 oder K2 starten.
+- Schnellmodus: Ass 1 Eingabe; A0/D0/Kill 2; Transition → Spieler → Ergebnis 3.
+  „Angriff verteidigt“ hält die Rallye offen. Undo nimmt den letzten Abschluss zurück.
+- Auf dem iPhone öffnet „Mehr“ die Satznavigation und weitere Aktionen.
+- „Analyse“: sechs Hauptkennzahlen zuerst sichtbar. LIVE = aktueller Satz,
+  MATCH = gesamtes Spiel, ROTATIONEN = Vergleich. Details/Filter nur bei Bedarf.
+- Die Ampel am Spielstand antippen: aktuelle Phase, Stichprobe und kurze Empfehlung.
+  „Taktik anzeigen“ führt direkt zur passenden Formationsvorschau.
+- „Taktik“: nur ansehen. K1 und Abwehr IV/III/II direkt wechseln. Ausgangsstellung
+  und taktische Stellung vergleichen. Unabhängige Vorschauen verändern keinen Punkt.
+- „EVV-Nummern“ ergänzt fehlende Trikots. „Gegner aufstellen“ konfiguriert sechs
+  aktuelle Positionen/Rotation und optional einen Libero. In jedem neuen Satz
+  die Gegneraufstellung bestätigen. Fehlende Daten werden nicht geraten.
+- „Trainer-Editor“: Spieler ziehen oder auswählen und Zielposition anklicken.
+  Lauf-, Ball- und Angriffsrouten über das Werkzeug wählen. „Speichern“ bestätigt
+  alle sechs sichtbaren Positionen. Vorlagen können kopiert und zurückgesetzt werden.
+  Beide Teams und Ausgangs-/taktische Stellung sind getrennt bearbeitbar.
+  „Speichern unter“ legt eine benannte Vorlage mit beiden Rotationen an;
+  „Vorlage laden“ öffnet den zugehörigen Kontext. Ungespeicherte Änderungen
+  werden beim Verlassen abgefragt. Reset + Speichern leert nur das gewählte
+  Team in der gewählten Stellung. Ungültige Ausgangsstellungen werden abgewiesen.
+  „Vergrößern“ im Spielbetrieb öffnet die Auszeit-Präsentation.
+  „Spielbetrieb anzeigen“ zeigt das gespeicherte Ergebnis; Regelpositionen bleiben gleich.
+- Einen regulären Wechsel durchführen, das Taktikfeld kontrollieren und per Undo
+  einen Punkt zurücknehmen. Nach Satzende neue Startsechs prüfen und K1/K2 starten.
+- Export erstellen, neu laden und gespeicherten synthetischen Stand kontrollieren.
+- „Darstellung & Ampel“: System/Hell/Dunkel, Leistungsprofil, Mindeststichprobe und
+  Grenzwerte einstellen. Die Grenzen sind Coaching-Orientierungen, keine Leistungsnorm.
+
+DATENTRENNUNG UND GRENZEN
+Der Starter nutzt evvQuickScout_COCKPIT_TEST, eigene Präferenzen und einen eigenen
+Cache-Namensraum. Die produktive Ablage und frühere RC-Ablagen bleiben getrennt. Bestehende
+Cockpit-Testspiele am selben Browser-Origin bleiben im Cockpit-Test-Namensraum.
+Für die neue Version bitte ein frisches synthetisches Testmatch anlegen.
+Mac und iPad speichern unabhängig; keine Cloud-Synchronisierung.
+HTTP im WLAN ist für Funktionstests gedacht. Safari benötigt für verlässlichen
+Offline-/Mikrofonbetrieb einen separaten HTTPS-Test-Origin und echte Geräteabnahme.
+Auf kleinen Telefonen, bei Zoom und in langen optionalen Details darf gescrollt werden.
+Keine Veröffentlichung und kein Merge ohne Freigabe.
+
+PRÜFSUMMEN IM ENTPACKTEN ORDNER
+python3 -c "import hashlib,pathlib; p=pathlib.Path('.'); rows=(p/'CHECKSUMS.sha256').read_text().splitlines(); assert all(hashlib.sha256((p/n).read_bytes()).hexdigest()==h for h,n in (r.split('  ',1) for r in rows)); print('Prüfsummen OK')"
+
+BUILD.json nennt Branch/Commit und Asset-Hashes. TESTBERICHT.md/.json und
+RELEASE_ABNAHME.md beschreiben die tatsächlich ausgeführten Prüfungen.

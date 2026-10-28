@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-27T22:43:54.116Z",
-  "zip": "/workspace/evv-rc2-download/EVV-QuickScout-V8-RC2.zip",
-  "sha256": "012f779a130e062ec708f4de073a420581ca26f2b975f10e9945ea57f6927aab",
-  "extractedTo": "/tmp/evv-verify-zip-brL7hv/EVV-QuickScout-V8-RC",
-  "requiredFiles": 15,
-  "manifestFiles": 15,
+  "generatedAt": "2026-10-28T18:14:28.718Z",
+  "zip": "/workspace/evv-quickscout/downloads/v8-practice/EVV-QuickScout-V8-Praxistest.zip",
+  "sha256": "b63e9d5f071bdfcd6be8aa938ce2b030b7874b5135bfe2805ba51b50d376c66c",
+  "extractedTo": "/tmp/evv-verify-zip-SNjDXs/EVV-QuickScout-V8-Praxistest",
+  "requiredFiles": 16,
+  "manifestFiles": 16,
   "contexts": [
     {
       "browser": "chromium",
