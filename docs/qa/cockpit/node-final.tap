@@ -1,0 +1,997 @@
+
+> evv-quickscout@8.0.0-dev test
+> node --test --test-reporter=tap tests/cockpit.test.cjs tests/rotations.test.cjs tests/unit.test.cjs tests/review.test.cjs tests/hybrid.test.cjs tests/advanced.test.cjs tests/matchday-regressions.test.cjs tests/legacy-migrated.test.cjs tests/release-regressions.test.cjs tests/matchday.test.cjs tests/simulation.test.cjs
+
+TAP version 13
+# Subtest: Laufende Rallye überlebt Neustart, kein doppelter Punkt
+ok 1 - Laufende Rallye überlebt Neustart, kein doppelter Punkt
+  ---
+  duration_ms: 622.673336
+  type: 'test'
+  ...
+# Subtest: Importvalidierung lehnt beschädigte Zustände vor Mutation ab
+ok 2 - Importvalidierung lehnt beschädigte Zustände vor Mutation ab
+  ---
+  duration_ms: 52.988365
+  type: 'test'
+  ...
+# Subtest: Unabhängige Sollwerte für Turnaround-Quoten und Beobachtungslücken
+ok 3 - Unabhängige Sollwerte für Turnaround-Quoten und Beobachtungslücken
+  ---
+  duration_ms: 39.26958
+  type: 'test'
+  ...
+# Subtest: Gespeicherte Formationen werden nach Rotation/Angriffsrichtung automatisch geladen
+ok 4 - Gespeicherte Formationen werden nach Rotation/Angriffsrichtung automatisch geladen
+  ---
+  duration_ms: 102.183455
+  type: 'test'
+  ...
+# Subtest: Sicheres Speichern: Quota-Fehler bewahrt letzte gültige Bytes und aktuellen Speicherzustand
+ok 5 - Sicheres Speichern: Quota-Fehler bewahrt letzte gültige Bytes und aktuellen Speicherzustand
+  ---
+  duration_ms: 120.169041
+  type: 'test'
+  ...
+# Subtest: Geometrie und unbekannte Speicherversion werden ohne Überschreiben abgewiesen
+ok 6 - Geometrie und unbekannte Speicherversion werden ohne Überschreiben abgewiesen
+  ---
+  duration_ms: 82.282948
+  type: 'test'
+  ...
+# Subtest: Taktik-Bibliothek bleibt bei neuem Spiel erhalten; Slot statt Spieler-ID
+ok 7 - Taktik-Bibliothek bleibt bei neuem Spiel erhalten; Slot statt Spieler-ID
+  ---
+  duration_ms: 63.933072
+  type: 'test'
+  ...
+# Subtest: Gegnerdaten mit Prototype-Schlüsseln werden vor Anwendung blockiert
+ok 8 - Gegnerdaten mit Prototype-Schlüsseln werden vor Anwendung blockiert
+  ---
+  duration_ms: 60.052455
+  type: 'test'
+  ...
+# Subtest: Cockpit verwendet unabhängige K1/K2-, Annahme-, Angriffs- und Turnaround-Sollwerte
+ok 9 - Cockpit verwendet unabhängige K1/K2-, Annahme-, Angriffs- und Turnaround-Sollwerte
+  ---
+  duration_ms: 228.619587
+  type: 'test'
+  ...
+# Subtest: LIVE/MATCH/Rotation und Detailfilter verlieren keine Rallyes und mutieren nicht
+ok 10 - LIVE/MATCH/Rotation und Detailfilter verlieren keine Rallyes und mutieren nicht
+  ---
+  duration_ms: 68.717116
+  type: 'test'
+  ...
+# Subtest: Rotationsampel bleibt ohne ausreichende Daten neutral und verwendet eine einzelne Phase
+ok 11 - Rotationsampel bleibt ohne ausreichende Daten neutral und verwendet eine einzelne Phase
+  ---
+  duration_ms: 57.937192
+  type: 'test'
+  ...
+# Subtest: Spiel-Taktik und Vorschau sind rein lesend und beachten aktuelle Spieler
+ok 12 - Spiel-Taktik und Vorschau sind rein lesend und beachten aktuelle Spieler
+  ---
+  duration_ms: 81.479813
+  type: 'test'
+  ...
+# Subtest: Angriffsrouten der Bibliothek werden validiert und überleben Reload
+ok 13 - Angriffsrouten der Bibliothek werden validiert und überleben Reload
+  ---
+  duration_ms: 181.859338
+  type: 'test'
+  ...
+# Subtest: Gegner rotiert nur bei eigenem Sideout; Vorschau, Libero und Undo sind unabhängig
+ok 14 - Gegner rotiert nur bei eigenem Sideout; Vorschau, Libero und Undo sind unabhängig
+  ---
+  duration_ms: 202.981909
+  type: 'test'
+  ...
+# Subtest: Ampel-Hysterese ist deterministisch und reagiert nicht auf andere Phasen
+ok 15 - Ampel-Hysterese ist deterministisch und reagiert nicht auf andere Phasen
+  ---
+  duration_ms: 87.393639
+  type: 'test'
+  ...
+# Subtest: Gespeicherte Slot-Formation verwendet eingewechselten Spieler und aktiven Libero nach Sideout
+ok 16 - Gespeicherte Slot-Formation verwendet eingewechselten Spieler und aktiven Libero nach Sideout
+  ---
+  duration_ms: 85.349943
+  type: 'test'
+  ...
+# Subtest: 100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontaktmodell
+ok 17 - 100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontaktmodell
+  ---
+  duration_ms: 442.851714
+  type: 'test'
+  ...
+# Subtest: Transition-Doppeltap, Ereignis-ID und alter Handler zählen nicht doppelt
+ok 18 - Transition-Doppeltap, Ereignis-ID und alter Handler zählen nicht doppelt
+  ---
+  duration_ms: 95.381587
+  type: 'test'
+  ...
+# Subtest: Taktische Formationen R1–R6 verändern keine Regelpositionen
+ok 19 - Taktische Formationen R1–R6 verändern keine Regelpositionen
+  ---
+  duration_ms: 64.298414
+  type: 'test'
+  ...
+# Subtest: Detail-Angriff bleibt beim Moduswechsel ein Angriff; Formation überlebt Reload
+ok 20 - Detail-Angriff bleibt beim Moduswechsel ein Angriff; Formation überlebt Reload
+  ---
+  duration_ms: 194.424206
+  type: 'test'
+  ...
+# Subtest: Schnellmodus verhindert zweiten Angriff nach CONTINUE ohne neue Ballkontrolle
+ok 21 - Schnellmodus verhindert zweiten Angriff nach CONTINUE ohne neue Ballkontrolle
+  ---
+  duration_ms: 49.8147
+  type: 'test'
+  ...
+# Subtest: Detail-CONTINUE beim Wechsel verhindert weiteren Angriff ohne Transition
+ok 22 - Detail-CONTINUE beim Wechsel verhindert weiteren Angriff ohne Transition
+  ---
+  duration_ms: 19.577784
+  type: 'test'
+  ...
+# Subtest: Angefangener Detailangriff behält Spieler und zählt beim Wechsel nur einmal
+ok 23 - Angefangener Detailangriff behält Spieler und zählt beim Wechsel nur einmal
+  ---
+  duration_ms: 17.703104
+  type: 'test'
+  ...
+# Subtest: Gegner-Abwehr verhindert keine neue eigene Transition
+ok 24 - Gegner-Abwehr verhindert keine neue eigene Transition
+  ---
+  duration_ms: 64.981389
+  type: 'test'
+  ...
+# Subtest: Migration V7.4–7.6: Gegner A0, vollständiges Undo, Empfang ohne Libero
+ok 25 - Migration V7.4–7.6: Gegner A0, vollständiges Undo, Empfang ohne Libero
+  ---
+  duration_ms: 238.781873
+  type: 'test'
+  ...
+# Subtest: Migration V7.7: Zurück, Tabs, zweite Bälle und Blockabpraller bleiben ausführbar
+ok 26 - Migration V7.7: Zurück, Tabs, zweite Bälle und Blockabpraller bleiben ausführbar
+  ---
+  duration_ms: 216.152841
+  type: 'test'
+  ...
+# Subtest: Migration Wechsel V7.9.1: zwei Paare, Protokoll und Paarbindung in vollständiger App
+ok 27 - Migration Wechsel V7.9.1: zwei Paare, Protokoll und Paarbindung in vollständiger App
+  ---
+  duration_ms: 82.627253
+  type: 'test'
+  ...
+# Subtest: Migration Satzwechsel: neue Sechs, Rollen, Rotation, Historie, Libero und Live
+ok 28 - Migration Satzwechsel: neue Sechs, Rollen, Rotation, Historie, Libero und Live
+  ---
+  duration_ms: 248.193965
+  type: 'test'
+  ...
+# Subtest: Migration Versionsannahmen: geladene Version und sichtbare Anzeige stimmen überein
+ok 29 - Migration Versionsannahmen: geladene Version und sichtbare Anzeige stimmen überein
+  ---
+  duration_ms: 50.662655
+  type: 'test'
+  ...
+# Subtest: Transition: Rallyequote 2/3, Chancenverwertung 2/6, Killquote 1/6; keine Doppelzählung
+ok 30 - Transition: Rallyequote 2/3, Chancenverwertung 2/6, Killquote 1/6; keine Doppelzählung
+  ---
+  duration_ms: 314.907505
+  type: 'test'
+  ...
+# Subtest: Gegnerfehler: Annahme, Abwehr, zweiter Ball und Angriff getrennt von Block/Kill
+ok 31 - Gegnerfehler: Annahme, Abwehr, zweiter Ball und Angriff getrennt von Block/Kill
+  ---
+  duration_ms: 55.453412
+  type: 'test'
+  ...
+# Subtest: Satzassistent lädt Libero vor der ersten Rallye auch im Schnellmodus
+ok 32 - Satzassistent lädt Libero vor der ersten Rallye auch im Schnellmodus
+  ---
+  duration_ms: 554.93947
+  type: 'test'
+  ...
+# Subtest: Neustart in Mehrfach-Transition: neue Kontakt-IDs kollidieren nicht mit gespeichertem Entwurf
+ok 33 - Neustart in Mehrfach-Transition: neue Kontakt-IDs kollidieren nicht mit gespeichertem Entwurf
+  ---
+  duration_ms: 220.353472
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 501: vollständiges Match mit Prüfung nach jeder Rallye
+ok 34 - Spieltag Seed 501: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3619.903317
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 502: vollständiges Match mit Prüfung nach jeder Rallye
+ok 35 - Spieltag Seed 502: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3690.535881
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 503: vollständiges Match mit Prüfung nach jeder Rallye
+ok 36 - Spieltag Seed 503: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2394.10933
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 504: vollständiges Match mit Prüfung nach jeder Rallye
+ok 37 - Spieltag Seed 504: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3760.699521
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 505: vollständiges Match mit Prüfung nach jeder Rallye
+ok 38 - Spieltag Seed 505: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4226.363018
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 506: vollständiges Match mit Prüfung nach jeder Rallye
+ok 39 - Spieltag Seed 506: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3872.750216
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 507: vollständiges Match mit Prüfung nach jeder Rallye
+ok 40 - Spieltag Seed 507: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2212.03699
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 508: vollständiges Match mit Prüfung nach jeder Rallye
+ok 41 - Spieltag Seed 508: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3745.33717
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 509: vollständiges Match mit Prüfung nach jeder Rallye
+ok 42 - Spieltag Seed 509: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2313.398346
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 510: vollständiges Match mit Prüfung nach jeder Rallye
+ok 43 - Spieltag Seed 510: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 7396.665413
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 511: vollständiges Match mit Prüfung nach jeder Rallye
+ok 44 - Spieltag Seed 511: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2775.041764
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 512: vollständiges Match mit Prüfung nach jeder Rallye
+ok 45 - Spieltag Seed 512: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3851.657158
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 513: vollständiges Match mit Prüfung nach jeder Rallye
+ok 46 - Spieltag Seed 513: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2526.866153
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 514: vollständiges Match mit Prüfung nach jeder Rallye
+ok 47 - Spieltag Seed 514: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4224.92149
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 515: vollständiges Match mit Prüfung nach jeder Rallye
+ok 48 - Spieltag Seed 515: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4545.890962
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 516: vollständiges Match mit Prüfung nach jeder Rallye
+ok 49 - Spieltag Seed 516: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2909.591647
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 517: vollständiges Match mit Prüfung nach jeder Rallye
+ok 50 - Spieltag Seed 517: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2300.524447
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 518: vollständiges Match mit Prüfung nach jeder Rallye
+ok 51 - Spieltag Seed 518: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3254.389469
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 519: vollständiges Match mit Prüfung nach jeder Rallye
+ok 52 - Spieltag Seed 519: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2155.249668
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 520: vollständiges Match mit Prüfung nach jeder Rallye
+ok 53 - Spieltag Seed 520: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 6076.565294
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 521: vollständiges Match mit Prüfung nach jeder Rallye
+ok 54 - Spieltag Seed 521: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2286.960203
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 522: vollständiges Match mit Prüfung nach jeder Rallye
+ok 55 - Spieltag Seed 522: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3627.992766
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 523: vollständiges Match mit Prüfung nach jeder Rallye
+ok 56 - Spieltag Seed 523: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1901.355447
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 524: vollständiges Match mit Prüfung nach jeder Rallye
+ok 57 - Spieltag Seed 524: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2904.435424
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 525: vollständiges Match mit Prüfung nach jeder Rallye
+ok 58 - Spieltag Seed 525: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3025.118082
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 526: vollständiges Match mit Prüfung nach jeder Rallye
+ok 59 - Spieltag Seed 526: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2818.920347
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 527: vollständiges Match mit Prüfung nach jeder Rallye
+ok 60 - Spieltag Seed 527: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1873.084271
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 528: vollständiges Match mit Prüfung nach jeder Rallye
+ok 61 - Spieltag Seed 528: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3020.611818
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 529: vollständiges Match mit Prüfung nach jeder Rallye
+ok 62 - Spieltag Seed 529: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1937.582395
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 530: vollständiges Match mit Prüfung nach jeder Rallye
+ok 63 - Spieltag Seed 530: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 5287.604829
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 531: vollständiges Match mit Prüfung nach jeder Rallye
+ok 64 - Spieltag Seed 531: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1795.00461
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 532: vollständiges Match mit Prüfung nach jeder Rallye
+ok 65 - Spieltag Seed 532: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3196.794994
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 533: vollständiges Match mit Prüfung nach jeder Rallye
+ok 66 - Spieltag Seed 533: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1843.705379
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 534: vollständiges Match mit Prüfung nach jeder Rallye
+ok 67 - Spieltag Seed 534: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2644.980144
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 535: vollständiges Match mit Prüfung nach jeder Rallye
+ok 68 - Spieltag Seed 535: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3140.41835
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 536: vollständiges Match mit Prüfung nach jeder Rallye
+ok 69 - Spieltag Seed 536: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2827.179933
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 537: vollständiges Match mit Prüfung nach jeder Rallye
+ok 70 - Spieltag Seed 537: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2457.891322
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 538: vollständiges Match mit Prüfung nach jeder Rallye
+ok 71 - Spieltag Seed 538: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3010.248183
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 539: vollständiges Match mit Prüfung nach jeder Rallye
+ok 72 - Spieltag Seed 539: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1869.559199
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 540: vollständiges Match mit Prüfung nach jeder Rallye
+ok 73 - Spieltag Seed 540: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4797.795585
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 541: vollständiges Match mit Prüfung nach jeder Rallye
+ok 74 - Spieltag Seed 541: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1349.648258
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 542: vollständiges Match mit Prüfung nach jeder Rallye
+ok 75 - Spieltag Seed 542: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2972.591719
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 543: vollständiges Match mit Prüfung nach jeder Rallye
+ok 76 - Spieltag Seed 543: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2212.546102
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 544: vollständiges Match mit Prüfung nach jeder Rallye
+ok 77 - Spieltag Seed 544: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3033.403303
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 545: vollständiges Match mit Prüfung nach jeder Rallye
+ok 78 - Spieltag Seed 545: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3271.721244
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 546: vollständiges Match mit Prüfung nach jeder Rallye
+ok 79 - Spieltag Seed 546: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3031.386959
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 547: vollständiges Match mit Prüfung nach jeder Rallye
+ok 80 - Spieltag Seed 547: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1945.234273
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 548: vollständiges Match mit Prüfung nach jeder Rallye
+ok 81 - Spieltag Seed 548: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2670.256942
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 549: vollständiges Match mit Prüfung nach jeder Rallye
+ok 82 - Spieltag Seed 549: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1639.276177
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 550: vollständiges Match mit Prüfung nach jeder Rallye
+ok 83 - Spieltag Seed 550: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4580.457066
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 551: vollständiges Match mit Prüfung nach jeder Rallye
+ok 84 - Spieltag Seed 551: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1871.024095
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 552: vollständiges Match mit Prüfung nach jeder Rallye
+ok 85 - Spieltag Seed 552: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2926.86533
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 553: vollständiges Match mit Prüfung nach jeder Rallye
+ok 86 - Spieltag Seed 553: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2202.88166
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 554: vollständiges Match mit Prüfung nach jeder Rallye
+ok 87 - Spieltag Seed 554: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3354.55056
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 555: vollständiges Match mit Prüfung nach jeder Rallye
+ok 88 - Spieltag Seed 555: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3996.967505
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 556: vollständiges Match mit Prüfung nach jeder Rallye
+ok 89 - Spieltag Seed 556: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3089.420011
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 557: vollständiges Match mit Prüfung nach jeder Rallye
+ok 90 - Spieltag Seed 557: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2084.588991
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 558: vollständiges Match mit Prüfung nach jeder Rallye
+ok 91 - Spieltag Seed 558: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2985.825744
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 559: vollständiges Match mit Prüfung nach jeder Rallye
+ok 92 - Spieltag Seed 559: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2153.158524
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 560: vollständiges Match mit Prüfung nach jeder Rallye
+ok 93 - Spieltag Seed 560: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 5289.525163
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 561: vollständiges Match mit Prüfung nach jeder Rallye
+ok 94 - Spieltag Seed 561: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1720.690301
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 562: vollständiges Match mit Prüfung nach jeder Rallye
+ok 95 - Spieltag Seed 562: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3787.871514
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 563: vollständiges Match mit Prüfung nach jeder Rallye
+ok 96 - Spieltag Seed 563: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2194.439409
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 564: vollständiges Match mit Prüfung nach jeder Rallye
+ok 97 - Spieltag Seed 564: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3203.039819
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 565: vollständiges Match mit Prüfung nach jeder Rallye
+ok 98 - Spieltag Seed 565: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3272.644151
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 566: vollständiges Match mit Prüfung nach jeder Rallye
+ok 99 - Spieltag Seed 566: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3140.250711
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 567: vollständiges Match mit Prüfung nach jeder Rallye
+ok 100 - Spieltag Seed 567: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1849.947939
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 568: vollständiges Match mit Prüfung nach jeder Rallye
+ok 101 - Spieltag Seed 568: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2800.571184
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 569: vollständiges Match mit Prüfung nach jeder Rallye
+ok 102 - Spieltag Seed 569: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2314.128587
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 570: vollständiges Match mit Prüfung nach jeder Rallye
+ok 103 - Spieltag Seed 570: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 5031.262298
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 571: vollständiges Match mit Prüfung nach jeder Rallye
+ok 104 - Spieltag Seed 571: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1958.987925
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 572: vollständiges Match mit Prüfung nach jeder Rallye
+ok 105 - Spieltag Seed 572: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3567.967738
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 573: vollständiges Match mit Prüfung nach jeder Rallye
+ok 106 - Spieltag Seed 573: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1799.104727
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 574: vollständiges Match mit Prüfung nach jeder Rallye
+ok 107 - Spieltag Seed 574: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3039.44999
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 575: vollständiges Match mit Prüfung nach jeder Rallye
+ok 108 - Spieltag Seed 575: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3559.054615
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 576: vollständiges Match mit Prüfung nach jeder Rallye
+ok 109 - Spieltag Seed 576: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2886.044796
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 577: vollständiges Match mit Prüfung nach jeder Rallye
+ok 110 - Spieltag Seed 577: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1943.335853
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 578: vollständiges Match mit Prüfung nach jeder Rallye
+ok 111 - Spieltag Seed 578: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3674.427882
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 579: vollständiges Match mit Prüfung nach jeder Rallye
+ok 112 - Spieltag Seed 579: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1708.002986
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 580: vollständiges Match mit Prüfung nach jeder Rallye
+ok 113 - Spieltag Seed 580: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4719.990387
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 581: vollständiges Match mit Prüfung nach jeder Rallye
+ok 114 - Spieltag Seed 581: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2127.76618
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 582: vollständiges Match mit Prüfung nach jeder Rallye
+ok 115 - Spieltag Seed 582: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2730.190631
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 583: vollständiges Match mit Prüfung nach jeder Rallye
+ok 116 - Spieltag Seed 583: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1719.906698
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 584: vollständiges Match mit Prüfung nach jeder Rallye
+ok 117 - Spieltag Seed 584: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2564.452965
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 585: vollständiges Match mit Prüfung nach jeder Rallye
+ok 118 - Spieltag Seed 585: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3129.664933
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 586: vollständiges Match mit Prüfung nach jeder Rallye
+ok 119 - Spieltag Seed 586: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3413.635856
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 587: vollständiges Match mit Prüfung nach jeder Rallye
+ok 120 - Spieltag Seed 587: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1704.285075
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 588: vollständiges Match mit Prüfung nach jeder Rallye
+ok 121 - Spieltag Seed 588: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2580.465423
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 589: vollständiges Match mit Prüfung nach jeder Rallye
+ok 122 - Spieltag Seed 589: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1712.4308
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 590: vollständiges Match mit Prüfung nach jeder Rallye
+ok 123 - Spieltag Seed 590: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4015.680789
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 591: vollständiges Match mit Prüfung nach jeder Rallye
+ok 124 - Spieltag Seed 591: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1525.293055
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 592: vollständiges Match mit Prüfung nach jeder Rallye
+ok 125 - Spieltag Seed 592: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2348.877217
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 593: vollständiges Match mit Prüfung nach jeder Rallye
+ok 126 - Spieltag Seed 593: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2595.746165
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 594: vollständiges Match mit Prüfung nach jeder Rallye
+ok 127 - Spieltag Seed 594: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2823.526076
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 595: vollständiges Match mit Prüfung nach jeder Rallye
+ok 128 - Spieltag Seed 595: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3061.8733
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 596: vollständiges Match mit Prüfung nach jeder Rallye
+ok 129 - Spieltag Seed 596: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 3163.762073
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 597: vollständiges Match mit Prüfung nach jeder Rallye
+ok 130 - Spieltag Seed 597: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2136.94664
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 598: vollständiges Match mit Prüfung nach jeder Rallye
+ok 131 - Spieltag Seed 598: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 2889.278601
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 599: vollständiges Match mit Prüfung nach jeder Rallye
+ok 132 - Spieltag Seed 599: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 1784.534862
+  type: 'test'
+  ...
+# Subtest: Spieltag Seed 600: vollständiges Match mit Prüfung nach jeder Rallye
+ok 133 - Spieltag Seed 600: vollständiges Match mit Prüfung nach jeder Rallye
+  ---
+  duration_ms: 4290.823623
+  type: 'test'
+  ...
+# Subtest: Import prüft verschachtelte Undo-Historie vor Mutation und bewahrt Rohdaten
+ok 134 - Import prüft verschachtelte Undo-Historie vor Mutation und bewahrt Rohdaten
+  ---
+  duration_ms: 737.458203
+  type: 'test'
+  ...
+# Subtest: Touch-Schließen aktiviert keine darunterliegende Punktkorrektur
+ok 135 - Touch-Schließen aktiviert keine darunterliegende Punktkorrektur
+  ---
+  duration_ms: 51.154619
+  type: 'test'
+  ...
+# Subtest: Touch-Speichern nach Drag: kein verlorener oder doppelter Save; nächste Eingabe bleibt frei
+ok 136 - Touch-Speichern nach Drag: kein verlorener oder doppelter Save; nächste Eingabe bleibt frei
+  ---
+  duration_ms: 64.003522
+  type: 'test'
+  ...
+# Subtest: v7.9.2: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo
+ok 137 - v7.9.2: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo
+  ---
+  duration_ms: 304.805983
+  type: 'test'
+  ...
+# Subtest: pre-pr-main: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo
+ok 138 - pre-pr-main: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo
+  ---
+  duration_ms: 121.070918
+  type: 'test'
+  ...
+# Subtest: Undo schließt ausstehende Zielzone und verhindert verwaiste Bestätigung
+ok 139 - Undo schließt ausstehende Zielzone und verhindert verwaiste Bestätigung
+  ---
+  duration_ms: 74.38483
+  type: 'test'
+  ...
+# Subtest: Sprach-Undo respektiert historische READ-ONLY-Ansicht
+ok 140 - Sprach-Undo respektiert historische READ-ONLY-Ansicht
+  ---
+  duration_ms: 29.179733
+  type: 'test'
+  ...
+# Subtest: Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wie Touch
+ok 141 - Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wie Touch
+  ---
+  duration_ms: 82.16089
+  type: 'test'
+  ...
+# Subtest: Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet
+ok 142 - Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet
+  ---
+  duration_ms: 157.774756
+  type: 'test'
+  ...
+# Subtest: Libero-Aufschlagsverbot und Wiedereintritt in allen sechs Rotationen
+ok 143 - Libero-Aufschlagsverbot und Wiedereintritt in allen sechs Rotationen
+  ---
+  duration_ms: 491.148438
+  type: 'test'
+  ...
+# Subtest: Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: {"st":
+ok 144 - Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: {"st":
+  ---
+  duration_ms: 43.107941
+  type: 'test'
+  ...
+# Subtest: Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: null
+ok 145 - Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: null
+  ---
+  duration_ms: 82.834271
+  type: 'test'
+  ...
+# Subtest: Alle schreibenden Sprachaktionen respektieren READ-ONLY, nicht nur Undo
+ok 146 - Alle schreibenden Sprachaktionen respektieren READ-ONLY, nicht nur Undo
+  ---
+  duration_ms: 30.599006
+  type: 'test'
+  ...
+# Subtest: R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+ok 147 - R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+  ---
+  duration_ms: 337.478208
+  type: 'test'
+  ...
+# Subtest: R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+ok 148 - R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+  ---
+  duration_ms: 66.246474
+  type: 'test'
+  ...
+# Subtest: R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+ok 149 - R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+  ---
+  duration_ms: 63.839029
+  type: 'test'
+  ...
+# Subtest: R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+ok 150 - R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+  ---
+  duration_ms: 38.879947
+  type: 'test'
+  ...
+# Subtest: R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+ok 151 - R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+  ---
+  duration_ms: 37.983474
+  type: 'test'
+  ...
+# Subtest: R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+ok 152 - R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout
+  ---
+  duration_ms: 70.369118
+  type: 'test'
+  ...
+# Subtest: 100 reproduzierbare vollständige Matches, unabhängige Prüfung jedes Punktes
+ok 153 - 100 reproduzierbare vollständige Matches, unabhängige Prüfung jedes Punktes
+  ---
+  duration_ms: 52603.199382
+  type: 'test'
+  ...
+# Subtest: Satzgrenzen: 25/15, zwei Punkte Abstand
+ok 154 - Satzgrenzen: 25/15, zwei Punkte Abstand
+  ---
+  duration_ms: 315.386055
+  type: 'test'
+  ...
+# Subtest: Rotationen und erlaubte Angreifer in allen sechs Aufstellungen
+ok 155 - Rotationen und erlaubte Angreifer in allen sechs Aufstellungen
+  ---
+  duration_ms: 69.062014
+  type: 'test'
+  ...
+# Subtest: Sideout rotiert einmal; eigener Punkt und eigener Fehler nicht
+ok 156 - Sideout rotiert einmal; eigener Punkt und eigener Fehler nicht
+  ---
+  duration_ms: 31.267906
+  type: 'test'
+  ...
+# Subtest: Ungültiger Sieger und beendeter Satz verändern keine Rallyes
+ok 157 - Ungültiger Sieger und beendeter Satz verändern keine Rallyes
+  ---
+  duration_ms: 52.794234
+  type: 'test'
+  ...
+# Subtest: Wechsel/Rückwechsel, Paarbindung und Wiederverwendung
+ok 158 - Wechsel/Rückwechsel, Paarbindung und Wiederverwendung
+  ---
+  duration_ms: 50.040497
+  type: 'test'
+  ...
+# Subtest: Registrierter Libero darf nicht regulär eingewechselt werden
+ok 159 - Registrierter Libero darf nicht regulär eingewechselt werden
+  ---
+  duration_ms: 73.465009
+  type: 'test'
+  ...
+# Subtest: A0 beendet unmittelbar mit Gegnerpunkt
+ok 160 - A0 beendet unmittelbar mit Gegnerpunkt
+  ---
+  duration_ms: 34.643462
+  type: 'test'
+  ...
+# Subtest: D0 beider Teams beendet die Rallye unmittelbar
+ok 161 - D0 beider Teams beendet die Rallye unmittelbar
+  ---
+  duration_ms: 62.498045
+  type: 'test'
+  ...
+# Subtest: Markierter Punkt und Undo sind atomar
+ok 162 - Markierter Punkt und Undo sind atomar
+  ---
+  duration_ms: 44.498704
+  type: 'test'
+  ...
+# Subtest: Undo und explizites Speichern enthalten den aktuellen Spielstand
+ok 163 - Undo und explizites Speichern enthalten den aktuellen Spielstand
+  ---
+  duration_ms: 59.773443
+  type: 'test'
+  ...
+1..163
+# tests 163
+# suites 0
+# pass 163
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 297978.060836
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

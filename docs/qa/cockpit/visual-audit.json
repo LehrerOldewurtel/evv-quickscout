@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-10-28T14:00:49.675Z",
+  "assets": {
+    "index.html": "8fc9ec4d03f13eeb4d5b222a9f07149dd744c3f2813d6dabbf7f867bda38c1da",
+    "app.js": "2ff7031bbc6cdaedb722cbfb79895870cd8c0a39afc9033b270a8cbf4df5b06e",
+    "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
+    "styles.css": "45abcaa379725a297a36ec1e6220d4fc478f051b6502c4c954fcab1844ad38d0",
+    "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
+    "sw.js": "59d16b6af143fb2f9e0d7b6f23f638f25301da89361462a13a4b34beeb7b768b",
+    "manifest.webmanifest": "d0969adf8316c5023195181bd5b31dd218a16430e9ffab6396e37eee6573422c"
+  },
+  "rows": [
+    {
+      "width": 1024,
+      "height": 768,
+      "theme": "light",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 5.64334062616342
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "theme": "dark",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 8.380368004686364
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "theme": "light",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 5.64334062616342
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "theme": "dark",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 8.380368004686364
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 5.64334062616342
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 8.380368004686364
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 5.64334062616342
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "passed": true,
+      "checks": [
+        "six immediately visible metrics",
+        "no metric overlap",
+        "contrast >=4.5",
+        "critical live actions above dock",
+        "touch targets >=44px",
+        "player circles within shared court",
+        "at most three hints"
+      ],
+      "minimumMetricContrast": 8.380368004686364
+    }
+  ],
+  "passed": true
+}

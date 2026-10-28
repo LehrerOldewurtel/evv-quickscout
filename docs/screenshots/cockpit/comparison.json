@@ -1,0 +1,182 @@
+{
+  "baselineCommit": "c66e671bf23afcdfdfaea6535cc62a320c009915",
+  "method": "viewport crop; normalized RMSE; differences expected",
+  "comparisons": [
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "live",
+      "before": "before/1024/live.png",
+      "after": "after/1024/live.png",
+      "normalizedRMSE": 0.337536,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "e708c6d035c93e410bcfa63fc4cb54a6504331cecd7c35ab1d671ee4e407d321",
+      "afterSHA256": "b53cbf85340f28c25926d3e928c803c7b786c235951b784eb5003006d46ea56c"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "analysis",
+      "before": "before/1024/analysis.png",
+      "after": "after/1024/analysis.png",
+      "normalizedRMSE": 0.287991,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "76e25fe07301b28b426ba997e2ab1a58b7e586f4cc738c0f6b169cd0bece085d",
+      "afterSHA256": "d011995aefde9af52e6efc459ffcce5c819e8524ae309af886455f26ca6fb0db"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "tactics",
+      "before": "before/1024/tactics.png",
+      "after": "after/1024/tactics.png",
+      "normalizedRMSE": 0.289895,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "2ca51d7acda527a938ee900b9a003f5f6cc17b01edeb8b4e7b0500eee53d0046",
+      "afterSHA256": "d6ab4524e6ee18f6fa42cb4670d433c514e06ab906c28508991b92b9a5a5ba57"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "editor",
+      "before": "before/1024/editor.png",
+      "after": "after/1024/editor-k1.png",
+      "normalizedRMSE": 0.137723,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "64e7795798b4a9c56f07ec97a62aa212d61d65e2eb902212164e39b2f5c67048",
+      "afterSHA256": "d753bb4d768b38a305344b6e4afdff8aa96dea6743a8f32ad9224aab3d1e7c9e"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "live",
+      "before": "before/820/live.png",
+      "after": "after/820/live.png",
+      "normalizedRMSE": 0.271908,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "7112e155c2caf9311617c079f58210d3efbaeb3b13621e3d1055fa4214090717",
+      "afterSHA256": "cf36f43a63365448b6184c85ce67d2250cb103a0689f01e7c2464c58b5240d88"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "analysis",
+      "before": "before/820/analysis.png",
+      "after": "after/820/analysis.png",
+      "normalizedRMSE": 0.258855,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "7d61248498a3a502e1b0d0c5eed2161960e1fc6c6e14eb50e080b6356572a30f",
+      "afterSHA256": "4f708f0337bb298760944669016239d9af68a66cf803137f57b70b9ba1dbb49e"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "tactics",
+      "before": "before/820/tactics.png",
+      "after": "after/820/tactics.png",
+      "normalizedRMSE": 0.220218,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "a2d71f6332be2300a3a1f8ebd5588569439504b11505ae0ed0169820509c239c",
+      "afterSHA256": "4463195866d3c6afa152f4c1071ab4e85c732518d6068966d088664873c7e76c"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "editor",
+      "before": "before/820/editor.png",
+      "after": "after/820/editor-k1.png",
+      "normalizedRMSE": 0.0637803,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "25d397fa554521734d70b2a6d03b58dcc3b9f744c5e15baf975743ad3bc9270b",
+      "afterSHA256": "ed2e93947b2ee32dbdf566cf1ef88f408c4dbdb549f8525401443c7be731ec6d"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "live",
+      "before": "before/390/live.png",
+      "after": "after/390/live.png",
+      "normalizedRMSE": 0.346807,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "a93ae92c6a48de75ed676ba940800a98dce62ac3ee562252fc8b6bcf474f2221",
+      "afterSHA256": "9e2b3c6dcfbd7cf7f6391c4c9d2d973f5a5e90f979ac16d1d92917017a55cdbc"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "analysis",
+      "before": "before/390/analysis.png",
+      "after": "after/390/analysis.png",
+      "normalizedRMSE": 0.255393,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "f0cec5cf6d6ba268989b9b96f1345b2163af0ad38af851a9e157472f7e1206f3",
+      "afterSHA256": "5c1092cfc0e330c23fd833612d3b27936e43bb34e05b8844ed54bfdeb088da31"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "tactics",
+      "before": "before/390/tactics.png",
+      "after": "after/390/tactics.png",
+      "normalizedRMSE": 0.241058,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "88eea5066f21ceb06fcb6da30c09c10526fa8d187baf1bcc8abc23bd638a8b0c",
+      "afterSHA256": "48e922ef6a33a6e32a0f533013a50e4f71e240f40eb5110b0c6edcc7b04b4632"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "editor",
+      "before": "before/390/editor.png",
+      "after": "after/390/editor-k1.png",
+      "normalizedRMSE": 0.18201,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "cd59f383c497519f687c695d9bd11094bd552d3ad55f4cef31e8be0491bcb412",
+      "afterSHA256": "65c0511ffd5163ec329287759f3a1d87a06511d914613e9948b37726b1629a40"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "live",
+      "before": "before/1440/live.png",
+      "after": "after/1440/live.png",
+      "normalizedRMSE": 0.29628,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "2e9e48e764fb01f91193dd1781f933227b2c0b4575aa069dbfaba7335b8b5b09",
+      "afterSHA256": "2b994bb013e9ef37a07cea82b3ea92ee5cd71c16f0610bc245e08ac5491e1df6"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "analysis",
+      "before": "before/1440/analysis.png",
+      "after": "after/1440/analysis.png",
+      "normalizedRMSE": 0.268366,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "1dddfe61ebc63d9d94655d44e13ac714c141f8ec414ea8c6fd0e2e08ce1aef54",
+      "afterSHA256": "56da0f8b67371b1567e49d63c13b0931d7314a2bd7741554f5872040da3afc80"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "tactics",
+      "before": "before/1440/tactics.png",
+      "after": "after/1440/tactics.png",
+      "normalizedRMSE": 0.282578,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "3f306537afba9850ea634725059122c0aa0630673bc73d6d25cb55947de3c7d1",
+      "afterSHA256": "7e3b71b299c2fb57e9a3905f567d86f14b91546b6b64a14c7eca57ba8b8b452e"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "editor",
+      "before": "before/1440/editor.png",
+      "after": "after/1440/editor-k1.png",
+      "normalizedRMSE": 0.12701,
+      "classification": "intentional redesign; visually reviewed representative views",
+      "beforeSHA256": "e55972c0f72c6962b5e1860bfd3484ef427304ed9d6cf009fa590fe4e4afcded",
+      "afterSHA256": "21b08e047dbf940df89a210abcb1b1d90f863356be83c2f4c06077fea1e6f966"
+    }
+  ]
+}

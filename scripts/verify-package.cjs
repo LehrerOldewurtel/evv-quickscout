@@ -18,7 +18,7 @@ async function stopServer(){if(server){const child=server;server=null;if(child.e
 (async()=>{
  assert(fs.statSync(zip).size>0,'ZIP missing/empty');
  execFileSync('python3',['-m','zipfile','-e',zip,tmp]);
- const required=['index.html','app.js','compact.js','styles.css','version.js','sw.js','manifest.webmanifest','TEST_START.py','ANLEITUNG.txt','BUILD.json','TESTBERICHT.md','TESTBERICHT.json','KNOWN_LIMITATIONS.txt','CHECKSUMS.sha256','RELEASE_ABNAHME.md'];
+ const required=['index.html','app.js','compact.js','styles.css','version.js','sw.js','manifest.webmanifest','TEST_START.py','ANLEITUNG.txt','BUILD.json','TESTBERICHT.md','TESTBERICHT.json','KNOWN_LIMITATIONS.txt','CHECKSUMS.sha256','RELEASE_ABNAHME.md','COCKPIT_DESIGN.md'];
  for(const file of required)assert(fs.statSync(path.join(root,file)).isFile(),`Missing ${file}`);
  const verify=()=>{for(const row of fs.readFileSync(path.join(root,'CHECKSUMS.sha256'),'utf8').trim().split('\n')){const [expected,file]=row.split('  ');assert(file&&!file.includes('/')&&!file.includes('..'),'Unsafe manifest path');assert(hash(path.join(root,file))===expected,'Checksum mismatch '+file)}};
  verify();

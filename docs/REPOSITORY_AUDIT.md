@@ -109,3 +109,17 @@ WebKit wurde mit offiziellen Downloads und signatur-/hashgeprüften lokalen Debi
   werden ausdrücklich getrennt angezeigt. Neue Tests kontrollieren beide Datenstände.
 
 Keine Produktivdaten, kein main-Update, keine Veröffentlichung von RC2.
+
+## Trainer-Cockpit auf dev/v8-trainer-cockpit
+
+Basis c66e671 (RC2), keine Änderung an main/GitHub Pages. Bestehende Statistikfunktionen,
+Turnaround-Nenner, Rollen-/Rotations-/Wechsel-Engine und Formationsbibliothek bleiben
+maßgeblich. Das Cockpit ergänzt rein lesende Projektionen, Kontextfilter und explizite
+Taktik-/Trikotkonfiguration. Gegnerrotation wird ab bestätigter Startzuordnung aus
+bestehenden Sideout-Ereignissen abgeleitet, nicht in einer parallelen Match-Engine geführt.
+Neue optionale Metadaten werden validiert; fehlende Daten bleiben ausdrücklich unbekannt.
+
+Nachgewiesene Korrekturen und tatsächliche Testergebnisse: COCKPIT_REPORT.md,
+Rohdaten unter qa/cockpit. Frühere Zwischenläufe mit Fehlern und Unterbrechungen bleiben
+als solche erhalten. Insbesondere blieb die bestehende Reset-Assertion unverändert;
+behoben wurde die Anwendung. Der Rotationsvergleich erhält jetzt seinen Filterkontext.

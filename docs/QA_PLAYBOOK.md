@@ -164,3 +164,12 @@ Für Vorher-Bilder den unveränderten RC2-Stand c66e671 separat lokal ausliefern
 und `EVV_SCREENSHOT_BASELINE=1` setzen. Das Skript bedient echte UI-Eingaben,
 setzt keine Matchdaten per evaluate und erstellt frische Browserkontexte.
 Ergebnisse: docs/screenshots/cockpit/before und after (vier Viewports).
+
+Schlusslauf Trainer-Cockpit: 163 Node-/112 Chromium-Tests, dazu 56 WebKit-Fälle
+(einschließlich drei vollständiger UI-Matches). Auswahl:
+`npx playwright test --config playwright.webkit.config.cjs tests/e2e/hybrid.spec.cjs tests/e2e/release.spec.cjs tests/e2e/practice.spec.cjs tests/e2e/cockpit.spec.cjs tests/e2e/matchday.spec.cjs --grep-invert 'Echter Chromium-Neustart'`.
+Der ausgeschlossene Test startet ausdrücklich Chromium und läuft im vollen Chromium-Lauf.
+
+`node scripts/audit-cockpit-views.cjs` prüft acht echte Layout-/Kontrast-Kontexte.
+`node scripts/compare-cockpit-screens.cjs` quantifiziert mit ImageMagick 16 absichtlich
+geänderte Vorher-/Nachher-Bilder. Das ist keine künstliche Golden-Pixel-Freigabe.
