@@ -5,7 +5,7 @@ const engines=require('@playwright/test');
 const browserNames=(process.env.EVV_QA_BROWSERS||'chromium').split(',');
 const zip=path.resolve(process.argv[2]||'artifacts/EVV-QuickScout-V8-RC.zip');
 const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'evv-verify-zip-'));
-const root=path.join(tmp,'EVV-QuickScout-V8-RC');
+const root=path.join(tmp,process.env.EVV_QA_PACKAGE_ROOT||'EVV-QuickScout-V8-RC');
 const hash=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
 const assert=(ok,message)=>{if(!ok)throw Error(message)};
 let server,browser;

@@ -21,7 +21,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=ROOT / 'artifacts/EVV-QuickScout-V8-RC.zip')
     parser.add_argument('--evidence-dir', type=Path, default=ROOT / 'docs/qa/cockpit')
+    parser.add_argument('--folder', default='EVV-QuickScout-V8-RC')
     args = parser.parse_args()
+    assert args.folder and all(c.isalnum() or c in '-_' for c in args.folder), 'Invalid package folder'
     report = json.loads((ROOT / 'artifacts/release-candidate.json').read_text())
     assert report['run']['node']['exitCode'] == report['run']['browser']['exitCode'] == 0, 'QA process failed'
     assert report['node']['failed'] == report['node']['cancelled'] == report['node']['skipped'] == 0, 'Node gate not green'
@@ -57,7 +59,7 @@ def main():
         (stage / 'CHECKSUMS.sha256').write_text(''.join(f'{digest(p)}  {p.name}\n' for p in sorted(stage.iterdir())))
         with zipfile.ZipFile(args.output, 'w', zipfile.ZIP_DEFLATED) as archive:
             for file in sorted(stage.iterdir()):
-                archive.write(file, 'EVV-QuickScout-V8-RC/' + file.name)
+                archive.write(file, args.folder + '/' + file.name)
     assert args.output.is_file() and args.output.stat().st_size > 0
     checksum = digest(args.output)
     args.output.with_suffix('.zip.sha256').write_text(f'{checksum}  {args.output.name}\n')

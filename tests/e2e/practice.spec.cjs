@@ -34,9 +34,9 @@ for(const [width,height] of [[820,1180],[768,1024],[1024,768],[1180,820]])test(`
 });
 test.describe('Formationseditor ohne Touch-Hardware',()=>{test.use({hasTouch:false});
 test('Formationseditor: außermittig greifen ohne Sprung, Auswahl/Zielklick und Maus-Speichern',async({page})=>{
- await quick(page);await page.locator('#formationEditor').click();const svg=page.locator('#formationSvg'),p=svg.locator('[data-form-slot="1"]');await p.scrollIntoViewIfNeeded();const a=await p.boundingBox();
- await page.mouse.move(a.x+a.width*.8,a.y+a.height/2);await page.mouse.down();await page.mouse.move(a.x+a.width*.8-26,a.y+a.height/2-28,{steps:6});await page.mouse.up();const b=await p.boundingBox();expect(Math.abs((b.x-a.x)+26)).toBeLessThan(2);expect(Math.abs((b.y-a.y)+28)).toBeLessThan(2);
- await p.click();const box=await svg.boundingBox();await svg.click({position:{x:box.width*.5,y:box.height*.78}});const t=await p.boundingBox();expect(Math.abs(t.x+t.width/2-(box.x+box.width*.5))).toBeLessThan(2);expect(Math.abs(t.y+t.height/2-(box.y+box.height*.78))).toBeLessThan(2);
+ await quick(page);await page.locator('#formationEditor').click();const svg=page.locator('#formationSvg'),p=svg.locator('[data-form-slot="1"]');await p.scrollIntoViewIfNeeded();const a=await p.locator('circle').boundingBox();
+ await page.mouse.move(a.x+a.width*.8,a.y+a.height/2);await page.mouse.down();await page.mouse.move(a.x+a.width*.8-26,a.y+a.height/2-28,{steps:6});await page.mouse.up();const b=await p.locator('circle').boundingBox();expect(Math.abs((b.x-a.x)+26)).toBeLessThan(2);expect(Math.abs((b.y-a.y)+28)).toBeLessThan(2);
+ await p.click();const box=await svg.boundingBox();await svg.click({position:{x:box.width*.5,y:box.height*.78}});const t=await p.locator('circle').boundingBox();expect(Math.abs(t.x+t.width/2-(box.x+box.width*.5))).toBeLessThan(2);expect(Math.abs(t.y+t.height/2-(box.y+box.height*.78))).toBeLessThan(2);
  await page.locator('#formSave').click();await page.locator('#formClose').click();await page.reload();await page.locator('#formationEditor').click();const saved=await page.locator('[data-form-slot="1"]').getAttribute('transform');expect(saved).toMatch(/translate\(450/);
 });
 });
