@@ -123,3 +123,11 @@ Nachgewiesene Korrekturen und tatsächliche Testergebnisse: COCKPIT_REPORT.md,
 Rohdaten unter qa/cockpit. Frühere Zwischenläufe mit Fehlern und Unterbrechungen bleiben
 als solche erhalten. Insbesondere blieb die bestehende Reset-Assertion unverändert;
 behoben wurde die Anwendung. Der Rotationsvergleich erhält jetzt seinen Filterkontext.
+
+## Praxistest-Korrekturen, 28.10.2026
+
+Separater Branch `dev/v8-practice-fixes` auf `dev/v8-trainer-cockpit`. `main`,
+Release-Basis und produktive Pages bleiben unverändert. Ursachen und aktuelle
+Testergebnisse stehen in `PRACTICE_FIXES_REPORT.md`, Rohbelege in `qa/practice/`.
+Formationsspeicherung bleibt in der bestehenden Bibliothek; optionale Ebenen
+werden vor Mutation validiert. Keine neue Scouting-/Statistik-Engine.

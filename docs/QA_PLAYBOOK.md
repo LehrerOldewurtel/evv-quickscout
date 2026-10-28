@@ -173,3 +173,20 @@ Der ausgeschlossene Test startet ausdrücklich Chromium und läuft im vollen Chr
 `node scripts/audit-cockpit-views.cjs` prüft acht echte Layout-/Kontrast-Kontexte.
 `node scripts/compare-cockpit-screens.cjs` quantifiziert mit ImageMagick 16 absichtlich
 geänderte Vorher-/Nachher-Bilder. Das ist keine künstliche Golden-Pixel-Freigabe.
+
+## Praxistest: Zwei-Team-Editor
+
+`tests/practice-fixes.test.cjs` prüft die K1-Libero-Projektion für alle 36
+Kombinationen aus Start-/Vorschaurotation, MB1/MB2 und Niklas, sichere Bibliotheks-
+Validierung und Reload. `tests/e2e/practice-fixes.spec.cjs` führt Speichern,
+Speichern unter, Laden, Schutz ungespeicherter Änderungen, beide Teams und
+Ausgangsstellungen, alle 18 K2-Bilder, Gegnernummern, Libero nach Wechsel/Satzwechsel,
+Reload und Präsentationsgrößen direkt in der Browseroberfläche aus.
+`tests/e2e/practice-touch-drag.spec.cjs` verwendet tatsächliche emulierte Touch-
+Drag-Eingaben über Chromium-CDP. In WebKit laufen Maus-Drag und native Playwright-
+Touch-Taps mit Auswahl/Ziel, kein behaupteter Hardware-Touch-Drag.
+
+Die alte Maus-Geometrieprüfung misst nun den Spielerkreis; der neue Name darunter
+gehört nicht zum Mittelpunkt des verschiebbaren Symbols. Die Genauigkeit bleibt
+unverändert. Neue Evidenz wird unter `docs/qa/practice/` abgelegt; ältere Cockpit-
+Berichte beschreiben ihren damaligen Stand.

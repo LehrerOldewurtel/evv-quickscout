@@ -93,3 +93,41 @@ zusätzliche Statussymbole und Texte. Reduzierte Bewegung respektiert das System
 Der lokale Cockpit-Starter isoliert Matchdaten, Präferenzen und Service-Worker-Cache
 von Produktion und älteren RC-Testständen. Nur synthetische Spiele verwenden.
 Eine automatisierte Linux-WebKit-Prüfung ersetzt keinen echten Safari-/iPad-Test.
+
+## Praxistest-Korrekturen vom 28.10.2026
+
+Die bestehende `formationBook[Rotation:Art]` bleibt die Quelle der Taktikbilder.
+Optionale `base`-Ebenen speichern Ausgangsstellungen; `opponents[R1..R6]` enthält
+unabhängige Gegnerbilder und deren Ausgangsstellungen. Alle Ebenen verwenden
+Feldplätze P1–P6, Ziele, Laufwege, Ballwege und Angriffsrouten. Dadurch bleiben
+Wechselspieler und Libero an den aktuellen Feldplatz gebunden. Bestehende
+Bibliotheken werden ohne Umschreiben gelesen; fehlende Bilder bleiben fehlend.
+Benannte `formationTemplates` enthalten zusätzlich eigene/gegnerische Rotation,
+Formation und Stellung. Laden öffnet den gespeicherten Kontext; Speichern übernimmt ihn.
+
+Ausgangsstellungen werden anhand der Symbolmittelpunkte geprüft: P4 links von P3
+links von P2, P5 links von P6 links von P1 und Vorderreihe vor dem zugeordneten
+Hinterspieler. Dies ist eine zeichnerische Reihenfolgeprüfung, keine Auswertung
+der tatsächlichen Fußpositionen durch einen Schiedsrichter. Taktische Ziele sind
+frei. Keine dieser Änderungen verändert Regelaufstellung, Punkte oder Live-Rotation.
+
+Der Editor arbeitet auf einer Kopie. Wechseln oder Schließen mit Änderungen
+fragt vor dem Verwerfen nach; ein Abbruch erhält die Kopie. Reload/Tab-Schließen
+verwendet die Browserwarnung. Erst erfolgreicher localStorage-Write bestätigt
+Speichern. Reset betrifft das gewählte Team und die gewählte Stellung; er wird
+erst durch Speichern dauerhaft. Regelmäßiger JSON-Export bleibt erforderlich.
+
+Die K1-Vorschau berechnet den Libero unabhängig vom aktuellen Live-Aufschlagrecht.
+R3/R6 werden nicht pauschal behandelt: maßgeblich sind tatsächliche MB-Rollen,
+Startrotation, Position und registrierter Libero. K2 auf P1 zeigt den eigenen
+Aufschläger. Die Live-Synchronisation bleibt unverändert. Gegner rotieren nur bei
+dokumentierten Sideouts; sechs eingetragene Nummern werden auch an Gegneranalyse
+und Scouting weitergereicht. Eine neue Satzaufstellung muss bestätigt werden.
+
+Niklas (#5) ergänzt den Kader, ohne alte Startsechsen zu ändern. Ist #5 in einem
+bestehenden Testmatch bereits einem anderen Spieler zugeordnet, bleibt diese
+Zuordnung erhalten; Niklas zeigt bis zur Klärung ?. Bekannte Nummern sind in der
+Ergänzungsansicht schreibgeschützt, unbekannte bleiben leer.
+
+Der Präsentationsmodus vergrößert den Dialog auf den Bildschirm. Formationswahl
+und Rotationsvorschau bleiben lesend; er benötigt keine Fullscreen-Berechtigung.

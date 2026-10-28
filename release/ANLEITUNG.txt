@@ -1,11 +1,13 @@
-EVV QuickScout V8 – TRAINER-COCKPIT ZUR PRAXISABNAHME
+EVV QuickScout V8 – PRAXISTEST-KORREKTUREN
 
 Entwicklungskandidat, keine stabile V8-Freigabe. Produktkennung bleibt 7.19.0-k1-auto-mb.
 Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
 
 MAC / IPAD STARTEN
 1. ZIP vollständig in einen neuen Ordner entpacken. Alte Testpakete behalten.
-2. Terminal im entpackten Ordner mit TEST_START.py öffnen.
+2. Wenn der neue Ordner in Downloads liegt, diese ganze Zeile im Terminal ausführen:
+   python3 "$HOME/Downloads/EVV-QuickScout-V8-Praxistest/TEST_START.py" --lan
+   Der Ordnername muss genau passen. Alternativ Terminal im entpackten Ordner öffnen.
 3. Python 3 muss installiert sein: python3 --version
    Falls nötig: https://www.python.org/downloads/macos/ (signierter Installer).
 4. Start: python3 TEST_START.py --lan
@@ -32,7 +34,12 @@ KURZER PRAXISTEST
 - „Trainer-Editor“: Spieler ziehen oder auswählen und Zielposition anklicken.
   Lauf-, Ball- und Angriffsrouten über das Werkzeug wählen. „Speichern“ bestätigt
   alle sechs sichtbaren Positionen. Vorlagen können kopiert und zurückgesetzt werden.
-  „Zurücksetzen“ + Speichern entfernt die Vorlage.
+  Beide Teams und Ausgangs-/taktische Stellung sind getrennt bearbeitbar.
+  „Speichern unter“ legt eine benannte Vorlage mit beiden Rotationen an;
+  „Vorlage laden“ öffnet den zugehörigen Kontext. Ungespeicherte Änderungen
+  werden beim Verlassen abgefragt. Reset + Speichern leert nur das gewählte
+  Team in der gewählten Stellung. Ungültige Ausgangsstellungen werden abgewiesen.
+  „Vergrößern“ im Spielbetrieb öffnet die Auszeit-Präsentation.
   „Spielbetrieb anzeigen“ zeigt das gespeicherte Ergebnis; Regelpositionen bleiben gleich.
 - Einen regulären Wechsel durchführen, das Taktikfeld kontrollieren und per Undo
   einen Punkt zurücknehmen. Nach Satzende neue Startsechs prüfen und K1/K2 starten.
@@ -42,7 +49,9 @@ KURZER PRAXISTEST
 
 DATENTRENNUNG UND GRENZEN
 Der Starter nutzt evvQuickScout_COCKPIT_TEST, eigene Präferenzen und einen eigenen
-Cache-Namensraum. Produktion und frühere RC-Testdaten werden nicht überschrieben.
+Cache-Namensraum. Die produktive Ablage und frühere RC-Ablagen bleiben getrennt. Bestehende
+Cockpit-Testspiele am selben Browser-Origin bleiben im Cockpit-Test-Namensraum.
+Für die neue Version bitte ein frisches synthetisches Testmatch anlegen.
 Mac und iPad speichern unabhängig; keine Cloud-Synchronisierung.
 HTTP im WLAN ist für Funktionstests gedacht. Safari benötigt für verlässlichen
 Offline-/Mikrofonbetrieb einen separaten HTTPS-Test-Origin und echte Geräteabnahme.
