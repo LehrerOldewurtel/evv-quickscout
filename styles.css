@@ -263,3 +263,8 @@ button.metricCard{width:100%;font:inherit;text-align:left;cursor:pointer}button.
 @media(max-width:700px){.matchPlanBar{grid-template-columns:repeat(3,minmax(0,1fr))}.matchPlanBar button{min-height:63px}.matchPlanBar b,.matchPlanBar .planValue{font-size:16px}.planHeaderRow{gap:4px}.planHeaderRow .pacerEntry{padding:2px 7px}.pacerCard strong{font-size:25px}}
 /* Filled rotation warnings must wrap inside the six-card matchplan strip. */
 .matchPlanBar b{overflow-wrap:anywhere}
+/* Matchplan status text follows the selected/system color scheme. */
+:root{--plan-green:#126438;--plan-amber:#805500;--plan-red:#ac263f}
+html[data-theme="dark"]{--plan-green:#a3e8b8;--plan-amber:#f3d28b;--plan-red:#ffacb6}
+@media(prefers-color-scheme:dark){html[data-theme="auto"]{--plan-green:#a3e8b8;--plan-amber:#f3d28b;--plan-red:#ffacb6}}
+.pacerEntry.green,.planValue.green,.matchPlanBar b.green{color:var(--plan-green)}.pacerEntry.amber,.planValue.amber,.matchPlanBar b.amber{color:var(--plan-amber)}.pacerEntry.red,.matchPlanBar b.red{color:var(--plan-red)}#planError{color:var(--cockpit-red)}
