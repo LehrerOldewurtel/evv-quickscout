@@ -1,0 +1,32 @@
+[2m[WebServer] [22m127.0.0.1 - - [26/Oct/2026 14:30:14] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:33913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:33913) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/cache-lifecycle.spec.cjs:3:1 › Cache: Upgrade, fehlgeschlagenes Upgrade, Offline-Rückfall und Online-Rollback erhalten Rallye (7.4s)
+
+
+  1) tests/e2e/cache-lifecycle.spec.cjs:3:1 › Cache: Upgrade, fehlgeschlagenes Upgrade, Offline-Rückfall und Online-Rollback erhalten Rallye
+
+    Error: page.evaluate: ReferenceError: EVV_QS_TEST is not defined
+        at eval (eval at evaluate (:290:30), <anonymous>:1:38)
+        at UtilityScript.evaluate (<anonymous>:292:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at eval (eval at evaluate (:290:30), <anonymous>:1:38)
+        at UtilityScript.evaluate (<anonymous>:292:16)
+        at UtilityScript.<anonymous> (<anonymous>:1:44)
+        at /workspace/evv-quickscout/tests/e2e/cache-lifecycle.spec.cjs:17:71
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/cache-lifecycle-Cache-Upgr-18bda-ne-Rollback-erhalten-Rallye/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/cache-lifecycle-Cache-Upgr-18bda-ne-Rollback-erhalten-Rallye/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/cache-lifecycle.spec.cjs:3:1 › Cache: Upgrade, fehlgeschlagenes Upgrade, Offline-Rückfall und Online-Rollback erhalten Rallye

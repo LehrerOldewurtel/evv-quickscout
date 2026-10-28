@@ -1,0 +1,119 @@
+{
+  "generatedAt": "2026-10-27T18:17:38.643Z",
+  "zip": "/workspace/EVV-QuickScout-V8-RC.zip",
+  "sha256": "015219a76d07fe09aec72d3f16920ae940f065cea1001810e9063bb5176db863",
+  "extractedTo": "/tmp/evv-verify-zip-drk4Pj/EVV-QuickScout-V8-RC",
+  "requiredFiles": 15,
+  "manifestFiles": 15,
+  "contexts": [
+    {
+      "browser": "chromium",
+      "inputMethod": "tap",
+      "offlineMethod": "Playwright offline switch",
+      "width": 390,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "inputMethod": "tap",
+      "offlineMethod": "Playwright offline switch",
+      "width": 820,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "chromium",
+      "inputMethod": "tap",
+      "offlineMethod": "Playwright offline switch",
+      "width": 1440,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "inputMethod": "tap",
+      "offlineMethod": "actual server termination",
+      "width": 390,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "inputMethod": "tap",
+      "offlineMethod": "actual server termination",
+      "width": 820,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    },
+    {
+      "browser": "webkit",
+      "inputMethod": "tap",
+      "offlineMethod": "actual server termination",
+      "width": 1440,
+      "passed": true,
+      "checks": [
+        "quick",
+        "detail",
+        "tactics",
+        "analysis",
+        "statistics",
+        "test storage",
+        "service worker",
+        "offline reload",
+        "checksums"
+      ]
+    }
+  ],
+  "passed": true
+}

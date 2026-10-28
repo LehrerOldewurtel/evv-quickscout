@@ -1,0 +1,1305 @@
+{
+  "generator": "lcg-1664525-1013904223",
+  "results": [
+    {
+      "seed": 1,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 2,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 3,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 160,
+      "final": [
+        27,
+        29
+      ]
+    },
+    {
+      "seed": 4,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 5,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 154,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 6,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 250,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 7,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 160,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 8,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 242,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 9,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 156,
+      "final": [
+        27,
+        29
+      ]
+    },
+    {
+      "seed": 10,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 234,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 11,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 154,
+      "final": [
+        27,
+        25
+      ]
+    },
+    {
+      "seed": 12,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 234,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 13,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 14,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 15,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 154,
+      "final": [
+        24,
+        26
+      ]
+    },
+    {
+      "seed": 16,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 242,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 17,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 158,
+      "final": [
+        27,
+        25
+      ]
+    },
+    {
+      "seed": 18,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 19,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 20,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 21,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 150,
+      "final": [
+        24,
+        26
+      ]
+    },
+    {
+      "seed": 22,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 23,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 24,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 25,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 160,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 26,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 27,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 156,
+      "final": [
+        25,
+        27
+      ]
+    },
+    {
+      "seed": 28,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 29,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 160,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 30,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 31,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 150,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 32,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 33,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 154,
+      "final": [
+        25,
+        27
+      ]
+    },
+    {
+      "seed": 34,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 238,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 35,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 158,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 36,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 37,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 38,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 39,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 162,
+      "final": [
+        26,
+        28
+      ]
+    },
+    {
+      "seed": 40,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 238,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 41,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 164,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 42,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 238,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 43,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 154,
+      "final": [
+        27,
+        25
+      ]
+    },
+    {
+      "seed": 44,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 45,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 158,
+      "final": [
+        26,
+        28
+      ]
+    },
+    {
+      "seed": 46,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 238,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 47,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 48,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 49,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 158,
+      "final": [
+        27,
+        25
+      ]
+    },
+    {
+      "seed": 50,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 51,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 162,
+      "final": [
+        26,
+        28
+      ]
+    },
+    {
+      "seed": 52,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 53,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 152,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 54,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 55,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        27,
+        25
+      ]
+    },
+    {
+      "seed": 56,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 242,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 57,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 160,
+      "final": [
+        27,
+        29
+      ]
+    },
+    {
+      "seed": 58,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 59,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 60,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 250,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 61,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 162,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 62,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 250,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 63,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 164,
+      "final": [
+        27,
+        29
+      ]
+    },
+    {
+      "seed": 64,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 236,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 65,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 154,
+      "final": [
+        27,
+        25
+      ]
+    },
+    {
+      "seed": 66,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 236,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 67,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 158,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 68,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 69,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 156,
+      "final": [
+        24,
+        26
+      ]
+    },
+    {
+      "seed": 70,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 242,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 71,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 158,
+      "final": [
+        27,
+        25
+      ]
+    },
+    {
+      "seed": 72,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 242,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 73,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 164,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 74,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 75,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 152,
+      "final": [
+        24,
+        26
+      ]
+    },
+    {
+      "seed": 76,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 77,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 158,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 78,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 79,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 160,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 80,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 248,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 81,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 158,
+      "final": [
+        25,
+        27
+      ]
+    },
+    {
+      "seed": 82,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 83,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 162,
+      "final": [
+        28,
+        26
+      ]
+    },
+    {
+      "seed": 84,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 248,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 85,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 158,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 86,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 87,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 154,
+      "final": [
+        25,
+        27
+      ]
+    },
+    {
+      "seed": 88,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 240,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 89,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 160,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 90,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 91,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 156,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 92,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 246,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 93,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 158,
+      "final": [
+        25,
+        27
+      ]
+    },
+    {
+      "seed": 94,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 238,
+      "final": [
+        16,
+        14
+      ]
+    },
+    {
+      "seed": 95,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 164,
+      "final": [
+        29,
+        27
+      ]
+    },
+    {
+      "seed": 96,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        17,
+        15
+      ]
+    },
+    {
+      "seed": 97,
+      "sets": 3,
+      "wins": [
+        3,
+        0
+      ],
+      "rallies": 152,
+      "final": [
+        26,
+        24
+      ]
+    },
+    {
+      "seed": 98,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 244,
+      "final": [
+        18,
+        16
+      ]
+    },
+    {
+      "seed": 99,
+      "sets": 3,
+      "wins": [
+        0,
+        3
+      ],
+      "rallies": 158,
+      "final": [
+        26,
+        28
+      ]
+    },
+    {
+      "seed": 100,
+      "sets": 5,
+      "wins": [
+        3,
+        2
+      ],
+      "rallies": 238,
+      "final": [
+        16,
+        14
+      ]
+    }
+  ]
+}

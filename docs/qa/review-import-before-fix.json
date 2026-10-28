@@ -1,0 +1,22 @@
+{
+  "stats": {
+    "startTime": "2026-10-26T13:05:52.524Z",
+    "duration": 4259.437,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  },
+  "failures": [
+    [
+      {
+        "location": {
+          "file": "/workspace/evv-quickscout/tests/e2e/review.spec.cjs",
+          "column": 48,
+          "line": 51
+        },
+        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 0\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -624,10 +624,11 @@\u001b[39m\n\u001b[2m          \"rot\": 5,\u001b[22m\n\u001b[2m          \"serving\": false,\u001b[22m\n\u001b[2m        },\u001b[22m\n\u001b[2m      },\u001b[22m\n\u001b[2m    ],\u001b[22m\n\u001b[31m+   \"sixBoards\": Object {},\u001b[39m\n\u001b[2m    \"started\": true,\u001b[22m\n\u001b[2m    \"subCount\": 1,\u001b[22m\n\u001b[2m    \"subPairs\": Object {\u001b[22m\n\u001b[2m      \"lion\": \"michael\",\u001b[22m\n\u001b[2m    },\u001b[22m\n\n  49 |  const s=await state(page);for(const key of fields)expect(s[key],key).toEqual(payload.st[key]);\n  50 |  if(!payload.st.liberoOnCourt)expect(s.liberoActive).toBe(false);\n> 51 |  await page.reload();expect(await state(page)).toEqual(s);\n     |                                                ^\n  52 | });\n  53 |\n    at /workspace/evv-quickscout/tests/e2e/review.spec.cjs:51:48"
+      }
+    ]
+  ]
+}

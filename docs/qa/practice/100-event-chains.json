@@ -1,0 +1,702 @@
+[
+  {
+    "seed": 1,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 2,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 3,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 4,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 5,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 6,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 7,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 8,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 9,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 10,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 11,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 12,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 13,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 14,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 15,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 16,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 17,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 18,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 19,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 20,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 21,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 22,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 23,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 24,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 25,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 26,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 27,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 28,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 29,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 30,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 31,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 32,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 33,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 34,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 35,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 36,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 37,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 38,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 39,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 40,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 41,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 42,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 43,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 44,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 45,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 46,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 47,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 48,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 49,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 50,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 51,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 52,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 53,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 54,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 55,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 56,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 57,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 58,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 59,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 60,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 61,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 62,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 63,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 64,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 65,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 66,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 67,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 68,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 69,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 70,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 71,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 72,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 73,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 74,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 75,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 76,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 77,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 78,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 79,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 80,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 81,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 82,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 83,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 84,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 85,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 86,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 87,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 88,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 89,
+    "attacks": 6,
+    "transitions": 5,
+    "winner": "Gegner",
+    "contacts": 42
+  },
+  {
+    "seed": 90,
+    "attacks": 0,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 91,
+    "attacks": 1,
+    "transitions": 1,
+    "winner": "EVV",
+    "contacts": 9
+  },
+  {
+    "seed": 92,
+    "attacks": 3,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 93,
+    "attacks": 4,
+    "transitions": 3,
+    "winner": "Gegner",
+    "contacts": 26
+  },
+  {
+    "seed": 94,
+    "attacks": 4,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  },
+  {
+    "seed": 95,
+    "attacks": 5,
+    "transitions": 5,
+    "winner": "EVV",
+    "contacts": 41
+  },
+  {
+    "seed": 96,
+    "attacks": 1,
+    "transitions": 0,
+    "winner": "EVV",
+    "contacts": 2
+  },
+  {
+    "seed": 97,
+    "attacks": 2,
+    "transitions": 1,
+    "winner": "Gegner",
+    "contacts": 10
+  },
+  {
+    "seed": 98,
+    "attacks": 2,
+    "transitions": 2,
+    "winner": "EVV",
+    "contacts": 18
+  },
+  {
+    "seed": 99,
+    "attacks": 3,
+    "transitions": 3,
+    "winner": "EVV",
+    "contacts": 25
+  },
+  {
+    "seed": 100,
+    "attacks": 5,
+    "transitions": 4,
+    "winner": "EVV",
+    "contacts": 34
+  }
+]

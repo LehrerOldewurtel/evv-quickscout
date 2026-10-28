@@ -19,9 +19,10 @@ function roleForPosition(pos){const id=st.lineup[pos-1];return id?roleOf(id):""}
 const byId=id=>roster.find(p=>p.id===id), nm=id=>(byId(id)||{name:id}).name;
 let opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};
 let tab="rally",view="live",draft={},draftHistory=[],pendingMark=null;
+let storageLoadFailed=false,restoredRuntime=null;
 let st=fresh();
 function fresh(){return{started:false,set:1,e:0,o:0,rot:1,serving:true,setEnded:false,matchEnded:false,
-lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},opponentPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,liberoPreferredId:"",liberoPreferredMB:"",
+lineup:["johann","michael","janik","jens","arthur","dirk"],roles:defaultRoles(),receiveIds:[],receivePlans:{},tacticPositions:{},opponentPositions:{},liberoIds:["amar","alex"],liberoOnCourt:"",liberoReplacedId:"",liberoActive:false,liberoAutoEnabled:true,liberoPreferredId:"",liberoPreferredMB:"",
 rallies:[],sets:[],rallyUndo:[],events:[],marks:[],setStart:null,subPairs:{},subCount:0,subUsed:[]}}
 function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function toast(s){$("toast").textContent=s;$("toast").classList.remove("hidden");setTimeout(()=>$("toast").classList.add("hidden"),1100)}
@@ -32,7 +33,7 @@ function target(set=st.set){return set===5?15:25}
 function isSetWin(e=st.e,o=st.o,set=st.set){return (e>=target(set)||o>=target(set))&&Math.abs(e-o)>=2}
 function setWins(team){let w=st.sets.filter(s=>(team==="EVV"?s.e>s.o:s.o>s.e)).length;if(st.setEnded&&(team==="EVV"?st.e>st.o:st.o>st.e))w++;return w}
 function checkEnd(){st.setEnded=isSetWin();st.matchEnded=false;if(st.setEnded){const w=st.e>st.o?"EVV":"Gegner";st.matchEnded=setWins(w)>=3}}
-function snapshot(){return clone({coachNotes:st.coachNotes,e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,sixBoards:st.sixBoards,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB})}
+function snapshot(){return clone({coachNotes:st.coachNotes,e:st.e,o:st.o,rot:st.rot,serving:st.serving,setEnded:st.setEnded,matchEnded:st.matchEnded,rallies:st.rallies,marks:st.marks,events:st.events,subPairs:st.subPairs,subCount:st.subCount,subUsed:st.subUsed,lineup:st.lineup,roles:st.roles,receiveIds:st.receiveIds,receivePlans:st.receivePlans,tacticPositions:st.tacticPositions,opponentPositions:st.opponentPositions,sixBoards:st.sixBoards,liberoOnCourt:st.liberoOnCourt,liberoReplacedId:st.liberoReplacedId,liberoActive:st.liberoActive,liberoAutoEnabled:st.liberoAutoEnabled,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB})}
 function restore(x){Object.assign(st,clone(x))}
 const STORE_KEY="evvQuickScoutV77";
 function sanitizeLiberoName(v){return String(v||"").trim().slice(0,45)}
@@ -60,8 +61,16 @@ function setupLiberoSelectors(){
 }
 function readLiberoNames(){return [1,2].map(i=>$("evvLiberoName"+i)?.value??(st.liberoIds[i-1]&&["amar","alex"].includes(st.liberoIds[i-1])?nm(st.liberoIds[i-1]):""))}
 function applyLiberoNames(){const ids=liberoSlotIds();if(!configureLiberoSlots(ids,readLiberoNames()))return false;setupLiberoSelectors();return true}
-function saveLocal(){try{localStorage.setItem(STORE_KEY,JSON.stringify({st,opponent,roster}))}catch(e){toast("Speicher voll: Bitte Backup exportieren")}}
-function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){st=Object.assign(fresh(),d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.sixBoards=st.sixBoards||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}}catch(e){}return false}
+function saveLocal(){if(storageLoadFailed)return false;try{localStorage.setItem(STORE_KEY,JSON.stringify({schemaVersion:2,st,opponent,roster,runtime:{draft,draftHistory,pendingMark,liveMode,tab,view}}));if($("storageWarning"))$("storageWarning").remove();return true}catch(e){if(!$("storageWarning")){const warning=document.createElement("p");warning.id="storageWarning";warning.setAttribute("role","alert");warning.textContent="Speichern fehlgeschlagen. Stand bleibt im Arbeitsspeicher. Bitte jetzt exportieren; Seite nicht schließen.";document.body.prepend(warning)}toast("Speicher voll: Bitte Backup exportieren");return false}}
+// Preserve an explicit "no libero" choice when loading pre-flag matches.
+function loadedMatch(match){
+ const result=Object.assign(fresh(),match);
+ result.sixBoards=result.sixBoards||{};
+ if(!Object.prototype.hasOwnProperty.call(match,"liberoAutoEnabled")&&match.started)
+  result.liberoAutoEnabled=!!(match.liberoOnCourt||match.liberoPreferredId||match.liberoActive);
+ return result;
+}
+function loadLocal(){try{const raw=localStorage.getItem(STORE_KEY);if(!raw)return false;const d=JSON.parse(raw);if(d&&d.st){if(d.schemaVersion&&d.schemaVersion!==2)throw Error("Unbekannte Speicherversion");validateMatch(d.st);validateOpponent(d.opponent);validateRuntime(d.runtime);restoredRuntime=d.runtime||null;st=loadedMatch(d.st);opponent=Object.assign(opponent,d.opponent||{});if(Array.isArray(d.roster)){for(const saved of d.roster){const item=byId(saved.id);if(item&&saved.role==="L")item.name=sanitizeLiberoName(saved.name)||item.name}}if(!opponent.liberos)opponent.liberos=[opponent.libero||"#","#"];if(!st.roles)st.roles=Object.fromEntries(st.lineup.map(id=>[id,(byId(id)||{}).role]).filter(x=>ROLES.includes(x[1])));if(!st.liberoIds)st.liberoIds=[st.liberoId||"amar","alex"];st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};st.opponentPositions=st.opponentPositions||{};st.sixBoards=st.sixBoards||{};st.liberoIds=Array.isArray(st.liberoIds)?st.liberoIds:[];return true}throw Error("Kein Spielstand")}catch(e){storageLoadFailed=true;const warning=document.createElement("p");warning.id="storageWarning";warning.setAttribute("role","alert");warning.textContent="Spielstand nicht lesbar. Rohdaten bleiben erhalten. Export sichert die unveränderten Rohdaten zur Wiederherstellung.";document.body.prepend(warning);toast("Spielstand nicht lesbar. Gespeicherte Daten bleiben unverändert; bitte vor einem Neustart sichern.")}return false}
 function rotate(){st.rot=ROT_NEXT[st.rot]||st.rot}
 // Team configuration: libero never serves. The original middle blocker serves in P1.
 // A registered libero can return when the same middle blocker enters the back row.
@@ -71,6 +80,7 @@ function liberoReplacementEligible(id){
 // A registered libero replaces one nominated MB or outside hitter in the back row.
 // The nominated player remains in the rotation and returns on the front row or to serve.
 function syncLiberoRotation(){
+ if(st.liberoAutoEnabled===false){st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";return}
  // K1: replace whichever of the two middle blockers is currently in the back row.
  // On our serve at P1 the original MB serves; no libero serves in this configuration.
  const libero=st.liberoPreferredId||st.liberoOnCourt||st.liberoIds[0]||"";
@@ -86,6 +96,197 @@ function syncLiberoRotation(){
  st.liberoActive=valid&&!(courtPos(replaced)===1&&st.serving);
 }
 
+// Versioned persistence: validate before mutation, retain the previous successful write on failure.
+function validateMatch(m){
+ const fail=()=>{throw Error("Ungültige Spieldaten")},obj=x=>x&&typeof x==='object'&&!Array.isArray(x);
+ if(!obj(m)||!Number.isInteger(m.set)||m.set<1||m.set>5||!Number.isInteger(m.rot)||m.rot<1||m.rot>6)fail();
+ for(const n of ['e','o'])if(!Number.isInteger(m[n])||m[n]<0||m[n]>10000)fail();
+ if(!Array.isArray(m.lineup)||m.lineup.length!==6||new Set(m.lineup).size!==6||m.lineup.some(id=>!byId(id)))fail();
+ for(const key of ['sets','rallies','rallyUndo','events','marks'])if(!Array.isArray(m[key]))fail();
+ const rally=r=>{if(!obj(r)||!['EVV','Gegner'].includes(r.winner)||r.chain&&!Array.isArray(r.chain))fail();if(r.chain?.some(c=>!obj(c)||!['EVV','Gegner'].includes(c.side)||typeof c.type!=='string'))fail()};
+ m.rallies.forEach(rally);m.sets.forEach(s=>{if(!obj(s)||!Number.isInteger(s.set)||s.set<1||s.set>5||!Array.isArray(s.rallies)||![s.e,s.o].every(n=>Number.isInteger(n)&&n>=0))fail();s.rallies.forEach(rally)});
+ if(m.roles&&(!obj(m.roles)||Object.values(m.roles).some(r=>!ROLES.includes(r))))fail();
+ if(m.liberoIds&&(!Array.isArray(m.liberoIds)||m.liberoIds.some(id=>!byId(id))||new Set(m.liberoIds).size!==m.liberoIds.length||m.liberoIds.length>2))fail();
+ const xy=p=>Array.isArray(p)&&p.length===2&&p.every(n=>Number.isFinite(n)&&n>=0&&n<=100);
+ const map=(o,check)=>{if(o!==undefined&&(!obj(o)||Object.values(o).some(v=>!check(v))))fail()};
+ for(const key of ['started','serving','setEnded','matchEnded'])if(typeof m[key]!=='boolean')fail();
+ if(m.liberoActive&&(!m.liberoIds?.includes(m.liberoOnCourt)||!m.lineup.includes(m.liberoReplacedId)||m.lineup.includes(m.liberoOnCourt)))fail();
+ map(m.tacticPositions,xy);map(m.opponentPositions,xy);
+ map(m.hybridFormations,f=>obj(f)&&obj(f.targets)&&obj(f.routes)&&Object.values(f.targets).every(xy)&&Object.values(f.routes).every(path=>Array.isArray(path)&&path.every(xy)));
+ map(m.formationBook,f=>obj(f)&&obj(f.targets)&&obj(f.routes)&&Array.isArray(f.ballPaths)&&Object.values(f.targets).every(xy)&&Object.values(f.routes).every(path=>Array.isArray(path)&&path.every(xy))&&f.ballPaths.every(path=>Array.isArray(path)&&path.every(xy)));
+ map(m.sixBoards,b=>obj(b)&&obj(b.players)&&Array.isArray(b.pins)&&Object.values(b.players).every(xy)&&b.pins.every(xy));
+ map(m.receivePlans,ids=>Array.isArray(ids)&&ids.every(id=>!!byId(id)));
+ // Undo snapshots become live state. Validate their contents as strictly as the
+ // enclosing match before accepting an import or restoring local storage.
+ for(const u of m.rallyUndo){
+  if(!obj(u)||Object.prototype.hasOwnProperty.call(u,'rallyUndo')||![u.e,u.o].every(n=>Number.isInteger(n)&&n>=0)||!Array.isArray(u.lineup)||u.lineup.length!==6||new Set(u.lineup).size!==6||u.lineup.some(id=>!byId(id)))fail();
+  validateMatch({...m,...u,rallyUndo:[]});
+ }
+ for(const mark of m.marks)if(!obj(mark)||![mark.x,mark.y].every(n=>Number.isFinite(n)&&n>=0&&n<=1))fail();
+ map(m.startPresets,p=>obj(p)&&Array.isArray(p.lineup)&&p.lineup.length===6&&new Set(p.lineup).size===6&&p.lineup.every(id=>!!byId(id))&&obj(p.roles)&&p.lineup.every(id=>ROLES.includes(p.roles[id]))&&Array.isArray(p.liberoIds)&&p.liberoIds.every(id=>!!byId(id)));
+ const visit=(v,depth=0)=>{if(depth>80)fail();if(v&&typeof v==='object'){for(const k of Object.keys(v)){if(['__proto__','prototype','constructor'].includes(k))fail();visit(v[k],depth+1)}}};visit(m);
+ return true;
+}
+function validateOpponent(o){if(o&&Object.keys(o).some(k=>['__proto__','prototype','constructor'].includes(k)))throw Error('Ungültige Gegnerdaten');if(!o||typeof o.name!=='string'||!Array.isArray(o.receivers)||o.receivers.some(x=>typeof x!=='string')||(o.liberos&&(!Array.isArray(o.liberos)||o.liberos.some(x=>typeof x!=='string'))))throw Error('Ungültige Gegnerdaten')}
+function validateRuntime(r){
+ if(!r)return;
+ const checkDraft=d=>{if(!d||typeof d!=='object'||Array.isArray(d)||d.chain&&(!Array.isArray(d.chain)||d.chain.some(x=>!x||typeof x.type!=='string'||!['EVV','Gegner'].includes(x.side))))throw Error('Ungültiger Rallyeentwurf')};
+ checkDraft(r.draft);if(r.draftHistory&&(!Array.isArray(r.draftHistory)||r.draftHistory.length>30))throw Error('Ungültiger Entwurfsverlauf');for(const h of r.draftHistory||[])checkDraft(h.draft);
+ if(r.pendingMark&&(!['EVV','Gegner'].includes(r.pendingMark.w)||!r.pendingMark.data||typeof r.pendingMark.data!=='object'||Array.isArray(r.pendingMark.data)))throw Error('Ungültiger Zielpunkt');
+ if(r.view!==undefined&&!['live','match',1,2,3,4,5].includes(r.view))throw Error('Ungültige Ansicht');
+}
+function turnaroundAnalysis(rr){
+ const x={observed:0,incomplete:0,kills:0,attackingRallies:0,firstAttackKill:0,killByTwo:0,killByThree:0,chances:0,transitionRallies:0,transitionKills:0,transitionPoints:0,chancesWithoutAttack:0,multipleTransitions:0,blockPoints:0,opponentErrors:0,attacksToKill:[]};
+ for(const r of rr){const ids=new Set(),ch=(r.chain||[]).filter(c=>{if(!c.id)return true;if(ids.has(c.id))return false;ids.add(c.id);return true}),complete=r.observationComplete===true||(r.observationComplete!==false&&ch.length>0&&r.event!=='Quick'&&r.event!=='VoiceQuick');if(!complete)x.incomplete++;else x.observed++;
+ let attacks=0,chances=0,open=false,attacked=false;
+ for(const c of ch){if(c.side!=='EVV')continue;
+ if(c.type==='TransitionChance'||c.type==='Defense'&&['D2','D3'].includes(c.quality)){if(open&&!attacked)x.chancesWithoutAttack++;chances++;open=true;attacked=false}
+ if(c.type==='Attack'){attacks++;if(open)attacked=true}
+ }
+ if(open&&!attacked)x.chancesWithoutAttack++;
+ const kill=r.winner==='EVV'&&ch.some(c=>c.side==='EVV'&&c.type==='Attack'&&['KILL','BLOCK_OUT'].includes(c.result));
+ if(attacks&&complete)x.attackingRallies++;
+ if(kill){x.kills++;x.attacksToKill.push(attacks);if(complete&&attacks===1)x.firstAttackKill++;if(complete&&attacks<=2)x.killByTwo++;if(complete&&attacks<=3)x.killByThree++;if(open&&attacked)x.transitionKills++}
+ if(ch.some(c=>c.side==='EVV'&&c.type==='Block'&&c.result==='BLOCK')&&r.winner==='EVV')x.blockPoints++;
+ if(r.winner==='EVV'&&(['OpponentAttack','OpponentSecondBall'].includes(r.event)&&r.result==='ERROR'||['OpponentReception','OpponentDefense'].includes(r.event)&&r.result==='DIRECT_ERROR'))x.opponentErrors++;
+ x.chances+=chances;if(chances)x.transitionRallies++;if(chances>1)x.multipleTransitions++;if(chances&&r.winner==='EVV')x.transitionPoints++;
+ }
+ x.killByTwoRate=x.attackingRallies?100*x.killByTwo/x.attackingRallies:null;x.killByThreeRate=x.attackingRallies?100*x.killByThree/x.attackingRallies:null;
+ x.firstAttackKillRate=x.attackingRallies?100*x.firstAttackKill/x.attackingRallies:null;
+ x.transitionKillRate=x.chances?100*x.transitionKills/x.chances:null;x.transitionPointRate=x.transitionRallies?100*x.transitionPoints/x.transitionRallies:null;
+ x.transitionConversionRate=x.chances?100*x.transitionPoints/x.chances:null;
+ return x;
+}
+function analysisPanel(){const rr=allRallies(),set=Number($('analysisSet')?.value)||0,rot=Number($('analysisRot')?.value)||0,phase=$('analysisPhase')?.value||'all';
+ const draw=()=>{const selectedRotation=Number($('analysisRot').value);$('analysisFormation').disabled=!selectedRotation;$('analysisFormationHint').textContent=selectedRotation?`Analyse R${selectedRotation} · Formation gezielt öffnen; keine automatische Änderung.`:'Für die Taktik eine Rotation auswählen.';const filtered=rr.filter(r=>(!Number($('analysisSet').value)||r.set===Number($('analysisSet').value))&&(!Number($('analysisRot').value)||r.rotation===Number($('analysisRot').value))&&($('analysisPhase').value==='all'||r.phase===$('analysisPhase').value)),x=turnaroundAnalysis(filtered),pct=n=>n===null?'–':n.toFixed(1)+'%';
+ $('analysisResults').innerHTML=`<p>Beobachtet ${x.observed} · unvollständig ${x.incomplete}</p><p>Angriffe bis Kill: ${x.attacksToKill.join(', ')||'–'} · First-Attack-Kill ${pct(x.firstAttackKillRate)} (Nenner: ${x.attackingRallies} Rallyes mit Angriff)</p><p>Kill bis Angriff 2: ${x.killByTwo} (${pct(x.killByTwoRate)}) · bis Angriff 3: ${x.killByThree} (${pct(x.killByThreeRate)})</p><p>Transition-Chancen ${x.chances} · Kills ${x.transitionKills} (${pct(x.transitionKillRate)}) · Punkte ${x.transitionPoints}</p><p>Rallyebezogene Transition-Punktquote: ${pct(x.transitionPointRate)} (${x.transitionPoints}/${x.transitionRallies} Rallyes mit Chance)</p><p>Chancenbezogene Transition-Verwertungsquote: ${pct(x.transitionConversionRate)} (${x.transitionPoints}/${x.chances} Chancen; höchstens ein Punkt pro Rallye)</p><p>Chancen ohne Angriff ${x.chancesWithoutAttack} · Mehrfach-Transition-Rallyes ${x.multipleTransitions}</p><p>Eigene Kills ${x.kills} · Blockpunkte ${x.blockPoints} · Gegnerfehler ${x.opponentErrors}</p><p>${x.observed<5?'Noch keine belastbare Coaching-Stichprobe (mindestens 5 beobachtete Rallyes).':x.chancesWithoutAttack?'Chancen ohne Angriff im Video prüfen: Ballkontrolle und Anschlusszuspiel beobachten.':'Angriffsabschluss und Block-Abwehr anhand der getrennten Quoten überprüfen.'}</p>`};
+ modal(`<h2>Turnaround · Coaching</h2><div class="grid3"><label>Satz<select id="analysisSet"><option value="0">Alle</option>${[1,2,3,4,5].map(n=>`<option>${n}</option>`).join('')}</select></label><label>Rotation<select id="analysisRot"><option value="0">Alle</option>${[1,2,3,4,5,6].map(n=>`<option>${n}</option>`).join('')}</select></label><label>Phase<select id="analysisPhase"><option value="all">K1 + K2</option><option>K1</option><option>K2</option></select></label></div><h3>Abgeschlossene Rallyes</h3><div id="analysisResults"></div><p id="analysisDraft" class="eligibleNote">${draft.chain?.length?`Aktuelle Rallye · eigene Angriffe ${turnaroundMetrics(draft.chain).attacks} · Transition-Chancen ${turnaroundMetrics(draft.chain).transitions} · noch nicht in den Quoten enthalten`:"Keine laufende Rallye"}</p><p id="analysisFormationHint"></p><label>Formationskontext<select id="analysisFormationKind"><option value="receive">Annahme</option><option value="defense-IV">Abwehr IV</option><option value="defense-III">Abwehr III</option><option value="defense-II">Abwehr II</option></select></label><button id="analysisFormation">Formation der analysierten Rotation öffnen</button><button id="analysisClose">Schließen</button>`);
+ $('analysisSet').value=set;$('analysisRot').value=rot;$('analysisPhase').value=phase;['analysisSet','analysisRot','analysisPhase'].forEach(id=>$(id).onchange=draw);$('analysisClose').onclick=closeModal;$('analysisFormation').onclick=()=>{const r=Number($('analysisRot').value);if(r)formationEditor(r,$('analysisFormationKind').value)};draw();
+}
+const formationDefaults={1:[80,80],2:[80,25],3:[50,25],4:[20,25],5:[20,80],6:[50,80]};
+function activeFormation(){const step=String(draft.step||''),defending=(!step&&st.serving)||step.startsWith('opp')||['evvDefense','evvBlockChoice','evvBlockResult'].includes(step);const lane=['IV','III','II'].includes(draft.setterTarget)?draft.setterTarget:'IV',kind=defending?'defense-'+lane:'receive';return {rotation:st.rot,kind,data:formationFor(st.rot,kind)}}
+function formationFor(rotation,kind='receive'){
+ const saved=st.formationBook?.[`${rotation}:${kind}`];if(saved)return clone(saved);
+ const result={targets:{},routes:{},ballPaths:[]};
+ if(kind==='receive'){const old=hybridFormation(rotation);for(const p of formationPlayers(rotation)){if(old.targets[p.id])result.targets[p.pos]=old.targets[p.id];if(old.routes[p.id])result.routes[p.pos]=old.routes[p.id]}}
+ return clone(result);
+}
+function saveFormation(rotation,kind,f){
+ if(![1,2,3,4,5,6].includes(rotation)||!['receive','defense-IV','defense-III','defense-II'].includes(kind))throw Error('Ungültige Formation');
+ const point=p=>Array.isArray(p)&&p.length===2&&p.every(n=>Number.isFinite(n)&&n>=0&&n<=100);
+ if(!f||!f.targets||!f.routes||!Array.isArray(f.ballPaths)||Object.entries(f.targets).some(([k,p])=>!['1','2','3','4','5','6'].includes(k)||!point(p))||Object.entries(f.routes).some(([k,path])=>!['1','2','3','4','5','6'].includes(k)||!Array.isArray(path)||!path.every(point))||f.ballPaths.some(path=>!Array.isArray(path)||!path.every(point)))throw Error('Ungültige Koordinaten');
+ st.formationBook=st.formationBook||{};st.formationBook[`${rotation}:${kind}`]=clone(f);saveLocal();
+}
+function formationPlayers(rotation){
+ if(rotation===st.rot)return rotationMatrix().map(x=>({id:x.player,pos:x.position}));
+ const steps=rotationSteps(st.rot,rotation),players=st.lineup.map(id=>{let pos=courtPos(id);for(let i=0;i<steps;i++)pos=pos===1?6:pos-1;return {id,pos}});
+ const mb=players.find(p=>/^MB/.test(roleOf(p.id))&&[1,5,6].includes(p.pos));const lib=st.liberoPreferredId||st.liberoIds[0];
+ if(mb&&lib&&st.liberoAutoEnabled!==false&&!(mb.pos===1&&st.serving))mb.id=lib;
+ return players;
+}
+function touchButton(id,handler){
+ const b=$(id);b.style.touchAction='manipulation';b.onclick=handler;
+ b.onpointerup=e=>{
+  if(e.pointerType==='mouse')return;
+  e.preventDefault();let timer;
+  const clear=()=>{document.removeEventListener('click',compatibilityClick,true);document.removeEventListener('pointerdown',clear,true);clearTimeout(timer)};
+  const compatibilityClick=click=>{clear();if(click.detail!==0){click.preventDefault();click.stopImmediatePropagation()}};
+  // WebKit can retarget this click after a dialog disappears. Catch the same
+  // gesture at document level; a new pointerdown or keyboard click stays free.
+  document.addEventListener('click',compatibilityClick,true);document.addEventListener('pointerdown',clear,true);timer=setTimeout(clear,1000);
+  handler();
+ };
+}
+function formationEditor(rotation=st.rot,kind='receive'){
+ let working=formationFor(rotation,kind),selected=1,gesture=null;
+ modal(`<h2>Formationseditor · 9 × 18 m</h2><div class="grid2"><label>Rotation<select id="formRotation">${[1,2,3,4,5,6].map(n=>`<option value="${n}">R${n}</option>`).join('')}</select></label><label>Formation<select id="formKind"><option value="receive">Annahme</option><option value="defense-IV">Abwehr IV</option><option value="defense-III">Abwehr III</option><option value="defense-II">Abwehr II</option></select></label></div><label>Werkzeug<select id="formTool"><option value="move">Spieler verschieben</option><option value="route">Laufweg des gewählten Spielers</option><option value="ball">Ballweg</option></select></label><p>Spieler ziehen oder auswählen und Zielposition anklicken. Pfeile durch Ziehen zeichnen. Taktische Ziele ändern keine Regelposition.</p><svg id="formationSvg" viewBox="0 0 900 1800" role="img" aria-label="Volleyballfeld 9 mal 18 Meter"></svg><div class="grid3"><button id="formSave" class="primary">Speichern</button><button id="formReset">Zurücksetzen</button><button id="formUndo">Letzten Pfeil löschen</button></div><div class="grid2"><label>Kopieren nach<select id="formCopyRot">${[1,2,3,4,5,6].map(n=>`<option value="${n}">R${n}</option>`).join('')}</select></label><button id="formCopy">Kopie speichern</button></div><button id="formClose">Schließen</button>`);
+ $('formRotation').value=rotation;$('formKind').value=kind;
+ const svg=$('formationSvg'),players=formationPlayers(rotation);
+ const draw=()=>{svg.innerHTML=`<defs><marker id="formArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="currentColor"/></marker></defs><rect x="0" y="0" width="900" height="1800" fill="#f2c69f" stroke="#fff" stroke-width="14"/><path d="M0 600H900 M0 1200H900" stroke="#fff" stroke-width="8"/><path d="M0 900H900" stroke="#23374b" stroke-width="16"/><text x="450" y="850" text-anchor="middle" font-size="38">NETZ</text>`;
+ for(const [slot,path] of Object.entries(working.routes))if(path.length>1)svg.innerHTML+=`<polyline data-route="${slot}" points="${path.map(([x,y])=>`${x*9},${900+y*9}`).join(' ')}" fill="none" stroke="#0066cc" stroke-width="9" marker-end="url(#formArrow)"/>`;
+ for(const path of working.ballPaths)if(path.length>1)svg.innerHTML+=`<polyline points="${path.map(([x,y])=>`${x*9},${y*18}`).join(' ')}" fill="none" stroke="#ae2929" stroke-width="9" stroke-dasharray="20 12" marker-end="url(#formArrow)"/>`;
+ for(const p of players){const [x,y]=working.targets[p.pos]||formationDefaults[p.pos];svg.innerHTML+=`<g data-form-slot="${p.pos}" transform="translate(${x*9},${900+y*9})"><circle r="57" fill="${selected===p.pos?'#0066cc':'#fff'}" stroke="#263a52" stroke-width="5"/><text text-anchor="middle" y="-4" font-size="27" fill="${selected===p.pos?'white':'black'}">${esc(nm(p.id))}</text><text text-anchor="middle" y="33" font-size="24" fill="${selected===p.pos?'white':'black'}">P${p.pos}</text></g>`}}
+ const coords=e=>{const r=svg.getBoundingClientRect();return [Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100)),Math.max(0,Math.min(100,(e.clientY-r.top)/r.height*100))]};
+ const own=p=>[Math.max(7,Math.min(93,p[0])),Math.max(7,Math.min(93,(p[1]-50)*2))];
+ // Keep capture on the stable SVG, never on a player replaced by draw().
+ const moveTarget=e=>{const p=coords(e),g=gesture;working.targets[selected]=own([p[0]-g.offset[0],p[1]-g.offset[1]])};
+ svg.onpointerdown=e=>{if(!e.isPrimary||e.button!==0)return;const node=e.target.closest('[data-form-slot]'),tool=$('formTool').value;if(node)selected=Number(node.dataset.formSlot);e.preventDefault();const start=coords(e),xy=working.targets[selected]||formationDefaults[selected];gesture={id:e.pointerId,tool,start,before:clone(working),onPlayer:!!node,moved:false,client:[e.clientX,e.clientY],offset:node?[start[0]-xy[0],start[1]-(50+xy[1]/2)]:[0,0]};svg.setPointerCapture(e.pointerId);draw()};
+ svg.onpointermove=e=>{if(!gesture||gesture.id!==e.pointerId)return;e.preventDefault();if(Math.hypot(e.clientX-gesture.client[0],e.clientY-gesture.client[1])>=4)gesture.moved=true;if(gesture.tool==='move'&&gesture.moved){moveTarget(e);draw()}};
+ svg.onpointerup=e=>{if(!gesture||gesture.id!==e.pointerId)return;const g=gesture,end=coords(e);if(g.tool==='move'&&(g.moved||!g.onPlayer))moveTarget(e);if(g.tool==='route')working.routes[selected]=[own(g.start),own(end)];if(g.tool==='ball')working.ballPaths.push([g.start,end]);gesture=null;if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);draw()};
+ svg.onpointercancel=e=>{if(gesture)working=gesture.before;gesture=null;if(svg.hasPointerCapture(e.pointerId))svg.releasePointerCapture(e.pointerId);draw()};
+ $('formRotation').onchange=()=>formationEditor(Number($('formRotation').value),kind);$('formKind').onchange=()=>formationEditor(rotation,$('formKind').value);
+ touchButton('formSave',()=>{saveFormation(rotation,kind,working);toast('Formation gespeichert')});touchButton('formCopy',()=>{saveFormation(Number($('formCopyRot').value),kind,working);toast('Kopie gespeichert')});touchButton('formReset',()=>{working={targets:{},routes:{},ballPaths:[]};draw()});touchButton('formUndo',()=>{if(working.ballPaths.length)working.ballPaths.pop();else delete working.routes[selected];draw()});touchButton('formClose',closeModal);draw();
+}
+function saveLineupPreset(name){name=String(name||'Startaufstellung').trim().slice(0,50);st.startPresets=st.startPresets||{};st.startPresets[name]=clone({lineup:st.lineup,roles:st.roles,liberoIds:st.liberoIds,liberoAutoEnabled:st.liberoAutoEnabled,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB});saveLocal()}
+
+// Tactical targets never alter lineup, courtPos or legal rotation.
+function saveHybridFormation(rotation,targets,routes={}){
+ if(!Number.isInteger(rotation)||rotation<1||rotation>6)throw Error("Rotation 1–6 erforderlich");
+ const valid=p=>Array.isArray(p)&&p.length===2&&p.every(n=>Number.isFinite(n)&&n>=0&&n<=100);
+ for(const [id,xy] of Object.entries(targets))if(!byId(id)||!valid(xy))throw Error("Ungültiges taktisches Ziel");
+ for(const [id,path] of Object.entries(routes))if(!byId(id)||!Array.isArray(path)||!path.every(valid))throw Error("Ungültiger Laufweg");
+ st.hybridFormations=st.hybridFormations||{};st.hybridFormations[rotation]=clone({targets,routes});saveLocal();
+}
+function hybridFormation(rotation){return clone((st.hybridFormations||{})[rotation]||{targets:{},routes:{}})}
+// Additive rally metrics: never infer attacks from points, blocks or opponent errors.
+function turnaroundMetrics(chain=[]){
+ const seen=new Set();let attacks=0,transitions=0;
+ for(const x of chain){if(x.id){if(seen.has(x.id))continue;seen.add(x.id)}
+ if(x.side!=="EVV")continue;
+ if(x.type==="Attack")attacks++;
+ if(x.type==="TransitionChance"||(x.type==="Defense"&&["D2","D3"].includes(x.quality)))transitions++;
+ }
+ return {attacks,transitions};
+}
+function quickAttackState(){
+ const last=(draft.chain||[]).filter(c=>c.side==="EVV"&&["Attack","Defense","TransitionChance","FreeBall","SecondBall"].includes(c.type)).at(-1);
+ return {transition:!!last&&(last.type==="TransitionChance"||last.side==="EVV"&&last.type==="Defense"&&["D2","D3"].includes(last.quality)),waiting:!!last&&last.side==="EVV"&&last.type==="Attack"&&last.result==="CONTINUE"&&draft.step==="oppDefense"};
+}
+let liveMode="detail",selectedQuickPlayer=null,quickPending=null,quickRevision=0;
+function hybridMode(mode){liveMode=mode;selectedQuickPlayer=null;quickPending=null;render()}
+// Restored drafts may contain IDs from an earlier browser process.
+function nextQuickContactId(){const used=new Set((draft.chain||[]).map(c=>c.id)),prefix=`q-${st.set}-${st.rallies.length}-`;let n=quickRevision;while(used.has(prefix+n))n++;return prefix+n}
+function hybridAction(kind,player=null,revision=quickRevision){
+ if(revision!==quickRevision||view!=="live"||!st.started||st.setEnded||st.matchEnded)return;
+ quickRevision++;
+ if(kind==="transition"){
+ // A repeated defense tap without an intervening own attack is the same chance.
+ const chain=draft.chain||[];
+ if(quickAttackState().transition)return render();
+ pushDraft();selectedQuickPlayer=null;quickPending=null;delete draft.quickAttacker;draft.chain=chain.concat({side:"EVV",type:"TransitionChance",id:nextQuickContactId()});draft.phase=draft.phase||(st.serving?"K2":"K1");draft.step="evvBall2";tab="rally";return render();
+ }
+ if(["kill","error","continue"].includes(kind)&&quickAttackState().waiting)return render();
+ if(kind==="opponentError"){quickPending=null;return commit("EVV",{...draft,event:"OpponentAttack",result:"ERROR",chain:draft.chain||[]})}
+ if(kind==="ace"){if(!st.serving)return render();player=currentServerId()}
+ const openAttack=(draft.chain||[]).at(-1);if(["kill","error","continue"].includes(kind)&&openAttack?.side==="EVV"&&openAttack.type==="Attack"&&!openAttack.result)player=openAttack.player;
+ const eligible=kind==="block"?front():kind==="a0"?receivers():["kill","error","continue"].includes(kind)?attackOptions().map(x=>x.id):active();
+ if(!player||!eligible.includes(player)){quickPending=kind;return render()}
+ pushDraft();const chain=(draft.chain||[]).slice(),id=nextQuickContactId();
+ const result=kind==="kill"?"KILL":kind==="error"?"ERROR":"CONTINUE";
+ if(["kill","error","continue"].includes(kind)){const last=chain.at(-1);if(last&&last.side==="EVV"&&last.type==="Attack"&&!last.result)chain[chain.length-1]={...last,result};else chain.push({side:"EVV",type:"Attack",player,result,id})}
+ else if(kind==="a0")chain.push({side:"EVV",type:"Reception",player,quality:"A0",id});
+ else if(kind==="d0")chain.push({side:"EVV",type:"Defense",player,quality:"D0",id});
+ else if(kind==="ace")chain.push({side:"EVV",type:"Serve",player,result:"ACE",id});
+ else if(kind==="block")chain.push({side:"EVV",type:"Block",player,result:"BLOCK",id});
+ if(kind==="continue"){draft.chain=chain;draft.step="oppDefense";delete draft.quickAttacker;selectedQuickPlayer=null;tab="opponent";quickPending=null;return render()}
+ const win=["kill","ace","block"].includes(kind)?"EVV":"Gegner";
+ const event={kill:"Attack",error:"Attack",ace:"Serve",a0:"Reception",d0:"Defense",block:"Block"}[kind];
+ quickPending=null;selectedQuickPlayer=null;
+ commit(win,{...draft,event,chain,...(["kill","error"].includes(kind)?{attacker:player}:{}),result:kind==="block"?"BLOCK":kind==="ace"?"ACE":["a0","d0"].includes(kind)?"DIRECT_ERROR":result});
+}
+function hybridPanel(){
+ const coords={1:[80,76],2:[80,29],3:[50,29],4:[20,29],5:[20,76],6:[50,76]},state=quickAttackState();
+ const pending=quickPending,attackIds=attackOptions().map(x=>x.id),choosing=state.transition&&!draft.quickAttacker&&!pending;
+ const eligible=pending==="block"?front():pending==="a0"?receivers():choosing||["kill","error","continue"].includes(pending)?attackIds:active();
+ const openAttack=(draft.chain||[]).at(-1),selected=openAttack?.side==="EVV"&&openAttack.type==="Attack"&&!openAttack.result?openAttack.player:draft.quickAttacker||selectedQuickPlayer,metrics=turnaroundMetrics(draft.chain),formation=activeFormation();
+ const hint=state.waiting?'Rallye läuft weiter · nächste kontrollierte Abwehr als Transition erfassen':pending?'Spieler für die gewählte Aktion wählen':choosing?'Abwehr kontrolliert · Angreifer wählen':state.transition&&selected?`${nm(selected)} · Angriffsergebnis wählen`:'Spieler oder Aktion wählen';
+ $("flow").innerHTML=`<h2>Schnellmodus</h2><p id="activeFormation">R${formation.rotation} · ${esc(formation.kind==="receive"?"Annahme":"Abwehr "+formation.kind.replace("defense-",""))} · ${Object.keys(formation.data.targets).length} Taktikziele</p><p id="quickHint" role="status">${esc(hint)}</p><div class="quickArena"><div class="liveCourt" aria-label="Regeltechnische Feldpositionen"><span class="liveNet">NETZ</span>${rotationMatrix().map(x=>{const [left,top]=coords[x.position];return `<button class="livePlayer" data-quick-player="${x.player}" aria-pressed="${selected===x.player}" style="left:${left}%;top:${top}%" ${!eligible.includes(x.player)?"disabled":""}>${esc(nm(x.player))}<small>P${x.position} · ${esc(roleOf(x.player))}</small></button>`}).join("")}</div><div class="quickActions">${[["kill","Angriffspunkt"],["continue","Angriff verteidigt"],["error","Angriffsfehler"],["block","Blockpunkt"],["opponentError","Gegnerfehler"],["d0","D0 · Abwehrfehler"],["ace","Ass"],["a0","A0 · Annahmefehler"]].map(([k,label])=>`<button class="${['kill','ace','block','opponentError'].includes(k)?'good':['error','a0','d0'].includes(k)?'bad':'blue'}" data-quick="${k}" ${(k==="ace"&&!st.serving||state.waiting&&['kill','error','continue'].includes(k))?"disabled":""}>${label}</button>`).join("")}</div></div><p id="quickMetrics" aria-live="polite">Aktuelle Rallye · eigene Angriffe: ${metrics.attacks} · Transition-Chancen: ${metrics.transitions}</p><div class="quickFooter"><button class="transitionButton primary" id="quickTransition">Abwehr gewonnen / Transition</button><button id="quickUndo">↶ Undo</button></div>`;
+ const rev=quickRevision;
+ document.querySelectorAll('[data-quick]').forEach(b=>b.onclick=()=>hybridAction(b.dataset.quick,selected,rev));
+ document.querySelectorAll('[data-quick-player]').forEach(b=>b.onclick=()=>{if(pending)hybridAction(pending,b.dataset.quickPlayer,rev);else{selectedQuickPlayer=b.dataset.quickPlayer;if(state.transition)draft.quickAttacker=b.dataset.quickPlayer;quickRevision++;render()}});
+ $('quickTransition').onclick=()=>hybridAction('transition',null,rev);$('quickUndo').onclick=undoLast;
+}
+
 function commit(w,data={},preSnapshot=null){
  if(w!=="EVV"&&w!=="Gegner")throw new Error("Ungültiger Rallye-Sieger");
  if(st.setEnded||st.matchEnded)return toast("Satz ist beendet");
@@ -95,7 +296,9 @@ function commit(w,data={},preSnapshot=null){
  else{st.o++;if(st.serving)st.serving=false}
  syncLiberoRotation();
  data=Object.assign({},data,{winner:w,before,after:`${st.e}:${st.o}`,rotation:rb,servingBefore:sb,phase:data.phase||(sb?"K2":"K1"),set:st.set});
- st.rallies.push(data);draft={};clearDraftHistory();tab="rally";view="live";checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
+ data.turnaround=turnaroundMetrics(data.chain);
+ data.observationComplete=data.observationComplete??!!data.chain?.some(c=>c.side==="EVV"&&["Serve","Reception"].includes(c.type));
+ st.rallies.push(data);draft={};quickPending=null;selectedQuickPlayer=null;quickRevision++;clearDraftHistory();tab="rally";view="live";checkEnd();render();toast(`${w} ${before} → ${st.e}:${st.o}`)
 }
 function allRallies(){return st.sets.flatMap(s=>s.rallies).concat(st.rallies)}
 function allMarks(){return st.sets.flatMap(s=>s.marks||[]).concat(st.marks)}
@@ -185,7 +388,7 @@ function readSetup(){
  if(st.liberoActive&&!liberoEligible()){toast("Libero nur für einen Mittelblocker in der Hinterreihe einsetzen");return false}
  return true
 }
-function start(serv){if(!readSetup())return;const keep=clone(st.lineup),keepRoles=clone(st.roles),keepRec=clone(st.receiveIds),keepLibs=clone(st.liberoIds),keepLibOn=st.liberoOnCourt,keepLibRep=st.liberoReplacedId,keepLibActive=st.liberoActive,keepPreferred=st.liberoPreferredId,keepMB=st.liberoPreferredMB;st=fresh();st.lineup=keep;st.roles=keepRoles;st.receiveIds=keepRec;st.liberoIds=keepLibs;st.liberoOnCourt=keepLibOn;st.liberoReplacedId=keepLibRep;st.liberoActive=keepLibActive;st.liberoPreferredId=keepPreferred;st.liberoPreferredMB=keepMB;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv,lineup:clone(keep),roles:clone(keepRoles)};syncLiberoRotation();$("setup").classList.add("hidden");render()}
+function start(serv){if(!readSetup())return;const planning={startPresets:st.startPresets,formationBook:st.formationBook,hybridFormations:st.hybridFormations};const keep=clone(st.lineup),keepRoles=clone(st.roles),keepRec=clone(st.receiveIds),keepLibs=clone(st.liberoIds),keepLibOn=st.liberoOnCourt,keepLibRep=st.liberoReplacedId,keepLibActive=st.liberoActive,keepPreferred=st.liberoPreferredId,keepMB=st.liberoPreferredMB;st=fresh();Object.assign(st,planning);st.lineup=keep;st.roles=keepRoles;st.receiveIds=keepRec;st.liberoIds=keepLibs;st.liberoOnCourt=keepLibOn;st.liberoReplacedId=keepLibRep;st.liberoActive=keepLibActive;st.liberoPreferredId=keepPreferred;st.liberoPreferredMB=keepMB;st.rot=parseInt($("startRotation").value.slice(1),10)||1;st.serving=serv;st.started=true;st.setStart={rot:st.rot,serving:serv,lineup:clone(keep),roles:clone(keepRoles)};syncLiberoRotation();$("setup").classList.add("hidden");render()}
 function currentServerId(){const id=playerAtPos(1);return st.liberoIds.includes(id)?st.liberoReplacedId:id}
 function currentServer(){
  if(!st.serving)return opponent.name;
@@ -268,6 +471,7 @@ function action(s){
  else if(a[0]==="ob2r"){if(a[1]==="KILL")return commit("Gegner",Object.assign({},draft,{event:"OpponentSecondBall",result:"KILL"}));if(a[1]==="ERROR")return commit("EVV",Object.assign({},draft,{event:"OpponentSecondBall",result:"ERROR"}));draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"SecondBallResult",result:"CONTINUE"});draft.step="evvDefense";tab="rally";render()}
  else if(a[0]==="os"){draft.setterTarget=a[1];draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Set",target:a[1]});draft.step="oppAttack";render()}
  else if(a[0]==="of"){
+   draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Attack",route:draft.setterTarget,result:a[1]});
    if(a[1]==="KILL"){nineZonePicker("OPP_KILL",{w:"Gegner",data:Object.assign({},draft,{event:"OpponentAttack",result:"KILL"})});return}
    if(a[1]==="BLOCK"){draft.step="evvBlockChoice";tab="rally";render();return}
    if(a[1]==="ERROR")return commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:a[1]}));
@@ -276,15 +480,16 @@ function action(s){
  else if(a[0]==="ebc"){draft.blocker=a[1];draft.step="evvBlockResult";render()}
  else if(a[0]==="ebr"){if(a[1]==="TOOLED"){draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"TOOLED"});return commit("Gegner",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK_OUT",blocker:draft.blocker}))}
  else if(a[1]==="POINT"){draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"BLOCK"});return commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:draft.blocker}))}draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:draft.blocker,result:"TOUCH"});if(a[1]==="EVV"){draft.step="evvDefense";tab="rally"}else{draft.step="oppDefense";tab="opponent"}render()}
- else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});draft.step="evvBall2";render()}
+ else if(a[0]==="ed"){draft.defender=a[1];draft.defense=a[2];draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Defense",player:a[1],quality:a[2]});if(a[2]==="D0")return commit("Gegner",Object.assign({},draft,{event:"Defense",result:"DIRECT_ERROR"}));draft.step="evvBall2";render()}
  else if(a[0]==="blk"){if(!front().includes(a[1]))return toast("Blocker steht nicht in der Vorderreihe");draft.chain=(draft.chain||[]).concat({side:"EVV",type:"Block",player:a[1],result:"BLOCK"});commit("EVV",Object.assign({},draft,{event:"OpponentAttack",result:"BLOCK",blocker:a[1]}))}
- else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});draft.step="oppBall2";render()}
+ else if(a[0]==="od"){draft.chain=(draft.chain||[]).concat({side:"Gegner",type:"Defense",quality:a[1]});if(a[1]==="D0")return commit("EVV",Object.assign({},draft,{event:"OpponentDefense",result:"DIRECT_ERROR"}));draft.step="oppBall2";render()}
 }
 function rally(){
  if(!st.started)return $("flow").innerHTML="<h2>Bereit</h2><p>Spiel einrichten und starten.</p>";
  if(view!=="live")return historical();
  if(st.matchEnded)return $("flow").innerHTML=`<div class="banner">MATCH BEENDET · ${setWins("EVV")}:${setWins("Gegner")} Sätze</div>${summary(allRallies())}<button id="finishedNew" class="primary">Neues Spiel</button>`;
  if(st.setEnded){$("flow").innerHTML=`<div class="banner">SATZ ${st.set} BEENDET · ${st.e}:${st.o}</div>${summary(st.rallies)}<button id="prep" class="primary">Nächsten Satz vorbereiten</button>`;$("prep").onclick=prepareNextSet;return}
+ if(liveMode==="quick")return hybridPanel();
  if(draft.step==="evvBlockChoice"){
    $("flow").innerHTML=flowHead("EVV · Wer blockt?")+`<div class="eligibleNote">Nur aktuelle Vorderreihe P2/P3/P4.</div><div class="grid3">${front().map(id=>B(`${esc(nm(id))} #${jersey(id)} · P${courtPos(id)}`,`ebc|${id}`,"good")).join("")}</div>`;bindActs();return
  }
@@ -434,7 +639,7 @@ function liberoPlanner(){
   if(m&&![1,5,6].includes(courtPos(m)))return toast('Ersatzspieler muss hinten stehen');
   if(m&&courtPos(m)===1&&st.serving)return toast('P1: regulärer Spieler schlägt selbst auf');
   if(!configureLiberoSlots(ids,['','']))return;
-  st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};saveLocal();closeModal();render();toast(l?nm(l)+' als Libero übernommen':'Libero-Einsatz beendet');
+  st.liberoAutoEnabled=!!l;st.liberoPreferredId=l;st.liberoPreferredMB=m;st.liberoOnCourt=l;st.liberoReplacedId=m;st.liberoActive=!!l;syncLiberoRotation();st.receivePlans={};saveLocal();closeModal();render();toast(l?nm(l)+' als Libero übernommen':'Libero-Einsatz beendet');
  };
 }
 
@@ -540,7 +745,7 @@ function tacticalBoard(){
   const board=sixBoardPositions(team,lane),defaultXY={1:[80,80],2:[80,25],3:[50,25],4:[20,25],5:[20,80],6:[50,80]};
   const nodes=[4,3,2,5,6,1].map(p=>{const xy=board.players[p]||defaultXY[p];const evvId=playerAtPos(p);const evvLabel=evvId?`${nm(evvId)} #${jersey(evvId)}`:`P${p}`;const oppLabels=[opponent.setter,...opponent.receivers,...opponent.liberos].filter(x=>x&&x!=="#"&&x!=="#?");const oppLabel=(opponent.positionNumbers||{})[p]||oppLabels[[4,3,2,5,6,1].indexOf(p)]||`#${p}`;const label=team==='EVV'?oppLabel:evvLabel;return `<button type="button" class="tacticPlayer sixPlayer" data-six-player="${p}" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="${esc(label)} Abwehrposition ${p} verschieben"><b>${esc(label)}</b><small>P${p}</small></button>`}).join('');
   const pins=board.pins.map((xy,i)=>`<span class="sixPin" style="left:${xy[0]}%;top:${xy[1]}%" aria-label="Zielpunkt ${i+1}"></span>`).join('');
-  return `<article class="sixBoardCard"><div class="sixBoardTitle"><strong>Angriff ${lane}</strong><span>Position ${pos}</span></div><div class="tacticCourt sixCourt" data-six-team="${team}" data-six-lane="${lane}"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${nodes}${pins}<div class="tacticBaseline">5 / 6 / 1</div></div><div class="sixControls"><button type="button" class="sixMode" data-six-mode="mark">◎ Ziel markieren</button><button type="button" class="sixUndo">↶</button><button type="button" class="sixReset">Reset</button></div><p class="sixHint">Spieler ziehen · Ziel per Fingertipp setzen</p></article>`;
+  return `<article class="sixBoardCard"><div class="sixBoardTitle"><strong>Angriff ${lane}</strong><span>Position ${pos}</span></div><div class="tacticCourt sixCourt" data-six-team="${team}" data-six-lane="${lane}"><div class="tacticNet">NETZ · 4 / 3 / 2</div>${nodes}${pins}<div class="tacticBaseline">5 / 6 / 1</div></div><div class="sixControls"><button type="button" class="sixMode" data-six-mode="mark">◎ Ziel markieren</button><button type="button" class="sixUndo">↶</button><button type="button" class="sixReset">Reset</button></div><p class="sixHint">Spieler ziehen oder auswählen → Feld anklicken · Zielmodus für Markierungen</p></article>`;
  }).join('')}</div></section>`).join('');
  return `<div class="tacticActions"><button id="tacticSavePreset">Grundformation speichern</button><button id="tacticLoadPreset">Grundformation laden</button><button id="tacticReset">Alle zurücksetzen</button><button id="coachPencil">✎ Stiftnotizen</button><button id="recEdit">Annahme R${st.rot}</button><button id="liberoEdit">Libero verwalten</button><button id="oppCourtBtn">Gegnerfeld / Kill-Zonen</button><button id="oppJerseys">Gegner-Trikotnummern</button></div><p class="small">Sechs getrennte Taktikbilder: oben EVV-Angriff IV/III/II, unten Gegnerangriff IV/III/II. Jede Abwehrformation und Zielmarkierung wird unabhängig gespeichert. Skizzen sind keine offiziellen Rotationsaufstellungen.</p>${cards}`;
 }
@@ -555,17 +760,23 @@ function bindTactic(){
  $('tacticReset').onclick=()=>{if(!confirm('Alle sechs Taktikskizzen zurücksetzen?'))return;st.sixBoards={};saveLocal();render()};
  document.querySelectorAll('.sixBoardCard').forEach(card=>{
   const court=card.querySelector('.sixCourt'),team=court.dataset.sixTeam,lane=court.dataset.sixLane;
-  const board=sixBoardPositions(team,lane),mode=card.querySelector('.sixMode');let marking=false;
-  mode.onclick=()=>{marking=!marking;mode.classList.toggle('primary',marking);mode.textContent=marking?'✓ Zielmodus aktiv':'◎ Ziel markieren'};
-  const point=(e,player)=>{const r=court.getBoundingClientRect();const padX=player?player.offsetWidth/(2*r.width)*100:3;const padY=player?player.offsetHeight/(2*r.height)*100:3;return [Math.max(padX,Math.min(100-padX,(e.clientX-r.left)/r.width*100)),Math.max(padY,Math.min(100-padY,(e.clientY-r.top)/r.height*100))]};
-  court.addEventListener('pointerup',e=>{if(!marking||e.target.closest('.sixPlayer')||e.target.closest('button'))return;const xy=point(e);board.pins.push(xy);const dot=document.createElement('span');dot.className='sixPin';dot.style.left=xy[0]+'%';dot.style.top=xy[1]+'%';court.appendChild(dot);saveLocal()});
+  const board=sixBoardPositions(team,lane),mode=card.querySelector('.sixMode');let marking=false,selected=null;
+  const select=el=>{selected=el;court.querySelectorAll('.sixPlayer').forEach(p=>p.setAttribute('aria-pressed',String(p===el)));card.querySelector('.sixHint').textContent=el?'Zielposition auf dem Feld anklicken':'Spieler ziehen oder auswählen → Feld anklicken'};
+  mode.onclick=()=>{select(null);marking=!marking;mode.classList.toggle('primary',marking);mode.textContent=marking?'✓ Zielmodus aktiv':'◎ Ziel markieren'};
+  const point=(e,player)=>{const r=court.getBoundingClientRect(),w=court.clientWidth,h=court.clientHeight,padX=player?player.offsetWidth/(2*w)*100:3,padY=player?player.offsetHeight/(2*h)*100:3;return [Math.max(padX,Math.min(100-padX,(e.clientX-r.left-court.clientLeft)/w*100)),Math.max(padY,Math.min(100-padY,(e.clientY-r.top-court.clientTop)/h*100))]};
+  const place=(el,xy)=>{el.style.left=xy[0]+'%';el.style.top=xy[1]+'%';board.players[el.dataset.sixPlayer]=xy};
+  court.addEventListener('pointerup',e=>{if(e.target.closest('button'))return;if(!marking){if(selected){place(selected,point(e,selected));select(null);saveLocal()}return;}const xy=point(e);board.pins.push(xy);const dot=document.createElement('span');dot.className='sixPin';dot.style.left=xy[0]+'%';dot.style.top=xy[1]+'%';court.appendChild(dot);saveLocal()});
   card.querySelector('.sixUndo').onclick=()=>{board.pins.pop();saveLocal();render()};
   card.querySelector('.sixReset').onclick=()=>{board.players={};board.pins=[];saveLocal();render()};
   court.querySelectorAll('.sixPlayer').forEach(el=>{
-   let pointer=null,dx=0,dy=0;
-   el.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();pointer=e.pointerId;const r=el.getBoundingClientRect();dx=e.clientX-(r.left+r.width/2);dy=e.clientY-(r.top+r.height/2);el.setPointerCapture(pointer);el.classList.add('dragging')});
-   el.addEventListener('pointermove',e=>{if(pointer!==e.pointerId)return;const xy=point({clientX:e.clientX-dx,clientY:e.clientY-dy},el);el.style.left=xy[0]+'%';el.style.top=xy[1]+'%';board.players[el.dataset.sixPlayer]=xy});
-   const finish=e=>{if(pointer!==e.pointerId)return;pointer=null;el.classList.remove('dragging');saveLocal()};el.addEventListener('pointerup',finish);el.addEventListener('pointercancel',finish);
+   let gesture=null;
+   el.addEventListener('dragstart',e=>e.preventDefault());
+   el.addEventListener('click',e=>{if(e.detail===0&&!marking)select(el)});
+   el.addEventListener('pointerdown',e=>{if(marking||!e.isPrimary||e.button!==0)return;e.preventDefault();e.stopPropagation();const r=el.getBoundingClientRect();gesture={id:e.pointerId,x:e.clientX,y:e.clientY,dx:e.clientX-(r.left+r.width/2),dy:e.clientY-(r.top+r.height/2),before:board.players[el.dataset.sixPlayer]?.slice(),left:el.style.left,top:el.style.top,moved:false};el.setPointerCapture(e.pointerId);el.classList.add('dragging')});
+   const move=e=>{if(!gesture||gesture.id!==e.pointerId)return;if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>=4)gesture.moved=true;if(gesture.moved)place(el,point({clientX:e.clientX-gesture.dx,clientY:e.clientY-gesture.dy},el))};
+   el.addEventListener('pointermove',move);
+   el.addEventListener('pointerup',e=>{if(!gesture||gesture.id!==e.pointerId)return;e.stopPropagation();move(e);const moved=gesture.moved;gesture=null;if(el.hasPointerCapture(e.pointerId))el.releasePointerCapture(e.pointerId);el.classList.remove('dragging');select(moved?null:el);saveLocal()});
+   const cancel=()=>{if(!gesture)return;if(gesture.before)board.players[el.dataset.sixPlayer]=gesture.before;else delete board.players[el.dataset.sixPlayer];el.style.left=gesture.left;el.style.top=gesture.top;gesture=null;el.classList.remove('dragging');saveLocal()};el.addEventListener('pointercancel',cancel);el.addEventListener('lostpointercapture',cancel);
   });
  });
 }
@@ -602,13 +813,13 @@ function nineZonePicker(kind,payload){
    p.data.targetZone=z;p.data.court={x,y};st.marks.push({x,y,zone:z,set:st.set,player:p.data.attacker||p.data.server||null,side:p.w,kind});
    closeModal();commit(p.w,p.data,pre)
  });
- $("skipMark").onclick=()=>{let p=pendingMark;pendingMark=null;closeModal();commit(p.w,p.data)}
+ $("skipMark").onclick=()=>{let p=pendingMark;pendingMark=null;closeModal();commit(p.w,p.data)};saveLocal();
 }
 function courtPicker(){nineZonePicker("KILL",pendingMark)}
 // A substitute is tied to the original starter and can enter only once per set.
 function validateSub(out,inn){
  if(!st.started||st.setEnded||view!=="live"||draft.step)return "Wechsel nur zwischen Rallyes im laufenden Satz";
- if(!st.lineup.includes(out)||st.lineup.includes(inn)||!byId(inn)||byId(inn).role==="L")return "Spieler nicht verfügbar";
+ if(!st.lineup.includes(out)||st.lineup.includes(inn)||!byId(inn)||byId(inn).role==="L"||st.liberoIds.includes(inn))return "Spieler nicht verfügbar";
  if(st.subCount>=6)return "Sechs reguläre Wechsel erreicht";
  const starters=(st.setStart&&st.setStart.lineup)||st.lineup;
  const pairs=st.subPairs||{},used=st.subUsed||[];
@@ -641,15 +852,21 @@ function scoreFix(){if(view!=="live")return toast("Nur LIVE korrigierbar");modal
 function prepareNextSet(){
  if(!st.setEnded||st.matchEnded)return toast("Kein Satzwechsel möglich");
  const next=st.set+1;
+ let wizardLib={liberoAutoEnabled:st.liberoAutoEnabled,liberoPreferredId:st.liberoPreferredId,liberoPreferredMB:st.liberoPreferredMB,liberoIds:clone(st.liberoIds)};
  const options=(selected)=>roster.filter(p=>p.role!=="L").map(p=>`<option value="${p.id}" ${selected===p.id?"selected":""}>${esc(p.name)} · ${esc(p.role)}</option>`).join("");
- modal(`<h2>Satz ${next} · neue Startaufstellung</h2><p class="small">Jede Position frei wählen. Die bisherige Aufstellung ist vorausgewählt.</p><div class="grid2">${lineupEditor("ns",st.lineup)}</div><label>Startrotation<select id="nsRot">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${n===st.rot?"selected":""}>R${n}</option>`).join("")}</select></label><p class="small">Libero-Einsatz wird vor dem neuen Satz zurückgesetzt und kann anschließend neu festgelegt werden.</p><div class="grid2"><button id="nsRec">Gegner-Aufschlag · K1</button><button id="nsSrv" class="primary">EVV-Aufschlag · K2</button></div><button id="nsCancel">Abbrechen</button>`);
+ modal(`<h2>Satz ${next} · neue Startaufstellung</h2><p class="small">Jede Position frei wählen. Die bisherige Aufstellung ist vorausgewählt.</p><label>Startvorlage<select id="nsPreset"><option value="">Letzte Aufstellung übernehmen</option>${Object.keys(st.startPresets||{}).map(name=>`<option value="${esc(name)}">${esc(name)}</option>`).join('')}</select></label><button id="nsSavePreset">Letzte Aufstellung als Vorlage speichern</button><label><input type="checkbox" id="nsKeepLib" checked> Libero-Konfiguration übernehmen</label><p>Gespeicherte Annahme-/Abwehrformationen werden nach Rotation geladen. Erst K1/K2 starten bestätigt die Aufstellung.</p><div class="grid2">${lineupEditor("ns",st.lineup)}</div><label>Startrotation<select id="nsRot">${[1,2,3,4,5,6].map(n=>`<option value="${n}" ${n===st.rot?"selected":""}>R${n}</option>`).join("")}</select></label><p class="small">Aufstellung und Libero vor dem Start kontrollieren. Taktische Ziele bleiben getrennt von Regelpositionen.</p><div class="grid2"><button id="nsRec">Gegner-Aufschlag · K1</button><button id="nsSrv" class="primary">EVV-Aufschlag · K2</button></div><button id="nsCancel">Abbrechen</button>`);
+ $('nsPreset').onchange=()=>{const p=st.startPresets?.[$('nsPreset').value]||{lineup:st.lineup,roles:st.roles,...wizardLib};p.lineup.forEach((id,i)=>{$('nsP'+i).value=id;$('nsR'+i).value=p.roles[id]});wizardLib=clone(p)};
+ $('nsSavePreset').onclick=()=>{saveLineupPreset('Gespeicherte Startaufstellung');prepareNextSet()};
  const go=serv=>{
   const picked=readLineupEditor("ns");if(!picked)return;const ids=picked.ids;
   const newRot=Number($("nsRot").value);
   st.sets.push({set:st.set,e:st.e,o:st.o,rallies:clone(st.rallies),marks:clone(st.marks),start:clone(st.setStart),lineup:clone(st.lineup),roles:clone(st.roles),events:clone(st.events.filter(x=>x.set===st.set))});
   st.set=next;st.e=0;st.o=0;st.lineup=ids;st.roles=picked.roles;st.rot=newRot;st.serving=serv;st.setEnded=false;st.matchEnded=false;
-  st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";st.liberoPreferredId="";st.liberoPreferredMB="";st.receivePlans={};st.tacticPositions={};st.sixBoards={};
-  st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids),roles:clone(st.roles)};
+  const keepLib=$('nsKeepLib').checked;
+  st.liberoActive=false;st.liberoOnCourt="";st.liberoReplacedId="";
+  if(keepLib){st.liberoIds=clone(wizardLib.liberoIds);st.liberoAutoEnabled=wizardLib.liberoAutoEnabled;st.liberoPreferredId=wizardLib.liberoPreferredId||"";st.liberoPreferredMB=wizardLib.liberoPreferredMB||""}else{st.liberoAutoEnabled=false;st.liberoPreferredId="";st.liberoPreferredMB=""}
+  st.receivePlans={};st.tacticPositions={};st.sixBoards={};
+  st.rallies=[];st.rallyUndo=[];st.marks=[];st.subPairs={};st.subCount=0;st.subUsed=[];st.setStart={rot:newRot,serving:serv,lineup:clone(ids),roles:clone(st.roles)};syncLiberoRotation();
   draft={};clearDraftHistory();pendingMark=null;tab="rally";view="live";closeModal();render();toast(`Satz ${next} gestartet`);
  };
  $("nsRec").onclick=()=>go(false);$("nsSrv").onclick=()=>go(true);$("nsCancel").onclick=closeModal;
@@ -661,20 +878,20 @@ function importData(){
  const file=input.files&&input.files[0];if(!file)return;
  if(file.size>15*1024*1024)throw Error("Datei zu groß (maximal 15 MB)");
  const data=JSON.parse(await file.text());
- if(data.schema!=="EVV-QuickScout-1"||!data.match||!Array.isArray(data.match.lineup)||data.match.lineup.length!==6||!Array.isArray(data.match.rallies)||!Array.isArray(data.match.sets)||!data.opponent||typeof data.opponent.name!=="string")throw Error("Kein gültiges QuickScout-Backup");
+ if(data.schema!=="EVV-QuickScout-1")throw Error("Kein gültiges QuickScout-Backup");validateMatch(data.match);validateOpponent(data.opponent);validateRuntime(data.runtime);
  if(!confirm("Aktuellen Spielstand durch Backup ersetzen? Bitte vorher exportieren."))return;
- st=Object.assign(fresh(),data.match);opponent=Object.assign({name:"Gegner",setter:"#",liberos:["#","#"],receivers:[]},data.opponent);if(Array.isArray(data.roster)){for(const saved of data.roster){const player=byId(saved.id);if(player&&saved.role==="L")player.name=sanitizeLiberoName(saved.name)||player.name}}
- st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};draft={};clearDraftHistory();view="live";tab="rally";saveLocal();setupUI();$("setup").classList.toggle("hidden",!!st.started);render();toast("Backup importiert");
+ storageLoadFailed=false;st=loadedMatch(data.match);opponent=Object.assign({name:"Gegner",setter:"#",liberos:["#","#"],receivers:[]},data.opponent);if(Array.isArray(data.roster)){for(const saved of data.roster){const player=byId(saved.id);if(player&&saved.role==="L")player.name=sanitizeLiberoName(saved.name)||player.name}}
+ st.receivePlans=st.receivePlans||{};st.tacticPositions=st.tacticPositions||{};draft={};clearDraftHistory();view="live";tab="rally";pendingMark=null;if(data.runtime){draft=data.runtime.draft;draftHistory=data.runtime.draftHistory||[];pendingMark=data.runtime.pendingMark||null;liveMode=data.runtime.liveMode==="quick"?"quick":"detail"}saveLocal();setupUI();$("setup").classList.toggle("hidden",!!st.started);render();if(pendingMark)nineZonePicker("KILL",pendingMark);toast("Backup im Arbeitsspeicher übernommen");
  }catch(e){toast("Import fehlgeschlagen: "+e.message)}};input.click();
 }
 function newMatch(){
  modal(`<h2>Neues Spiel beginnen</h2><p>Der aktuelle Spielstand wird durch ein neues Spiel ersetzt. Exportiere ihn vorher als JSON, damit keine Daten verloren gehen.</p><div class="grid2"><button id="nmExport">Backup exportieren</button><button id="nmCancel">Abbrechen</button></div><button id="nmConfirm" class="danger">Neues Spiel ohne Übernahme starten</button>`);
  $("nmExport").onclick=exportData;$("nmCancel").onclick=closeModal;
- $("nmConfirm").onclick=()=>{st=fresh();opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};draft={};draftHistory=[];pendingMark=null;tab="rally";view="live";closeModal();$("setup").classList.remove("hidden");setupUI();$("oppName").value="Gegner";["oppSetter","oppLibero1","oppLibero2","oppR1","oppR2","oppR3","oppR4"].forEach(id=>{if($(id))$(id).value=""});render();toast("Neues Spiel einrichten")};
+ $("nmConfirm").onclick=()=>{const planning={startPresets:st.startPresets,formationBook:st.formationBook,hybridFormations:st.hybridFormations};storageLoadFailed=false;st=fresh();Object.assign(st,planning);opponent={name:"Gegner",setter:"#",liberos:["#","#"],receivers:["#","#","#","#"]};draft={};draftHistory=[];pendingMark=null;tab="rally";view="live";closeModal();$("setup").classList.remove("hidden");setupUI();$("oppName").value="Gegner";["oppSetter","oppLibero1","oppLibero2","oppR1","oppR2","oppR3","oppR4"].forEach(id=>{if($(id))$(id).value=""});render();toast("Neues Spiel einrichten")};
 }
 function exportData(){
- const payload={schema:"EVV-QuickScout-1",version:APP_VERSION,exportedAt:new Date().toISOString(),opponent,match:st,roster};
- const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=`EVV_Scout_S${st.set}_${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
+ const payload={schema:"EVV-QuickScout-1",runtime:{draft,draftHistory,pendingMark,liveMode,tab,view},version:APP_VERSION,exportedAt:new Date().toISOString(),opponent,match:st,roster};
+ const blob=new Blob([storageLoadFailed?(localStorage.getItem(STORE_KEY)||""):JSON.stringify(payload,null,2)],{type:storageLoadFailed?"text/plain":"application/json"});const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=storageLoadFailed?`EVV_Recovery_${new Date().toISOString().slice(0,10)}.txt`:`EVV_Scout_S${st.set}_${new Date().toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);
 }
 function printReport(){
  const rr=allRallies(),r=rotationStats(rr),rec=statRowsFrom(rr);
@@ -683,16 +900,20 @@ function printReport(){
  popup.document.write(html);popup.document.close();
 }
 function rallyLabel(x){let a=[];if(x.serve)a.push(`Aufschlag ${x.serve}`);if(x.receiver&&x.reception)a.push(`Annahme ${x.receiver} ${x.reception}`);if(x.setterTarget)a.push(`Zuspiel ${x.setterTarget}`);if(x.attacker)a.push(`Angriff ${nm(x.attacker)} ${x.zone||""} ${x.result||""}`.trim());else if(x.event==="OpponentAttack")a.push(`Gegnerangriff ${x.result||""}`.trim());else if(!a.length)a.push(x.event||"Rally");return a.join(" → ")}
-function recent(){let r=allRallies().slice(-3).reverse();$("recent").innerHTML=`<h3>Letzte Rallys</h3><div class="history">${r.length?r.map(x=>`S${x.set} · ${esc(x.after)} · ${esc(rallyLabel(x))} · ${esc(x.winner)}`).join("<br>"):"Noch keine Rally"}</div>`}
+function recent(){let r=allRallies().slice(-3).reverse();$("recent").innerHTML=`<h3>Abgeschlossene Rallyes · letzte drei</h3><div class="history">${r.length?r.map(x=>`S${x.set} · ${esc(x.after)} · ${esc(rallyLabel(x))} · ${esc(x.winner)}${x.observationComplete===false?" · unvollständig beobachtet":""}${x.turnaround?` · Angriffe ${x.turnaround.attacks} · Transitions ${x.turnaround.transitions}`:""}`).join("<br>"):"Noch keine Rally"}</div>`}
 function render(){
+ document.body.classList.toggle("quickLive",liveMode==="quick"&&st.started&&view==="live"&&["rally","opponent"].includes(tab));
  saveLocal();
+ if(!$("hybridModes")){const nav=document.createElement("section");nav.id="hybridModes";nav.className="card hybridModes";$("flow").before(nav)}
+ $("hybridModes").innerHTML=`<button id="modeQuick" aria-pressed="${liveMode==='quick'}">Schnellmodus</button><button id="modeDetail" aria-pressed="${liveMode==='detail'}">Detailmodus</button>`;$("modeQuick").onclick=()=>hybridMode("quick");$("modeDetail").onclick=()=>hybridMode("detail");
+ $("hybridModes").insertAdjacentHTML("beforeend",`<button id="formationEditor">Taktik</button><button id="turnaroundReport">Analyse</button>`);$("formationEditor").onclick=()=>formationEditor();$("turnaroundReport").onclick=analysisPanel;
  renderHeader();renderNav();document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
- if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();if($("finishedNew"))$("finishedNew").onclick=newMatch;
+ if(liveMode==="quick"&&(tab==="rally"||tab==="opponent"))rally();else if(tab==="rally")rally();else if(tab==="opponent")opponentTab();else if(tab==="coach")coach();else stats();recent();if($("finishedNew"))$("finishedNew").onclick=newMatch;
  $("nextSet").disabled=!st.setEnded||st.matchEnded;$("substitute").disabled=!st.started||view!=="live"||!!draft.step
 }
 document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;render()});
 $("startReceive").onclick=()=>start(false);$("startServe").onclick=()=>start(true);
-function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;render();toast("Letzte Rally vollständig zurückgesetzt")}
+function undoLast(){if(view!=="live")return toast("Undo nur LIVE");let x=st.rallyUndo.pop();if(!x)return toast("Keine Rally zum Undo");restore(x);draft={};clearDraftHistory();pendingMark=null;quickPending=null;selectedQuickPlayer=null;quickRevision++;closeModal();render();toast("Letzte Rally vollständig zurückgesetzt")}
 $("undo").onclick=undoLast;$("newMatch").onclick=newMatch;
 $("exportData").onclick=exportData;$("importData").onclick=importData;$("printReport").onclick=printReport;$("scoreFix").onclick=scoreFix;$("substitute").onclick=substitute;$("timeout").onclick=()=>{
  if(!st.started||view!=="live")return toast("Auszeit nur im laufenden Satz");
@@ -735,10 +956,11 @@ function voiceConfirm(cmd){
  $("voiceYes").onclick=()=>{closeModal();executeVoice(cmd);voicePending=null;stopVoiceRecognition()};
 }
 function executeVoice(c){
- if(c.type==="undo"){let x=st.rallyUndo.pop();if(x){restore(x);draft={};render();toast("Sprach-UNDO")}else toast("Kein Undo verfügbar");return}
+ if(view!=="live")return toast("Sprachaktionen nur LIVE");
+ if(c.type==="undo"){undoLast();return}
  if(c.type==="quick"){commit(c.winner,{event:"VoiceQuick",voice:c.raw});return}
  if(c.type==="serve"){if(c.result==="ACE"){nineZonePicker("ACE",{w:"EVV",data:{event:"Serve",serve:"ACE",voice:c.raw}})}else commit("Gegner",{event:"Serve",serve:"ERROR",voice:c.raw});return}
- if(c.type==="reception"){if(!receivers().includes(c.player))return toast(`${nm(c.player)} ist nicht in der aktuellen Annahme`); if(c.q==="A0")commit("Gegner",{event:"Reception",receiver:c.player,reception:c.q,voice:c.raw,result:"DIRECT_ERROR",chain:[{side:"EVV",type:"Reception",player:c.player,quality:"A0"}]});else{draft={step:2,receiver:c.player,reception:c.q,voice:c.raw};tab="rally";render();toast("Annahme gespeichert · Angriff weiter per Tap/Sprache")};return}
+ if(c.type==="reception"){if(!receivers().includes(c.player))return toast(`${nm(c.player)} ist nicht in der aktuellen Annahme`); if(c.q==="A0")commit("Gegner",{event:"Reception",receiver:c.player,reception:c.q,voice:c.raw,result:"DIRECT_ERROR",chain:[{side:"EVV",type:"Reception",player:c.player,quality:"A0"}]});else{pushDraft();draft={step:"evvBall2",phase:"K1",receiver:c.player,reception:c.q,voice:c.raw,chain:[{side:"EVV",type:"Reception",player:c.player,quality:c.q}]};tab="rally";render();toast("Annahme gespeichert · Angriff weiter per Tap/Sprache")};return}
  if(c.type==="kill"){if(!attackers().includes(c.player))return toast(`${nm(c.player)} ist aktuell kein Angreifer`);pendingMark={w:"EVV",data:{event:"Attack",attacker:c.player,zone:c.zone,result:"KILL",voice:c.raw}};courtPicker();return}
  if(c.type==="block"){if(!front().includes(c.player))return toast(`${nm(c.player)} ist aktuell nicht Vorderreihe`);commit("EVV",{event:"Block",player:c.player,result:"BLOCK",voice:c.raw});return}
  if(c.type==="sub"){applySub(c.out,c.inn,c.raw);return}
@@ -774,6 +996,6 @@ window.addEventListener("pagehide",stopVoiceRecognition);
 document.addEventListener("visibilitychange",()=>{if(document.hidden)stopVoiceRecognition()});
 $("voiceBtn").onclick=toggleVoice;
 
-const restored=loadLocal();document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();
-window.EVV_QS_TEST={editOpponentJerseys,jersey,newMatch,liberoPlanner,opponentCourt,configureLiberos,configureLiberoSlots,liberoRoster,checkEnd,setWins,timeoutCount,timeoutSummary,saveSixPresets,loadSixPresets,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,syncLiberoRotation,currentServerId,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
+const restored=loadLocal();if(restoredRuntime){draft=restoredRuntime.draft;draftHistory=restoredRuntime.draftHistory||[];pendingMark=restoredRuntime.pendingMark||null;liveMode=restoredRuntime.liveMode==="quick"?"quick":"detail";tab=["rally","opponent","coach","stats"].includes(restoredRuntime.tab)?restoredRuntime.tab:"rally";view=restoredRuntime.view||"live"}document.title=`EVV QuickScout V${APP_VERSION}`;if($("buildLabel"))$("buildLabel").textContent=`V${APP_VERSION}`;if($("setupVersion"))$("setupVersion").textContent=`V${APP_VERSION}`;setupUI();if(restored&&st.started){$("setup").classList.add("hidden")}render();if(pendingMark)nineZonePicker(pendingMark.data?.serve==="ACE"?"ACE":"KILL",pendingMark);
+window.EVV_QS_TEST={activeFormation,validateMatch,turnaroundAnalysis,formationFor,saveFormation,formationPlayers,formationEditor,saveLineupPreset,saveHybridFormation,hybridFormation,turnaroundMetrics,hybridAction,hybridMode,editOpponentJerseys,jersey,newMatch,liberoPlanner,opponentCourt,configureLiberos,configureLiberoSlots,liberoRoster,checkEnd,setWins,timeoutCount,timeoutSummary,saveSixPresets,loadSixPresets,opponentPlayerStats,trendPanel,tacticalPreset,importData,action,commit,applySub,undoLast,start,setView:v=>{view=v},getDraft:()=>clone(draft),setLineup:(ids,roles,rot,lib)=>{st.lineup=ids.slice();st.roles=Object.assign({},roles);st.rot=rot||1;if(lib)Object.assign(st,lib)},begin:(serv,rot)=>{st.started=true;st.serving=serv;st.rot=rot||st.rot;st.setStart={rot:st.rot,serving:serv,lineup:clone(st.lineup),roles:clone(st.roles)}},target,isSetWin,rotNext:r=>ROT_NEXT[r],fresh,state:()=>clone(st),courtPos,rotationMatrix,liberoEligible,syncLiberoRotation,currentServerId,front,receivers,attackOptions,attackRoutesFor,roleBaseRoute,roleOf,readLineupEditor,ralliesForSet,marksForSet,opponentReceivers,version:APP_VERSION};
 })();

@@ -1,0 +1,7 @@
+Dieser Release-Branch enthält alle vier V8-Entwicklungsstände und liefert ein tatsächlich entpacktes/startbares, isoliertes Mac-Testpaket. main, GitHub Pages und Produktversionskennung bleiben unverändert.
+
+Behobene Probleme: beschädigte Undo-Inhalte wurden beim Import/Reload akzeptiert; Touch-Dialogschluss konnte in WebKit eine darunterliegende Aktion auslösen. Die endgültige Touch-Behandlung erhält außerdem Speichern nach Drag, ohne Kompatibilitätsklicks doppelt zu zählen oder die nächste Eingabe zu blockieren. JSDOM-Matches geben die Event Loop frei statt das Heap-Limit zu erhöhen.
+
+Validierung: 151 Node- und 79 Chromium-Tests sowie 19 ausgewählte WebKit-Tests bestanden. 100 detaillierte Matches / 400 Sätze / 17.213 Rallyes / 271.405 Kontakte mit unabhängigen Sollwerten nach jeder Rallye; Plan-Digests stimmen mit zwei Referenzläufen überein. Bestehende Quick-Matches, UI-Matches, Migrationen und Cache-Prüfungen bleiben erhalten. Alle Klickgrenzen erreicht; keine Assertions gelockert oder historischen Tests entfernt.
+
+Reproduzierbarer ZIP-Builder mit SHA256-/QA-Gates, TEST_START.py und echter ZIP-Browserprüfung. CI erzeugt Testartefakte, kein Deployment. Details: docs/FINAL_RELEASE_REPORT.md und docs/qa/final/. Firefox-App-Tests sind durch den Containerstart blockiert; echte Apple-Geräte und WLAN-/HTTPS-Offlineabnahme bleiben manuell. GO nur zur kontrollierten manuellen Abnahme mit positivem Paketprotokoll, kein Merge/Deployment ohne Freigabe.

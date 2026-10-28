@@ -1,0 +1,51 @@
+
+> evv-quickscout@8.0.0-dev test
+> node --test tests/rotations.test.cjs tests/unit.test.cjs tests/review.test.cjs tests/hybrid.test.cjs tests/advanced.test.cjs tests/simulation.test.cjs
+
+✔ Laufende Rallye überlebt Neustart, kein doppelter Punkt (250.810895ms)
+✔ Importvalidierung lehnt beschädigte Zustände vor Mutation ab (39.238148ms)
+✔ Unabhängige Sollwerte für Turnaround-Quoten und Beobachtungslücken (31.198627ms)
+✔ Gespeicherte Formationen werden nach Rotation/Angriffsrichtung automatisch geladen (41.148963ms)
+✔ Sicheres Speichern: Quota-Fehler bewahrt letzte gültige Bytes und aktuellen Speicherzustand (48.61083ms)
+✔ Geometrie und unbekannte Speicherversion werden ohne Überschreiben abgewiesen (39.807887ms)
+✔ Taktik-Bibliothek bleibt bei neuem Spiel erhalten; Slot statt Spieler-ID (29.996901ms)
+✔ Gegnerdaten mit Prototype-Schlüsseln werden vor Anwendung blockiert (49.969369ms)
+✔ 100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontaktmodell (223.463862ms)
+✔ Transition-Doppeltap, Ereignis-ID und alter Handler zählen nicht doppelt (56.235103ms)
+✔ Taktische Formationen R1–R6 verändern keine Regelpositionen (32.82137ms)
+✔ Detail-Angriff bleibt beim Moduswechsel ein Angriff; Formation überlebt Reload (124.169982ms)
+✔ v7.9.2: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (243.525416ms)
+✔ pre-pr-main: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (73.71795ms)
+✔ Undo schließt ausstehende Zielzone und verhindert verwaiste Bestätigung (69.581009ms)
+✔ Sprach-Undo respektiert historische READ-ONLY-Ansicht (34.940536ms)
+✔ Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wie Touch (57.815037ms)
+✔ Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet (61.083529ms)
+✔ Libero-Aufschlagsverbot und Wiedereintritt in allen sechs Rotationen (297.020148ms)
+✔ Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: {"st": (35.65207ms)
+✔ Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: null (46.886777ms)
+✔ Alle schreibenden Sprachaktionen respektieren READ-ONLY, nicht nur Undo (20.447798ms)
+✔ R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (155.282318ms)
+✔ R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (51.906402ms)
+✔ R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (40.865245ms)
+✔ R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (37.586845ms)
+✔ R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (38.920542ms)
+✔ R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (38.964735ms)
+✔ 100 reproduzierbare vollständige Matches, unabhängige Prüfung jedes Punktes (48976.373867ms)
+✔ Satzgrenzen: 25/15, zwei Punkte Abstand (140.084588ms)
+✔ Rotationen und erlaubte Angreifer in allen sechs Aufstellungen (46.415662ms)
+✔ Sideout rotiert einmal; eigener Punkt und eigener Fehler nicht (31.486666ms)
+✔ Ungültiger Sieger und beendeter Satz verändern keine Rallyes (36.443876ms)
+✔ Wechsel/Rückwechsel, Paarbindung und Wiederverwendung (22.666401ms)
+✔ Registrierter Libero darf nicht regulär eingewechselt werden (24.247898ms)
+✔ A0 beendet unmittelbar mit Gegnerpunkt (25.066033ms)
+✔ D0 beider Teams beendet die Rallye unmittelbar (28.787674ms)
+✔ Markierter Punkt und Undo sind atomar (25.665727ms)
+✔ Undo und explizites Speichern enthalten den aktuellen Spielstand (20.639058ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50348.919824

@@ -1,0 +1,24 @@
+Dieser Kandidat ist eine statische Web-App, keine native iOS-/Android-Hülle.
+Keine Aussage absoluter Fehlerfreiheit oder uneingeschränkter Spieltagsfreigabe.
+
+- Automatisierte Chromium-Prüfung und Touch-/Viewport-Emulation sind keine Tests
+  auf echten Apple-Geräten. iPad/iPhone/Safari/Pencil/Mikrofon müssen manuell geprüft werden.
+- Chromium vollständig und WebKit gezielt unter Linux emuliert geprüft; keine echte Safari-/iPad-Abnahme.
+- Firefox heruntergeladen, aber Browserstart blockiert (Timeout, /proc/self/uid_map EROFS); keine bestandenen Firefox-App-Tests.
+- WLAN-HTTP am iPad ermöglicht keinen zugesicherten Service-Worker-/Offlinebetrieb.
+  Für Geräte-Offlineabnahme ist ein eigener HTTPS-Test-Origin erforderlich.
+- Browser-/Betriebssystemabsturz und Speicherverdrängung sind nicht identisch mit
+  dem geprüften geordneten Browserprozess-Neustart. Speicherquota ist geräteabhängig.
+- Spielstände bleiben browserlokal. Browserdatenlöschung/Geräteverlust kann Daten
+  vernichten; regelmäßig exportieren. Kein serverseitiges Backup.
+- Geprüft ist das normale Sechs-Wechsel-Regelwerk mit Paar-Rückwechsel und zwei
+  gemeldeten Liberos. Verletzungs-/Ausnahmewechsel und vollständige DVV/FIVB-Abnahme
+  aller Sonderfälle sind nicht zugesichert. Liberos schlagen hier nicht auf.
+- Unbeobachtete Kontakte werden nicht erfunden. Quick-Gegneraufschlagfehler werden
+  als unvollständige Rallye erfasst; kein eigener Angriff wird zugerechnet.
+- Historische acht inkompatible Testskripte bleiben als fehlgeschlagenes Archiv
+  dokumentiert; relevante Verhaltenstests wurden migriert, nicht gestrichen.
+- RC2 ist lokal zur Prüfung vorbereitet. Keine neue GitHub-Veröffentlichung,
+  keine Remote-CI für RC2 und kein produktives Deployment durchgeführt.
+- Keine automatische Rückwärtsmigration beliebiger App-/Datenversionen.
+  Cache-/Worker-Rollback ist nur bei kompatiblem Datenschema geprüft.

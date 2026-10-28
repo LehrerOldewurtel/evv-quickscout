@@ -1,0 +1,768 @@
+{
+  "stats": {
+    "startTime": "2026-10-26T12:48:07.411Z",
+    "duration": 51132.438,
+    "expected": 36,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "R1 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R1 K2 Aufschlag und Blockpunkt",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R1 lange Rallye mit zwei Transitions",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 24,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R1 A0 und D0 beider Seiten",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 15,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R1 Spielerwechsel und R\u00fcckwechsel",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 4,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R1 Satzwechsel, Archiv und Reload",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 2,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R2 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R2 K2 Aufschlag und Blockpunkt",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R2 lange Rallye mit zwei Transitions",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 24,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R2 A0 und D0 beider Seiten",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 15,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R2 Spielerwechsel und R\u00fcckwechsel",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 4,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R2 Satzwechsel, Archiv und Reload",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 2,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R3 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R3 K2 Aufschlag und Blockpunkt",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R3 lange Rallye mit zwei Transitions",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 24,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R3 A0 und D0 beider Seiten",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 15,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R3 Spielerwechsel und R\u00fcckwechsel",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 4,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R3 Satzwechsel, Archiv und Reload",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 2,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R4 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R4 K2 Aufschlag und Blockpunkt",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R4 lange Rallye mit zwei Transitions",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 24,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R4 A0 und D0 beider Seiten",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 15,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R4 Spielerwechsel und R\u00fcckwechsel",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 4,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R4 Satzwechsel, Archiv und Reload",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 2,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R5 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R5 K2 Aufschlag und Blockpunkt",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R5 lange Rallye mit zwei Transitions",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 24,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R5 A0 und D0 beider Seiten",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 15,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R5 Spielerwechsel und R\u00fcckwechsel",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 4,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R5 Satzwechsel, Archiv und Reload",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 2,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R6 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R6 K2 Aufschlag und Blockpunkt",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 7,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R6 lange Rallye mit zwei Transitions",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 24,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R6 A0 und D0 beider Seiten",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 15,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R6 Spielerwechsel und R\u00fcckwechsel",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 4,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "R6 Satzwechsel, Archiv und Reload",
+      "ok": true,
+      "results": [
+        {
+          "status": "expected",
+          "attachments": [
+            {
+              "name": "touch-inputs",
+              "contentType": "application/json",
+              "measurement": {
+                "taps": 2,
+                "setupExcluded": true,
+                "viewport": "820x1180",
+                "touch": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

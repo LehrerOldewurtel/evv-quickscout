@@ -1,0 +1,2133 @@
+{
+  "generatedAt": "2026-10-26T14:41:24.340Z",
+  "run": {
+    "node": {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "startedAt": "2026-10-26T14:37:55.058Z",
+      "finishedAt": "2026-10-26T14:38:54.551Z",
+      "log": "artifacts/node.tap"
+    },
+    "browser": {
+      "command": [
+        "npm",
+        "run",
+        "test:e2e"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "startedAt": "2026-10-26T14:38:54.552Z",
+      "finishedAt": "2026-10-26T14:41:07.360Z",
+      "log": "artifacts/browser.log"
+    }
+  },
+  "node": {
+    "tests": 68,
+    "passed": 68,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "browser": {
+    "startTime": "2026-10-26T14:38:55.458Z",
+    "duration": 131877.44,
+    "expected": 72,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "cases": [
+      {
+        "title": "Tablet 768: Touch-Drag, Formationen R1–R6, Kopie, Reload und Libero",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 4081,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Tablet 1024: Touch-Drag, Formationen R1–R6, Kopie, Reload und Libero",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 6572,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Satzassistent: Vorlage und Libero nur nach Bestätigung übernehmen",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1981,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Neuer Browserkontext stellt laufende Rallye wieder her",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2292,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Offline-Kaltladen erhält laufende Rallye und Compact-UI",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1269,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Beschädigte Imports verändern weder Stand noch Speicher",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1304,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Speicherplatzfehler zeigt dauerhafte Warnung und erhält vorherigen Stand",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 845,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Wiederherstellungsexport sichert beschädigte Rohdaten exakt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 652,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Unterbrechung bei Zielzone: Wiederaufnahme und genau ein Punkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1340,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Cache: Upgrade, fehlgeschlagenes Upgrade, Offline-Rückfall und Online-Rollback erhalten Rallye",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 7095,
+            "attachments": [
+              {
+                "name": "cache-lifecycle",
+                "data": "{\"upgrade\":\"activated\",\"failedInstall\":\"redundant\",\"rollback\":\"activated\",\"offlineReloads\":2,\"localStorageUnchangedUntilKill\":true,\"scope\":\"Service-Worker-Rollback; kein App-Schema-Downgrade\",\"requests\":[{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/favicon.ico\"},{\"stage\":\"old\",\"path\":\"/sw.js\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/index.html\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/manifest.webmanifest\"},{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"current\",\"path\":\"/sw.js\"},{\"stage\":\"current\",\"path\":\"/version.js\"},{\"stage\":\"current\",\"path\":\"/\"},{\"stage\":\"current\",\"path\":\"/index.html\"},{\"stage\":\"current\",\"path\":\"/styles.css\"},{\"stage\":\"current\",\"path\":\"/version.js\"},{\"stage\":\"current\",\"path\":\"/app.js\"},{\"stage\":\"current\",\"path\":\"/compact.js\"},{\"stage\":\"current\",\"path\":\"/manifest.webmanifest\"},{\"stage\":\"broken\",\"path\":\"/sw.js\"},{\"stage\":\"broken\",\"path\":\"/version.js\"},{\"stage\":\"broken\",\"path\":\"/\"},{\"stage\":\"broken\",\"path\":\"/index.html\"},{\"stage\":\"broken\",\"path\":\"/styles.css\"},{\"stage\":\"broken\",\"path\":\"/version.js\"},{\"stage\":\"broken\",\"path\":\"/app.js\"},{\"stage\":\"broken\",\"path\":\"/compact.js\"},{\"stage\":\"broken\",\"path\":\"/manifest.webmanifest\"},{\"stage\":\"broken\",\"path\":\"/\"},{\"stage\":\"broken\",\"path\":\"/styles.css\"},{\"stage\":\"broken\",\"path\":\"/version.js\"},{\"stage\":\"broken\",\"path\":\"/app.js\"},{\"stage\":\"broken\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/sw.js\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/\"},{\"stage\":\"old\",\"path\":\"/index.html\"},{\"stage\":\"old\",\"path\":\"/styles.css\"},{\"stage\":\"old\",\"path\":\"/version.js\"},{\"stage\":\"old\",\"path\":\"/app.js\"},{\"stage\":\"old\",\"path\":\"/compact.js\"},{\"stage\":\"old\",\"path\":\"/manifest.webmanifest\"}]}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px ace: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 690,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"ace\",\"width\":390,\"inputs\":1,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px a0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1051,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"a0\",\"width\":390,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px d0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 951,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"d0\",\"width\":390,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px kill: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 905,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"kill\",\"width\":390,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px transition: höchstens 1 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1177,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transition\",\"width\":390,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "390px transitionKill: höchstens 3 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 928,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transitionKill\",\"width\":390,\"inputs\":3,\"limit\":3}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px ace: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1245,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"ace\",\"width\":820,\"inputs\":1,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px a0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1401,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"a0\",\"width\":820,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px d0: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1153,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"d0\",\"width\":820,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px kill: höchstens 2 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1167,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"kill\",\"width\":820,\"inputs\":2,\"limit\":2}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px transition: höchstens 1 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1321,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transition\",\"width\":820,\"inputs\":1,\"limit\":1}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "820px transitionKill: höchstens 3 Eingaben",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1289,
+            "attachments": [
+              {
+                "name": "inputs",
+                "data": "{\"kind\":\"transitionKill\",\"width\":820,\"inputs\":3,\"limit\":3}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Generalprobe 390px: komplettes Match ausschließlich per Oberfläche",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 35477,
+            "attachments": [
+              {
+                "name": "matchday",
+                "data": "{\"width\":390,\"sets\":[{\"set\":1,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":2,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":3,\"e\":25,\"o\":7,\"rallies\":32}],\"rallies\":96,\"taps\":245,\"selects\":18,\"typedFields\":2,\"dragGestures\":1,\"notes\":\"Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI.\"}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Generalprobe 820px: komplettes Match ausschließlich per Oberfläche",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 38377,
+            "attachments": [
+              {
+                "name": "matchday",
+                "data": "{\"width\":820,\"sets\":[{\"set\":1,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":2,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":3,\"e\":25,\"o\":7,\"rallies\":32}],\"rallies\":96,\"taps\":244,\"selects\":18,\"typedFields\":2,\"dragGestures\":1,\"notes\":\"Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI.\"}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Generalprobe 1024px: komplettes Match ausschließlich per Oberfläche",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 31068,
+            "attachments": [
+              {
+                "name": "matchday",
+                "data": "{\"width\":1024,\"sets\":[{\"set\":1,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":2,\"e\":25,\"o\":7,\"rallies\":32},{\"set\":3,\"e\":25,\"o\":7,\"rallies\":32}],\"rallies\":96,\"taps\":244,\"selects\":19,\"typedFields\":2,\"dragGestures\":1,\"notes\":\"Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI.\"}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Coaching öffnet gewählte Rotation und Annahme/Abwehr ohne automatische Mutation",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2524,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Echter Chromium-Neustart: Mehrfach-Transition-Rallye und eindeutige Kontakte",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2407,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Update v7.9.2: alter Stand, Reload und Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 951,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Update pre-pr-main: alter Stand, Reload und Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 847,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Libero aus und wieder ein: UI und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1514,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Bestätigte Sprachannahme und READ-ONLY-Sprache (Speech-API simuliert)",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1258,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Undo ausstehender Zielzone entfernt den alten Dialog",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 672,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: {\"st\":",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 575,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: null",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 569,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Import v7.9.2: bestätigtes synthetisches Backup behält Spielstand",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 929,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "Import pre-pr-main: bestätigtes synthetisches Backup behält Spielstand",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 958,
+            "attachments": []
+          }
+        ]
+      },
+      {
+        "title": "R1 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1284,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1333,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2557,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2130,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1195,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R1 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1426,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1336,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1358,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2910,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1920,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1192,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R2 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1329,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1390,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1425,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2722,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2336,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1177,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R3 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1247,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1278,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1384,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2513,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1895,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1165,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R4 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1277,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1444,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1431,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2645,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2160,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1439,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R5 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1391,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 K1 Angriffspunkt + Zielzone + Undo",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1328,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 K2 Aufschlag und Blockpunkt",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1365,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":7,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 lange Rallye mit zwei Transitions",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2802,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":24,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 A0 und D0 beider Seiten",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 2123,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":15,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 Spielerwechsel und Rückwechsel",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1230,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":4,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "R6 Satzwechsel, Archiv und Reload",
+        "status": "expected",
+        "results": [
+          {
+            "status": "passed",
+            "duration": 1470,
+            "attachments": [
+              {
+                "name": "touch-inputs",
+                "data": "{\"taps\":2,\"setupExcluded\":true,\"viewport\":\"820x1180\",\"touch\":true}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "simulations": {
+    "detailed": {
+      "matches": 20,
+      "sets": 80,
+      "rallies": 3560,
+      "contacts": 72409,
+      "undos": 230,
+      "substitutions": 160,
+      "results": [
+        {
+          "seed": 501,
+          "maxStoredChars": 1878595,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 34,
+            "block": 17,
+            "opponentError": 32,
+            "attackError": 30,
+            "kill": 26
+          },
+          "contacts": 2809,
+          "transitions": 274,
+          "digest": "2a67036a8d1a7af4a2a1ca8432b367f3371f911a161cf90c79e81483ede802be"
+        },
+        {
+          "seed": 502,
+          "maxStoredChars": 2022152,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 6,
+            "D0": 55,
+            "block": 28,
+            "kill": 39,
+            "opponentError": 42,
+            "attackError": 45
+          },
+          "contacts": 4347,
+          "transitions": 425,
+          "digest": "485115f9a366244d4281638379c44caeddc75539a27bd9bc0c4baf7fe05e02fe"
+        },
+        {
+          "seed": 503,
+          "maxStoredChars": 2110970,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 35,
+            "kill": 33,
+            "block": 22,
+            "attackError": 29,
+            "opponentError": 20
+          },
+          "contacts": 2976,
+          "transitions": 297,
+          "digest": "5eeec11fe34f008185f57ea70a124623f498463456caf8145334d176ae06ba87"
+        },
+        {
+          "seed": 504,
+          "maxStoredChars": 2262892,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 3,
+            "D0": 57,
+            "kill": 34,
+            "opponentError": 51,
+            "attackError": 46,
+            "block": 24
+          },
+          "contacts": 4573,
+          "transitions": 449,
+          "digest": "d4170ff5401c836447f42ee032c2736d79bd958e886b746187fd442af3e65b61"
+        },
+        {
+          "seed": 505,
+          "maxStoredChars": 1979678,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 32,
+            "opponentError": 26,
+            "block": 26,
+            "kill": 23,
+            "attackError": 32
+          },
+          "contacts": 2898,
+          "transitions": 284,
+          "digest": "d8f6fd89bfb0080df01a86d14c89b4dbb8bdf8e8afa0e71f33db04d792b9b26a"
+        },
+        {
+          "seed": 506,
+          "maxStoredChars": 2004058,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 8,
+            "D0": 49,
+            "opponentError": 37,
+            "kill": 36,
+            "block": 36,
+            "attackError": 49
+          },
+          "contacts": 4223,
+          "transitions": 412,
+          "digest": "bfbae0e24926a39ca03f5a32e1bce6f8dea9c31aa1a5a2fcd71542abc41a48c7"
+        },
+        {
+          "seed": 507,
+          "maxStoredChars": 2106352,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 35,
+            "block": 28,
+            "opponentError": 24,
+            "attackError": 29,
+            "kill": 23
+          },
+          "contacts": 2958,
+          "transitions": 289,
+          "digest": "16748950250f5fc7a146466404874e6b2a63ba121cc255f93edca22699883c7c"
+        },
+        {
+          "seed": 508,
+          "maxStoredChars": 2080354,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 3,
+            "D0": 58,
+            "block": 43,
+            "kill": 37,
+            "opponentError": 29,
+            "attackError": 45
+          },
+          "contacts": 4498,
+          "transitions": 438,
+          "digest": "dfca36ce5a502b55070a682208852c86514a62cb8cc3b3bc48c4f3ba05b03ae5"
+        },
+        {
+          "seed": 509,
+          "maxStoredChars": 2006833,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 34,
+            "block": 28,
+            "kill": 25,
+            "attackError": 30,
+            "opponentError": 22
+          },
+          "contacts": 2856,
+          "transitions": 278,
+          "digest": "7fefc5b9c91be625646b6ba615a2de8905533f6bbb5e8fce19bd4b53df33d0d1"
+        },
+        {
+          "seed": 510,
+          "maxStoredChars": 2046060,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 63,
+            "kill": 31,
+            "opponentError": 39,
+            "block": 39,
+            "attackError": 38
+          },
+          "contacts": 4456,
+          "transitions": 427,
+          "digest": "6ccfe006cbc1f47049e5b74a5599fcd4cb1a71d3a3059bf65144dcee2257fa29"
+        },
+        {
+          "seed": 511,
+          "maxStoredChars": 2075854,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 36,
+            "kill": 26,
+            "block": 26,
+            "attackError": 28,
+            "opponentError": 23
+          },
+          "contacts": 2838,
+          "transitions": 275,
+          "digest": "2a7787c2b00091b8a990457f4bef564c5766ceda7b7811da7c2de046cf774202"
+        },
+        {
+          "seed": 512,
+          "maxStoredChars": 1966488,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 47,
+            "opponentError": 30,
+            "kill": 40,
+            "block": 39,
+            "attackError": 54
+          },
+          "contacts": 4324,
+          "transitions": 427,
+          "digest": "73c506a42483dd71215a199427fe4e8bcf3b4a84557852689dfdb6ff93be2bbc"
+        },
+        {
+          "seed": 513,
+          "maxStoredChars": 1988482,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 34,
+            "opponentError": 26,
+            "block": 24,
+            "attackError": 30,
+            "kill": 25
+          },
+          "contacts": 2732,
+          "transitions": 263,
+          "digest": "1bafa3f6d1368dde13489e3306773519129799543903a517a11780b70bedff3d"
+        },
+        {
+          "seed": 514,
+          "maxStoredChars": 2075704,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 45,
+            "block": 33,
+            "opponentError": 42,
+            "attackError": 56,
+            "kill": 34
+          },
+          "contacts": 4450,
+          "transitions": 442,
+          "digest": "1c7475099fce9135e8c4f90a00593614e7b67fc97f6285e75ba1815ac3313745"
+        },
+        {
+          "seed": 515,
+          "maxStoredChars": 2057087,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 36,
+            "block": 22,
+            "kill": 30,
+            "opponentError": 23,
+            "attackError": 28
+          },
+          "contacts": 2762,
+          "transitions": 268,
+          "digest": "ca5bcc9ca0bcf95f7516c56c083dc533b80226721241d9763dbd5d7f0786b4e2"
+        },
+        {
+          "seed": 516,
+          "maxStoredChars": 2080313,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 7,
+            "D0": 56,
+            "kill": 27,
+            "opponentError": 39,
+            "block": 43,
+            "attackError": 43
+          },
+          "contacts": 4294,
+          "transitions": 410,
+          "digest": "2c44060c0a8d273a3ef08d988c6d156fddcd7fa4758bb852f4478aa7f26d3c37"
+        },
+        {
+          "seed": 517,
+          "maxStoredChars": 2036027,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 33,
+            "kill": 21,
+            "block": 23,
+            "opponentError": 31,
+            "attackError": 31
+          },
+          "contacts": 2829,
+          "transitions": 274,
+          "digest": "658198a529e48fce6997abedebea73257e176939b4f4851c9a7725a5a552d120"
+        },
+        {
+          "seed": 518,
+          "maxStoredChars": 2200587,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 4,
+            "D0": 50,
+            "opponentError": 30,
+            "kill": 43,
+            "attackError": 52,
+            "block": 36
+          },
+          "contacts": 4473,
+          "transitions": 445,
+          "digest": "f8bff7b8f1888fd617f5641300dd9d0d4e4e88bc9302f7079c740c9d33ad19f5"
+        },
+        {
+          "seed": 519,
+          "maxStoredChars": 2083538,
+          "sets": 3,
+          "rallies": 141,
+          "wins": [
+            3,
+            0
+          ],
+          "undos": 9,
+          "substitutions": 6,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 2,
+            "D0": 36,
+            "opponentError": 26,
+            "block": 21,
+            "attackError": 28,
+            "kill": 28
+          },
+          "contacts": 2889,
+          "transitions": 283,
+          "digest": "ba6939a4b1893ec42b253687fd07d884d7c991ac65ff69e5b3b839d35b36c532"
+        },
+        {
+          "seed": 520,
+          "maxStoredChars": 2043996,
+          "sets": 5,
+          "rallies": 215,
+          "wins": [
+            3,
+            2
+          ],
+          "undos": 14,
+          "substitutions": 10,
+          "rotations": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "scenarios": {
+            "A0": 5,
+            "D0": 42,
+            "opponentError": 30,
+            "block": 49,
+            "attackError": 59,
+            "kill": 30
+          },
+          "contacts": 4224,
+          "transitions": 412,
+          "digest": "c7d241c7a2b4d8db03a58ff43ade9df12577bddb60d4c51f4979d9106fd8dad8"
+        }
+      ]
+    },
+    "quick": {
+      "matches": 100,
+      "sets": 400,
+      "rallies": 19990
+    },
+    "eventChains": {
+      "count": 100,
+      "contacts": 2175
+    }
+  },
+  "measurements": [
+    {
+      "name": "cache-lifecycle",
+      "upgrade": "activated",
+      "failedInstall": "redundant",
+      "rollback": "activated",
+      "offlineReloads": 2,
+      "localStorageUnchangedUntilKill": true,
+      "scope": "Service-Worker-Rollback; kein App-Schema-Downgrade",
+      "requests": [
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/favicon.ico"
+        },
+        {
+          "stage": "old",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/index.html"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/manifest.webmanifest"
+        },
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "current",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "current",
+          "path": "/version.js"
+        },
+        {
+          "stage": "current",
+          "path": "/"
+        },
+        {
+          "stage": "current",
+          "path": "/index.html"
+        },
+        {
+          "stage": "current",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "current",
+          "path": "/version.js"
+        },
+        {
+          "stage": "current",
+          "path": "/app.js"
+        },
+        {
+          "stage": "current",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "current",
+          "path": "/manifest.webmanifest"
+        },
+        {
+          "stage": "broken",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/version.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/"
+        },
+        {
+          "stage": "broken",
+          "path": "/index.html"
+        },
+        {
+          "stage": "broken",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "broken",
+          "path": "/version.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/app.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/manifest.webmanifest"
+        },
+        {
+          "stage": "broken",
+          "path": "/"
+        },
+        {
+          "stage": "broken",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "broken",
+          "path": "/version.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/app.js"
+        },
+        {
+          "stage": "broken",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/sw.js"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/"
+        },
+        {
+          "stage": "old",
+          "path": "/index.html"
+        },
+        {
+          "stage": "old",
+          "path": "/styles.css"
+        },
+        {
+          "stage": "old",
+          "path": "/version.js"
+        },
+        {
+          "stage": "old",
+          "path": "/app.js"
+        },
+        {
+          "stage": "old",
+          "path": "/compact.js"
+        },
+        {
+          "stage": "old",
+          "path": "/manifest.webmanifest"
+        }
+      ]
+    },
+    {
+      "name": "inputs",
+      "kind": "ace",
+      "width": 390,
+      "inputs": 1,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "a0",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "d0",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "kill",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "transition",
+      "width": 390,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "transitionKill",
+      "width": 390,
+      "inputs": 3,
+      "limit": 3
+    },
+    {
+      "name": "inputs",
+      "kind": "ace",
+      "width": 820,
+      "inputs": 1,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "a0",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "d0",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "kill",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "name": "inputs",
+      "kind": "transition",
+      "width": 820,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "name": "inputs",
+      "kind": "transitionKill",
+      "width": 820,
+      "inputs": 3,
+      "limit": 3
+    },
+    {
+      "name": "matchday",
+      "width": 390,
+      "sets": [
+        {
+          "set": 1,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 2,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 3,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        }
+      ],
+      "rallies": 96,
+      "taps": 245,
+      "selects": 18,
+      "typedFields": 2,
+      "dragGestures": 1,
+      "notes": "Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI."
+    },
+    {
+      "name": "matchday",
+      "width": 820,
+      "sets": [
+        {
+          "set": 1,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 2,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 3,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        }
+      ],
+      "rallies": 96,
+      "taps": 244,
+      "selects": 18,
+      "typedFields": 2,
+      "dragGestures": 1,
+      "notes": "Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI."
+    },
+    {
+      "name": "matchday",
+      "width": 1024,
+      "sets": [
+        {
+          "set": 1,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 2,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        },
+        {
+          "set": 3,
+          "e": 25,
+          "o": 7,
+          "rallies": 32
+        }
+      ],
+      "rallies": 96,
+      "taps": 244,
+      "selects": 19,
+      "typedFields": 2,
+      "dragGestures": 1,
+      "notes": "Native selectOption zählt als Auswahlaktion, nicht als gemessene Menü-Taps; sämtliche Spielaktionen per UI."
+    }
+  ]
+}

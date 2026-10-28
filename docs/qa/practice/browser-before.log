@@ -1,0 +1,475 @@
+[1A[2K[2m[WebServer] [22m(node:63761) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:25] "GET / HTTP/1.1" 200 -
+
+
+Running 7 tests using 1 worker
+
+[1A[2K(node:63776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:63776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/7] tests/e2e/practice.spec.cjs:3:1 › Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] code 404, message File not found
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:26] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K  1) tests/e2e/practice.spec.cjs:3:1 › Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#quickHint')
+    Expected substring: [32m"Angreifer wählen"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#quickHint')[22m
+
+
+      3 | test('Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf',async({page},info)=>{
+      4 |  await quick(page);await page.locator('#quickTransition').click();
+    > 5 |  await expect(page.locator('#quickHint')).toContainText('Angreifer wählen');
+        |                                           ^
+      6 |  expect(await page.evaluate(()=>EVV_QS_TEST.state().rallies.length)).toBe(0);
+      7 |  await page.locator('#turnaroundReport').click();await expect(page.locator('#analysisResults')).toContainText('Transition-Chancen 0');await expect(page.locator('#analysisDraft')).toContainText('Transition-Chancen 1');await page.locator('#analysisClose').click();
+      8 |  const player=page.locator('[data-quick-player]:not([disabled])').first(),id=await player.getAttribute('data-quick-player');await player.click();await expect(page.locator('#quickHint')).toContainText('Angriffsergebnis');
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:5:43
+
+    Error Context: test-results/practice-Transition-führt--9db9c-und-Analyse-trennen-Entwurf/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-Transition-führt--9db9c-und-Analyse-trennen-Entwurf/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-Transition-führt--9db9c-und-Analyse-trennen-Entwurf/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K(node:63948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:63948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[2/7] tests/e2e/practice.spec.cjs:15:1 › Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:33] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K  2) tests/e2e/practice.spec.cjs:15:1 › Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 1[39m
+    [31m+ Received  + 1[39m
+
+    [2m  Object {[22m
+    [32m-   "attacks": 1,[39m
+    [31m+   "attacks": 0,[39m
+    [2m    "transitions": 1,[22m
+    [2m  }[22m
+
+      15 | test('Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion',async({page})=>{
+      16 |  await quick(page);await page.locator('#quickTransition').dblclick();let p=page.locator('[data-quick-player]:not([disabled])').first();const id=await p.getAttribute('data-quick-player');await p.click();await page.locator('[data-quick="continue"]').dblclick();
+    > 17 |  expect(await page.evaluate(()=>EVV_QS_TEST.state().rallies.length)).toBe(0);expect(await page.evaluate(()=>EVV_QS_TEST.turnaroundMetrics(EVV_QS_TEST.getDraft().chain))).toEqual({attacks:1,transitions:1});
+         |                                                                                                                                                                           ^
+      18 |  await expect(page.locator('#quickHint')).toContainText('Rallye läuft weiter');await page.reload();await expect(page.locator('[data-quick="kill"]')).toBeDisabled();
+      19 |  await page.locator('#quickTransition').click();await page.locator(`[data-quick-player="${id}"]`).click();await page.locator('[data-quick="kill"]').dblclick();const s=await page.evaluate(()=>EVV_QS_TEST.state());expect(s.rallies).toHaveLength(1);expect(s.rallies[0].turnaround).toEqual({attacks:2,transitions:2});expect(s.e+s.o).toBe(1);
+      20 | });
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:17:171
+
+    Error Context: test-results/practice-Verteidigter-Angr-f6d81--zählen-keine-zweite-Aktion/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-Verteidigter-Angr-f6d81--zählen-keine-zweite-Aktion/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-Verteidigter-Angr-f6d81--zählen-keine-zweite-Aktion/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K(node:64092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:64092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[3/7] tests/e2e/practice.spec.cjs:21:1 › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:35] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K  3) tests/e2e/practice.spec.cjs:21:1 › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeCloseTo[2m([22m[32mexpected[39m[2m, [22mprecision[2m)[22m
+
+    Expected: [32m24[39m
+    Received: [31m24.734375[39m
+
+    Expected precision:    0
+    Expected difference: < [32m0.5[39m
+    Received difference:   [31m0.734375[39m
+
+      22 |  await quick(page);await page.locator('[data-tab="coach"]').click();const court=page.locator('.sixCourt').first(),player=court.locator('[data-six-player="4"]');await player.scrollIntoViewIfNeeded();const before=await player.boundingBox();
+      23 |  await page.mouse.move(before.x+before.width/2,before.y+before.height/2);await page.mouse.down();const pressed=await player.boundingBox();expect(Math.abs(pressed.x-before.x)).toBeLessThan(2);expect(Math.abs(pressed.y-before.y)).toBeLessThan(2);
+    > 24 |  await page.mouse.move(before.x+before.width/2+24,before.y+before.height/2+27,{steps:8});await page.mouse.up();const moved=await player.boundingBox();expect(moved.x-before.x).toBeCloseTo(24,0);expect(moved.y-before.y).toBeCloseTo(27,0);
+         |                                                                                                                                                                                ^
+      25 |  await player.click();await expect(player).toHaveAttribute('aria-pressed','true');const c=await court.boundingBox();await court.click({position:{x:c.width*.5,y:c.height*.5}});const target=await player.boundingBox();expect(target.x+target.width/2).toBeCloseTo(c.x+c.width*.5,0);expect(target.y+target.height/2).toBeCloseTo(c.y+c.height*.5,0);
+      26 |  const positions=await page.evaluate(()=>EVV_QS_TEST.state().sixBoards);await page.reload();expect(await page.evaluate(()=>EVV_QS_TEST.state().sixBoards)).toEqual(positions);
+      27 | });
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:24:176
+
+    Error Context: test-results/practice-Taktik-Maus-behäl-cad07-rag-sowie-Auswahl-Zielklick/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-Taktik-Maus-behäl-cad07-rag-sowie-Auswahl-Zielklick/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-Taktik-Maus-behäl-cad07-rag-sowie-Auswahl-Zielklick/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K(node:64235) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:64235) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[4/7] tests/e2e/practice.spec.cjs:28:75 › iPad 820x1180: Live-Aktionen vollständig sichtbar ohne Scrollen
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:37] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K  4) tests/e2e/practice.spec.cjs:28:75 › iPad 820x1180: Live-Aktionen vollständig sichtbar ohne Scrollen 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m1023[39m
+    Received:    [31m1248[39m
+
+      28 | for(const [width,height] of [[820,1180],[768,1024],[1024,768],[1180,820]])test(`iPad ${width}x${height}: Live-Aktionen vollständig sichtbar ohne Scrollen`,async({page})=>{
+      29 |  await page.setViewportSize({width,height});await quick(page);await page.evaluate(()=>scrollTo(0,0));
+    > 30 |  const dock=await page.locator('.bottom').boundingBox();for(const selector of ['#homeScore','#quickTransition','#quickUndo','[data-quick]','[data-quick-player]'])for(const el of await page.locator(selector).all()){const b=await el.boundingBox();expect(b.y).toBeGreaterThanOrEqual(0);expect(b.y+b.height).toBeLessThanOrEqual(dock.y);if(selector!=='#homeScore'){expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44)}}
+         |                                                                                                                                                                                                                                                                                                                 ^
+      31 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);
+      32 | });
+      33 |
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:30:305
+
+    Error Context: test-results/practice-iPad-820x1180-Liv-c692d-ndig-sichtbar-ohne-Scrollen/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-iPad-820x1180-Liv-c692d-ndig-sichtbar-ohne-Scrollen/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-iPad-820x1180-Liv-c692d-ndig-sichtbar-ohne-Scrollen/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K(node:64383) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:64383) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[5/7] tests/e2e/practice.spec.cjs:28:75 › iPad 768x1024: Live-Aktionen vollständig sichtbar ohne Scrollen
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:38] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:38] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:38] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:38] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:38] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] code 404, message File not found
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:39] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K  5) tests/e2e/practice.spec.cjs:28:75 › iPad 768x1024: Live-Aktionen vollständig sichtbar ohne Scrollen 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m971[39m
+    Received:    [31m1016[39m
+
+      28 | for(const [width,height] of [[820,1180],[768,1024],[1024,768],[1180,820]])test(`iPad ${width}x${height}: Live-Aktionen vollständig sichtbar ohne Scrollen`,async({page})=>{
+      29 |  await page.setViewportSize({width,height});await quick(page);await page.evaluate(()=>scrollTo(0,0));
+    > 30 |  const dock=await page.locator('.bottom').boundingBox();for(const selector of ['#homeScore','#quickTransition','#quickUndo','[data-quick]','[data-quick-player]'])for(const el of await page.locator(selector).all()){const b=await el.boundingBox();expect(b.y).toBeGreaterThanOrEqual(0);expect(b.y+b.height).toBeLessThanOrEqual(dock.y);if(selector!=='#homeScore'){expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44)}}
+         |                                                                                                                                                                                                                                                                                                                 ^
+      31 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);
+      32 | });
+      33 |
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:30:305
+
+    Error Context: test-results/practice-iPad-768x1024-Liv-68289-ndig-sichtbar-ohne-Scrollen/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-iPad-768x1024-Liv-68289-ndig-sichtbar-ohne-Scrollen/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-iPad-768x1024-Liv-68289-ndig-sichtbar-ohne-Scrollen/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K(node:64527) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:64527) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[6/7] tests/e2e/practice.spec.cjs:28:75 › iPad 1024x768: Live-Aktionen vollständig sichtbar ohne Scrollen
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /app.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /index.html HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:40] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K  6) tests/e2e/practice.spec.cjs:28:75 › iPad 1024x768: Live-Aktionen vollständig sichtbar ohne Scrollen 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m611[39m
+    Received:    [31m1252[39m
+
+      28 | for(const [width,height] of [[820,1180],[768,1024],[1024,768],[1180,820]])test(`iPad ${width}x${height}: Live-Aktionen vollständig sichtbar ohne Scrollen`,async({page})=>{
+      29 |  await page.setViewportSize({width,height});await quick(page);await page.evaluate(()=>scrollTo(0,0));
+    > 30 |  const dock=await page.locator('.bottom').boundingBox();for(const selector of ['#homeScore','#quickTransition','#quickUndo','[data-quick]','[data-quick-player]'])for(const el of await page.locator(selector).all()){const b=await el.boundingBox();expect(b.y).toBeGreaterThanOrEqual(0);expect(b.y+b.height).toBeLessThanOrEqual(dock.y);if(selector!=='#homeScore'){expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44)}}
+         |                                                                                                                                                                                                                                                                                                                 ^
+      31 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);
+      32 | });
+      33 |
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:30:305
+
+    Error Context: test-results/practice-iPad-1024x768-Liv-67cd7-ndig-sichtbar-ohne-Scrollen/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-iPad-1024x768-Liv-67cd7-ndig-sichtbar-ohne-Scrollen/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-iPad-1024x768-Liv-67cd7-ndig-sichtbar-ohne-Scrollen/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K(node:64670) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:64670) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[7/7] tests/e2e/practice.spec.cjs:28:75 › iPad 1180x820: Live-Aktionen vollständig sichtbar ohne Scrollen
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET / HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /version.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /favicon.ico HTTP/1.1" 404 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /version.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /styles.css HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /app.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /compact.js HTTP/1.1" 200 -
+
+[1A[2K[2m[WebServer] [22m127.0.0.1 - - [27/Oct/2026 22:26:42] "GET /manifest.webmanifest HTTP/1.1" 200 -
+
+[1A[2K  7) tests/e2e/practice.spec.cjs:28:75 › iPad 1180x820: Live-Aktionen vollständig sichtbar ohne Scrollen 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m712[39m
+    Received:    [31m1252[39m
+
+      28 | for(const [width,height] of [[820,1180],[768,1024],[1024,768],[1180,820]])test(`iPad ${width}x${height}: Live-Aktionen vollständig sichtbar ohne Scrollen`,async({page})=>{
+      29 |  await page.setViewportSize({width,height});await quick(page);await page.evaluate(()=>scrollTo(0,0));
+    > 30 |  const dock=await page.locator('.bottom').boundingBox();for(const selector of ['#homeScore','#quickTransition','#quickUndo','[data-quick]','[data-quick-player]'])for(const el of await page.locator(selector).all()){const b=await el.boundingBox();expect(b.y).toBeGreaterThanOrEqual(0);expect(b.y+b.height).toBeLessThanOrEqual(dock.y);if(selector!=='#homeScore'){expect(b.width).toBeGreaterThanOrEqual(44);expect(b.height).toBeGreaterThanOrEqual(44)}}
+         |                                                                                                                                                                                                                                                                                                                 ^
+      31 |  expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);
+      32 | });
+      33 |
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:30:305
+
+    Error Context: test-results/practice-iPad-1180x820-Liv-34288-ndig-sichtbar-ohne-Scrollen/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-iPad-1180x820-Liv-34288-ndig-sichtbar-ohne-Scrollen/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-iPad-1180x820-Liv-34288-ndig-sichtbar-ohne-Scrollen/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[1A[2K  7 failed
+    tests/e2e/practice.spec.cjs:3:1 › Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf 
+    tests/e2e/practice.spec.cjs:15:1 › Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion 
+    tests/e2e/practice.spec.cjs:21:1 › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick 
+    tests/e2e/practice.spec.cjs:28:75 › iPad 820x1180: Live-Aktionen vollständig sichtbar ohne Scrollen 
+    tests/e2e/practice.spec.cjs:28:75 › iPad 768x1024: Live-Aktionen vollständig sichtbar ohne Scrollen 
+    tests/e2e/practice.spec.cjs:28:75 › iPad 1024x768: Live-Aktionen vollständig sichtbar ohne Scrollen 
+    tests/e2e/practice.spec.cjs:28:75 › iPad 1180x820: Live-Aktionen vollständig sichtbar ohne Scrollen 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

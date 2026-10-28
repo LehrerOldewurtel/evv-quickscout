@@ -1,0 +1,20 @@
+✔ Laufende Rallye überlebt Neustart, kein doppelter Punkt (202.657817ms)
+✔ Importvalidierung lehnt beschädigte Zustände vor Mutation ab (31.550978ms)
+✔ Unabhängige Sollwerte für Turnaround-Quoten und Beobachtungslücken (29.63411ms)
+✔ Gespeicherte Formationen werden nach Rotation/Angriffsrichtung automatisch geladen (53.571393ms)
+✔ Sicheres Speichern: Quota-Fehler bewahrt letzte gültige Bytes und aktuellen Speicherzustand (36.741111ms)
+✔ Geometrie und unbekannte Speicherversion werden ohne Überschreiben abgewiesen (38.449298ms)
+✔ Taktik-Bibliothek bleibt bei neuem Spiel erhalten; Slot statt Spieler-ID (34.976622ms)
+✔ Gegnerdaten mit Prototype-Schlüsseln werden vor Anwendung blockiert (37.964785ms)
+✔ 100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontaktmodell (197.496782ms)
+✔ Transition-Doppeltap, Ereignis-ID und alter Handler zählen nicht doppelt (67.081195ms)
+✔ Taktische Formationen R1–R6 verändern keine Regelpositionen (31.711279ms)
+✔ Detail-Angriff bleibt beim Moduswechsel ein Angriff; Formation überlebt Reload (92.403767ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 824.742491

@@ -1,0 +1,47 @@
+[
+  {
+    "file": "LOOPTEST_V7_4.py",
+    "exitCode": 1,
+    "output": "PASS | JS uses atomic preSnapshot for marked rallies\nPASS | ACE/KILL mark snapshot happens before mark push\nFAIL | Opponent A0 ends rally as EVV point\nFAIL | Completed rally returns to Rally tab\nPASS | Setup reception survives fresh reset\nPASS | No stale st.ended property\nPASS | Next set uses setEnded\nPASS | Nine-zone picker has zones 1-9\nFAIL | Setter excluded from normal attackers\nPASS | Libero excluded from attackers\nPASS | Set 5 target 15\nFAIL | Undo restores snapshot\nPASS | Rally log can show serve\nPASS | Rally log can show reception\nPASS | Rally log can show attack\n"
+  },
+  {
+    "file": "LOOPTEST_V7_5.py",
+    "exitCode": 1,
+    "output": "PASS | Rotation R5\u2192R6\u2192R1\nPASS | Front row is P2/P3/P4\nFAIL | No-libero reception not hard-coded\nPASS | Opponent libero included in reception\nFAIL | Attack routes derive from court position\nPASS | Continue does not commit a point\nPASS | EVV defense has quality D3-D0\nFAIL | EVV set target exists\nPASS | Opponent defense continues rally\nFAIL | Opponent A0 ends as EVV point\nPASS | Nine-zone orientation explicit\nPASS | Atomic marked-rally snapshot\nPASS | Detailed stats active\nPASS | Set 5 to 15\nPASS | Undo restores complete snapshot\n"
+  },
+  {
+    "file": "LOOPTEST_V7_6.py",
+    "exitCode": 1,
+    "output": "PASS | R5-R6-R1\nPASS | front=P2/P3/P4\nFAIL | attack by court position\nFAIL | no-libero MB reception\nPASS | libero survives start\nPASS | opponent libero reception\nPASS | continue no point\nPASS | EVV defense D3-D0\nFAIL | blocker selection front row\nPASS | block player statistic\nPASS | defense player statistic\nPASS | reception player statistic\nPASS | attack player statistic\nPASS | serve player statistic\nPASS | rotation K1/K2 statistic\nPASS | atomic target undo\nFAIL | A0 opponent ends EVV point\nPASS | set5=15\nPASS | local autosave\n"
+  },
+  {
+    "file": "LOOPTEST_V7_7.py",
+    "exitCode": 1,
+    "output": "FAIL version single source\nPASS dual opponent liberos\nPASS evv two libero roster\nPASS back within rally\nPASS no tab draft reset\nPASS rotational attack exact\nPASS ball2 branch\nPASS opponent ball2\nPASS opponent block point or rebound\nPASS evv block point or continue\nPASS apple glass ui\nPASS setup hidden after start\nPASS full player stats\nPASS rotation stats\nPASS continue no point\n14/15 PASS\n"
+  },
+  {
+    "file": "LOOPTEST_V7_7_1.py",
+    "exitCode": 1,
+    "output": "FAIL version 7.7.1\nFAIL cache bust\nPASS sw version\nPASS dual opponent liberos\nPASS evv dual liberos\nPASS back\nPASS rot attack\nPASS ball2\nPASS block continue\nPASS player stats\nPASS rotation stats\nPASS timeout capture\nPASS apple ui\nPASS preserve v77 store\n12/14 PASS\n"
+  },
+  {
+    "file": "TEST_PAKET_1_2.js",
+    "exitCode": 1,
+    "output": "PASS JS syntax\nPASS Set ending 25 / 15\nPASS Rotation sequence\nPASS Six unique positions for all rotations\nPASS Front P2 P3 P4 exactly\nPASS No setter or libero normal attack\nPASS Libero rejects front-row MB\nPASS Libero accepts back-row MB\nPASS Attack click checks allowed lane\nPASS A0 direct point\nPASS Undo includes marks\nPASS Two liberos both teams\nRESULT 12/13\nFAIL Single version The expression evaluated to a falsy value:\n\n  assert(fs.readFileSync(__dirname+'/version.js','utf8').includes(globalThis.__V||'7.9.4-release-candidate'))\n\n"
+  },
+  {
+    "file": "TEST_SATZWECHSEL.js",
+    "exitCode": 1,
+    "output": "evalmachine.<anonymous>:5\n modal(`<h2>Satz ${next} \u00b7 neue Startaufstellung</h2><p class=\"small\">Jede Position frei w\u00e4hlen. Die bisherige Aufstellung ist vorausgew\u00e4hlt.</p><div class=\"grid2\">${lineupEditor(\"ns\",st.lineup)}</div><label>Startrotation<select id=\"nsRot\">${[1,2,3,4,5,6].map(n=>`<option value=\"${n}\" ${n===st.rot?\"selected\":\"\"}>R${n}</option>`).join(\"\")}</select></label><p class=\"small\">Libero-Einsatz wird vor dem neuen Satz zur\u00fcckgesetzt und kann anschlie\u00dfend neu festgelegt werden.</p><div class=\"grid2\"><button id=\"nsRec\">Gegner-Aufschlag \u00b7 K1</button><button id=\"nsSrv\" class=\"primary\">EVV-Aufschlag \u00b7 K2</button></div><button id=\"nsCancel\">Abbrechen</button>`);\n                   ^\n\nReferenceError: lineupEditor is not defined\n    at prepareNextSet (evalmachine.<anonymous>:5:20)\n    at evalmachine.<anonymous>:16:3\n    at Script.runInContext (node:vm:149:12)\n    at Object.runInContext (node:vm:301:6)\n    at Object.<anonymous> (/workspace/evv-quickscout/TEST_SATZWECHSEL.js:13:4)\n    at Module._compile (node:internal/modules/cjs/loader:1872:14)\n    at Object..js (node:internal/modules/cjs/loader:2003:10)\n    at Module.load (node:internal/modules/cjs/loader:1594:32)\n    at Module._load (node:internal/modules/cjs/loader:1396:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n\nNode.js v24.19.0\n"
+  },
+  {
+    "file": "TEST_V792_ROLLEN.js",
+    "exitCode": 0,
+    "output": "PASS V7.9.2 Rollen: freie Rollen, Doppelpr\u00fcfung, Angriffsweg, Libero-MB\n"
+  },
+  {
+    "file": "TEST_WECHSEL_V791.js",
+    "exitCode": 1,
+    "output": "evalmachine.<anonymous>:19\n st.lineup[i]=inn;st.roles=st.roles||{};st.roles[inn]=st.roles[out]||(byId(out)||{}).role;delete st.roles[out];st.receiveIds=st.receiveIds.map(x=>x===out?inn:x);st.subCount++;syncLiberoRotation();\n                                                                                                                                                                               ^\n\nReferenceError: syncLiberoRotation is not defined\n    at Object.applySub (evalmachine.<anonymous>:19:176)\n    at Object.<anonymous> (/workspace/evv-quickscout/TEST_WECHSEL_V791.js:8:18)\n    at Module._compile (node:internal/modules/cjs/loader:1872:14)\n    at Object..js (node:internal/modules/cjs/loader:2003:10)\n    at Module.load (node:internal/modules/cjs/loader:1594:32)\n    at Module._load (node:internal/modules/cjs/loader:1396:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47\n\nNode.js v24.19.0\n"
+  }
+]

@@ -1,0 +1,221 @@
+{
+  "stats": {
+    "startTime": "2026-10-26T13:01:22.937Z",
+    "duration": 21439.147,
+    "expected": 19,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "Update v7.9.2: alter Stand, Reload und Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1578,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Update pre-pr-main: alter Stand, Reload und Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1026,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Libero aus und wieder ein: UI und Reload",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1575,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Best\u00e4tigte Sprachannahme und READ-ONLY-Sprach-Undo (Speech-API simuliert)",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1247,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Undo ausstehender Zielzone entfernt den alten Dialog",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 752,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: {\"st\":",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 650,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: null",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 728,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R1 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 2305,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R1 A0 und D0 beider Seiten",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 2550,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R2 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1605,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R2 A0 und D0 beider Seiten",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 2116,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R3 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1184,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R3 A0 und D0 beider Seiten",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1577,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R4 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1084,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R4 A0 und D0 beider Seiten",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1509,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R5 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1064,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R5 A0 und D0 beider Seiten",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1686,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R6 K1 Angriffspunkt + Zielzone + Undo",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1056,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "title": "R6 A0 und D0 beider Seiten",
+      "ok": true,
+      "outcomes": [
+        {
+          "status": "passed",
+          "duration": 1699,
+          "errors": []
+        }
+      ]
+    }
+  ]
+}

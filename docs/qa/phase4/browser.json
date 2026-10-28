@@ -1,0 +1,482 @@
+{
+  "stats": {
+    "startTime": "2026-10-26T13:53:31.315Z",
+    "duration": 77937.157,
+    "expected": 66,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "tests": [
+    {
+      "title": "Tablet 768: Touch-Drag, Formationen R1\u2013R6, Kopie, Reload und Libero",
+      "status": "passed",
+      "duration": 7053,
+      "errors": []
+    },
+    {
+      "title": "Tablet 1024: Touch-Drag, Formationen R1\u2013R6, Kopie, Reload und Libero",
+      "status": "passed",
+      "duration": 7556,
+      "errors": []
+    },
+    {
+      "title": "Satzassistent: Vorlage und Libero nur nach Best\u00e4tigung \u00fcbernehmen",
+      "status": "passed",
+      "duration": 2162,
+      "errors": []
+    },
+    {
+      "title": "Neuer Browserkontext stellt laufende Rallye wieder her",
+      "status": "passed",
+      "duration": 2449,
+      "errors": []
+    },
+    {
+      "title": "Offline-Kaltladen erh\u00e4lt laufende Rallye und Compact-UI",
+      "status": "passed",
+      "duration": 1195,
+      "errors": []
+    },
+    {
+      "title": "Besch\u00e4digte Imports ver\u00e4ndern weder Stand noch Speicher",
+      "status": "passed",
+      "duration": 2162,
+      "errors": []
+    },
+    {
+      "title": "Speicherplatzfehler zeigt dauerhafte Warnung und erh\u00e4lt vorherigen Stand",
+      "status": "passed",
+      "duration": 1203,
+      "errors": []
+    },
+    {
+      "title": "Wiederherstellungsexport sichert besch\u00e4digte Rohdaten exakt",
+      "status": "passed",
+      "duration": 860,
+      "errors": []
+    },
+    {
+      "title": "Unterbrechung bei Zielzone: Wiederaufnahme und genau ein Punkt",
+      "status": "passed",
+      "duration": 1554,
+      "errors": []
+    },
+    {
+      "title": "390px ace: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 1242,
+      "errors": []
+    },
+    {
+      "title": "390px a0: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 1015,
+      "errors": []
+    },
+    {
+      "title": "390px d0: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 1027,
+      "errors": []
+    },
+    {
+      "title": "390px kill: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 938,
+      "errors": []
+    },
+    {
+      "title": "390px transition: h\u00f6chstens 1 Eingaben",
+      "status": "passed",
+      "duration": 1216,
+      "errors": []
+    },
+    {
+      "title": "390px transitionKill: h\u00f6chstens 3 Eingaben",
+      "status": "passed",
+      "duration": 1171,
+      "errors": []
+    },
+    {
+      "title": "820px ace: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 1404,
+      "errors": []
+    },
+    {
+      "title": "820px a0: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 1125,
+      "errors": []
+    },
+    {
+      "title": "820px d0: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 1118,
+      "errors": []
+    },
+    {
+      "title": "820px kill: h\u00f6chstens 2 Eingaben",
+      "status": "passed",
+      "duration": 1190,
+      "errors": []
+    },
+    {
+      "title": "820px transition: h\u00f6chstens 1 Eingaben",
+      "status": "passed",
+      "duration": 1231,
+      "errors": []
+    },
+    {
+      "title": "820px transitionKill: h\u00f6chstens 3 Eingaben",
+      "status": "passed",
+      "duration": 1156,
+      "errors": []
+    },
+    {
+      "title": "Update v7.9.2: alter Stand, Reload und Undo",
+      "status": "passed",
+      "duration": 1243,
+      "errors": []
+    },
+    {
+      "title": "Update pre-pr-main: alter Stand, Reload und Undo",
+      "status": "passed",
+      "duration": 1011,
+      "errors": []
+    },
+    {
+      "title": "Libero aus und wieder ein: UI und Reload",
+      "status": "passed",
+      "duration": 2009,
+      "errors": []
+    },
+    {
+      "title": "Best\u00e4tigte Sprachannahme und READ-ONLY-Sprache (Speech-API simuliert)",
+      "status": "passed",
+      "duration": 2060,
+      "errors": []
+    },
+    {
+      "title": "Undo ausstehender Zielzone entfernt den alten Dialog",
+      "status": "passed",
+      "duration": 1099,
+      "errors": []
+    },
+    {
+      "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: {\"st\":",
+      "status": "passed",
+      "duration": 865,
+      "errors": []
+    },
+    {
+      "title": "Unlesbarer lokaler Inhalt bleibt beim Laden erhalten: null",
+      "status": "passed",
+      "duration": 973,
+      "errors": []
+    },
+    {
+      "title": "Import v7.9.2: best\u00e4tigtes synthetisches Backup beh\u00e4lt Spielstand",
+      "status": "passed",
+      "duration": 1412,
+      "errors": []
+    },
+    {
+      "title": "Import pre-pr-main: best\u00e4tigtes synthetisches Backup beh\u00e4lt Spielstand",
+      "status": "passed",
+      "duration": 1317,
+      "errors": []
+    },
+    {
+      "title": "R1 K1 Angriffspunkt + Zielzone + Undo",
+      "status": "passed",
+      "duration": 1223,
+      "errors": []
+    },
+    {
+      "title": "R1 K2 Aufschlag und Blockpunkt",
+      "status": "passed",
+      "duration": 1294,
+      "errors": []
+    },
+    {
+      "title": "R1 lange Rallye mit zwei Transitions",
+      "status": "passed",
+      "duration": 2500,
+      "errors": []
+    },
+    {
+      "title": "R1 A0 und D0 beider Seiten",
+      "status": "passed",
+      "duration": 1819,
+      "errors": []
+    },
+    {
+      "title": "R1 Spielerwechsel und R\u00fcckwechsel",
+      "status": "passed",
+      "duration": 1110,
+      "errors": []
+    },
+    {
+      "title": "R1 Satzwechsel, Archiv und Reload",
+      "status": "passed",
+      "duration": 1151,
+      "errors": []
+    },
+    {
+      "title": "R2 K1 Angriffspunkt + Zielzone + Undo",
+      "status": "passed",
+      "duration": 1177,
+      "errors": []
+    },
+    {
+      "title": "R2 K2 Aufschlag und Blockpunkt",
+      "status": "passed",
+      "duration": 1217,
+      "errors": []
+    },
+    {
+      "title": "R2 lange Rallye mit zwei Transitions",
+      "status": "passed",
+      "duration": 2233,
+      "errors": []
+    },
+    {
+      "title": "R2 A0 und D0 beider Seiten",
+      "status": "passed",
+      "duration": 1714,
+      "errors": []
+    },
+    {
+      "title": "R2 Spielerwechsel und R\u00fcckwechsel",
+      "status": "passed",
+      "duration": 1010,
+      "errors": []
+    },
+    {
+      "title": "R2 Satzwechsel, Archiv und Reload",
+      "status": "passed",
+      "duration": 1073,
+      "errors": []
+    },
+    {
+      "title": "R3 K1 Angriffspunkt + Zielzone + Undo",
+      "status": "passed",
+      "duration": 1052,
+      "errors": []
+    },
+    {
+      "title": "R3 K2 Aufschlag und Blockpunkt",
+      "status": "passed",
+      "duration": 1154,
+      "errors": []
+    },
+    {
+      "title": "R3 lange Rallye mit zwei Transitions",
+      "status": "passed",
+      "duration": 2125,
+      "errors": []
+    },
+    {
+      "title": "R3 A0 und D0 beider Seiten",
+      "status": "passed",
+      "duration": 1509,
+      "errors": []
+    },
+    {
+      "title": "R3 Spielerwechsel und R\u00fcckwechsel",
+      "status": "passed",
+      "duration": 1021,
+      "errors": []
+    },
+    {
+      "title": "R3 Satzwechsel, Archiv und Reload",
+      "status": "passed",
+      "duration": 1026,
+      "errors": []
+    },
+    {
+      "title": "R4 K1 Angriffspunkt + Zielzone + Undo",
+      "status": "passed",
+      "duration": 1104,
+      "errors": []
+    },
+    {
+      "title": "R4 K2 Aufschlag und Blockpunkt",
+      "status": "passed",
+      "duration": 1068,
+      "errors": []
+    },
+    {
+      "title": "R4 lange Rallye mit zwei Transitions",
+      "status": "passed",
+      "duration": 2211,
+      "errors": []
+    },
+    {
+      "title": "R4 A0 und D0 beider Seiten",
+      "status": "passed",
+      "duration": 1523,
+      "errors": []
+    },
+    {
+      "title": "R4 Spielerwechsel und R\u00fcckwechsel",
+      "status": "passed",
+      "duration": 1015,
+      "errors": []
+    },
+    {
+      "title": "R4 Satzwechsel, Archiv und Reload",
+      "status": "passed",
+      "duration": 1024,
+      "errors": []
+    },
+    {
+      "title": "R5 K1 Angriffspunkt + Zielzone + Undo",
+      "status": "passed",
+      "duration": 1056,
+      "errors": []
+    },
+    {
+      "title": "R5 K2 Aufschlag und Blockpunkt",
+      "status": "passed",
+      "duration": 1087,
+      "errors": []
+    },
+    {
+      "title": "R5 lange Rallye mit zwei Transitions",
+      "status": "passed",
+      "duration": 2171,
+      "errors": []
+    },
+    {
+      "title": "R5 A0 und D0 beider Seiten",
+      "status": "passed",
+      "duration": 1528,
+      "errors": []
+    },
+    {
+      "title": "R5 Spielerwechsel und R\u00fcckwechsel",
+      "status": "passed",
+      "duration": 958,
+      "errors": []
+    },
+    {
+      "title": "R5 Satzwechsel, Archiv und Reload",
+      "status": "passed",
+      "duration": 997,
+      "errors": []
+    },
+    {
+      "title": "R6 K1 Angriffspunkt + Zielzone + Undo",
+      "status": "passed",
+      "duration": 1058,
+      "errors": []
+    },
+    {
+      "title": "R6 K2 Aufschlag und Blockpunkt",
+      "status": "passed",
+      "duration": 1090,
+      "errors": []
+    },
+    {
+      "title": "R6 lange Rallye mit zwei Transitions",
+      "status": "passed",
+      "duration": 2351,
+      "errors": []
+    },
+    {
+      "title": "R6 A0 und D0 beider Seiten",
+      "status": "passed",
+      "duration": 1804,
+      "errors": []
+    },
+    {
+      "title": "R6 Spielerwechsel und R\u00fcckwechsel",
+      "status": "passed",
+      "duration": 1005,
+      "errors": []
+    },
+    {
+      "title": "R6 Satzwechsel, Archiv und Reload",
+      "status": "passed",
+      "duration": 992,
+      "errors": []
+    }
+  ],
+  "inputs": [
+    {
+      "kind": "ace",
+      "width": 390,
+      "inputs": 1,
+      "limit": 2
+    },
+    {
+      "kind": "a0",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "kind": "d0",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "kind": "kill",
+      "width": 390,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "kind": "transition",
+      "width": 390,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "kind": "transitionKill",
+      "width": 390,
+      "inputs": 3,
+      "limit": 3
+    },
+    {
+      "kind": "ace",
+      "width": 820,
+      "inputs": 1,
+      "limit": 2
+    },
+    {
+      "kind": "a0",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "kind": "d0",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "kind": "kill",
+      "width": 820,
+      "inputs": 2,
+      "limit": 2
+    },
+    {
+      "kind": "transition",
+      "width": 820,
+      "inputs": 1,
+      "limit": 1
+    },
+    {
+      "kind": "transitionKill",
+      "width": 820,
+      "inputs": 3,
+      "limit": 3
+    }
+  ]
+}

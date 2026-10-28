@@ -1,0 +1,48 @@
+
+> evv-quickscout@8.0.0-dev test
+> node --test tests/rotations.test.cjs tests/unit.test.cjs tests/review.test.cjs tests/hybrid.test.cjs tests/simulation.test.cjs
+
+✔ 100 vollständige reproduzierbare Ereignisketten mit unabhängigem Kontaktmodell (281.536463ms)
+✔ Transition-Doppeltap, Ereignis-ID und alter Handler zählen nicht doppelt (53.061184ms)
+✔ Taktische Formationen R1–R6 verändern keine Regelpositionen (34.114498ms)
+✔ Detail-Angriff bleibt beim Moduswechsel ein Angriff; Formation überlebt Reload (115.835912ms)
+✔ v7.9.2: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (215.155354ms)
+✔ pre-pr-main: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (73.958838ms)
+✔ Undo schließt ausstehende Zielzone und verhindert verwaiste Bestätigung (57.102462ms)
+✔ Sprach-Undo respektiert historische READ-ONLY-Ansicht (44.757063ms)
+✔ Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wie Touch (74.055531ms)
+✔ Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet (75.695385ms)
+✔ Libero-Aufschlagsverbot und Wiedereintritt in allen sechs Rotationen (294.170052ms)
+✔ Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: {"st": (32.911762ms)
+✔ Unlesbarer Speicher bleibt unverändert bis explizites Neues-Spiel-Bestätigen: null (46.253639ms)
+✔ Alle schreibenden Sprachaktionen respektieren READ-ONLY, nicht nur Undo (23.071141ms)
+✔ R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (261.286473ms)
+✔ R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (85.697821ms)
+✔ R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (44.565655ms)
+✔ R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (65.878367ms)
+✔ R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (33.5131ms)
+✔ R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (34.598034ms)
+✔ 100 reproduzierbare vollständige Matches, unabhängige Prüfung jedes Punktes (40766.338845ms)
+✔ Satzgrenzen: 25/15, zwei Punkte Abstand (158.736946ms)
+✔ Rotationen und erlaubte Angreifer in allen sechs Aufstellungen (45.212597ms)
+✔ Sideout rotiert einmal; eigener Punkt und eigener Fehler nicht (30.886826ms)
+✔ Ungültiger Sieger und beendeter Satz verändern keine Rallyes (36.195449ms)
+✔ Wechsel/Rückwechsel, Paarbindung und Wiederverwendung (25.100856ms)
+✔ Registrierter Libero darf nicht regulär eingewechselt werden (27.105676ms)
+✔ A0 beendet unmittelbar mit Gegnerpunkt (25.612917ms)
+✔ D0 beider Teams beendet die Rallye unmittelbar (29.423618ms)
+✔ Markierter Punkt und Undo sind atomar (28.572166ms)
+✔ Undo und explizites Speichern enthalten den aktuellen Spielstand (26.122422ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 42226.602118
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

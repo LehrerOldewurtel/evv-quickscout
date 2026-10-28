@@ -1,0 +1,51 @@
+EVV QuickScout V8 – RC2 PRAXISTEST-KORREKTUREN · MANUELLE ABNAHME
+
+Keine stabile V8-Freigabe. Interne Produktversion unverändert 7.19.0-k1-auto-mb.
+Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
+
+1. ZIP in einen neuen Ordner vollständig entpacken (alte Testversion behalten).
+   Terminal im entpackten Ordner mit TEST_START.py öffnen.
+2. Python 3 muss verfügbar sein (python3 --version). Bei Bedarf den signierten
+   Installer von https://www.python.org/downloads/macos/ verwenden.
+3. Start auf dem Mac: python3 TEST_START.py
+   Für das iPad im selben vertrauten WLAN: python3 TEST_START.py --lan
+4. Die tatsächlich ausgegebenen Adressen in Safari am Mac/iPad öffnen.
+   Eventuell macOS-Firewallzugriff für das lokale WLAN erlauben.
+   Bei mehreren WLAN-Adressen die aktive Verbindung des Mac verwenden.
+   Gastnetz/Client-Isolation kann die Verbindung zwischen Geräten verhindern.
+5. Terminal geöffnet lassen; Ctrl+C beendet den Server. Bei belegtem Port:
+   python3 TEST_START.py --lan --port 18765
+Kein Router-Portforwarding einrichten. Kein öffentlicher Server wird gestartet.
+
+Bedienung:
+- Gegner TEST nennen, Startsechs und Rollen prüfen, zwei Liberos auswählen.
+- K1 (Annahme) oder K2 (Aufschlag) starten.
+- Schnellmodus: Ass 1 Eingabe, A0/D0/Kill 2, Transition 1,
+  Transition → Angreifer auswählen → Angriffspunkt: 3 Eingaben, Undo 1.
+  „Angriff verteidigt“ hält die Rallye offen; vor dem nächsten eigenen Angriff
+  die nächste kontrollierte Abwehr als Transition erfassen. Keine Punkte schätzen.
+- Detailmodus verwendet dieselbe Rallye. Gegnerfehler sind keine eigenen Kills.
+- Taktik: Rotation und Annahme/Abwehr IV/III/II wählen; Spieler ziehen
+  oder Spieler auswählen und anschließend die Zielposition anklicken,
+  Lauf-/Ballwege zeichnen; ausdrücklich speichern. Regelpositionen bleiben gleich.
+- Analyse: Satz/Rotation/K1-K2 filtern. Abgeschlossene Rallyes bilden die Quoten;
+  die aktuelle Rallye steht separat darunter. Die Historie enthält nur Abschlüsse.
+- Auswertung: Spieler-, Satz-, Rotations- und Mannschaftsstatistiken.
+- Nach Satzende neue Startsechs prüfen, Vorlage/Libero übernehmen, K1/K2 starten.
+- Export vor Browserdatenlöschung oder Gerätewechsel. Keine Cloud-Synchronisierung.
+
+Trennung und Offline:
+Der Starter nutzt einen eigenen Speicher- und Cache-Namensraum und einen sichtbaren
+Testhinweis. Die App-Quelldateien im ZIP bleiben unverändert; diese Anpassungen
+erfolgen nur bei der Auslieferung. main/GitHub Pages werden nicht verändert.
+Mac und iPad speichern unabhängig, keine Synchronisierung.
+HTTP über WLAN ist für Funktionstests geeignet. Safari erlaubt Service Worker,
+Offline-PWA und Mikrofon im WLAN üblicherweise nur mit HTTPS. Diese Funktionen
+benötigen eine getrennte HTTPS-Testinstallation und manuelle Geräteabnahme.
+Im sicheren Loopback-Kontext wurde Installation/Offline automatisiert geprüft.
+
+Paketprüfung ohne Zusatzpakete:
+python3 -c "import hashlib,pathlib; p=pathlib.Path('.'); rows=(p/'CHECKSUMS.sha256').read_text().splitlines(); assert all(hashlib.sha256((p/n).read_bytes()).hexdigest()==h for h,n in (r.split('  ',1) for r in rows)); print('Prüfsummen OK')"
+
+BUILD.json nennt Branch, Commit und Quellen-Hash. TESTBERICHT.md und
+KNOWN_LIMITATIONS.txt nennen die tatsächlich ausgeführten Tests und offenen Risiken.

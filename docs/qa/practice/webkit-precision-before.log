@@ -1,0 +1,72 @@
+
+Running 21 tests using 1 worker
+
+(node:75004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:75004) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/practice.spec.cjs:3:1 › Transition führt in drei Eingaben über den Spieler zum Kill; Historie und Analyse trennen Entwurf (3.2s)
+  ✓   2 tests/e2e/practice.spec.cjs:15:1 › Verteidigter Angriff bleibt offen; Doppelklick und Reload zählen keine zweite Aktion (2.6s)
+  ✘   3 tests/e2e/practice.spec.cjs:22:1 › Desktop ohne Touch-Hardware › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick (2.0s)
+(node:75574) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:75574) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 tests/e2e/practice.spec.cjs:30:75 › iPad 820x1180: Live-Aktionen vollständig sichtbar ohne Scrollen (1.4s)
+  ✓   5 tests/e2e/practice.spec.cjs:30:75 › iPad 768x1024: Live-Aktionen vollständig sichtbar ohne Scrollen (991ms)
+  ✓   6 tests/e2e/practice.spec.cjs:30:75 › iPad 1024x768: Live-Aktionen vollständig sichtbar ohne Scrollen (1.2s)
+  ✓   7 tests/e2e/practice.spec.cjs:30:75 › iPad 1180x820: Live-Aktionen vollständig sichtbar ohne Scrollen (1.1s)
+  ✓   8 tests/e2e/practice.spec.cjs:36:1 › Formationseditor ohne Touch-Hardware › Formationseditor: außermittig greifen ohne Sprung, Auswahl/Zielklick und Maus-Speichern (1.9s)
+  ✓   9 tests/e2e/practice.spec.cjs:43:77 › Touch R1 K1: drei Eingaben mit korrekter Spielerzuordnung (1.2s)
+  ✓  10 tests/e2e/practice.spec.cjs:43:77 › Touch R2 K1: drei Eingaben mit korrekter Spielerzuordnung (1.2s)
+  ✓  11 tests/e2e/practice.spec.cjs:43:77 › Touch R3 K1: drei Eingaben mit korrekter Spielerzuordnung (1.2s)
+  ✓  12 tests/e2e/practice.spec.cjs:43:77 › Touch R4 K1: drei Eingaben mit korrekter Spielerzuordnung (1.1s)
+  ✓  13 tests/e2e/practice.spec.cjs:43:77 › Touch R5 K1: drei Eingaben mit korrekter Spielerzuordnung (1.2s)
+  ✓  14 tests/e2e/practice.spec.cjs:43:77 › Touch R6 K1: drei Eingaben mit korrekter Spielerzuordnung (1.2s)
+  ✓  15 tests/e2e/practice.spec.cjs:43:77 › Touch R1 K2: drei Eingaben mit korrekter Spielerzuordnung (1.3s)
+  ✓  16 tests/e2e/practice.spec.cjs:43:77 › Touch R2 K2: drei Eingaben mit korrekter Spielerzuordnung (1.6s)
+  ✓  17 tests/e2e/practice.spec.cjs:43:77 › Touch R3 K2: drei Eingaben mit korrekter Spielerzuordnung (1.1s)
+  ✓  18 tests/e2e/practice.spec.cjs:43:77 › Touch R4 K2: drei Eingaben mit korrekter Spielerzuordnung (1.2s)
+  ✓  19 tests/e2e/practice.spec.cjs:43:77 › Touch R5 K2: drei Eingaben mit korrekter Spielerzuordnung (1.1s)
+  ✓  20 tests/e2e/practice.spec.cjs:43:77 › Touch R6 K2: drei Eingaben mit korrekter Spielerzuordnung (1.1s)
+  ✓  21 tests/e2e/practice.spec.cjs:49:1 › Abgebrochene Mausgeste auf Coach-Taktik verwirft die Zwischenposition (1.2s)
+
+
+  1) tests/e2e/practice.spec.cjs:22:1 › Desktop ohne Touch-Hardware › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeCloseTo[2m([22m[32mexpected[39m[2m, [22mprecision[2m)[22m
+
+    Expected: [32m593.671875[39m
+    Received: [31m593.0859375[39m
+
+    Expected precision:    0
+    Expected difference: < [32m0.5[39m
+    Received difference:   [31m0.5859375[39m
+
+      24 |  await page.mouse.move(before.x+before.width/2,before.y+before.height/2);await page.mouse.down();const pressed=await player.boundingBox();expect(Math.abs(pressed.x-before.x)).toBeLessThan(2);expect(Math.abs(pressed.y-before.y)).toBeLessThan(2);
+      25 |  await page.mouse.move(before.x+before.width/2+24,before.y+before.height/2+27,{steps:8});await page.mouse.up();const moved=await player.boundingBox();expect(moved.x-before.x).toBeCloseTo(24,0);expect(moved.y-before.y).toBeCloseTo(27,0);
+    > 26 |  await player.click();await expect(player).toHaveAttribute('aria-pressed','true');const c=await court.boundingBox();await page.mouse.click(c.x+c.width*.5,c.y+c.height*.5);const target=await player.boundingBox();expect(target.x+target.width/2).toBeCloseTo(c.x+c.width*.5,0);expect(target.y+target.height/2).toBeCloseTo(c.y+c.height*.5,0);
+         |                                                                                                                                                                                                                                                                                                                   ^
+      27 |  const positions=await page.evaluate(()=>EVV_QS_TEST.state().sixBoards);await page.reload();expect(await page.evaluate(()=>EVV_QS_TEST.state().sixBoards)).toEqual(positions);
+      28 | });
+      29 | });
+        at /workspace/evv-quickscout/tests/e2e/practice.spec.cjs:26:307
+
+    Error Context: ../../tmp/evv-webkit-practice-results/practice-Desktop-ohne-Touc-3d838-rag-sowie-Auswahl-Zielklick/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-webkit-practice-results/practice-Desktop-ohne-Touc-3d838-rag-sowie-Auswahl-Zielklick/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-webkit-practice-results/practice-Desktop-ohne-Touc-3d838-rag-sowie-Auswahl-Zielklick/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/practice.spec.cjs:22:1 › Desktop ohne Touch-Hardware › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick 
+  20 passed (32.0s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

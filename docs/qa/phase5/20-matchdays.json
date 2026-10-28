@@ -1,0 +1,625 @@
+{
+  "generator": "LCG 1664525/1013904223",
+  "results": [
+    {
+      "seed": 501,
+      "maxStoredChars": 1878595,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 34,
+        "block": 17,
+        "opponentError": 32,
+        "attackError": 30,
+        "kill": 26
+      },
+      "contacts": 2809,
+      "transitions": 274,
+      "digest": "2a67036a8d1a7af4a2a1ca8432b367f3371f911a161cf90c79e81483ede802be"
+    },
+    {
+      "seed": 502,
+      "maxStoredChars": 2022152,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 6,
+        "D0": 55,
+        "block": 28,
+        "kill": 39,
+        "opponentError": 42,
+        "attackError": 45
+      },
+      "contacts": 4347,
+      "transitions": 425,
+      "digest": "485115f9a366244d4281638379c44caeddc75539a27bd9bc0c4baf7fe05e02fe"
+    },
+    {
+      "seed": 503,
+      "maxStoredChars": 2110970,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 35,
+        "kill": 33,
+        "block": 22,
+        "attackError": 29,
+        "opponentError": 20
+      },
+      "contacts": 2976,
+      "transitions": 297,
+      "digest": "5eeec11fe34f008185f57ea70a124623f498463456caf8145334d176ae06ba87"
+    },
+    {
+      "seed": 504,
+      "maxStoredChars": 2262892,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 3,
+        "D0": 57,
+        "kill": 34,
+        "opponentError": 51,
+        "attackError": 46,
+        "block": 24
+      },
+      "contacts": 4573,
+      "transitions": 449,
+      "digest": "d4170ff5401c836447f42ee032c2736d79bd958e886b746187fd442af3e65b61"
+    },
+    {
+      "seed": 505,
+      "maxStoredChars": 1979678,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 32,
+        "opponentError": 26,
+        "block": 26,
+        "kill": 23,
+        "attackError": 32
+      },
+      "contacts": 2898,
+      "transitions": 284,
+      "digest": "d8f6fd89bfb0080df01a86d14c89b4dbb8bdf8e8afa0e71f33db04d792b9b26a"
+    },
+    {
+      "seed": 506,
+      "maxStoredChars": 2004058,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 8,
+        "D0": 49,
+        "opponentError": 37,
+        "kill": 36,
+        "block": 36,
+        "attackError": 49
+      },
+      "contacts": 4223,
+      "transitions": 412,
+      "digest": "bfbae0e24926a39ca03f5a32e1bce6f8dea9c31aa1a5a2fcd71542abc41a48c7"
+    },
+    {
+      "seed": 507,
+      "maxStoredChars": 2106352,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 35,
+        "block": 28,
+        "opponentError": 24,
+        "attackError": 29,
+        "kill": 23
+      },
+      "contacts": 2958,
+      "transitions": 289,
+      "digest": "16748950250f5fc7a146466404874e6b2a63ba121cc255f93edca22699883c7c"
+    },
+    {
+      "seed": 508,
+      "maxStoredChars": 2080354,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 3,
+        "D0": 58,
+        "block": 43,
+        "kill": 37,
+        "opponentError": 29,
+        "attackError": 45
+      },
+      "contacts": 4498,
+      "transitions": 438,
+      "digest": "dfca36ce5a502b55070a682208852c86514a62cb8cc3b3bc48c4f3ba05b03ae5"
+    },
+    {
+      "seed": 509,
+      "maxStoredChars": 2006833,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 34,
+        "block": 28,
+        "kill": 25,
+        "attackError": 30,
+        "opponentError": 22
+      },
+      "contacts": 2856,
+      "transitions": 278,
+      "digest": "7fefc5b9c91be625646b6ba615a2de8905533f6bbb5e8fce19bd4b53df33d0d1"
+    },
+    {
+      "seed": 510,
+      "maxStoredChars": 2046060,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 5,
+        "D0": 63,
+        "kill": 31,
+        "opponentError": 39,
+        "block": 39,
+        "attackError": 38
+      },
+      "contacts": 4456,
+      "transitions": 427,
+      "digest": "6ccfe006cbc1f47049e5b74a5599fcd4cb1a71d3a3059bf65144dcee2257fa29"
+    },
+    {
+      "seed": 511,
+      "maxStoredChars": 2075854,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 36,
+        "kill": 26,
+        "block": 26,
+        "attackError": 28,
+        "opponentError": 23
+      },
+      "contacts": 2838,
+      "transitions": 275,
+      "digest": "2a7787c2b00091b8a990457f4bef564c5766ceda7b7811da7c2de046cf774202"
+    },
+    {
+      "seed": 512,
+      "maxStoredChars": 1966488,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 5,
+        "D0": 47,
+        "opponentError": 30,
+        "kill": 40,
+        "block": 39,
+        "attackError": 54
+      },
+      "contacts": 4324,
+      "transitions": 427,
+      "digest": "73c506a42483dd71215a199427fe4e8bcf3b4a84557852689dfdb6ff93be2bbc"
+    },
+    {
+      "seed": 513,
+      "maxStoredChars": 1988482,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 34,
+        "opponentError": 26,
+        "block": 24,
+        "attackError": 30,
+        "kill": 25
+      },
+      "contacts": 2732,
+      "transitions": 263,
+      "digest": "1bafa3f6d1368dde13489e3306773519129799543903a517a11780b70bedff3d"
+    },
+    {
+      "seed": 514,
+      "maxStoredChars": 2075704,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 5,
+        "D0": 45,
+        "block": 33,
+        "opponentError": 42,
+        "attackError": 56,
+        "kill": 34
+      },
+      "contacts": 4450,
+      "transitions": 442,
+      "digest": "1c7475099fce9135e8c4f90a00593614e7b67fc97f6285e75ba1815ac3313745"
+    },
+    {
+      "seed": 515,
+      "maxStoredChars": 2057087,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 36,
+        "block": 22,
+        "kill": 30,
+        "opponentError": 23,
+        "attackError": 28
+      },
+      "contacts": 2762,
+      "transitions": 268,
+      "digest": "ca5bcc9ca0bcf95f7516c56c083dc533b80226721241d9763dbd5d7f0786b4e2"
+    },
+    {
+      "seed": 516,
+      "maxStoredChars": 2080313,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 7,
+        "D0": 56,
+        "kill": 27,
+        "opponentError": 39,
+        "block": 43,
+        "attackError": 43
+      },
+      "contacts": 4294,
+      "transitions": 410,
+      "digest": "2c44060c0a8d273a3ef08d988c6d156fddcd7fa4758bb852f4478aa7f26d3c37"
+    },
+    {
+      "seed": 517,
+      "maxStoredChars": 2036027,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 33,
+        "kill": 21,
+        "block": 23,
+        "opponentError": 31,
+        "attackError": 31
+      },
+      "contacts": 2829,
+      "transitions": 274,
+      "digest": "658198a529e48fce6997abedebea73257e176939b4f4851c9a7725a5a552d120"
+    },
+    {
+      "seed": 518,
+      "maxStoredChars": 2200587,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 4,
+        "D0": 50,
+        "opponentError": 30,
+        "kill": 43,
+        "attackError": 52,
+        "block": 36
+      },
+      "contacts": 4473,
+      "transitions": 445,
+      "digest": "f8bff7b8f1888fd617f5641300dd9d0d4e4e88bc9302f7079c740c9d33ad19f5"
+    },
+    {
+      "seed": 519,
+      "maxStoredChars": 2083538,
+      "sets": 3,
+      "rallies": 141,
+      "wins": [
+        3,
+        0
+      ],
+      "undos": 9,
+      "substitutions": 6,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 2,
+        "D0": 36,
+        "opponentError": 26,
+        "block": 21,
+        "attackError": 28,
+        "kill": 28
+      },
+      "contacts": 2889,
+      "transitions": 283,
+      "digest": "ba6939a4b1893ec42b253687fd07d884d7c991ac65ff69e5b3b839d35b36c532"
+    },
+    {
+      "seed": 520,
+      "maxStoredChars": 2043996,
+      "sets": 5,
+      "rallies": 215,
+      "wins": [
+        3,
+        2
+      ],
+      "undos": 14,
+      "substitutions": 10,
+      "rotations": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scenarios": {
+        "A0": 5,
+        "D0": 42,
+        "opponentError": 30,
+        "block": 49,
+        "attackError": 59,
+        "kill": 30
+      },
+      "contacts": 4224,
+      "transitions": 412,
+      "digest": "c7d241c7a2b4d8db03a58ff43ade9df12577bddb60d4c51f4979d9106fd8dad8"
+    }
+  ]
+}

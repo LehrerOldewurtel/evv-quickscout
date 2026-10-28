@@ -1,0 +1,206 @@
+✖ v7.9.2: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (190.20156ms)
+✔ pre-pr-main: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (75.868252ms)
+✖ Undo schließt ausstehende Zielzone und verhindert verwaiste Bestätigung (101.08139ms)
+✖ Sprach-Undo respektiert historische READ-ONLY-Ansicht (54.833655ms)
+✖ Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wie Touch (66.314814ms)
+✖ Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet (49.159796ms)
+✔ Libero-Aufschlagsverbot und Wiedereintritt in allen sechs Rotationen (291.228077ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 2
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1284.194765
+
+✖ failing tests:
+
+test at tests/review.test.cjs:6:44
+✖ v7.9.2: Update erhält Sätze, Punkte, Aufstellung, Wechsel, Marken und Undo (190.20156ms)
+  AssertionError [ERR_ASSERTION]: Update aktiviert keinen vorher ungenutzten Libero
+
+  true !== false
+
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/review.test.cjs:10:38)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review.test.cjs:5:25
+✖ Undo schließt ausstehende Zielzone und verhindert verwaiste Bestätigung (101.08139ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+
+    assert(w.document.getElementById('modal').classList.contains('hidden'))
+
+      at /workspace/evv-quickscout/tests/review.test.cjs:19:2
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/review.test.cjs:5:58)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/review.test.cjs:5:25
+✖ Sprach-Undo respektiert historische READ-ONLY-Ansicht (54.833655ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+
+    {
+  +   e: 0,
+  -   e: 1,
+      events: [],
+      liberoActive: true,
+      liberoIds: [
+        'amar',
+        'alex'
+  ...
+      opponentPositions: {},
+  +   rallies: [],
+  +   rallyUndo: [],
+  -   rallies: [
+  -     {
+  -       after: '1:0',
+  -       before: '0:0',
+  -       event: 'Quick',
+  -       phase: 'K1',
+  -       rotation: 1,
+  -       servingBefore: false,
+  -       set: 1,
+  -       winner: 'EVV'
+  -     }
+  -   ],
+  -   rallyUndo: [
+  -     {
+  -       e: 0,
+  -       events: [],
+  -       liberoActive: true,
+  -       liberoOnCourt: 'amar',
+  -       liberoPreferredId: '',
+  -       liberoPreferredMB: '',
+  -       liberoReplacedId: 'dirk',
+  -       lineup: [
+  -         'johann',
+  -         'michael',
+  -         'janik',
+  -         'jens',
+  -         'arthur',
+  -         'dirk'
+  -       ],
+  -       marks: [],
+  -       matchEnded: false,
+  -       o: 0,
+  -       opponentPositions: {},
+  -       rallies: [],
+  -       receiveIds: [],
+  -       receivePlans: {},
+  -       roles: {
+  -         arthur: 'AA2',
+  -         dirk: 'MB2',
+  -         janik: 'MB1',
+  -         jens: 'D',
+  -         johann: 'Z',
+  -         michael: 'AA1'
+  -       },
+  -       rot: 1,
+  -       serving: false,
+  -       setEnded: false,
+  -       subCount: 0,
+  -       subPairs: {},
+  -       subUsed: [],
+  -       tacticPositions: {}
+  -     }
+  -   ],
+      receiveIds: [],
+      receivePlans: {},
+      roles: {
+        arthur: 'AA2',
+        dirk: 'MB2',
+  ...
+      },
+  +   rot: 1,
+  +   serving: false,
+  -   rot: 2,
+  -   serving: true,
+      set: 1,
+      setEnded: false,
+      setStart: {
+        lineup: [
+          'johann',
+
+      at /workspace/evv-quickscout/tests/review.test.cjs:22:116
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/review.test.cjs:5:58)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { started: true, set: 1, e: 0, o: 0, rot: 1, serving: false, setEnded: false, matchEnded: false, lineup: [ 'johann', 'michael', 'janik', 'jens', 'arthur', 'dirk' ], roles: { johann: 'Z', jens: 'D', michael: 'AA1', arthur: 'AA2', janik: 'MB1', dirk: 'MB2' }, receiveIds: [], receivePlans: {}, tacticPositions: {}, opponentPositions: {}, liberoIds: [ 'amar', 'alex' ], liberoOnCourt: 'amar', liberoReplacedId: 'dirk', liberoActive: true, liberoPreferredId: '', liberoPreferredMB: '', rallies: [], sets: [], rallyUndo: [], events: [], marks: [], setStart: { rot: 1, serving: false, lineup: [Array], roles: [Object] }, subPairs: {}, subCount: 0, subUsed: [] },
+    expected: { started: true, set: 1, e: 1, o: 0, rot: 2, serving: true, setEnded: false, matchEnded: false, lineup: [ 'johann', 'michael', 'janik', 'jens', 'arthur', 'dirk' ], roles: { johann: 'Z', jens: 'D', michael: 'AA1', arthur: 'AA2', janik: 'MB1', dirk: 'MB2' }, receiveIds: [], receivePlans: {}, tacticPositions: {}, opponentPositions: {}, liberoIds: [ 'amar', 'alex' ], liberoOnCourt: 'amar', liberoReplacedId: 'dirk', liberoActive: true, liberoPreferredId: '', liberoPreferredMB: '', rallies: [ [Object] ], sets: [], rallyUndo: [ [Object] ], events: [], marks: [], setStart: { rot: 1, serving: false, lineup: [Array], roles: [Object] }, subPairs: {}, subCount: 0, subUsed: [] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review.test.cjs:5:25
+✖ Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wie Touch (66.314814ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  2 !== 'evvBall2'
+
+      at /workspace/evv-quickscout/tests/review.test.cjs:26:9
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/review.test.cjs:5:58)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 'evvBall2',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review.test.cjs:5:25
+✖ Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet (49.159796ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at /workspace/evv-quickscout/tests/review.test.cjs:33:9
+      at TestContext.<anonymous> (/workspace/evv-quickscout/tests/review.test.cjs:5:58)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
