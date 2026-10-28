@@ -54,6 +54,8 @@ def main():
             assert webkit_stats['expected'] > 0 and all(webkit_stats[k] == 0 for k in ['unexpected', 'flaky', 'skipped']), 'WebKit gate not green'
             (stage / 'WEBKIT_TESTBERICHT.json').write_bytes(webkit_report.read_bytes())
         (stage / 'COCKPIT_DESIGN.md').write_bytes((ROOT / 'docs/COCKPIT_DESIGN.md').read_bytes())
+        if (ROOT / 'docs/DEFENSE_SYSTEM.md').is_file():
+            (stage / 'DEFENSE_SYSTEM.md').write_bytes((ROOT / 'docs/DEFENSE_SYSTEM.md').read_bytes())
         acceptance = (ROOT / 'docs/FINAL_RELEASE_REPORT.md').read_text().replace('screenshots/cockpit/README.md', 'https://github.com/LehrerOldewurtel/evv-quickscout/blob/dev/v8-trainer-cockpit/docs/screenshots/cockpit/README.md')
         (stage / 'RELEASE_ABNAHME.md').write_text(acceptance)
         (stage / 'CHECKSUMS.sha256').write_text(''.join(f'{digest(p)}  {p.name}\n' for p in sorted(stage.iterdir())))

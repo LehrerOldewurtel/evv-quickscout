@@ -1,0 +1,174 @@
+[2m[WebServer] [22m(node:215995) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:09] "GET / HTTP/1.1" 200 -
+
+Running 7 tests using 1 worker
+
+(node:216010) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:216010) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /favicon.ico HTTP/1.1" 404 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:10] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✓  1 tests/e2e/defense.spec.cjs:2:1 › Vier EVV-Grundordnungen sind sofort auswählbar und standardweit editierbar (1.4s)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:11] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✓  2 tests/e2e/defense.spec.cjs:8:1 › Alle 24 Bilder: Aufgaben, Rollen, Blockzahl und exakte Feldkoordinaten ohne Regelmutation (6.3s)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:17] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:17] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:17] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:17] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:17] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:18] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:18] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:18] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:18] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:18] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:18] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:18] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:19] "GET / HTTP/1.1" 304 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:19] "GET /styles.css?v=7180 HTTP/1.1" 304 -
+  ✘  3 tests/e2e/defense.spec.cjs:11:1 › Einmal speichern: neue Ziele und Wege in fünf Rotationen; vorhandene Anpassung bleibt erhalten (2.6s)
+(node:216249) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:216249) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /favicon.ico HTTP/1.1" 404 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:21] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✓  4 tests/e2e/defense.spec.cjs:15:65 › Vier Systeme im Präsentationsmodus 1024x768: Legende und beide Mannschaften sichtbar (1.9s)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:23] "GET /compact.js HTTP/1.1" 200 -
+  ✓  5 tests/e2e/defense.spec.cjs:15:65 › Vier Systeme im Präsentationsmodus 820x1180: Legende und beide Mannschaften sichtbar (1.6s)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:25] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✓  6 tests/e2e/defense.spec.cjs:15:65 › Vier Systeme im Präsentationsmodus 1440x1000: Legende und beide Mannschaften sichtbar (1.7s)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:26] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:29] "GET / HTTP/1.1" 304 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:19:29] "GET /styles.css?v=7180 HTTP/1.1" 304 -
+  ✓  7 tests/e2e/defense.spec.cjs:18:1 › Aktueller Wechselspieler und Libero erhalten rollenbasierte Aufgaben auch nach Satzwechsel/Reload (2.6s)
+
+
+  1) tests/e2e/defense.spec.cjs:11:1 › Einmal speichern: neue Ziele und Wege in fünf Rotationen; vorhandene Anpassung bleibt erhalten 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoEqual[2m([22m[32mexpected[39m[2m) // deep equality[22m
+
+    [32m- Expected  - 12[39m
+    [31m+ Received  +  1[39m
+
+    [33m@@ -4,22 +4,11 @@[39m
+    [2m      28,[22m
+    [2m      20,[22m
+    [2m    ],[22m
+    [2m    "ballPaths": Array [],[22m
+    [2m    "proposal": false,[22m
+    [32m-   "routes": Object {[39m
+    [32m-     "6": Array [[39m
+    [32m-       Array [[39m
+    [32m-         58.00000313000802,[39m
+    [32m-         80,[39m
+    [32m-       ],[39m
+    [32m-       Array [[39m
+    [32m-         40,[39m
+    [32m-         60,[39m
+    [32m-       ],[39m
+    [32m-     ],[39m
+    [32m-   },[39m
+    [31m+   "routes": Object {},[39m
+    [2m    "targets": Object {[22m
+    [2m      "1": Array [[22m
+    [2m        79,[22m
+    [2m        67,[22m
+    [2m      ],[22m
+
+      11 | test('Einmal speichern: neue Ziele und Wege in fünf Rotationen; vorhandene Anpassung bleibt erhalten',async({page})=>{
+      12 |  await start(page);await page.locator('[data-formation-kind="defense-I"]').click();await page.locator('#tacticsRotation').selectOption('2');await page.locator('#tacticsEdit').click();await target(page,1,.68,.84);await page.locator('#formSave').click();const custom=await page.evaluate(()=>EVV_QS_TEST.formationFor(2,'defense-I'));await page.locator('#formScope').selectOption('standard');await expect(page.locator('#formRotation')).toBeDisabled();await target(page,6,.58,.9);await page.locator('#formTool').selectOption('route');const svg=page.locator('#formationSvg');await svg.scrollIntoViewIfNeeded();const b=await svg.boundingBox();await page.mouse.move(b.x+b.width*.58,b.y+b.height*.9);await page.mouse.down();await page.mouse.move(b.x+b.width*.4,b.y+b.height*.8,{steps:6});await page.mouse.up();await page.locator('#formProposed').uncheck();await page.locator('#formAttackX').fill('28');await page.locator('#formSave').click();const library=await page.evaluate(()=>EVV_QS_TEST.state().defenseStandards);expect(Object.keys(library)).toEqual(['defense-I']);expect(library['defense-I'].targets['6'][0]).toBeCloseTo(58,0);expect(library['defense-I'].routes['6']).toHaveLength(2);expect(library['defense-I'].attackOrigin[0]).toBe(28);await page.locator('#formView').click();for(let r=1;r<=6;r++){await page.locator('#tacticsRotation').selectOption(String(r));const f=await page.evaluate(r=>EVV_QS_TEST.formationFor(r,'defense-I'),r);if(r===2)expect(f).toEqual(custom);else expect(f).toEqual(library['defense-I'])}await page.locator('#tacticsClose').click();await page.reload();expect(await page.evaluate(()=>EVV_QS_TEST.state().defenseStandards)).toEqual(library);expect(await page.evaluate(()=>EVV_QS_TEST.formationFor(2,'defense-I'))).toEqual(custom);
+    > 13 |  await page.locator('#matchTactics').click();await page.locator('[data-formation-kind="defense-I"]').click();await page.locator('#tacticsRotation').selectOption('2');await page.locator('#tacticsEdit').click();page.once('dialog',d=>d.accept());await page.locator('#formUseStandard').click();expect(await page.evaluate(()=>EVV_QS_TEST.formationFor(2,'defense-I'))).toEqual(library['defense-I']);await page.locator('#formView').click();await expect(page.locator('#tacticsContext')).toContainText('EVV-Standard');
+         |                                                                                                                                                                                                                                                                                                                                                                            ^
+      14 | });
+      15 | for(const [width,height] of [[1024,768],[820,1180],[1440,1000]])test(`Vier Systeme im Präsentationsmodus ${width}x${height}: Legende und beide Mannschaften sichtbar`,async({page},info)=>{
+      16 |  await page.setViewportSize({width,height});await start(page);await page.locator('#tacticsTasks').click();await page.locator('#tacticsPresent').click();const before=await page.evaluate(()=>EVV_QS_TEST.rotationMatrix());for(const kind of kinds){await page.locator(`[data-formation-kind="${kind}"]`).click();await expect(page.locator('#tacticsContext')).toContainText('EVV-Standard');await expect(page.locator('.defenseLegend>span')).toHaveCount(6);await expect(page.locator('[data-opponent-slot]')).toHaveCount(6);const b=await page.locator('.sharedCourt').boundingBox();expect(b.x).toBeGreaterThanOrEqual(0);expect(b.y).toBeGreaterThanOrEqual(0);expect(b.x+b.width).toBeLessThanOrEqual(width);expect(b.y+b.height).toBeLessThanOrEqual(height);await expect(page.locator(`[data-formation-kind="${kind}"]`)).toBeInViewport()}expect(await page.evaluate(()=>EVV_QS_TEST.rotationMatrix())).toEqual(before);await info.attach('presentation',{body:JSON.stringify({width,height,formations:4,taskLegends:6}),contentType:'application/json'});await page.locator('#tacticsClose').click();await expect(page.locator('#modal')).toBeHidden();
+        at /workspace/evv-quickscout/tests/e2e/defense.spec.cjs:13:364
+
+    Error Context: test-results/defense-Einmal-speichern-n-9500d-e-Anpassung-bleibt-erhalten/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/defense-Einmal-speichern-n-9500d-e-Anpassung-bleibt-erhalten/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/defense-Einmal-speichern-n-9500d-e-Anpassung-bleibt-erhalten/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/defense.spec.cjs:11:1 › Einmal speichern: neue Ziele und Wege in fünf Rotationen; vorhandene Anpassung bleibt erhalten 
+  6 passed (20.4s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

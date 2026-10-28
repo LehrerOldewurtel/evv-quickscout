@@ -190,3 +190,24 @@ Die alte Maus-Geometrieprüfung misst nun den Spielerkreis; der neue Name darunt
 gehört nicht zum Mittelpunkt des verschiebbaren Symbols. Die Genauigkeit bleibt
 unverändert. Neue Evidenz wird unter `docs/qa/practice/` abgelegt; ältere Cockpit-
 Berichte beschreiben ihren damaligen Stand.
+
+## Vier gemeinsame EVV-Abwehrsysteme
+
+`tests/defense.test.cjs` enthält unabhängige Sollwerte für die Aufgaben, 24 Bilder,
+IV/II-Spiegelung, III-Einerblock, Hinterfeld-I-Zweierblock/P2-Nahsicherung,
+5–6-m-Tiefe und Absicherung hinter P5. Weitere Fälle prüfen Front-/Hinterreihe,
+alle sechs Startaufstellungen mit beiden Aufschlagrechten, Niklas/Libero,
+Priorität individueller Bilder, neue Spiele, Reload, Quota, deaktivierte Standards
+und Vererbung von Wegen ohne Verlust von Ausgangs-/Gegnerbildern.
+
+`tests/e2e/defense.spec.cjs` bedient die wirkliche Browseroberfläche: alle 24
+System/Rotations-Kombinationen, exakte Kreis-Koordinaten, Aufgaben/Rollen,
+Standard-Editor, gemeinsames Speichern, Ausnahme und bewusste Rückkehr zum Standard,
+Reload, Wechsel/Satzwechsel und Präsentation mit Legende bei 1024×768, 820×1180,
+1440×1000. Chromium und WebKit ausführen. Bestehende Regressionen bleiben Pflicht.
+
+Änderungen alter Assertions sind fachlich begründet: die drei früher fehlenden
+Abwehrbilder besitzen jetzt EVV-Standards, K1 bleibt neutral. Abwehr verwendet die
+tatsächlich aktive Libero-Konfiguration statt pauschal eigenes Aufschlagrecht
+anzunehmen. Cache-Lifecycle erwartet den neuen Kandidaten-Suffix `defense-1`.
+Kein Spielregel-Oracle und keine Match-Sollwerte wurden gelockert.

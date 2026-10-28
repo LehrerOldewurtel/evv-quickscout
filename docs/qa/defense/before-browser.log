@@ -1,0 +1,68 @@
+[2m[WebServer] [22m(node:210467) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:49] "GET / HTTP/1.1" 200 -
+
+Running 1 test using 1 worker
+
+(node:210483) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:210483) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /favicon.ico HTTP/1.1" 404 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 19:04:51] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✘  1 tests/e2e/defense.spec.cjs:2:1 › Vier EVV-Grundordnungen sind sofort auswählbar und standardweit editierbar (6.0s)
+
+
+  1) tests/e2e/defense.spec.cjs:2:1 › Vier EVV-Grundordnungen sind sofort auswählbar und standardweit editierbar 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#tacticsContext')
+    Expected substring: [32m"EVV-Standard"[39m
+    Received string:    [31m"LIVE · EVV R1 · K2 · Abwehr IV · Nicht eingerichtet · Regelpositionen angezeigt · Gegner nicht eingerichtet"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('#tacticsContext')[22m
+    [2m    9 × locator resolved to <p id="tacticsContext">LIVE · EVV R1 · K2 · Abwehr IV · Nicht eingericht…</p>[22m
+    [2m      - unexpected value "LIVE · EVV R1 · K2 · Abwehr IV · Nicht eingerichtet · Regelpositionen angezeigt · Gegner nicht eingerichtet"[22m
+
+
+      1 | const {test,expect}=require('@playwright/test');
+      2 | test('Vier EVV-Grundordnungen sind sofort auswählbar und standardweit editierbar',async({page})=>{
+    > 3 |  await page.goto('/');await page.locator('#startReceive').click();await page.locator('#matchTactics').click();for(const kind of ['defense-IV','defense-II','defense-III','defense-I']){await page.locator(`[data-formation-kind="${kind}"]`).click();await expect(page.locator('#tacticsContext')).toContainText('EVV-Standard');await expect(page.locator('[data-court-player]')).toHaveCount(6)}await page.locator('#tacticsEdit').click();await page.locator('#formScope').selectOption('standard');await expect(page.locator('#formSave')).toContainText('EVV-Standard');
+        |                                                                                                                                                                                                                                                                                                    ^
+      4 | });
+      5 |
+        at /workspace/evv-quickscout/tests/e2e/defense.spec.cjs:3:292
+
+    Error Context: test-results/defense-Vier-EVV-Grundordn-df5c7-und-standardweit-editierbar/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/defense-Vier-EVV-Grundordn-df5c7-und-standardweit-editierbar/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/defense-Vier-EVV-Grundordn-df5c7-und-standardweit-editierbar/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/defense.spec.cjs:2:1 › Vier EVV-Grundordnungen sind sofort auswählbar und standardweit editierbar 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

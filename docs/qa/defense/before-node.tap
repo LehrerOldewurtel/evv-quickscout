@@ -1,0 +1,54 @@
+TAP version 13
+# Subtest: EVV-Standards sind für vier Richtungen und alle sechs Rotationen vollständig vorhanden
+not ok 1 - EVV-Standards sind für vier Richtungen und alle sechs Rotationen vollständig vorhanden
+  ---
+  duration_ms: 122.922098
+  type: 'test'
+  location: '/workspace/evv-quickscout/tests/defense.test.cjs:3:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    defense-IV
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/workspace/evv-quickscout/tests/defense.test.cjs:3:273)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.start (node:internal/test_runner/test:1242:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: IV und II sind geometrisch und funktional exakt gespiegelt; III/I verwenden die Trainer-Blockzahl
+not ok 2 - IV und II sind geometrisch und funktional exakt gespiegelt; III/I verwenden die Trainer-Blockzahl
+  ---
+  duration_ms: 41.916728
+  type: 'test'
+  location: '/workspace/evv-quickscout/tests/defense.test.cjs:4:1'
+  failureType: 'testCodeFailure'
+  error: '"undefined" is not valid JSON'
+  code: 'ERR_TEST_FAILURE'
+  name: 'SyntaxError'
+  stack: |-
+    JSON.parse (<anonymous>)
+    TestContext.<anonymous> (/workspace/evv-quickscout/tests/defense.test.cjs:4:287)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 0
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 500.083452

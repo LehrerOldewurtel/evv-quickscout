@@ -27,3 +27,11 @@ TRAINER-COCKPIT – ENTWICKLUNGSKANDIDAT ZUR MANUELLEN ABNAHME
   nicht anhand realer Fußpositionen. Taktische Ziele bleiben frei bearbeitbar.
 - Chromium testet Touch-Drag per Browser-Emulation; WebKit testet Maus-Drag und
   Touch-Auswahl/Ziel. Eine Hardware-Touch-/Pencil-Abnahme steht noch aus.
+
+- Die sechs erwähnten Lehrabbildungen standen nicht als lesbare Dateien zur Verfügung.
+  Die Aufgaben entsprechen den schriftlichen Vorgaben; konkrete Koordinaten sind
+  editierbare Vorschläge. Blockschatten/Abwehrbereiche sind schematische Orientierung.
+- Rollenstandard: vorderer MB zentral, aktiver Libero bevorzugt in Abwehrzone P5.
+  Bei uneindeutiger MB-Aufstellung wird gekennzeichnet auf Regelplätze zurückgefallen.
+- Alte individuelle Bilder bleiben positionsgebunden. Sie werden nicht automatisch
+  umgedeutet; der gemeinsame Standard wird erst nach bewusster Ablösung verwendet.

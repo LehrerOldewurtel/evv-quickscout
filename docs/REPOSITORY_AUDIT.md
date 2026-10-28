@@ -131,3 +131,11 @@ Release-Basis und produktive Pages bleiben unverändert. Ursachen und aktuelle
 Testergebnisse stehen in `PRACTICE_FIXES_REPORT.md`, Rohbelege in `qa/practice/`.
 Formationsspeicherung bleibt in der bestehenden Bibliothek; optionale Ebenen
 werden vor Mutation validiert. Keine neue Scouting-/Statistik-Engine.
+
+## Gemeinsame Abwehrsysteme, 28.10.2026
+
+Auf bestehendem Entwicklungsbranch vier EVV-Systeme ergänzt; keine Änderung an
+`main`, Release-Basis oder produktiven Pages. Architektur/Koordinaten und offene
+Referenzbild-Abnahme: `DEFENSE_SYSTEM.md`. Tatsächliche Ergebnisse folgen im
+`DEFENSE_REPORT.md`, Rohbelege unter `qa/defense/`. Vorhandene Rotationsbilder
+werden weder kopiert noch durch globale Writes überschrieben.

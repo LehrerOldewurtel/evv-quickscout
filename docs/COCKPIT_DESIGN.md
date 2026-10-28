@@ -131,3 +131,11 @@ Ergänzungsansicht schreibgeschützt, unbekannte bleiben leer.
 
 Der Präsentationsmodus vergrößert den Dialog auf den Bildschirm. Formationswahl
 und Rotationsvorschau bleiben lesend; er benötigt keine Fullscreen-Berechtigung.
+
+## Ergänzung: vier gemeinsame EVV-Abwehrsysteme
+
+Für IV/II/III/Hinterfeld I gelten jetzt die gemeinsamen, rollenbasierten Standards
+und die sichere Speicherhierarchie aus `DEFENSE_SYSTEM.md`. Individuelle Bilder
+bleiben vorrangig. Die früheren Hinweise zu fehlenden Vorlagen betreffen nun K1,
+ausdrücklich deaktivierte Standards und sonstige nicht eingerichtete Bilder.
+Aktuelle Testergebnisse: `DEFENSE_REPORT.md`.

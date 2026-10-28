@@ -1,126 +1,136 @@
-# EVV QuickScout V8 · Praxistest-Korrekturen
+# EVV QuickScout V8 · Vier gemeinsame Abwehrsysteme
 
-Stand: 28.10.2026. Entwicklungskandidat auf `dev/v8-practice-fixes`, keine stabile
-V8-Freigabe. Produktkennung bleibt `7.19.0-k1-auto-mb`.
+Stand: 28.10.2026. Entwicklung auf `dev/v8-practice-fixes`, geprüfter App-Code
+`8ddbe05`. Produktkennung bleibt `7.19.0-k1-auto-mb`; keine stabile V8-Freigabe,
+kein Merge, kein produktives Deployment.
 
-## Tatsächliche Ursachen und Korrekturen
+## Geliefert
 
-1. **Formationen:** Der alte Editor enthielt nur eigene taktische Ziele und
-   ersetzte seinen Arbeitsstand bei Navigation ohne Rückfrage. Die bestehende
-   Formationsbibliothek speichert jetzt zusätzlich Ausgangsstellungen und nach
-   Gegnerrotation getrennte Bilder. Beide Teams sind auf demselben Feld editierbar.
-   Speichern, Speichern unter, Vorlage laden, Kopieren und Zurücksetzen sind
-   verfügbar. Status, Verwerfungsabfrage und Browserwarnung schützen Änderungen.
-   Ein Speicherfehler wird nicht als erfolgreicher Write bestätigt.
-2. **Libero:** Die Vorschau verwendete den aktuellen Aufschlagstatus auch bei K1.
-   Dadurch fehlte in den gemeldeten R3/R6-Fällen der Libero auf P1. Die reine
-   Anzeige berechnet jetzt Startrotation, tatsächliche MB-Rollen, aktuelle
-   Aufstellung/Wechsel und gewählte Phase. In K2 schlägt auf P1 weiterhin der
-   Mittelblocker auf. Die Live-Libero-Synchronisation wurde nicht verändert.
-3. **Gegnerdaten:** Die Analyse nutzte fest codierte Positionsnummern. Sie zeigt
-   jetzt die erfassten Trikots und die dokumentierte Rotation. Sechs Nummern
-   genügen auch für die Scouting-Auswahl; Namen werden nicht vorausgesetzt.
-4. **Verschieben:** Beide Teams und beide Stellungsebenen sind bearbeitbar.
-   Pointer-Capture bleibt am stabilen SVG; Auswahl/Zielklick ist ebenfalls möglich.
-   Die Auswahlmarkierung verändert nicht mehr die Geometrie des Symbols.
-5. **K2:** R1–R6 × IV/III/II werden separat gespeichert. Die Zuordnung erfolgt nach
-   tatsächlichem Feldplatz und verwendet beim Anzeigen aktuelle Spieler und Libero.
-6. **Auszeit:** Vergrößern öffnet eine Bildschirm-Präsentation mit beiden Teams,
-   gespeicherten Wegen, K1/IV/III/II und sichtbarer Rotationsvorschau. Sie ist lesend.
-   Auch auf dem iPhone bleiben Schließen und Verkleinern vollständig erreichbar.
-7. **Kader und Symbole:** Alle taktischen Spieleransichten einschließlich alter
-   Skizzen und Gegneranalyse verwenden Kreise: EVV blau, Gegner rot, Libero mit
-   eigener Markierung. Niklas ergänzt den Kader als MB mit #5, ohne alte Startsechsen
-   zu ändern. Eine bereits anders vergebene #5 bleibt erhalten. Unbekannte Nummern
-   bleiben leer/?; bekannte Nummern sind vor versehentlicher Änderung geschützt.
+- **ABWEHR IV:** P2/P3 Doppelblock, P4 Nahsicherung, P5 Diagonale außerhalb des
+  schematischen Schattens, P6 Schatten/lang, P1 Linie.
+- **ABWEHR II:** exakt geometrisch gespiegeltes IV-System; P3/P4 Doppelblock,
+  P2 Nahsicherung, P1 Diagonale, P5 Linie, P6 Schatten/lang.
+- **ABWEHR III:** ausschließlich P3 im Einerblock, P2/P4 Nahsicherung, P1/P5 bei
+  5,49 m am Schattenrand, P6 tief mit Schwerpunkt hinter P5.
+- **ABWEHR HINTERFELD I:** P3/P4 Doppelblock, P2 Nahsicherung, drei individuell
+  editierbare Hinterfeldziele und einstellbarer Angriffsort.
 
-## Ausgeführte Tests
+Vier Standards sind in der App enthalten und in jeder Rotation sofort abrufbar.
+Die gemeinsame Bibliothek speichert eine Trainer-Anpassung pro System genau einmal.
+Alle sechs Rotationen greifen darauf zu. Individuelle Rotationsbilder behalten
+Vorrang und werden durch gemeinsame Änderungen nicht verändert. Eine ausdrücklich
+bestätigte Rückkehr zum Standard übernimmt auch dessen Wege und lässt separate
+Ausgangsstellungen und Gegnerbilder erhalten. Ein deaktivierter/fehlender Standard
+fällt auf neutrale Regelpositionen zurück.
+
+Regelposition, Spielerrolle, Aufgabenfeld und aktiver Spieler sind getrennt.
+Standardzuordnung: vorderer MB zentral, Außenangreifer links, Z/D rechts; im
+Hinterfeld aktiver Libero/MB bevorzugt P5, Z/D bevorzugt P1, Außenangreifer P6.
+Die eigene Regelaufstellung bleibt unverändert. Eine uneindeutige MB-Konfiguration
+wird gekennzeichnet und auf Regelplätze zurückgeführt. Ältere individuelle Bilder
+bleiben bewusst positionsgebunden, bis der Trainer sie ausdrücklich ablöst.
+
+Runde Spieler zeigen Nummer/Namen. Blockmarkierung, schematische Schatten,
+Abwehrbereiche und Aufgabenlegende sind einblendbar. Alle vier Systeme bleiben
+in der Bildschirm-Präsentation direkt auswählbar. Der vorhandene Editor speichert
+weiterhin Laufwege, Ballwege und Angriffsrouten. Punkte-, Wechsel-, Rotations-,
+Live-Libero- und Statistik-Engine wurden nicht geändert. Hinterfeld I wird im
+vorhandenen Live-Ablauf bei entsprechendem gegnerischen Zuspiel erkannt.
+
+## Tatsächliche Prüfungen
 
 | Prüfung | Bestanden | Fehlgeschlagen | Übersprungen |
 |---|---:|---:|---:|
-| Node einschließlich unabhängiger Match-Oracles | 167 | 0 | 0 |
-| Chromium · vollständige Browserregression | 135 | 0 | 0 |
-| WebKit · ausgewählte Regression und alle neuen Zwei-Team-Fälle | 78 | 0 | 0 |
+| Vollständige Node-Regression | 179 | 0 | 0 |
+| Vollständige Chromium-Regression | 142 | 0 | 0 |
+| WebKit-Auswahl einschließlich aller neuen Abwehrfälle | 85 | 0 | 0 |
 
-Getesteter App-Code: `ca8f6b0`; finale Darstellung/Teststand: `3529b6e`.
-Der vollständige Node-Lauf prüfte bereits exakt dieselben App-, HTML- und
-Versionsdateien. Nach den abschließenden reinen CSS-Korrekturen wurde die
-vollständige Chromium-Suite erneut ausgeführt; der erneute WebKit-Lauf prüft
-ebenfalls die finale Darstellung. Diese Wiederverwendung ist mit alten und neuen
-Asset-Hashes sowie tatsächlichen Start-/Endzeiten in `qa-run.json` dokumentiert.
-Keine historischen Testergebnisse werden als neue Testausführung gezählt.
+Alle Läufe prüften die unveränderten finalen App-Assets. Hashes, tatsächliche
+Kommandos, Start-/Endzeiten und Ergebnisse stehen in `docs/qa/defense/`.
+Vorher fehlgeschlagene Regressionen sind ausdrücklich als Vorher-Belege abgelegt.
+Keine historischen Ergebnisse werden als neue Ausführung gezählt.
 
-Die **100 detaillierten Matches** (Seeds 501–600) umfassen 400 Sätze,
-17,213 Rallyes, 271,405 Kontakte, 800 Wechsel/Rückwechsel,
-1220 Undo/Wiederholungen und 331 Wiederanläufe. Alle **100/100**
-unabhängig erzeugten Match-Digests stimmen mit dem vorherigen Cockpit-Stand überein.
-Hinzu kommen 100 Quick-Matches und 100 isolierte Kontaktketten.
+Neue Sollwerte prüfen vier Systeme × sechs Rotationen, komplette Aufgabenlisten,
+exakte IV/II-Spiegelung, Blockzahlen, P2-Nahsicherung bei I, 5–6-m-Abwehr und tiefe
+Absicherung hinter P5. Rollen-/Libero-Zuordnung wird zusätzlich für alle sechs
+Startaufstellungen und beide Aufschlagrechte geprüft. Bibliothekstests umfassen
+individuelle Priorität, Wege-Vererbung, Gegner-/Ausgangsstellungs-Erhalt, Reload,
+neues Spiel, ungültige Daten und Speicherfehler ohne Datenverlust.
 
-Chromium und WebKit führten je drei vollständige Matches direkt über die Oberfläche
-aus. Die bestehenden Tests decken Punkte, Undo, K1/K2, Rotationsampel und Turnaround
-ab. Transition → Spieler → Kill bleibt bei drei Eingaben mit geprüfter Zuordnung.
+Die Browser bedienten direkt die UI: alle 24 Bilder, exakte sichtbare Kreis-
+Koordinaten, gemeinsamer Standard-Editor, einmaliges Speichern von Zielen/Wegen,
+vorhandene Ausnahme, bewusste Ablösung, Reload, Niklas/Libero, Satzwechsel und die
+Präsentation mit Legende bei iPad quer/hoch sowie Mac. Bestehende Maus-/Touch-,
+Live-, Undo-, K1/K2-, Rotationsampel- und Turnaround-Regressionen liefen erneut.
 
-Neue UI-Prüfungen erfassen beide Teams per Maus, Auswahl/Zielklick per Touch,
-Ausgangsstellungsprüfung, alle 18 K2-Bilder, Vorlagen, Schutz ungespeicherter
-Änderungen, Gegner-Sideout/Nummern, alle sechs Libero-Rotationen einschließlich
-Niklas-Wechsel, Satzwechsel und Reload sowie die Präsentation bei 1024×768,
-820×1180 und 390×844. Exakte gespeicherte Positionen und Zeichnungen werden nach
-Reload mit dem Sollzustand verglichen. Live-Spielstand und Regelaufstellung
-bleiben bei Editor/Vorschau unverändert.
+100 detaillierte Matches (Seeds 501–600): **400 Sätze, 17,213 Rallyes,
+271,405 Kontakte, 800 Wechsel/Rückwechsel und 1220 Undo-
+Wiederholungen**. Alle **100/100** unabhängigen Match-Digests sind identisch zum
+vorherigen Praxistest-Kandidaten. Zusätzlich 100 Quick-Matches und 100 isolierte
+Kontaktketten. Chromium/WebKit führten je drei vollständige UI-Matches aus.
+Transition → Spieler → Kill bleibt bei drei Eingaben mit korrekter Zuordnung.
 
-Chromium-CDP prüft zusätzlich echte emulierte Touch-Drag-Eingaben beider Teams.
-WebKit prüft Maus-Drag und native Playwright-Touch-Taps mit Auswahl/Zielposition;
-Hardware-Touch-Drag auf einem echten iPad wurde nicht behauptet. Die WebKit-Auswahl
-enthält keinen Chromium-CDP-Test und keinen Chromium-Prozess-Neustart; beide liefen
-in Chromium. Innerhalb der ausgeführten Suiten gab es keine übersprungenen Tests.
+Chromium prüft Touch-Drag per Browser-Emulation. WebKit prüft Maus und Touch-Taps;
+Chromium-CDP-/Prozessneustart-Fälle liefen in Chromium. Innerhalb der gewählten
+Suiten gab es keine übersprungenen Tests. Linux-WebKit ist kein echter iPad-Safari.
 
-## Visuelle Belege und manueller Test
+## Visuelle Belege und startbare Testversion
 
-44 neue Screenshots: Mac 1440×1000, iPad quer 1024×768,
-iPad hoch 820×1180 und iPhone 390×844. Jeweils elf Ansichten einschließlich
-aller angeforderten zehn Motive. Repräsentative Präsentations-, Libero-, Editor-
-und Gegnerbilder wurden visuell kontrolliert. Alle Formationen und zusätzlichen
-Testnummern wurden über die UI in frischen Kontexten angelegt.
+**36 neue Screenshots** zeigen alle vier Systeme, Aufgaben/Schatten und den
+Standard-Editor auf iPad quer/hoch, Mac und iPhone. Die Präsentation wird auf
+beiden iPad-Ausrichtungen und Mac vollständig sichtbar geprüft.
+Repräsentative Bilder wurden visuell kontrolliert.
 
-[Galerie](https://github.com/LehrerOldewurtel/evv-quickscout/blob/dev/v8-practice-fixes/docs/screenshots/practice/README.md)
+[Galerie](https://github.com/LehrerOldewurtel/evv-quickscout/blob/dev/v8-practice-fixes/docs/screenshots/defense/README.md) ·
+[Koordinaten und Modell](https://github.com/LehrerOldewurtel/evv-quickscout/blob/dev/v8-practice-fixes/docs/DEFENSE_SYSTEM.md)
 
-1. ZIP entpacken und den enthaltenen `TEST_START.py` mit Python 3 starten.
-   Die genaue Ein-Zeilen-Anleitung steht in `ANLEITUNG.txt` und beim Download.
-2. Synthetisches Testspiel starten. Gegner aufstellen: #31–#36 an P1–P6 eintragen.
-3. Taktik → EVV R3 → Abwehr IV → Trainer-Editor. Beide Teams verschieben,
-   Wege zeichnen und unter einem Testnamen speichern.
-4. Andere Rotation öffnen, zurückwechseln und Positionen prüfen. Reload durchführen,
-   Taktik erneut öffnen und dieselbe eigene/Gegnerrotation sowie Formation wählen.
-   Alternativ lädt die benannte Vorlage ihren vollständigen Kontext.
-5. K1 in R3 und R6 prüfen: der tatsächliche Hinterfeld-MB erscheint als Libero.
-   In K2 bleibt der eigene Aufschläger auf P1. Spielerwechsel mit Niklas kontrollieren.
-6. Ausgangsstellung bearbeiten: vertauschte Reihenfolge muss abgewiesen werden.
-   Die taktische Stellung darf frei verändert werden. Ungespeicherten Wechsel
-   abbrechen und prüfen, dass die Arbeitskopie erhalten bleibt.
-7. Vergrößern → K1/IV/III/II wechseln → Schließen. Anschließend Punkte/Undo prüfen.
+Das neue Paket heißt `EVV-QuickScout-V8-Abwehr.zip`, entpackter Ordner
+`EVV-QuickScout-V8-Abwehr`. Der eigene Python-Starter verwendet einen separaten
+Cockpit-Test-Namensraum. Keine echten Matchdaten oder produktiven Browserprofile
+wurden für QA geöffnet, importiert oder verändert.
 
-## Paket, Daten und Grenzen
+Das Paket wird vollständig entpackt und mit dem enthaltenen Starter tatsächlich
+in Chromium/WebKit bei vier Bildschirmgrößen gestartet. Der separate
+`.verification.json`-Bericht nennt ZIP-SHA256, Manifestprüfung und acht tatsächliche
+Browserkontexte. Der erneute GitHub-Download wird anschließend auf Bytegleichheit,
+ZIP-CRC und alle inneren SHA-256-Werte geprüft; Beleg `DOWNLOAD_VERIFIED.json`.
 
-Die ZIP wird aus den geprüften Assets gebaut, vollständig entpackt und mit ihrem
-eigenen Starter in Chromium/WebKit bei vier Bildschirmgrößen gestartet. Der
-separate Paketprüfbericht nennt ZIP-SHA256, Manifestprüfung und tatsächliche
-Ergebnisse. Ein Download von GitHub wird erneut gegen SHA256 und Inhalt geprüft.
-Die finale Paketverifikation steht in der beigefügten `.verification.json`.
+## Kurze manuelle Prüfung
 
-Der neue Ordner `EVV-QuickScout-V8-Praxistest` verhindert eine Verwechslung mit alten
-Paketen. Der Starter verwendet weiterhin ausschließlich den getrennten
-Cockpit-Test-Namensraum. Kein produktives Browserprofil, kein echtes Backup und
-keine realen Spieldaten wurden für Tests geöffnet oder verändert. Am gleichen
-Test-Origin bleiben vorhandene Cockpit-Testspiele erhalten; für die Abnahme ein
-frisches synthetisches Spiel verwenden. Geräte speichern unabhängig.
+1. ZIP in Downloads entpacken. Start:
 
-Echte Mac-/iPad-/iPhone-/Safari-/Pencil-Abnahme bleibt ausstehend. Linux-WebKit ist
-kein echter Safari-Gerätetest. WLAN-HTTP garantiert auf iPad keinen PWA-Offline-
-oder Mikrofonbetrieb. Gegneraufstellungen sind bei einem neuen Satz ausdrücklich
-zu bestätigen; unvollständige Aufstellungen werden nicht erfunden. Die Prüfung
-von Ausgangsstellungen bewertet Symbolmittelpunkte, keine realen Fußpositionen.
-Sehr kleine Ansichten und optionale Editoren/Details dürfen scrollen. Kein natives
-V8-Release und keine vollständige Verbandsabnahme von Sonderwechseln.
+```bash
+python3 "$HOME/Downloads/EVV-QuickScout-V8-Abwehr/TEST_START.py" --lan --port 18766
+```
 
-`main` und produktive GitHub Pages wurden weder geändert noch veröffentlicht.
-Kein Merge und keine produktive Freigabe wurden vorgenommen.
+2. Die ausgegebene Mac-Adresse in Chrome öffnen und Terminal geöffnet lassen.
+   Auf dem iPad die ausgegebene WLAN-Adresse im selben vertrauten WLAN öffnen.
+3. Synthetisches Testspiel beginnen. Taktik → eines der vier Systeme → Aufgaben
+   einblenden → Rotationen R1–R6 vergleichen.
+4. Trainer-Editor → **EVV-Standard · alle Rotationen** → Ziel/Laufweg verändern →
+   **EVV-Standard speichern**. Andere Rotationen öffnen und nach Reload vergleichen.
+5. Für eine Ausnahme **Individuell · diese Rotation** verwenden. Globale Änderungen
+   müssen die Ausnahme erhalten. Zum bewussten Ablösen **EVV-Standard verwenden**.
+6. III muss den Einerblock zeigen; Hinterfeld I den Doppelblock und Nahsicherung
+   durch P2. Bei I den Angriffsort und die Hinterfeldziele anpassen.
+7. Niklas/Libero prüfen, Vergrößern öffnen und alle vier Systeme durchschalten.
+
+## Verbleibende Grenzen
+
+Die sechs erwähnten Referenzabbildungen lagen hier nicht als lesbare Dateien vor.
+Die Aufgaben folgen den schriftlichen Vorgaben; konkrete Koordinaten sind deshalb
+**editierbare Vorschlagswerte**, keine behauptete Übernahme der Lehrbilder.
+Dies gilt besonders für Hinterfeld I. Der Trainer kann nach Kontrolle die
+Vorschlagsmarkierung lösen. Schematische Schatten/Abwehrflächen ersetzen keine
+Messung einer dreidimensionalen Ballflugbahn.
+
+Die Rollenprioritäten, insbesondere Libero bevorzugt in Abwehrzone P5, stehen
+im Modellbericht. Eine davon abweichende dauerhafte Rollenverteilung benötigt
+eine entsprechende Trainer-Festlegung. Regelaufstellung und bestehende
+individuelle Bilder werden nicht umgedeutet.
+
+Die praktische Abnahme auf echten Apple-Geräten steht aus. Keine native App,
+keine Gerätesynchronisierung, kein zugesicherter iPad-PWA-Offline-/Mikrofonbetrieb
+über WLAN-HTTP. Lange optionale Editor-/Detailansichten dürfen scrollen. Die
+Version bleibt ein Testkandidat. `main` und produktive GitHub Pages bleiben
+unverändert; keine Veröffentlichung der produktiven Version ohne Freigabe.

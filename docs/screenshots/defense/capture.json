@@ -1,0 +1,187 @@
+{
+  "generatedAt": "2026-10-28T19:28:56.301Z",
+  "syntheticOnly": true,
+  "source": "http://127.0.0.1:4188",
+  "shots": [
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "court-IV"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "presentation-IV"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "court-II"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "presentation-II"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "court-III"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "presentation-III"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "court-I"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "presentation-I"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "standard-editor-controls"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "standard-editor-field"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "court-IV"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "presentation-IV"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "court-II"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "presentation-II"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "court-III"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "presentation-III"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "court-I"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "presentation-I"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "standard-editor-controls"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "standard-editor-field"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "court-IV"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "presentation-IV"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "court-II"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "presentation-II"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "court-III"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "presentation-III"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "court-I"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "presentation-I"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "standard-editor-controls"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "standard-editor-field"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "court-IV"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "court-II"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "court-III"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "court-I"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "standard-editor-controls"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "standard-editor-field"
+    }
+  ]
+}

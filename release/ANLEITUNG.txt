@@ -1,4 +1,4 @@
-EVV QuickScout V8 – PRAXISTEST-KORREKTUREN
+EVV QuickScout V8 – VIER EVV-ABWEHRSYSTEME
 
 Entwicklungskandidat, keine stabile V8-Freigabe. Produktkennung bleibt 7.19.0-k1-auto-mb.
 Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
@@ -6,7 +6,7 @@ Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
 MAC / IPAD STARTEN
 1. ZIP vollständig in einen neuen Ordner entpacken. Alte Testpakete behalten.
 2. Wenn der neue Ordner in Downloads liegt, diese ganze Zeile im Terminal ausführen:
-   python3 "$HOME/Downloads/EVV-QuickScout-V8-Praxistest/TEST_START.py" --lan
+   python3 "$HOME/Downloads/EVV-QuickScout-V8-Abwehr/TEST_START.py" --lan --port 18766
    Der Ordnername muss genau passen. Alternativ Terminal im entpackten Ordner öffnen.
 3. Python 3 muss installiert sein: python3 --version
    Falls nötig: https://www.python.org/downloads/macos/ (signierter Installer).
@@ -16,6 +16,23 @@ MAC / IPAD STARTEN
 6. Terminal geöffnet lassen. Ctrl+C beendet den Testserver.
    Bei belegtem Port: python3 TEST_START.py --lan --port 18765
    macOS-Firewall ggf. für das lokale WLAN erlauben. Kein Router-Portforwarding.
+
+VIER GEMEINSAME ABWEHRFORMATIONEN
+- Taktik → ABWEHR IV / II / III / HINTERFELD I direkt auswählen.
+- Standard III verwendet nur einen Blockspieler in der zentralen Abwehrzone P3.
+- Hinterfeld I verwendet P3/P4 im Block und P2 als Nahsicherung.
+- P1–P6 sind hier taktische Aufgabenzonen; Regelposition und aktiver Spieler
+  bleiben getrennt. Die Rollen werden bei Rotation/Wechsel/Libero neu zugeordnet.
+- „Aufgaben & Abwehrbereiche“ zeigt Block, Schatten und sechs kurze Aufgaben.
+- Im Trainer-Editor zuerst „EVV-Standard · alle Rotationen“ wählen.
+  Einmal bearbeiten und „EVV-Standard speichern“ genügt.
+- Eigene Rotationsanpassungen haben Vorrang und bleiben unverändert erhalten.
+  Dort „EVV-Standard verwenden“ wählen, wenn die Ausnahme bewusst gelöst werden soll.
+- Der Angriffsort ist einstellbar; Hinterfeldziele passend zum Winkel verschieben.
+- Die sechs erwähnten Lehrbilder lagen hier nicht als lesbare Dateien vor.
+  Konkrete Koordinaten sind daher als editierbare Vorschlagswerte gekennzeichnet.
+  Nach Trainerprüfung die Vorschlagsmarkierung lösen und speichern.
+- „Vergrößern“ zeigt alle vier Systeme in der Auszeit-Präsentation.
 
 KURZER PRAXISTEST
 - Gegner „TEST“ nennen, Startsechs/Rollen/Libero prüfen und K1 oder K2 starten.
