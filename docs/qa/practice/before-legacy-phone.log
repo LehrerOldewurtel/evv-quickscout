@@ -1,0 +1,42 @@
+
+Running 1 test using 1 worker
+
+(node:182968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:182968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/practice-fixes.spec.cjs:43:1 › iPhone: auch die bisherigen Skizzen zeigen lesbare Kreise ohne Überlappung (3.6s)
+
+
+  1) tests/e2e/practice-fixes.spec.cjs:43:1 › iPhone: auch die bisherigen Skizzen zeigen lesbare Kreise ohne Überlappung 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: >= [32m44[39m
+    Received:    [31m26.796875[39m
+
+      42 | });
+      43 | test('iPhone: auch die bisherigen Skizzen zeigen lesbare Kreise ohne Überlappung',async({page})=>{
+    > 44 |  await page.setViewportSize({width:390,height:844});await start(page);await opponent(page);await page.locator('#tacticsLegacy').click();const c=page.locator('.sixCourt').first(),a=await c.locator('[data-six-player="6"]').boundingBox(),b=await c.locator('[data-six-player="1"]').boundingBox();expect(Math.abs(b.x-a.x)).toBeGreaterThanOrEqual(a.width);expect(a.width).toBeGreaterThanOrEqual(44);
+         |                                                                                                                                                                                                                                                                                                                               ^
+      45 | });
+      46 |
+        at /workspace/evv-quickscout/tests/e2e/practice-fixes.spec.cjs:44:319
+
+    Error Context: ../../tmp/evv-practice-focus-results/practice-fixes-iPhone-auch-7492e-are-Kreise-ohne-Überlappung/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-practice-focus-results/practice-fixes-iPhone-auch-7492e-are-Kreise-ohne-Überlappung/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-practice-focus-results/practice-fixes-iPhone-auch-7492e-are-Kreise-ohne-Überlappung/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/practice-fixes.spec.cjs:43:1 › iPhone: auch die bisherigen Skizzen zeigen lesbare Kreise ohne Überlappung 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

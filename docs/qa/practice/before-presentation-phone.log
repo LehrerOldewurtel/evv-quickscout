@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+(node:184710) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:184710) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/practice-fixes.spec.cjs:31:63 › Präsentation 390x844: beide Teams, K1/K2, Kreise und Schließen (3.3s)
+
+
+  1) tests/e2e/practice-fixes.spec.cjs:31:63 › Präsentation 390x844: beide Teams, K1/K2, Kreise und Schließen 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m390[39m
+    Received:    [31m392[39m
+
+      30 | });
+      31 | for(const [width,height] of [[1024,768],[820,1180],[390,844]])test(`Präsentation ${width}x${height}: beide Teams, K1/K2, Kreise und Schließen`,async({page})=>{
+    > 32 |  await page.setViewportSize({width,height});await start(page);await opponent(page);const before=await match(page);await page.locator('#tacticsPresent').click();for(const kind of ['receive','defense-IV','defense-III','defense-II']){await page.locator(`[data-formation-kind="${kind}"]`).click();await expect(page.locator('[data-court-player]')).toHaveCount(6);await expect(page.locator('[data-opponent-slot]')).toHaveCount(6)}for(const selector of ['.opponentAthlete b','.evvAthlete b']){const c=await page.locator(selector).first().evaluate(e=>{const s=getComputedStyle(e);return {w:e.offsetWidth,h:e.offsetHeight,r:s.borderRadius}});expect(c.w).toBe(c.h);expect(c.r).toBe('50%')}for(const id of ['#tacticsClose','#tacticsPresent']){const r=await page.locator(id).boundingBox();expect(r.x).toBeGreaterThanOrEqual(0);expect(r.x+r.width).toBeLessThanOrEqual(width)}const b=await page.locator('.sharedCourt').boundingBox();expect(b.y+b.height).toBeLessThanOrEqual(height);expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width);await page.locator('#tacticsClose').click();await expect(page.locator('#modal')).toBeHidden();expect(await match(page)).toEqual(before);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+      33 | });
+      34 | test('Touch: beide Teams auswählen, Ziel antippen und unverändert nach Reload',async({page})=>{
+      35 |  await start(page);await opponent(page);await page.locator('#tacticsEdit').tap();for(const [selector,x,y] of [['[data-form-slot="1"]',.65,.82],['[data-form-team="opponent"][data-form-position="1"]',.35,.18]]){await page.locator(selector).tap();await page.locator('#formationSvg').scrollIntoViewIfNeeded();const b=await page.locator('#formationSvg').boundingBox();await page.locator('#formationSvg').tap({position:{x:b.width*x,y:b.height*y}})}await page.locator('#formSave').tap();const saved=await page.evaluate(()=>EVV_QS_TEST.formationFor(1,'receive'));expect(saved.targets['1'][0]).toBeCloseTo(65,0);expect(saved.opponents['1'].targets['1'][0]).toBeCloseTo(65,0);await page.locator('#formClose').tap();await page.reload();expect(await page.evaluate(()=>EVV_QS_TEST.formationFor(1,'receive'))).toEqual(saved);
+        at /workspace/evv-quickscout/tests/e2e/practice-fixes.spec.cjs:32:836
+
+    Error Context: ../../tmp/evv-practice-focus-results/practice-fixes-Präsentatio-bf0a2--K1-K2-Kreise-und-Schließen/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-practice-focus-results/practice-fixes-Präsentatio-bf0a2--K1-K2-Kreise-und-Schließen/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-practice-focus-results/practice-fixes-Präsentatio-bf0a2--K1-K2-Kreise-und-Schließen/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/practice-fixes.spec.cjs:31:63 › Präsentation 390x844: beide Teams, K1/K2, Kreise und Schließen 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

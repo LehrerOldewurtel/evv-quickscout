@@ -1,0 +1,227 @@
+{
+  "createdAt": "2026-10-28T18:07:14.658Z",
+  "origin": "http://127.0.0.1:4186",
+  "syntheticOnly": true,
+  "shots": [
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "editor"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "k1"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "k2-IV"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "k2-III"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "k2-II"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "shared-court"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "circles"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "libero-r3"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "libero-r6"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "presentation"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "opponent-analysis"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "editor"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "k1"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "k2-IV"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "k2-III"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "k2-II"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "shared-court"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "circles"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "libero-r3"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "libero-r6"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "presentation"
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "name": "opponent-analysis"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "editor"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "k1"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "k2-IV"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "k2-III"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "k2-II"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "shared-court"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "circles"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "libero-r3"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "libero-r6"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "presentation"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "opponent-analysis"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "editor"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "k1"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "k2-IV"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "k2-III"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "k2-II"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "shared-court"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "circles"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "libero-r3"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "libero-r6"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "presentation"
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "name": "opponent-analysis"
+    }
+  ]
+}

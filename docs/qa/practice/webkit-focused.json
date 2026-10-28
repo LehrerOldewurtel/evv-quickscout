@@ -1,6 +1,6 @@
 {
   "config": {
-    "configFile": "/tmp/evv-webkit-practice.config.cjs",
+    "configFile": "/tmp/evv-practice-webkit.config.cjs",
     "rootDir": "/workspace/evv-quickscout/tests/e2e",
     "forbidOnly": false,
     "fullyParallel": false,
@@ -22,7 +22,7 @@
       [
         "json",
         {
-          "outputFile": "artifacts/webkit-focused.json"
+          "outputFile": "/workspace/evv-quickscout/artifacts/practice-webkit.json"
         }
       ]
     ],
@@ -33,7 +33,7 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "/tmp/evv-webkit-practice-results",
+        "outputDir": "/tmp/evv-practice-webkit-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -54,9 +54,454 @@
     "updateSourceMethod": "patch",
     "version": "1.56.1",
     "workers": 1,
-    "webServer": null
+    "webServer": {
+      "command": "python3 -m http.server 4184 --bind 127.0.0.1",
+      "cwd": "/workspace/evv-quickscout",
+      "url": "http://127.0.0.1:4184",
+      "reuseExistingServer": false
+    }
   },
   "suites": [
+    {
+      "title": "cockpit.spec.cjs",
+      "file": "cockpit.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Cockpit 1024x768: Live, Analyse, beide Teams und Vorschau ohne Mutation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10494,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:06:11.600Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cockpit",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6MTAyNCwiaGVpZ2h0Ijo3NjgsImNoZWNrcyI6WyJkYXNoYm9hcmQiLCJyb3RhdGlvbiBzaWduYWwiLCJvcHBvbmVudCBzaWRlb3V0IiwiaW5kZXBlbmRlbnQgcHJldmlldyIsImZvdXIgZm9ybWF0aW9ucyIsIm5vIG11dGF0aW9uIiwicmVsb2FkIiwidW5kbyJdfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-dcb25581e5eff1ef6a80",
+          "file": "cockpit.spec.cjs",
+          "line": 5,
+          "column": 75
+        },
+        {
+          "title": "Cockpit 820x1180: Live, Analyse, beide Teams und Vorschau ohne Mutation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10841,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:06:22.417Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cockpit",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6ODIwLCJoZWlnaHQiOjExODAsImNoZWNrcyI6WyJkYXNoYm9hcmQiLCJyb3RhdGlvbiBzaWduYWwiLCJvcHBvbmVudCBzaWRlb3V0IiwiaW5kZXBlbmRlbnQgcHJldmlldyIsImZvdXIgZm9ybWF0aW9ucyIsIm5vIG11dGF0aW9uIiwicmVsb2FkIiwidW5kbyJdfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-a8206b080bd0a649def3",
+          "file": "cockpit.spec.cjs",
+          "line": 5,
+          "column": 75
+        },
+        {
+          "title": "Cockpit 390x844: Live, Analyse, beide Teams und Vorschau ohne Mutation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:06:33.272Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cockpit",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6MzkwLCJoZWlnaHQiOjg0NCwiY2hlY2tzIjpbImRhc2hib2FyZCIsInJvdGF0aW9uIHNpZ25hbCIsIm9wcG9uZW50IHNpZGVvdXQiLCJpbmRlcGVuZGVudCBwcmV2aWV3IiwiZm91ciBmb3JtYXRpb25zIiwibm8gbXV0YXRpb24iLCJyZWxvYWQiLCJ1bmRvIl19"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-fe52082b32ee929a5887",
+          "file": "cockpit.spec.cjs",
+          "line": 5,
+          "column": 75
+        },
+        {
+          "title": "Cockpit 1440x1000: Live, Analyse, beide Teams und Vorschau ohne Mutation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12267,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:06:39.607Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "cockpit",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6MTQ0MCwiaGVpZ2h0IjoxMDAwLCJjaGVja3MiOlsiZGFzaGJvYXJkIiwicm90YXRpb24gc2lnbmFsIiwib3Bwb25lbnQgc2lkZW91dCIsImluZGVwZW5kZW50IHByZXZpZXciLCJmb3VyIGZvcm1hdGlvbnMiLCJubyBtdXRhdGlvbiIsInJlbG9hZCIsInVuZG8iXX0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-601345cca8286b39bf8f",
+          "file": "cockpit.spec.cjs",
+          "line": 5,
+          "column": 75
+        },
+        {
+          "title": "Editor speichert Ziel, Laufweg, Ballweg und Angriffsroute; Spielbetrieb ist gesperrt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6397,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:06:51.883Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-f003ab71cbd59601584d",
+          "file": "cockpit.spec.cjs",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "Ampel: konfigurierbare getrennte Phasen, stabiles Signal, Undo und dunkle Darstellung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5448,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:06:58.295Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-cec228eb85dbb8fe7c98",
+          "file": "cockpit.spec.cjs",
+          "line": 21,
+          "column": 1
+        },
+        {
+          "title": "Spielerwechsel und Libero erscheinen im taktischen Livefeld ohne Änderung der Regelpositionen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2735,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:07:03.757Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-1f807cb75a798fe2c582",
+          "file": "cockpit.spec.cjs",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2416,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:07:06.509Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-539035bcd4e267d910e0",
+          "file": "cockpit.spec.cjs",
+          "line": 27,
+          "column": 1
+        },
+        {
+          "title": "LIVE zeigt neuen Satz, MATCH archivierte Rallyes und Rotation vergleicht alle sechs ohne Datenverlust",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10257,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:07:08.947Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-876a1ce3ab2105067d63",
+          "file": "cockpit.spec.cjs",
+          "line": 30,
+          "column": 1
+        },
+        {
+          "title": "Fehlende EVV-Trikotnummern sind konfigurierbar und bleiben nach Reload erhalten",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2897,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:07:19.225Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-6e73c57ebf7e3e36f177",
+          "file": "cockpit.spec.cjs",
+          "line": 33,
+          "column": 1
+        },
+        {
+          "title": "iPhone: Transition und Undo ohne Scrollen; Satznavigation bleibt über Mehr erreichbar",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1670,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:07:22.137Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-81bbbd808ebda57f5c25",
+          "file": "cockpit.spec.cjs",
+          "line": 36,
+          "column": 1
+        },
+        {
+          "title": "Rotationskarte übernimmt den Match-Zeitraum und führt gezielt zur K1- oder K2-Taktik",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8197,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:07:23.831Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "aad047af09a0a57afe16-59e3ef24f86fbd408f6a",
+          "file": "cockpit.spec.cjs",
+          "line": 39,
+          "column": 1
+        }
+      ]
+    },
     {
       "title": "hybrid.spec.cjs",
       "file": "hybrid.spec.cjs",
@@ -79,12 +524,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1041,
+                  "duration": 1167,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:18.715Z",
+                  "startTime": "2026-10-28T18:07:32.052Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -119,12 +564,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1152,
+                  "duration": 1502,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:19.852Z",
+                  "startTime": "2026-10-28T18:07:33.230Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -159,12 +604,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1326,
+                  "duration": 1442,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:21.021Z",
+                  "startTime": "2026-10-28T18:07:34.745Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -199,12 +644,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1255,
+                  "duration": 1063,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:22.366Z",
+                  "startTime": "2026-10-28T18:07:36.207Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -239,12 +684,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1221,
+                  "duration": 971,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:23.634Z",
+                  "startTime": "2026-10-28T18:07:37.283Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -279,12 +724,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1316,
+                  "duration": 1035,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:24.877Z",
+                  "startTime": "2026-10-28T18:07:38.262Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -319,12 +764,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1281,
+                  "duration": 1210,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:26.209Z",
+                  "startTime": "2026-10-28T18:07:39.306Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -359,12 +804,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1634,
+                  "duration": 1252,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:27.509Z",
+                  "startTime": "2026-10-28T18:07:40.528Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -399,12 +844,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1585,
+                  "duration": 1314,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:29.160Z",
+                  "startTime": "2026-10-28T18:07:41.790Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -439,12 +884,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1739,
+                  "duration": 1366,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:30.761Z",
+                  "startTime": "2026-10-28T18:07:43.116Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -479,12 +924,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1566,
+                  "duration": 1177,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:32.515Z",
+                  "startTime": "2026-10-28T18:07:44.492Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -519,12 +964,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1721,
+                  "duration": 1205,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:34.092Z",
+                  "startTime": "2026-10-28T18:07:45.681Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -542,6 +987,924 @@
           "file": "hybrid.spec.cjs",
           "line": 2,
           "column": 135
+        }
+      ]
+    },
+    {
+      "title": "matchday.spec.cjs",
+      "file": "matchday.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Generalprobe 390px: komplettes Match ausschließlich per Oberfläche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25463,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:07:46.899Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "matchday",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6MzkwLCJzZXRzIjpbeyJzZXQiOjEsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjIsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjMsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn1dLCJyYWxsaWVzIjo5NiwidGFwcyI6MjQ1LCJzZWxlY3RzIjoxOCwidHlwZWRGaWVsZHMiOjIsImRyYWdHZXN0dXJlcyI6MSwibm90ZXMiOiJOYXRpdmUgc2VsZWN0T3B0aW9uIHrDpGhsdCBhbHMgQXVzd2FobGFrdGlvbiwgbmljaHQgYWxzIGdlbWVzc2VuZSBNZW7DvC1UYXBzOyBzw6RtdGxpY2hlIFNwaWVsYWt0aW9uZW4gcGVyIFVJLiJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-0cda9e8bf74a706899e9",
+          "file": "matchday.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Generalprobe 820px: komplettes Match ausschließlich per Oberfläche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 39130,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:08:12.372Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "matchday",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6ODIwLCJzZXRzIjpbeyJzZXQiOjEsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjIsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn0seyJzZXQiOjMsImUiOjI1LCJvIjo3LCJyYWxsaWVzIjozMn1dLCJyYWxsaWVzIjo5NiwidGFwcyI6MjQ1LCJzZWxlY3RzIjoxOCwidHlwZWRGaWVsZHMiOjIsImRyYWdHZXN0dXJlcyI6MSwibm90ZXMiOiJOYXRpdmUgc2VsZWN0T3B0aW9uIHrDpGhsdCBhbHMgQXVzd2FobGFrdGlvbiwgbmljaHQgYWxzIGdlbWVzc2VuZSBNZW7DvC1UYXBzOyBzw6RtdGxpY2hlIFNwaWVsYWt0aW9uZW4gcGVyIFVJLiJ9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-9718eb526937931c4b7d",
+          "file": "matchday.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Generalprobe 1024px: komplettes Match ausschließlich per Oberfläche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 77211,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:08:51.512Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "matchday",
+                      "contentType": "application/json",
+                      "body": "eyJ3aWR0aCI6MTAyNCwic2V0cyI6W3sic2V0IjoxLCJlIjoyNSwibyI6NywicmFsbGllcyI6MzJ9LHsic2V0IjoyLCJlIjoyNSwibyI6NywicmFsbGllcyI6MzJ9LHsic2V0IjozLCJlIjoyNSwibyI6NywicmFsbGllcyI6MzJ9XSwicmFsbGllcyI6OTYsInRhcHMiOjI0NSwic2VsZWN0cyI6MTksInR5cGVkRmllbGRzIjoyLCJkcmFnR2VzdHVyZXMiOjEsIm5vdGVzIjoiTmF0aXZlIHNlbGVjdE9wdGlvbiB6w6RobHQgYWxzIEF1c3dhaGxha3Rpb24sIG5pY2h0IGFscyBnZW1lc3NlbmUgTWVuw7wtVGFwczsgc8OkbXRsaWNoZSBTcGllbGFrdGlvbmVuIHBlciBVSS4ifQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-5cf69c5ed4f2fb6fe174",
+          "file": "matchday.spec.cjs",
+          "line": 3,
+          "column": 35
+        },
+        {
+          "title": "Coaching öffnet gewählte Rotation und Annahme/Abwehr ohne automatische Mutation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8441,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:10:08.735Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fff649df9667a6033048-d2894a1ade0e748667ec",
+          "file": "matchday.spec.cjs",
+          "line": 36,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "practice-fixes.spec.cjs",
+      "file": "practice-fixes.spec.cjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Praxistest: Ausgangsstellung und Gegner gemeinsam editierbar, ungespeicherter Wechsel geschützt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4332,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:10:17.208Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-bfe28f2d47205468f4c7",
+          "file": "practice-fixes.spec.cjs",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "Praxistest: runde Gegner mit tatsächlichen Nummern und Präsentation",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4293,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:10:21.553Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-f68c2fce0922da6efbbf",
+          "file": "practice-fixes.spec.cjs",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "Beide Teams: Maus-Drag, alle Pfade, Speichern unter, Rotationswechsel, Vorlage und exakter Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9159,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:10:25.881Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-3c89513a15d784ec56aa",
+          "file": "practice-fixes.spec.cjs",
+          "line": 14,
+          "column": 1
+        },
+        {
+          "title": "K2 IV/III/II und Gegnerrotation bleiben unabhängig; beide Ausgangsstellungen werden geprüft",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14131,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:10:35.050Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-79f2f8bedec0c9054c78",
+          "file": "practice-fixes.spec.cjs",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "Libero R1: K1-Vorschau, beide MB, Satzwechsel und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11380,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:10:49.190Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-87cd21bd5297d8156636",
+          "file": "practice-fixes.spec.cjs",
+          "line": 27,
+          "column": 37
+        },
+        {
+          "title": "Libero R2: K1-Vorschau, beide MB, Satzwechsel und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11863,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:11:00.583Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-f82eb1859041aa28f591",
+          "file": "practice-fixes.spec.cjs",
+          "line": 27,
+          "column": 37
+        },
+        {
+          "title": "Libero R3: K1-Vorschau, beide MB, Satzwechsel und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:11:12.470Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-76b30a58d8a52302de74",
+          "file": "practice-fixes.spec.cjs",
+          "line": 27,
+          "column": 37
+        },
+        {
+          "title": "Libero R4: K1-Vorschau, beide MB, Satzwechsel und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14406,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:11:25.758Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-6db0fac89678748cc64d",
+          "file": "practice-fixes.spec.cjs",
+          "line": 27,
+          "column": 37
+        },
+        {
+          "title": "Libero R5: K1-Vorschau, beide MB, Satzwechsel und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15959,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:11:40.180Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-54d39ef2257f126eb4b1",
+          "file": "practice-fixes.spec.cjs",
+          "line": 27,
+          "column": 37
+        },
+        {
+          "title": "Libero R6: K1-Vorschau, beide MB, Satzwechsel und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12121,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:11:56.171Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-946bd13120ece347127d",
+          "file": "practice-fixes.spec.cjs",
+          "line": 27,
+          "column": 37
+        },
+        {
+          "title": "Präsentation 1024x768: beide Teams, K1/K2, Kreise und Schließen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4361,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:08.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-ef945c235532841e7336",
+          "file": "practice-fixes.spec.cjs",
+          "line": 31,
+          "column": 63
+        },
+        {
+          "title": "Präsentation 820x1180: beide Teams, K1/K2, Kreise und Schließen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3978,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:12.691Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-c86328ce85e3e964ed0d",
+          "file": "practice-fixes.spec.cjs",
+          "line": 31,
+          "column": 63
+        },
+        {
+          "title": "Präsentation 390x844: beide Teams, K1/K2, Kreise und Schließen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2844,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:16.679Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-6476877ac44cda579624",
+          "file": "practice-fixes.spec.cjs",
+          "line": 31,
+          "column": 63
+        },
+        {
+          "title": "Touch: beide Teams auswählen, Ziel antippen und unverändert nach Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4455,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:19.534Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-a1755928a16db315db87",
+          "file": "practice-fixes.spec.cjs",
+          "line": 34,
+          "column": 1
+        },
+        {
+          "title": "Bibliothek R1: alle drei K2-Bilder beider Teams bleiben nach Reload getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6812,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:23.998Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-c182e34329b8e18895f4",
+          "file": "practice-fixes.spec.cjs",
+          "line": 37,
+          "column": 43
+        },
+        {
+          "title": "Bibliothek R2: alle drei K2-Bilder beider Teams bleiben nach Reload getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7310,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:30.824Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-75344b36c38325370739",
+          "file": "practice-fixes.spec.cjs",
+          "line": 37,
+          "column": 43
+        },
+        {
+          "title": "Bibliothek R3: alle drei K2-Bilder beider Teams bleiben nach Reload getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7193,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:38.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-c6d8dc177bbf3ff8e3ee",
+          "file": "practice-fixes.spec.cjs",
+          "line": 37,
+          "column": 43
+        },
+        {
+          "title": "Bibliothek R4: alle drei K2-Bilder beider Teams bleiben nach Reload getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7424,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:45.356Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-28dbfe6730da80d1c752",
+          "file": "practice-fixes.spec.cjs",
+          "line": 37,
+          "column": 43
+        },
+        {
+          "title": "Bibliothek R5: alle drei K2-Bilder beider Teams bleiben nach Reload getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7217,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:12:52.793Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-9d1499b4a63d35869d1f",
+          "file": "practice-fixes.spec.cjs",
+          "line": 37,
+          "column": 43
+        },
+        {
+          "title": "Bibliothek R6: alle drei K2-Bilder beider Teams bleiben nach Reload getrennt",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6694,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:13:00.019Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-44081ddf8cb73b9a3757",
+          "file": "practice-fixes.spec.cjs",
+          "line": 37,
+          "column": 43
+        },
+        {
+          "title": "Gegner: sechs Nummern reichen für Scouting, Sideout, Analyse und Reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3611,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:13:06.730Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-458c62dbb0e776ead20a",
+          "file": "practice-fixes.spec.cjs",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "iPhone: auch die bisherigen Skizzen zeigen lesbare Kreise ohne Überlappung",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1663,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T18:13:10.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "53eb2e9fc2ed9c8e0320-5e647c5fdfd936d755ee",
+          "file": "practice-fixes.spec.cjs",
+          "line": 43,
+          "column": 1
         }
       ]
     },
@@ -567,12 +1930,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2044,
+                  "duration": 1955,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:35.839Z",
+                  "startTime": "2026-10-28T18:13:12.040Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -607,12 +1970,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2133,
+                  "duration": 1659,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:37.895Z",
+                  "startTime": "2026-10-28T18:13:14.005Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -641,12 +2004,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2054,
+                  "duration": 1153,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:42.104Z",
+                  "startTime": "2026-10-28T18:13:17.500Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -675,12 +2038,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1504,
+                  "duration": 967,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:44.169Z",
+                  "startTime": "2026-10-28T18:13:18.662Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -709,12 +2072,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1655,
+                  "duration": 1214,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:45.687Z",
+                  "startTime": "2026-10-28T18:13:19.636Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -743,12 +2106,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1846,
+                  "duration": 1297,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:47.352Z",
+                  "startTime": "2026-10-28T18:13:20.858Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -777,12 +2140,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1700,
+                  "duration": 1230,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:52.163Z",
+                  "startTime": "2026-10-28T18:13:24.064Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -817,12 +2180,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1511,
+                  "duration": 1210,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:53.876Z",
+                  "startTime": "2026-10-28T18:13:25.307Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -857,12 +2220,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1558,
+                  "duration": 1211,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:55.396Z",
+                  "startTime": "2026-10-28T18:13:26.527Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -897,12 +2260,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1410,
+                  "duration": 1227,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:56.970Z",
+                  "startTime": "2026-10-28T18:13:27.749Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -937,12 +2300,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1651,
+                  "duration": 1222,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:37:58.392Z",
+                  "startTime": "2026-10-28T18:13:28.986Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -977,12 +2340,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1767,
+                  "duration": 1235,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:00.056Z",
+                  "startTime": "2026-10-28T18:13:30.217Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1017,12 +2380,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1525,
+                  "duration": 1188,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:01.840Z",
+                  "startTime": "2026-10-28T18:13:31.462Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1057,12 +2420,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1460,
+                  "duration": 1201,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:03.374Z",
+                  "startTime": "2026-10-28T18:13:32.662Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1097,12 +2460,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1406,
+                  "duration": 1196,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:04.845Z",
+                  "startTime": "2026-10-28T18:13:33.872Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1137,12 +2500,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1415,
+                  "duration": 1124,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:06.262Z",
+                  "startTime": "2026-10-28T18:13:35.077Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1177,12 +2540,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1313,
+                  "duration": 1178,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:07.684Z",
+                  "startTime": "2026-10-28T18:13:36.209Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1217,12 +2580,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1281,
+                  "duration": 1177,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:09.008Z",
+                  "startTime": "2026-10-28T18:13:37.397Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1257,12 +2620,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1542,
+                  "duration": 1336,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:10.301Z",
+                  "startTime": "2026-10-28T18:13:38.582Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1299,12 +2662,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2049,
+                      "duration": 1815,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-10-27T22:37:40.040Z",
+                      "startTime": "2026-10-28T18:13:15.676Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1341,12 +2704,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2940,
+                      "duration": 1893,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-10-27T22:37:49.209Z",
+                      "startTime": "2026-10-28T18:13:22.165Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1385,12 +2748,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1024,
+                  "duration": 1115,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:11.860Z",
+                  "startTime": "2026-10-28T18:13:39.928Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1419,12 +2782,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1493,
+                  "duration": 1524,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:12.893Z",
+                  "startTime": "2026-10-28T18:13:41.052Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1453,12 +2816,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1762,
+                  "duration": 1770,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:14.395Z",
+                  "startTime": "2026-10-28T18:13:42.583Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1487,12 +2850,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1222,
+                  "duration": 1203,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:16.169Z",
+                  "startTime": "2026-10-28T18:13:44.367Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1527,12 +2890,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1674,
+                  "duration": 1485,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:17.405Z",
+                  "startTime": "2026-10-28T18:13:45.581Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1567,12 +2930,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2124,
+                  "duration": 1440,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:19.098Z",
+                  "startTime": "2026-10-28T18:13:47.075Z",
                   "annotations": [],
                   "attachments": [
                     {
@@ -1607,12 +2970,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1628,
+                  "duration": 1424,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-27T22:38:21.237Z",
+                  "startTime": "2026-10-28T18:13:48.525Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -1630,9 +2993,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-27T22:37:17.997Z",
-    "duration": 65062.043000000005,
-    "expected": 40,
+    "startTime": "2026-10-28T18:06:09.867Z",
+    "duration": 460339.16500000004,
+    "expected": 78,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

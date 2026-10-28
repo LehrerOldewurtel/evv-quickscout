@@ -3,7 +3,7 @@
   "results": [
     {
       "seed": 501,
-      "maxStoredChars": 1424119,
+      "maxStoredChars": 1424164,
       "restarts": 3,
       "scores": [
         {
@@ -55,7 +55,7 @@
     },
     {
       "seed": 502,
-      "maxStoredChars": 1294847,
+      "maxStoredChars": 1294892,
       "restarts": 4,
       "scores": [
         {
@@ -117,7 +117,7 @@
     },
     {
       "seed": 503,
-      "maxStoredChars": 1429119,
+      "maxStoredChars": 1429164,
       "restarts": 3,
       "scores": [
         {
@@ -169,7 +169,7 @@
     },
     {
       "seed": 504,
-      "maxStoredChars": 1432706,
+      "maxStoredChars": 1432751,
       "restarts": 4,
       "scores": [
         {
@@ -231,7 +231,7 @@
     },
     {
       "seed": 505,
-      "maxStoredChars": 2137570,
+      "maxStoredChars": 2137615,
       "restarts": 3,
       "scores": [
         {
@@ -283,7 +283,7 @@
     },
     {
       "seed": 506,
-      "maxStoredChars": 1550311,
+      "maxStoredChars": 1550356,
       "restarts": 4,
       "scores": [
         {
@@ -345,7 +345,7 @@
     },
     {
       "seed": 507,
-      "maxStoredChars": 1281574,
+      "maxStoredChars": 1281619,
       "restarts": 3,
       "scores": [
         {
@@ -397,7 +397,7 @@
     },
     {
       "seed": 508,
-      "maxStoredChars": 1601312,
+      "maxStoredChars": 1601357,
       "restarts": 5,
       "scores": [
         {
@@ -459,7 +459,7 @@
     },
     {
       "seed": 509,
-      "maxStoredChars": 1490012,
+      "maxStoredChars": 1490057,
       "restarts": 1,
       "scores": [
         {
@@ -511,7 +511,7 @@
     },
     {
       "seed": 510,
-      "maxStoredChars": 2245580,
+      "maxStoredChars": 2245625,
       "restarts": 5,
       "scores": [
         {
@@ -573,7 +573,7 @@
     },
     {
       "seed": 511,
-      "maxStoredChars": 1320689,
+      "maxStoredChars": 1320734,
       "restarts": 3,
       "scores": [
         {
@@ -625,7 +625,7 @@
     },
     {
       "seed": 512,
-      "maxStoredChars": 1602805,
+      "maxStoredChars": 1602850,
       "restarts": 5,
       "scores": [
         {
@@ -687,7 +687,7 @@
     },
     {
       "seed": 513,
-      "maxStoredChars": 1191953,
+      "maxStoredChars": 1191998,
       "restarts": 2,
       "scores": [
         {
@@ -739,7 +739,7 @@
     },
     {
       "seed": 514,
-      "maxStoredChars": 1687716,
+      "maxStoredChars": 1687761,
       "restarts": 4,
       "scores": [
         {
@@ -801,7 +801,7 @@
     },
     {
       "seed": 515,
-      "maxStoredChars": 2274848,
+      "maxStoredChars": 2274893,
       "restarts": 3,
       "scores": [
         {
@@ -853,7 +853,7 @@
     },
     {
       "seed": 516,
-      "maxStoredChars": 1273616,
+      "maxStoredChars": 1273661,
       "restarts": 5,
       "scores": [
         {
@@ -915,7 +915,7 @@
     },
     {
       "seed": 517,
-      "maxStoredChars": 1505171,
+      "maxStoredChars": 1505216,
       "restarts": 3,
       "scores": [
         {
@@ -967,7 +967,7 @@
     },
     {
       "seed": 518,
-      "maxStoredChars": 1430649,
+      "maxStoredChars": 1430694,
       "restarts": 4,
       "scores": [
         {
@@ -1029,7 +1029,7 @@
     },
     {
       "seed": 519,
-      "maxStoredChars": 1560564,
+      "maxStoredChars": 1560609,
       "restarts": 2,
       "scores": [
         {
@@ -1081,7 +1081,7 @@
     },
     {
       "seed": 520,
-      "maxStoredChars": 2167045,
+      "maxStoredChars": 2167090,
       "restarts": 5,
       "scores": [
         {
@@ -1143,7 +1143,7 @@
     },
     {
       "seed": 521,
-      "maxStoredChars": 1307354,
+      "maxStoredChars": 1307579,
       "restarts": 2,
       "scores": [
         {
@@ -1195,7 +1195,7 @@
     },
     {
       "seed": 522,
-      "maxStoredChars": 1463234,
+      "maxStoredChars": 1463279,
       "restarts": 4,
       "scores": [
         {
@@ -1257,7 +1257,7 @@
     },
     {
       "seed": 523,
-      "maxStoredChars": 1323916,
+      "maxStoredChars": 1323961,
       "restarts": 3,
       "scores": [
         {
@@ -1309,7 +1309,7 @@
     },
     {
       "seed": 524,
-      "maxStoredChars": 1431194,
+      "maxStoredChars": 1431239,
       "restarts": 4,
       "scores": [
         {
@@ -1371,7 +1371,7 @@
     },
     {
       "seed": 525,
-      "maxStoredChars": 1884921,
+      "maxStoredChars": 1884966,
       "restarts": 2,
       "scores": [
         {
@@ -1423,7 +1423,7 @@
     },
     {
       "seed": 526,
-      "maxStoredChars": 1508615,
+      "maxStoredChars": 1508660,
       "restarts": 3,
       "scores": [
         {
@@ -1485,7 +1485,7 @@
     },
     {
       "seed": 527,
-      "maxStoredChars": 1514000,
+      "maxStoredChars": 1514045,
       "restarts": 3,
       "scores": [
         {
@@ -1537,7 +1537,7 @@
     },
     {
       "seed": 528,
-      "maxStoredChars": 1504077,
+      "maxStoredChars": 1504122,
       "restarts": 3,
       "scores": [
         {
@@ -1599,7 +1599,7 @@
     },
     {
       "seed": 529,
-      "maxStoredChars": 1316723,
+      "maxStoredChars": 1316768,
       "restarts": 3,
       "scores": [
         {
@@ -1651,7 +1651,7 @@
     },
     {
       "seed": 530,
-      "maxStoredChars": 2298243,
+      "maxStoredChars": 2298288,
       "restarts": 5,
       "scores": [
         {
@@ -1713,7 +1713,7 @@
     },
     {
       "seed": 531,
-      "maxStoredChars": 1465362,
+      "maxStoredChars": 1465407,
       "restarts": 3,
       "scores": [
         {
@@ -1765,7 +1765,7 @@
     },
     {
       "seed": 532,
-      "maxStoredChars": 1367551,
+      "maxStoredChars": 1367596,
       "restarts": 5,
       "scores": [
         {
@@ -1827,7 +1827,7 @@
     },
     {
       "seed": 533,
-      "maxStoredChars": 1287194,
+      "maxStoredChars": 1287239,
       "restarts": 3,
       "scores": [
         {
@@ -1879,7 +1879,7 @@
     },
     {
       "seed": 534,
-      "maxStoredChars": 1387604,
+      "maxStoredChars": 1387649,
       "restarts": 4,
       "scores": [
         {
@@ -1941,7 +1941,7 @@
     },
     {
       "seed": 535,
-      "maxStoredChars": 2271044,
+      "maxStoredChars": 2271089,
       "restarts": 2,
       "scores": [
         {
@@ -1993,7 +1993,7 @@
     },
     {
       "seed": 536,
-      "maxStoredChars": 1294652,
+      "maxStoredChars": 1295357,
       "restarts": 4,
       "scores": [
         {
@@ -2055,7 +2055,7 @@
     },
     {
       "seed": 537,
-      "maxStoredChars": 1445322,
+      "maxStoredChars": 1445367,
       "restarts": 3,
       "scores": [
         {
@@ -2107,7 +2107,7 @@
     },
     {
       "seed": 538,
-      "maxStoredChars": 1741060,
+      "maxStoredChars": 1741105,
       "restarts": 4,
       "scores": [
         {
@@ -2169,7 +2169,7 @@
     },
     {
       "seed": 539,
-      "maxStoredChars": 1455152,
+      "maxStoredChars": 1455197,
       "restarts": 3,
       "scores": [
         {
@@ -2221,7 +2221,7 @@
     },
     {
       "seed": 540,
-      "maxStoredChars": 2244487,
+      "maxStoredChars": 2244532,
       "restarts": 4,
       "scores": [
         {
@@ -2283,7 +2283,7 @@
     },
     {
       "seed": 541,
-      "maxStoredChars": 1220810,
+      "maxStoredChars": 1221035,
       "restarts": 1,
       "scores": [
         {
@@ -2335,7 +2335,7 @@
     },
     {
       "seed": 542,
-      "maxStoredChars": 1738610,
+      "maxStoredChars": 1738655,
       "restarts": 4,
       "scores": [
         {
@@ -2397,7 +2397,7 @@
     },
     {
       "seed": 543,
-      "maxStoredChars": 1655942,
+      "maxStoredChars": 1655987,
       "restarts": 2,
       "scores": [
         {
@@ -2449,7 +2449,7 @@
     },
     {
       "seed": 544,
-      "maxStoredChars": 1401155,
+      "maxStoredChars": 1401200,
       "restarts": 5,
       "scores": [
         {
@@ -2511,7 +2511,7 @@
     },
     {
       "seed": 545,
-      "maxStoredChars": 2149230,
+      "maxStoredChars": 2149455,
       "restarts": 3,
       "scores": [
         {
@@ -2563,7 +2563,7 @@
     },
     {
       "seed": 546,
-      "maxStoredChars": 1665284,
+      "maxStoredChars": 1665329,
       "restarts": 4,
       "scores": [
         {
@@ -2625,7 +2625,7 @@
     },
     {
       "seed": 547,
-      "maxStoredChars": 1526549,
+      "maxStoredChars": 1526594,
       "restarts": 2,
       "scores": [
         {
@@ -2677,7 +2677,7 @@
     },
     {
       "seed": 548,
-      "maxStoredChars": 1506117,
+      "maxStoredChars": 1506162,
       "restarts": 4,
       "scores": [
         {
@@ -2739,7 +2739,7 @@
     },
     {
       "seed": 549,
-      "maxStoredChars": 1223733,
+      "maxStoredChars": 1224438,
       "restarts": 2,
       "scores": [
         {
@@ -2791,7 +2791,7 @@
     },
     {
       "seed": 550,
-      "maxStoredChars": 2162928,
+      "maxStoredChars": 2162973,
       "restarts": 1,
       "scores": [
         {
@@ -2853,7 +2853,7 @@
     },
     {
       "seed": 551,
-      "maxStoredChars": 1136203,
+      "maxStoredChars": 1136908,
       "restarts": 2,
       "scores": [
         {
@@ -2905,7 +2905,7 @@
     },
     {
       "seed": 552,
-      "maxStoredChars": 1502528,
+      "maxStoredChars": 1502573,
       "restarts": 4,
       "scores": [
         {
@@ -2967,7 +2967,7 @@
     },
     {
       "seed": 553,
-      "maxStoredChars": 1688183,
+      "maxStoredChars": 1688228,
       "restarts": 3,
       "scores": [
         {
@@ -3019,7 +3019,7 @@
     },
     {
       "seed": 554,
-      "maxStoredChars": 1562085,
+      "maxStoredChars": 1562130,
       "restarts": 3,
       "scores": [
         {
@@ -3081,7 +3081,7 @@
     },
     {
       "seed": 555,
-      "maxStoredChars": 2128644,
+      "maxStoredChars": 2128689,
       "restarts": 3,
       "scores": [
         {
@@ -3133,7 +3133,7 @@
     },
     {
       "seed": 556,
-      "maxStoredChars": 1461839,
+      "maxStoredChars": 1461884,
       "restarts": 3,
       "scores": [
         {
@@ -3195,7 +3195,7 @@
     },
     {
       "seed": 557,
-      "maxStoredChars": 1333462,
+      "maxStoredChars": 1333507,
       "restarts": 2,
       "scores": [
         {
@@ -3247,7 +3247,7 @@
     },
     {
       "seed": 558,
-      "maxStoredChars": 1661046,
+      "maxStoredChars": 1661091,
       "restarts": 4,
       "scores": [
         {
@@ -3309,7 +3309,7 @@
     },
     {
       "seed": 559,
-      "maxStoredChars": 1653797,
+      "maxStoredChars": 1653842,
       "restarts": 3,
       "scores": [
         {
@@ -3361,7 +3361,7 @@
     },
     {
       "seed": 560,
-      "maxStoredChars": 2427965,
+      "maxStoredChars": 2428010,
       "restarts": 5,
       "scores": [
         {
@@ -3423,7 +3423,7 @@
     },
     {
       "seed": 561,
-      "maxStoredChars": 1555933,
+      "maxStoredChars": 1555978,
       "restarts": 2,
       "scores": [
         {
@@ -3475,7 +3475,7 @@
     },
     {
       "seed": 562,
-      "maxStoredChars": 1657607,
+      "maxStoredChars": 1657652,
       "restarts": 4,
       "scores": [
         {
@@ -3537,7 +3537,7 @@
     },
     {
       "seed": 563,
-      "maxStoredChars": 1570529,
+      "maxStoredChars": 1570574,
       "restarts": 2,
       "scores": [
         {
@@ -3589,7 +3589,7 @@
     },
     {
       "seed": 564,
-      "maxStoredChars": 1720653,
+      "maxStoredChars": 1720698,
       "restarts": 5,
       "scores": [
         {
@@ -3651,7 +3651,7 @@
     },
     {
       "seed": 565,
-      "maxStoredChars": 1928325,
+      "maxStoredChars": 1928370,
       "restarts": 3,
       "scores": [
         {
@@ -3703,7 +3703,7 @@
     },
     {
       "seed": 566,
-      "maxStoredChars": 1533886,
+      "maxStoredChars": 1533931,
       "restarts": 5,
       "scores": [
         {
@@ -3765,7 +3765,7 @@
     },
     {
       "seed": 567,
-      "maxStoredChars": 1661968,
+      "maxStoredChars": 1662013,
       "restarts": 1,
       "scores": [
         {
@@ -3817,7 +3817,7 @@
     },
     {
       "seed": 568,
-      "maxStoredChars": 1417692,
+      "maxStoredChars": 1417917,
       "restarts": 4,
       "scores": [
         {
@@ -3879,7 +3879,7 @@
     },
     {
       "seed": 569,
-      "maxStoredChars": 1707241,
+      "maxStoredChars": 1707286,
       "restarts": 3,
       "scores": [
         {
@@ -3931,7 +3931,7 @@
     },
     {
       "seed": 570,
-      "maxStoredChars": 2044738,
+      "maxStoredChars": 2044783,
       "restarts": 4,
       "scores": [
         {
@@ -3993,7 +3993,7 @@
     },
     {
       "seed": 571,
-      "maxStoredChars": 1374061,
+      "maxStoredChars": 1374286,
       "restarts": 2,
       "scores": [
         {
@@ -4045,7 +4045,7 @@
     },
     {
       "seed": 572,
-      "maxStoredChars": 1491374,
+      "maxStoredChars": 1491419,
       "restarts": 5,
       "scores": [
         {
@@ -4107,7 +4107,7 @@
     },
     {
       "seed": 573,
-      "maxStoredChars": 1596536,
+      "maxStoredChars": 1596581,
       "restarts": 3,
       "scores": [
         {
@@ -4159,7 +4159,7 @@
     },
     {
       "seed": 574,
-      "maxStoredChars": 1210729,
+      "maxStoredChars": 1210954,
       "restarts": 5,
       "scores": [
         {
@@ -4221,7 +4221,7 @@
     },
     {
       "seed": 575,
-      "maxStoredChars": 1974380,
+      "maxStoredChars": 1974425,
       "restarts": 3,
       "scores": [
         {
@@ -4273,7 +4273,7 @@
     },
     {
       "seed": 576,
-      "maxStoredChars": 1620228,
+      "maxStoredChars": 1620273,
       "restarts": 4,
       "scores": [
         {
@@ -4335,7 +4335,7 @@
     },
     {
       "seed": 577,
-      "maxStoredChars": 1388695,
+      "maxStoredChars": 1388740,
       "restarts": 3,
       "scores": [
         {
@@ -4387,7 +4387,7 @@
     },
     {
       "seed": 578,
-      "maxStoredChars": 1450915,
+      "maxStoredChars": 1450960,
       "restarts": 4,
       "scores": [
         {
@@ -4449,7 +4449,7 @@
     },
     {
       "seed": 579,
-      "maxStoredChars": 1237921,
+      "maxStoredChars": 1237966,
       "restarts": 3,
       "scores": [
         {
@@ -4501,7 +4501,7 @@
     },
     {
       "seed": 580,
-      "maxStoredChars": 2097730,
+      "maxStoredChars": 2097955,
       "restarts": 3,
       "scores": [
         {
@@ -4563,7 +4563,7 @@
     },
     {
       "seed": 581,
-      "maxStoredChars": 1621790,
+      "maxStoredChars": 1621835,
       "restarts": 3,
       "scores": [
         {
@@ -4615,7 +4615,7 @@
     },
     {
       "seed": 582,
-      "maxStoredChars": 1725798,
+      "maxStoredChars": 1725843,
       "restarts": 2,
       "scores": [
         {
@@ -4677,7 +4677,7 @@
     },
     {
       "seed": 583,
-      "maxStoredChars": 1406860,
+      "maxStoredChars": 1406905,
       "restarts": 3,
       "scores": [
         {
@@ -4729,7 +4729,7 @@
     },
     {
       "seed": 584,
-      "maxStoredChars": 1284396,
+      "maxStoredChars": 1285101,
       "restarts": 4,
       "scores": [
         {
@@ -4791,7 +4791,7 @@
     },
     {
       "seed": 585,
-      "maxStoredChars": 1961671,
+      "maxStoredChars": 1961716,
       "restarts": 1,
       "scores": [
         {
@@ -4843,7 +4843,7 @@
     },
     {
       "seed": 586,
-      "maxStoredChars": 1747417,
+      "maxStoredChars": 1747462,
       "restarts": 5,
       "scores": [
         {
@@ -4905,7 +4905,7 @@
     },
     {
       "seed": 587,
-      "maxStoredChars": 1478467,
+      "maxStoredChars": 1478512,
       "restarts": 3,
       "scores": [
         {
@@ -4957,7 +4957,7 @@
     },
     {
       "seed": 588,
-      "maxStoredChars": 1371518,
+      "maxStoredChars": 1371563,
       "restarts": 5,
       "scores": [
         {
@@ -5019,7 +5019,7 @@
     },
     {
       "seed": 589,
-      "maxStoredChars": 1602446,
+      "maxStoredChars": 1602491,
       "restarts": 2,
       "scores": [
         {
@@ -5071,7 +5071,7 @@
     },
     {
       "seed": 590,
-      "maxStoredChars": 2102564,
+      "maxStoredChars": 2102609,
       "restarts": 5,
       "scores": [
         {
@@ -5133,7 +5133,7 @@
     },
     {
       "seed": 591,
-      "maxStoredChars": 1303009,
+      "maxStoredChars": 1303054,
       "restarts": 2,
       "scores": [
         {
@@ -5185,7 +5185,7 @@
     },
     {
       "seed": 592,
-      "maxStoredChars": 1300426,
+      "maxStoredChars": 1300471,
       "restarts": 5,
       "scores": [
         {
@@ -5247,7 +5247,7 @@
     },
     {
       "seed": 593,
-      "maxStoredChars": 1502773,
+      "maxStoredChars": 1502818,
       "restarts": 3,
       "scores": [
         {
@@ -5299,7 +5299,7 @@
     },
     {
       "seed": 594,
-      "maxStoredChars": 1662079,
+      "maxStoredChars": 1662124,
       "restarts": 3,
       "scores": [
         {
@@ -5361,7 +5361,7 @@
     },
     {
       "seed": 595,
-      "maxStoredChars": 1922909,
+      "maxStoredChars": 1922954,
       "restarts": 3,
       "scores": [
         {
@@ -5413,7 +5413,7 @@
     },
     {
       "seed": 596,
-      "maxStoredChars": 1515344,
+      "maxStoredChars": 1515389,
       "restarts": 4,
       "scores": [
         {
@@ -5475,7 +5475,7 @@
     },
     {
       "seed": 597,
-      "maxStoredChars": 1386250,
+      "maxStoredChars": 1386295,
       "restarts": 3,
       "scores": [
         {
@@ -5527,7 +5527,7 @@
     },
     {
       "seed": 598,
-      "maxStoredChars": 1509792,
+      "maxStoredChars": 1509837,
       "restarts": 2,
       "scores": [
         {
@@ -5589,7 +5589,7 @@
     },
     {
       "seed": 599,
-      "maxStoredChars": 1365242,
+      "maxStoredChars": 1365287,
       "restarts": 3,
       "scores": [
         {
@@ -5641,7 +5641,7 @@
     },
     {
       "seed": 600,
-      "maxStoredChars": 2310106,
+      "maxStoredChars": 2310151,
       "restarts": 4,
       "scores": [
         {

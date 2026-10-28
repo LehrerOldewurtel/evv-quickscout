@@ -1,0 +1,14 @@
+✔ R1: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (177.004901ms)
+✔ R2: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (51.170052ms)
+✔ R3: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (36.340423ms)
+✔ R4: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (44.727919ms)
+✔ R5: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (39.198975ms)
+✔ R6: sechs Positionen, Vorderreihe, Libero, Aufschläger, Angriffswege und Sideout (39.155359ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 803.512257

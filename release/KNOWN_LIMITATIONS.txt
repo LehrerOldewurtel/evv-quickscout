@@ -21,4 +21,9 @@ TRAINER-COCKPIT – ENTWICKLUNGSKANDIDAT ZUR MANUELLEN ABNAHME
 - Browserdatenlöschung/Geräteverlust kann lokale Daten vernichten. Regelmäßig exportieren.
 - Keine Veröffentlichung der produktiven Webseite und kein Merge ohne Freigabe.
 - Testergebnisse ausschließlich im aktuellen TESTBERICHT; frühere Logs sind keine
-  aktuelle Evidenz. Firefox-Kontrollstart und Grenzen stehen im Abnahmebericht.
+  aktuelle Evidenz. Umfang und Grenzen stehen im beigefügten Abnahmebericht.
+
+- Ausgangsstellungen werden anhand der Symbolmittelpunkte auf Reihenfolge geprüft,
+  nicht anhand realer Fußpositionen. Taktische Ziele bleiben frei bearbeitbar.
+- Chromium testet Touch-Drag per Browser-Emulation; WebKit testet Maus-Drag und
+  Touch-Auswahl/Ziel. Eine Hardware-Touch-/Pencil-Abnahme steht noch aus.

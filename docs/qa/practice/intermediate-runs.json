@@ -1,0 +1,39 @@
+{
+  "note": "Intermediate full run before final phone layout. Not final CSS evidence.",
+  "node": {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "startedAt": "2026-10-28T17:58:07.214Z",
+    "finishedAt": "2026-10-28T18:02:56.590Z",
+    "log": "artifacts/node.tap"
+  },
+  "browser": {
+    "command": [
+      "npm",
+      "run",
+      "test:e2e"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "startedAt": "2026-10-28T18:02:56.590Z",
+    "finishedAt": "2026-10-28T18:07:36.617Z",
+    "log": "artifacts/browser.log"
+  },
+  "source": {
+    "branch": "dev/v8-practice-fixes",
+    "commit": "ca8f6b0efacc23b4dd9a07f70963f482ed0fd74c",
+    "assets": {
+      "index.html": "8fc9ec4d03f13eeb4d5b222a9f07149dd744c3f2813d6dabbf7f867bda38c1da",
+      "app.js": "e46f49102aec75dcc75a9afdc1e9658c641234c56bb65913317099caeb110cee",
+      "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
+      "styles.css": "dd5a56ffade5d960da40e2578a3a97b8db74e41c5ede126073b0c8b7b75acf3f",
+      "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
+      "sw.js": "c4e047e6a5e4643dc0027e5b0e71d50ee21ef11ed53ef1ff9f52a3f1aac450dd",
+      "manifest.webmanifest": "d0969adf8316c5023195181bd5b31dd218a16430e9ffab6396e37eee6573422c"
+    }
+  }
+}

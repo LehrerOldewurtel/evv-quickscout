@@ -1,0 +1,114 @@
+[2m[WebServer] [22m(node:169999) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:14] "GET / HTTP/1.1" 200 -
+
+Running 2 tests using 1 worker
+
+(node:170014) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:170014) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /favicon.ico HTTP/1.1" 404 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:15] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✘  1 tests/e2e/practice-fixes.spec.cjs:4:1 › Praxistest: Ausgangsstellung und Gegner gemeinsam editierbar, ungespeicherter Wechsel geschützt (6.2s)
+(node:170170) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:170170) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] code 404, message File not found
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /favicon.ico HTTP/1.1" 404 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [28/Oct/2026 17:49:22] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✘  2 tests/e2e/practice-fixes.spec.cjs:8:1 › Praxistest: runde Gegner mit tatsächlichen Nummern und Präsentation (30.1s)
+
+
+  1) tests/e2e/practice-fixes.spec.cjs:4:1 › Praxistest: Ausgangsstellung und Gegner gemeinsam editierbar, ungespeicherter Wechsel geschützt 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveValue[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('#formStance')
+    Expected: [32m"base"[39m
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toHaveValue" with timeout 5000ms[22m
+    [2m  - waiting for locator('#formStance')[22m
+
+
+      3 | async function opponent(page){await page.locator('#matchTactics').click();await page.locator('#tacticsOpponent').click();for(let p=1;p<=6;p++)await page.locator('#oppNum'+p).fill(String(30+p));await page.locator('#saveOppNum').click()}
+      4 | test('Praxistest: Ausgangsstellung und Gegner gemeinsam editierbar, ungespeicherter Wechsel geschützt',async({page})=>{
+    > 5 |  await start(page);await opponent(page);await page.locator('#tacticsBase').click();await page.locator('#tacticsEdit').click();await expect(page.locator('#formStance')).toHaveValue('base');await expect(page.locator('[data-form-team="opponent"]')).toHaveCount(6);
+        |                                                                                                                                                                         ^
+      6 |  await page.locator('[data-form-slot="1"]').click();const b=await page.locator('#formationSvg').boundingBox();await page.locator('#formationSvg').click({position:{x:b.width*.7,y:b.height*.82}});await expect(page.locator('#formStatus')).toContainText('Ungespeichert');page.once('dialog',d=>d.dismiss());await page.locator('#formRotation').selectOption('2');await expect(page.locator('#formRotation')).toHaveValue('1');
+      7 | });
+      8 | test('Praxistest: runde Gegner mit tatsächlichen Nummern und Präsentation',async({page})=>{
+        at /workspace/evv-quickscout/tests/e2e/practice-fixes.spec.cjs:5:169
+
+    Error Context: test-results/practice-fixes-Praxistest--d17bd-eicherter-Wechsel-geschützt/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-fixes-Praxistest--d17bd-eicherter-Wechsel-geschützt/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-fixes-Praxistest--d17bd-eicherter-Wechsel-geschützt/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/practice-fixes.spec.cjs:8:1 › Praxistest: runde Gegner mit tatsächlichen Nummern und Präsentation 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('#tacticsPresent')[22m
+
+
+       7 | });
+       8 | test('Praxistest: runde Gegner mit tatsächlichen Nummern und Präsentation',async({page})=>{
+    >  9 |  await start(page);await opponent(page);await page.locator('#tacticsPresent').click();await expect(page.locator('#modalBox')).toHaveClass(/presentation/);await expect(page.locator('[data-opponent-slot="1"] b')).toHaveText('#31');await page.locator('#tacticsPresent').click();await page.locator('#tacticsClose').click();await page.evaluate(()=>EVV_QS_TEST.opponentCourt());await expect(page.locator('[data-opp-player="1"] b')).toHaveText('#31');const c=await page.locator('[data-opp-player="1"]').evaluate(e=>{const s=getComputedStyle(e);return {w:e.offsetWidth,h:e.offsetHeight,r:s.borderRadius}});expect(c.w).toBe(c.h);expect(c.r).toBe('50%');
+         |                                                                               ^
+      10 | });
+      11 |
+        at /workspace/evv-quickscout/tests/e2e/practice-fixes.spec.cjs:9:79
+
+    Error Context: test-results/practice-fixes-Praxistest--a3e33-en-Nummern-und-Präsentation/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/practice-fixes-Praxistest--a3e33-en-Nummern-und-Präsentation/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/practice-fixes-Praxistest--a3e33-en-Nummern-und-Präsentation/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/practice-fixes.spec.cjs:4:1 › Praxistest: Ausgangsstellung und Gegner gemeinsam editierbar, ungespeicherter Wechsel geschützt 
+    tests/e2e/practice-fixes.spec.cjs:8:1 › Praxistest: runde Gegner mit tatsächlichen Nummern und Präsentation 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

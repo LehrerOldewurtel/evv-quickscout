@@ -1,0 +1,9 @@
+{
+  "matches": 100,
+  "identicalDigests": 100,
+  "reference": "docs/qa/cockpit/100-matchdays.json",
+  "seeds": [
+    501,
+    600
+  ]
+}
