@@ -10,7 +10,7 @@ def receiving(pos):
  rec_back=sorted([pos[r] for r in ['AA1','AA2','MB1','MB2'] if pos[r] in back],key=back.index)
  xs={};ix=front.index(aa_front)
  for i,p in enumerate(front):xs[p]=.5 if i==ix else (.12+.15*i if i<ix else .72+.18*(i-ix-1))
- for i,p in enumerate(back):xs[p]=.18 if p==rec_back[0] else .82 if p==rec_back[1] else .06 if i==0 else .94 if i==2 else .5
+ for i,p in enumerate(back):xs[p]=.18 if p==rec_back[0] else .82 if p==rec_back[1] else .06 if i==0 else .94 if i==2 else .65
  ys={p:.56 if p==aa_front else .18 for p in front}
  for p in back:ys[p]=.82 if p in rec_back else max(.48,ys[{5:4,6:3,1:2}[p]]+.12)
  return {r:{'x':round(xs[p],3),'y':round(ys[p],3)} for r,p in pos.items()}
