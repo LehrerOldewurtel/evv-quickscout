@@ -1,0 +1,821 @@
+{
+  "schema": "evv-quickscout-formation-library/v2",
+  "coordinate_system": {
+    "x": "0 left sideline, 1 right sideline",
+    "y": "0 net, 1 endline",
+    "perspective": "own court viewed from behind baseline"
+  },
+  "rules": {
+    "front_positions": [
+      2,
+      3,
+      4
+    ],
+    "back_positions": [
+      1,
+      6,
+      5
+    ],
+    "clockwise_rotation": "1→6→5→4→3→2→1",
+    "roles_opposite_pairs": [
+      [
+        "Z",
+        "D"
+      ],
+      [
+        "AA1",
+        "AA2"
+      ],
+      [
+        "MB1",
+        "MB2"
+      ]
+    ],
+    "critical": "Rule positions are NOT jersey numbers; K1 overlap legality must be validated geometrically and at serve contact."
+  },
+  "formations": [
+    {
+      "id": "LAEUFER_I",
+      "setter_at_position": 1,
+      "rotation_steps_from_setter_P1": 0,
+      "role_to_rule_position": {
+        "Z": 1,
+        "AA1": 2,
+        "MB1": 3,
+        "D": 4,
+        "AA2": 5,
+        "MB2": 6
+      },
+      "pre_serve_safe_baseline": {
+        "Z": {
+          "x": 0.82,
+          "y": 0.78
+        },
+        "AA1": {
+          "x": 0.82,
+          "y": 0.23
+        },
+        "MB1": {
+          "x": 0.5,
+          "y": 0.23
+        },
+        "D": {
+          "x": 0.18,
+          "y": 0.23
+        },
+        "AA2": {
+          "x": 0.18,
+          "y": 0.78
+        },
+        "MB2": {
+          "x": 0.5,
+          "y": 0.78
+        }
+      },
+      "reception_tactical_overlay": {
+        "status": "editable_coach_default",
+        "coordinates": {
+          "Z": {
+            "x": 0.7,
+            "y": 0.18
+          },
+          "AA1": {
+            "x": 0.15,
+            "y": 0.2
+          },
+          "MB1": {
+            "x": 0.5,
+            "y": 0.12
+          },
+          "D": {
+            "x": 0.86,
+            "y": 0.2
+          },
+          "AA2": {
+            "x": 0.28,
+            "y": 0.75
+          },
+          "MB2": {
+            "x": 0.55,
+            "y": 0.82
+          }
+        },
+        "setter_run": [
+          {
+            "x": 0.94,
+            "y": 0.68
+          },
+          {
+            "x": 0.7,
+            "y": 0.18
+          }
+        ],
+        "note": "Drei Annahmespieler: beide AA und tatsächlich aktiver Hinterfeld-MB bzw. dessen tatsächlich eingesetzter Libero. Vorschlag; keine automatische Libero-Ersetzung."
+      },
+      "libero_candidate_back_row_mb": [
+        "MB2"
+      ],
+      "reception_pre_serve": {
+        "Z": {
+          "x": 0.94,
+          "y": 0.68
+        },
+        "AA1": {
+          "x": 0.5,
+          "y": 0.56
+        },
+        "MB1": {
+          "x": 0.27,
+          "y": 0.18
+        },
+        "D": {
+          "x": 0.12,
+          "y": 0.18
+        },
+        "AA2": {
+          "x": 0.18,
+          "y": 0.82
+        },
+        "MB2": {
+          "x": 0.82,
+          "y": 0.82
+        }
+      },
+      "receivers": [
+        "AA1",
+        "AA2",
+        "MB2"
+      ],
+      "validation": {
+        "symbol_center_overlap": true,
+        "front_back_pairs": true,
+        "receivers": 3,
+        "reference_images_verified": false
+      }
+    },
+    {
+      "id": "LAEUFER_II",
+      "setter_at_position": 2,
+      "rotation_steps_from_setter_P1": 5,
+      "role_to_rule_position": {
+        "Z": 2,
+        "AA1": 3,
+        "MB1": 4,
+        "D": 5,
+        "AA2": 6,
+        "MB2": 1
+      },
+      "pre_serve_safe_baseline": {
+        "Z": {
+          "x": 0.82,
+          "y": 0.23
+        },
+        "AA1": {
+          "x": 0.5,
+          "y": 0.23
+        },
+        "MB1": {
+          "x": 0.18,
+          "y": 0.23
+        },
+        "D": {
+          "x": 0.18,
+          "y": 0.78
+        },
+        "AA2": {
+          "x": 0.5,
+          "y": 0.78
+        },
+        "MB2": {
+          "x": 0.82,
+          "y": 0.78
+        }
+      },
+      "reception_tactical_overlay": {
+        "status": "editable_coach_default",
+        "coordinates": {
+          "Z": {
+            "x": 0.7,
+            "y": 0.18
+          },
+          "AA1": {
+            "x": 0.15,
+            "y": 0.2
+          },
+          "MB1": {
+            "x": 0.5,
+            "y": 0.12
+          },
+          "D": {
+            "x": 0.86,
+            "y": 0.75
+          },
+          "AA2": {
+            "x": 0.28,
+            "y": 0.75
+          },
+          "MB2": {
+            "x": 0.55,
+            "y": 0.82
+          }
+        },
+        "setter_run": [
+          {
+            "x": 0.72,
+            "y": 0.18
+          },
+          {
+            "x": 0.7,
+            "y": 0.18
+          }
+        ],
+        "note": "Drei Annahmespieler: beide AA und tatsächlich aktiver Hinterfeld-MB bzw. dessen tatsächlich eingesetzter Libero. Vorschlag; keine automatische Libero-Ersetzung."
+      },
+      "libero_candidate_back_row_mb": [
+        "MB2"
+      ],
+      "reception_pre_serve": {
+        "Z": {
+          "x": 0.72,
+          "y": 0.18
+        },
+        "AA1": {
+          "x": 0.5,
+          "y": 0.56
+        },
+        "MB1": {
+          "x": 0.12,
+          "y": 0.18
+        },
+        "D": {
+          "x": 0.06,
+          "y": 0.48
+        },
+        "AA2": {
+          "x": 0.18,
+          "y": 0.82
+        },
+        "MB2": {
+          "x": 0.82,
+          "y": 0.82
+        }
+      },
+      "receivers": [
+        "AA1",
+        "AA2",
+        "MB2"
+      ],
+      "validation": {
+        "symbol_center_overlap": true,
+        "front_back_pairs": true,
+        "receivers": 3,
+        "reference_images_verified": false
+      }
+    },
+    {
+      "id": "LAEUFER_III",
+      "setter_at_position": 3,
+      "rotation_steps_from_setter_P1": 4,
+      "role_to_rule_position": {
+        "Z": 3,
+        "AA1": 4,
+        "MB1": 5,
+        "D": 6,
+        "AA2": 1,
+        "MB2": 2
+      },
+      "pre_serve_safe_baseline": {
+        "Z": {
+          "x": 0.5,
+          "y": 0.23
+        },
+        "AA1": {
+          "x": 0.18,
+          "y": 0.23
+        },
+        "MB1": {
+          "x": 0.18,
+          "y": 0.78
+        },
+        "D": {
+          "x": 0.5,
+          "y": 0.78
+        },
+        "AA2": {
+          "x": 0.82,
+          "y": 0.78
+        },
+        "MB2": {
+          "x": 0.82,
+          "y": 0.23
+        }
+      },
+      "reception_tactical_overlay": {
+        "status": "editable_coach_default",
+        "coordinates": {
+          "Z": {
+            "x": 0.7,
+            "y": 0.18
+          },
+          "AA1": {
+            "x": 0.15,
+            "y": 0.2
+          },
+          "MB1": {
+            "x": 0.55,
+            "y": 0.82
+          },
+          "D": {
+            "x": 0.86,
+            "y": 0.75
+          },
+          "AA2": {
+            "x": 0.28,
+            "y": 0.75
+          },
+          "MB2": {
+            "x": 0.5,
+            "y": 0.12
+          }
+        },
+        "setter_run": [
+          {
+            "x": 0.72,
+            "y": 0.18
+          },
+          {
+            "x": 0.7,
+            "y": 0.18
+          }
+        ],
+        "note": "Drei Annahmespieler: beide AA und tatsächlich aktiver Hinterfeld-MB bzw. dessen tatsächlich eingesetzter Libero. Vorschlag; keine automatische Libero-Ersetzung."
+      },
+      "libero_candidate_back_row_mb": [
+        "MB1"
+      ],
+      "reception_pre_serve": {
+        "Z": {
+          "x": 0.72,
+          "y": 0.18
+        },
+        "AA1": {
+          "x": 0.5,
+          "y": 0.56
+        },
+        "MB1": {
+          "x": 0.18,
+          "y": 0.82
+        },
+        "D": {
+          "x": 0.5,
+          "y": 0.48
+        },
+        "AA2": {
+          "x": 0.82,
+          "y": 0.82
+        },
+        "MB2": {
+          "x": 0.9,
+          "y": 0.18
+        }
+      },
+      "receivers": [
+        "AA1",
+        "MB1",
+        "AA2"
+      ],
+      "validation": {
+        "symbol_center_overlap": true,
+        "front_back_pairs": true,
+        "receivers": 3,
+        "reference_images_verified": false
+      }
+    },
+    {
+      "id": "LAEUFER_IV",
+      "setter_at_position": 4,
+      "rotation_steps_from_setter_P1": 3,
+      "role_to_rule_position": {
+        "Z": 4,
+        "AA1": 5,
+        "MB1": 6,
+        "D": 1,
+        "AA2": 2,
+        "MB2": 3
+      },
+      "pre_serve_safe_baseline": {
+        "Z": {
+          "x": 0.18,
+          "y": 0.23
+        },
+        "AA1": {
+          "x": 0.18,
+          "y": 0.78
+        },
+        "MB1": {
+          "x": 0.5,
+          "y": 0.78
+        },
+        "D": {
+          "x": 0.82,
+          "y": 0.78
+        },
+        "AA2": {
+          "x": 0.82,
+          "y": 0.23
+        },
+        "MB2": {
+          "x": 0.5,
+          "y": 0.23
+        }
+      },
+      "reception_tactical_overlay": {
+        "status": "editable_coach_default",
+        "coordinates": {
+          "Z": {
+            "x": 0.7,
+            "y": 0.18
+          },
+          "AA1": {
+            "x": 0.28,
+            "y": 0.75
+          },
+          "MB1": {
+            "x": 0.55,
+            "y": 0.82
+          },
+          "D": {
+            "x": 0.86,
+            "y": 0.75
+          },
+          "AA2": {
+            "x": 0.15,
+            "y": 0.2
+          },
+          "MB2": {
+            "x": 0.5,
+            "y": 0.12
+          }
+        },
+        "setter_run": [
+          {
+            "x": 0.12,
+            "y": 0.18
+          },
+          {
+            "x": 0.7,
+            "y": 0.18
+          }
+        ],
+        "note": "Drei Annahmespieler: beide AA und tatsächlich aktiver Hinterfeld-MB bzw. dessen tatsächlich eingesetzter Libero. Vorschlag; keine automatische Libero-Ersetzung."
+      },
+      "libero_candidate_back_row_mb": [
+        "MB1"
+      ],
+      "reception_pre_serve": {
+        "Z": {
+          "x": 0.12,
+          "y": 0.18
+        },
+        "AA1": {
+          "x": 0.18,
+          "y": 0.82
+        },
+        "MB1": {
+          "x": 0.82,
+          "y": 0.82
+        },
+        "D": {
+          "x": 0.94,
+          "y": 0.68
+        },
+        "AA2": {
+          "x": 0.5,
+          "y": 0.56
+        },
+        "MB2": {
+          "x": 0.27,
+          "y": 0.18
+        }
+      },
+      "receivers": [
+        "AA1",
+        "MB1",
+        "AA2"
+      ],
+      "validation": {
+        "symbol_center_overlap": true,
+        "front_back_pairs": true,
+        "receivers": 3,
+        "reference_images_verified": false
+      }
+    },
+    {
+      "id": "LAEUFER_V",
+      "setter_at_position": 5,
+      "rotation_steps_from_setter_P1": 2,
+      "role_to_rule_position": {
+        "Z": 5,
+        "AA1": 6,
+        "MB1": 1,
+        "D": 2,
+        "AA2": 3,
+        "MB2": 4
+      },
+      "pre_serve_safe_baseline": {
+        "Z": {
+          "x": 0.18,
+          "y": 0.78
+        },
+        "AA1": {
+          "x": 0.5,
+          "y": 0.78
+        },
+        "MB1": {
+          "x": 0.82,
+          "y": 0.78
+        },
+        "D": {
+          "x": 0.82,
+          "y": 0.23
+        },
+        "AA2": {
+          "x": 0.5,
+          "y": 0.23
+        },
+        "MB2": {
+          "x": 0.18,
+          "y": 0.23
+        }
+      },
+      "reception_tactical_overlay": {
+        "status": "editable_coach_default",
+        "coordinates": {
+          "Z": {
+            "x": 0.7,
+            "y": 0.18
+          },
+          "AA1": {
+            "x": 0.28,
+            "y": 0.75
+          },
+          "MB1": {
+            "x": 0.55,
+            "y": 0.82
+          },
+          "D": {
+            "x": 0.86,
+            "y": 0.2
+          },
+          "AA2": {
+            "x": 0.15,
+            "y": 0.2
+          },
+          "MB2": {
+            "x": 0.5,
+            "y": 0.12
+          }
+        },
+        "setter_run": [
+          {
+            "x": 0.06,
+            "y": 0.48
+          },
+          {
+            "x": 0.7,
+            "y": 0.18
+          }
+        ],
+        "note": "Drei Annahmespieler: beide AA und tatsächlich aktiver Hinterfeld-MB bzw. dessen tatsächlich eingesetzter Libero. Vorschlag; keine automatische Libero-Ersetzung."
+      },
+      "libero_candidate_back_row_mb": [
+        "MB1"
+      ],
+      "reception_pre_serve": {
+        "Z": {
+          "x": 0.06,
+          "y": 0.48
+        },
+        "AA1": {
+          "x": 0.18,
+          "y": 0.82
+        },
+        "MB1": {
+          "x": 0.82,
+          "y": 0.82
+        },
+        "D": {
+          "x": 0.72,
+          "y": 0.18
+        },
+        "AA2": {
+          "x": 0.5,
+          "y": 0.56
+        },
+        "MB2": {
+          "x": 0.12,
+          "y": 0.18
+        }
+      },
+      "receivers": [
+        "AA1",
+        "MB1",
+        "AA2"
+      ],
+      "validation": {
+        "symbol_center_overlap": true,
+        "front_back_pairs": true,
+        "receivers": 3,
+        "reference_images_verified": false
+      }
+    },
+    {
+      "id": "LAEUFER_VI",
+      "setter_at_position": 6,
+      "rotation_steps_from_setter_P1": 1,
+      "role_to_rule_position": {
+        "Z": 6,
+        "AA1": 1,
+        "MB1": 2,
+        "D": 3,
+        "AA2": 4,
+        "MB2": 5
+      },
+      "pre_serve_safe_baseline": {
+        "Z": {
+          "x": 0.5,
+          "y": 0.78
+        },
+        "AA1": {
+          "x": 0.82,
+          "y": 0.78
+        },
+        "MB1": {
+          "x": 0.82,
+          "y": 0.23
+        },
+        "D": {
+          "x": 0.5,
+          "y": 0.23
+        },
+        "AA2": {
+          "x": 0.18,
+          "y": 0.23
+        },
+        "MB2": {
+          "x": 0.18,
+          "y": 0.78
+        }
+      },
+      "reception_tactical_overlay": {
+        "status": "editable_coach_default",
+        "coordinates": {
+          "Z": {
+            "x": 0.7,
+            "y": 0.18
+          },
+          "AA1": {
+            "x": 0.28,
+            "y": 0.75
+          },
+          "MB1": {
+            "x": 0.5,
+            "y": 0.12
+          },
+          "D": {
+            "x": 0.86,
+            "y": 0.2
+          },
+          "AA2": {
+            "x": 0.15,
+            "y": 0.2
+          },
+          "MB2": {
+            "x": 0.55,
+            "y": 0.82
+          }
+        },
+        "setter_run": [
+          {
+            "x": 0.5,
+            "y": 0.48
+          },
+          {
+            "x": 0.7,
+            "y": 0.18
+          }
+        ],
+        "note": "Drei Annahmespieler: beide AA und tatsächlich aktiver Hinterfeld-MB bzw. dessen tatsächlich eingesetzter Libero. Vorschlag; keine automatische Libero-Ersetzung."
+      },
+      "libero_candidate_back_row_mb": [
+        "MB2"
+      ],
+      "reception_pre_serve": {
+        "Z": {
+          "x": 0.5,
+          "y": 0.48
+        },
+        "AA1": {
+          "x": 0.82,
+          "y": 0.82
+        },
+        "MB1": {
+          "x": 0.9,
+          "y": 0.18
+        },
+        "D": {
+          "x": 0.72,
+          "y": 0.18
+        },
+        "AA2": {
+          "x": 0.5,
+          "y": 0.56
+        },
+        "MB2": {
+          "x": 0.18,
+          "y": 0.82
+        }
+      },
+      "receivers": [
+        "AA1",
+        "AA2",
+        "MB2"
+      ],
+      "validation": {
+        "symbol_center_overlap": true,
+        "front_back_pairs": true,
+        "receivers": 3,
+        "reference_images_verified": false
+      }
+    }
+  ],
+  "k2_defense_templates": [
+    {
+      "id": "OPP_IV",
+      "block_rule_positions": [
+        2,
+        3
+      ],
+      "near_cover": [
+        4
+      ],
+      "deep_defense": [
+        1,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "OPP_II",
+      "block_rule_positions": [
+        3,
+        4
+      ],
+      "near_cover": [
+        2
+      ],
+      "deep_defense": [
+        1,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "OPP_III",
+      "block_rule_positions": [
+        3
+      ],
+      "near_cover": [
+        2,
+        4
+      ],
+      "deep_defense": [
+        1,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "OPP_BACK_I",
+      "block_rule_positions": [
+        3,
+        4
+      ],
+      "near_cover": [
+        2
+      ],
+      "deep_defense": [
+        1,
+        5,
+        6
+      ]
+    }
+  ],
+  "notes": [
+    "K2-Blockrollen sind Trainerwünsche, keine erzwungene Spielerposition oder juristische Rotationsregel.",
+    "Libero-Ersetzung nur als protokollierte legale Aktion; taktische Vorschau getrennt.",
+    "Bei einem MB im Hinterfeld nicht automatisch unterstellen, dass er bereits durch einen Libero ersetzt wurde."
+  ],
+  "source_seed_sha256": "9e474042e9ae42c40e74c84db24c8e2629380c86844efe583193921e06991fab",
+  "provenance": "Eigenständig ausgearbeitete Trainer-Vorschläge aus dem gelieferten Seed; keine Bildrekonstruktion."
+}

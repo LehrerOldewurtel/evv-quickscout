@@ -1,6 +1,6 @@
 importScripts('./version.js');
 const PREFIX='evv-quickscout-v';
-const CACHE=PREFIX+String(globalThis.EVV_VERSION||'7.19.0').replaceAll('.','-')+'-matchplan-1';
+const CACHE=PREFIX+String(globalThis.EVV_VERSION||'7.19.0').replaceAll('.','-')+'-master-1';
 const CORE=['./','./index.html','./styles.css','./version.js','./app.js','./compact.js','./manifest.webmanifest'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(PREFIX)&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));

@@ -1,3 +1,4 @@
+const {revealAction}=require('./ui.cjs');
 const {test,expect}=require('@playwright/test');
 
 for(const width of [390,820,1440])test(`Dialog ${width}px: ein Touch-Schließen löst keine Hintergrundaktion aus`,async({page})=>{
@@ -28,7 +29,7 @@ test('Manipuliertes Undo im Import: keine Mutation; ursprünglicher Stand bleibt
  const original=await page.evaluate(()=>EVV_QS_TEST.state()),raw=await page.evaluate(()=>localStorage.getItem('evvQuickScoutV77'));
  const payload=JSON.parse(raw);payload.match=payload.st;payload.schema='EVV-QuickScout-1';payload.match.rallyUndo[0].rallies=null;
  if(!await page.locator('#importData').isVisible())await page.locator('#moreActions').tap();
- const chooser=page.waitForEvent('filechooser');await page.locator('#importData').tap();
+ const chooser=page.waitForEvent('filechooser');await revealAction(page,'#importData');await page.locator('#importData').tap();
  await (await chooser).setFiles({name:'synthetic-corrupt-undo.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(payload))});
  await expect(page.locator('#toast')).toContainText('Import fehlgeschlagen');
  expect(await page.evaluate(()=>EVV_QS_TEST.state())).toEqual(original);expect(await page.evaluate(()=>localStorage.getItem('evvQuickScoutV77'))).toBe(raw);

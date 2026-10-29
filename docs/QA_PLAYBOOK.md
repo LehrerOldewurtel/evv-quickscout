@@ -234,3 +234,7 @@ additiv. Linux-Browser sind keine physische Apple-Geräteabnahme.
 Der neue Farbschema-Test prüft tatsächlich gerenderte Text-/Hintergrundfarben
 und mindestens 4,5:1 Kontrast bei grünem, gelbem und rotem Status. Dunkelmodus
 und automatische dunkle Systemeinstellung werden über die UI gewählt.
+
+## Master Playbook V8 (29.10.2026)
+
+Ursachen, Migration und Grenzen: [V8_MASTER_SYSTEM.md](V8_MASTER_SYSTEM.md). Neue Regressionen in `tests/master-playbook.test.cjs`, `tests/e2e/master-playbook.spec.cjs` und `master-touch.spec.cjs`; Ausgangsevidenz `qa/master-baseline/`. Der CDP-Touchtest ist ausdrücklich Chromium-spezifisch; WebKit erhält dieselben portablen UI-Fälle ohne vorgetäuschten CDP-Lauf. Alte Vorschau-Assertions wurden auf reale Libero-Partner umgestellt, Match-Oracles und Rallye-Sollwerte bleiben unabhängig. Alle finalen Ergebnisse werden separat in `qa/master/` archiviert.

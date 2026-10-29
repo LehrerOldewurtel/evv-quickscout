@@ -7,7 +7,7 @@ for(const width of [390,820,1024])test(`Generalprobe ${width}px: komplettes Matc
  const quick=async kind=>{await tap(`[data-quick="${kind}"]`);if(!['ace','opponentError'].includes(kind))await tap('[data-quick-player]:not([disabled]) >> nth=0')};
  await page.goto('/');await page.locator('#oppName').fill('QA Spieltag '+width);await page.locator('#oppR1').fill('11');if(width===1024)await select('#ssP4','maksym');await tap('#startReceive');await tap('#modeQuick');
  // Actual UI for libero configuration, no game mutations through evaluate.
- await tap('#modeDetail');await act('liberoPlanner');await select('#lpLib','alex');await select('#lpMB','dirk');await tap('#lpSave');expect((await state(page)).liberoOnCourt).toBe('alex');await tap('#modeQuick');
+ await tap('#modeDetail');await act('liberoPlanner');await select('#lpLib','alex');await select('#lpMB','dirk');await tap('#mlAuto');await tap('#lpSave');expect((await state(page)).liberoOnCourt).toBe('alex');await tap('#modeQuick');
  await tap('#formationEditor');const node=page.locator('[data-form-slot="6"]');await node.scrollIntoViewIfNeeded();const box=await node.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();await page.mouse.move(box.x+box.width/2-20,box.y+box.height/2-25,{steps:4});await page.mouse.up();await tap('#formSave');await tap('#formClose');const formations=(await state(page)).formationBook;
  for(let set=1;set<=3;set++){
  let e=0,o=0,n=0;

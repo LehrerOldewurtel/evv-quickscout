@@ -1,3 +1,4 @@
+const {revealAction}=require('./ui.cjs');
 const {test,expect}=require('@playwright/test');
 const state=page=>page.evaluate(()=>EVV_QS_TEST.state());
 const fields=['set','e','o','rot','serving','lineup','roles','sets','rallies','rallyUndo','events','marks','subCount','subPairs','subUsed'];
@@ -24,11 +25,11 @@ test('Libero aus und wieder ein: UI und Reload',async({page})=>{
 });
 test('Bestätigte Sprachannahme und READ-ONLY-Sprache (Speech-API simuliert)',async({page})=>{
  await page.addInitScript(()=>{window.qaTranscript='Michael Annahme A3';window.SpeechRecognition=class{start(){setTimeout(()=>this.onresult?.({results:[[{transcript:window.qaTranscript}]]}),0)}abort(){}}});
- await page.goto('/');await page.locator('#startReceive').tap();await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();
+ await page.goto('/');await page.locator('#startReceive').tap();await revealAction(page,'#voiceBtn');await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();
  await expect(page.locator('#flow')).toContainText('EVV · 2. Ball');
  await page.evaluate(()=>{EVV_QS_TEST.action('quick|EVV');EVV_QS_TEST.setView(1);window.qaTranscript='Undo'});
- const before=await state(page);await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();expect(await state(page)).toEqual(before);
- await page.evaluate(()=>window.qaTranscript='Punkt EVV');await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();expect(await state(page)).toEqual(before);
+ const before=await state(page);await revealAction(page,'#voiceBtn');await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();expect(await state(page)).toEqual(before);
+ await page.evaluate(()=>window.qaTranscript='Punkt EVV');await revealAction(page,'#voiceBtn');await page.locator('#voiceBtn').tap();await page.locator('#voiceYes').tap();expect(await state(page)).toEqual(before);
 });
 test('Undo ausstehender Zielzone entfernt den alten Dialog',async({page})=>{
  await page.goto('/');await page.locator('#startServe').tap();
@@ -44,7 +45,7 @@ for(const version of ['v7.9.2','pre-pr-main'])test(`Import ${version}: bestätig
  const {payload}=require(`../fixtures/${version}-storage.json`);
  await page.goto('/');await page.locator('#startReceive').tap();
  page.once('dialog',dialog=>dialog.accept());
- const chooser=page.waitForEvent('filechooser');await page.locator('#importData').tap();
+ const chooser=page.waitForEvent('filechooser');await revealAction(page,'#importData');await page.locator('#importData').tap();
  await (await chooser).setFiles({name:'qa-synthetic.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify({schema:'EVV-QuickScout-1',version,match:payload.st,opponent:payload.opponent,...(payload.roster?{roster:payload.roster}:{})}))});
  await expect.poll(async()=>(await state(page)).set).toBe(2);
  const s=await state(page);for(const key of fields)expect(s[key],key).toEqual(payload.st[key]);

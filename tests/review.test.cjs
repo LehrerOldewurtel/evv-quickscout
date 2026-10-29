@@ -28,7 +28,7 @@ check('Sprach-Annahme A3 setzt denselben Ballaufbau und dieselbe Aktionskette wi
  const stats=qa.stats(a.state().rallies).find(x=>x.id===player);assert.equal(stats.rec,1);assert.equal(stats.a3,1);
 });
 check('Libero ausdrücklich ausschalten bleibt nach Rallye und Reload ausgeschaltet',({api:a,qa,w})=>{
- qa.reset();qa.render();a.liberoPlanner();
+ qa.reset();const six=a.state();a.setLineup(six.lineup,six.roles,1,{liberoActive:false,liberoOnCourt:'',liberoReplacedId:'',liberoAutoEnabled:false});a.applyLibero('EVV','amar','dirk');a.commit('Gegner');qa.render();a.liberoPlanner();
  w.document.getElementById('lpLib').value='';w.document.getElementById('lpMB').value='';w.document.getElementById('lpSave').click();
  assert.equal(a.state().liberoActive,false);a.action('quick|Gegner');assert.equal(a.state().liberoActive,false);
  const saved=JSON.parse(w.localStorage.getItem('evvQuickScoutV77'));const next=app({storage:saved});try{assert.equal(next.api.state().liberoActive,false)}finally{next.close()}
@@ -37,7 +37,7 @@ check('Libero-Aufschlagsverbot und Wiedereintritt in allen sechs Rotationen',({a
  for(let start=1;start<=6;start++){
  qa.reset(false,start);for(let i=0;i<6;i++){
   a.action('quick|EVV');let s=a.state();const pos=a.courtPos(s.liberoReplacedId);
-  assert.equal(s.liberoActive,pos!==1);assert(!s.liberoIds.includes(a.currentServerId()));
+  if(s.liberoActive)assert([1,5,6].includes(pos));else {assert.equal(s.liberoReplacedId,'');assert.equal(s.liberoOnCourt,'');assert.equal(a.courtPos(a.currentServerId()),1)}assert(!s.liberoIds.includes(a.currentServerId()));
   a.action('quick|Gegner');s=a.state();assert(s.liberoActive);assert([1,5,6].includes(a.courtPos(s.liberoOnCourt)));
  }
  }
