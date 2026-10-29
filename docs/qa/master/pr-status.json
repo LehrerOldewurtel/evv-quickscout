@@ -1,0 +1,12 @@
+{
+  "branch": "dev/v8-master-playbook",
+  "draftPrCreated": false,
+  "draftPrRequested": true,
+  "error": "Post \"https://api.github.com/graphql\": Forbidden",
+  "blocker": "The active enforced network policy does not allow api.github.com; the saved configuration draft includes it but is not applied.",
+  "preparedBody": "docs/PR_MASTER_V8.md",
+  "comparison": "https://github.com/LehrerOldewurtel/evv-quickscout/compare/main...dev/v8-master-playbook?expand=1",
+  "configurationDraftSaved": true,
+  "configurationRequiresPublish": true,
+  "productionDeployment": false
+}
