@@ -1,0 +1,33 @@
+{
+  "zip": "EVV-QuickScout-V8-Master.zip",
+  "bytes": 163105,
+  "sha256": "9b49de01385ff5ada37b14eec3382240e13702524e40786e372b4c530d48fa0d",
+  "reassembledByteIdentical": true,
+  "parts": [
+    {
+      "name": "EVV-QuickScout-V8-Master.zip.part-01",
+      "bytes": 32768,
+      "sha256": "ebbe73849d675d798c6c0d034d6562a4f154a1cb1223111edb9b8e9657acebcf"
+    },
+    {
+      "name": "EVV-QuickScout-V8-Master.zip.part-02",
+      "bytes": 32768,
+      "sha256": "8e893e9abc837bf3e83ba47dd1a789cdfce01467bba7daab4a258e6f82f45b23"
+    },
+    {
+      "name": "EVV-QuickScout-V8-Master.zip.part-03",
+      "bytes": 32768,
+      "sha256": "1f565b23af3829d27c5a06cb4b8f030cab385b4a6ff3116d3759d3812c7c82c3"
+    },
+    {
+      "name": "EVV-QuickScout-V8-Master.zip.part-04",
+      "bytes": 32768,
+      "sha256": "23d0e76498141c1b9425b87373f10e32efbb844962be712162e3c94fbef979e2"
+    },
+    {
+      "name": "EVV-QuickScout-V8-Master.zip.part-05",
+      "bytes": 32033,
+      "sha256": "7f53c3dc38cc68c34f12e920d4b001845f592cbb2a6f5d66ee2412e07dbafdbb"
+    }
+  ]
+}
