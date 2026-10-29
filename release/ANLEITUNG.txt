@@ -1,4 +1,4 @@
-EVV QuickScout V8 – MATCHPLAN & LIVE-PACER
+EVV QuickScout V8 – MASTER PLAYBOOK RELEASE-KANDIDAT
 
 Entwicklungskandidat, keine stabile V8-Freigabe. Produktkennung bleibt 7.19.0-k1-auto-mb.
 Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
@@ -6,16 +6,39 @@ Nur synthetische Testspiele verwenden. Keine echten Backups importieren.
 MAC / IPAD STARTEN
 1. ZIP vollständig in einen neuen Ordner entpacken. Alte Testpakete behalten.
 2. Wenn der neue Ordner in Downloads liegt, diese ganze Zeile im Terminal ausführen:
-   python3 "$HOME/Downloads/EVV-QuickScout-V8-Matchplan/TEST_START.py" --lan --port 18767
+   python3 "$HOME/Downloads/EVV-QuickScout-V8-Master/TEST_START.py" --lan --port 18768
    Der Ordnername muss genau passen. Alternativ Terminal im entpackten Ordner öffnen.
 3. Python 3 muss installiert sein: python3 --version
    Falls nötig: https://www.python.org/downloads/macos/ (signierter Installer).
-4. Start: python3 TEST_START.py --lan
+4. Im bereits geöffneten Paketordner alternativ:
+   python3 TEST_START.py --lan --port 18768
 5. Die ausgegebene Mac-Adresse in Chrome oder Safari öffnen. Auf dem iPad die
    ausgegebene WLAN-Adresse öffnen. Beide Geräte müssen im selben vertrauten WLAN sein.
 6. Terminal geöffnet lassen. Ctrl+C beendet den Testserver.
-   Bei belegtem Port: python3 TEST_START.py --lan --port 18765
+   Bei belegtem Port: python3 TEST_START.py --lan --port 18769
    macOS-Firewall ggf. für das lokale WLAN erlauben. Kein Router-Portforwarding.
+
+NEU: EIN GEMEINSAMES TRAINER-COCKPIT
+- Unten: Live / Aufstellung / Taktik / Analyse / Matchplan.
+- Startsechs einmal festlegen, gegenüberliegende Rollenpaare prüfen. R1–R6
+  rotieren automatisch. Läufer I–VI folgt der tatsächlichen Zuspielerposition.
+- Taktik: K1 und vier K2-Systeme, Ausgangsstellung oder taktische Stellung.
+  Die sechs K1-Annahmen sind editierbare, geometrisch geprüfte Vorschläge.
+- Gegnerkreis antippen: Nummer/Rolle korrigieren; ? bleibt erlaubt.
+  „Gegner aufstellen“: sechs Rollen einmal vorschlagen/bestätigen, L1/L2 eintragen.
+  Regulärer Wechsel und Rückwechsel werden mit stabiler Identität gespeichert.
+- Libero: Registrierung ist noch kein Einsatz. EVV/Gegner → L1/L2 → tatsächlichen
+  Hinterfeldpartner wählen. Wechselabstand benötigt eine abgeschlossene Rallye.
+  Nur bei echtem Ausfall die begründete Verletzungsausnahme nutzen.
+  Automatische Grundordnung ist eine ausdrücklich wählbare Option.
+- Editor: Spieler ziehen oder auswählen und Ziel anklicken. Für Pfeile Werkzeug
+  wählen und mehrfach zeichnen. „Pfeil auswählen“ zeigt Start-/Endgriffe;
+  Körper oder Enden ziehen, löschen, Undo/Redo. Danach speichern.
+- „Teamstandard speichern“ übernimmt die gewählte Läuferformation auch in neue
+  Spiele. Eigene Rotationsanpassungen haben weiterhin Vorrang.
+- Mitte-Pacer zählt echte A+-Zuspiele mit bekanntem Ziel. Technische Zuspielnoten
+  werden nicht aus Angriffserfolgen abgeleitet.
+- Ausführliche Umsetzung/Grenzen: V8_MASTER_SYSTEM.md und ABNAHME.md.
 
 MATCHPLAN & LIVE-PACER
 - PACER im Live-Kopf öffnet Sollstand, Delta und Matchplan.
@@ -59,7 +82,7 @@ KURZER PRAXISTEST
 - „Taktik“: nur ansehen. K1 und Abwehr IV/III/II direkt wechseln. Ausgangsstellung
   und taktische Stellung vergleichen. Unabhängige Vorschauen verändern keinen Punkt.
 - „EVV-Nummern“ ergänzt fehlende Trikots. „Gegner aufstellen“ konfiguriert sechs
-  aktuelle Positionen/Rotation und optional einen Libero. In jedem neuen Satz
+  aktuelle Positionen/Rotation und optional zwei Liberos. In jedem neuen Satz
   die Gegneraufstellung bestätigen. Fehlende Daten werden nicht geraten.
 - „Trainer-Editor“: Spieler ziehen oder auswählen und Zielposition anklicken.
   Lauf-, Ball- und Angriffsrouten über das Werkzeug wählen. „Speichern“ bestätigt

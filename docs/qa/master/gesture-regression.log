@@ -1,0 +1,22 @@
+
+Running 4 tests using 2 workers
+
+(node:358905) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:358906) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:358905) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:358906) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/practice-fixes.spec.cjs:42:1 › iPhone: gemeinsames Feld zeigt zwölf lesbare Kreise ohne Überlappung (2.6s)
+  ✓  2 tests/e2e/practice.spec.cjs:22:1 › Desktop ohne Touch-Hardware › Taktik: Maus behält beim Greifen die Mitte und speichert Drag sowie Auswahl/Zielklick (3.6s)
+  ✓  3 tests/e2e/practice.spec.cjs:32:1 › Formationseditor ohne Touch-Hardware › Formationseditor: außermittig greifen ohne Sprung, Auswahl/Zielklick und Maus-Speichern (2.2s)
+  ✓  4 tests/e2e/practice.spec.cjs:45:1 › Abgebrochene Mausgeste im gemeinsamen Editor verwirft die Zwischenposition (1.7s)
+
+  4 passed (8.9s)
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

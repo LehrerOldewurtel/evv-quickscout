@@ -4,6 +4,8 @@ import argparse
 import hashlib
 import json
 import os
+import re
+import posixpath
 from pathlib import Path
 import subprocess
 import tempfile
@@ -17,6 +19,16 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def review_links(text, directory, branch):
+    base = 'https://github.com/LehrerOldewurtel/evv-quickscout/blob/' + branch + '/'
+    def link(match):
+        target = match.group(1)
+        if ':' in target or target.startswith('#'):
+            return match.group(0)
+        return '](' + base + posixpath.normpath(posixpath.join(directory, target)) + ')'
+    return re.sub(r'\]\(([^)]+)\)', link, text)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=ROOT / 'artifacts/EVV-QuickScout-V8-RC.zip')
@@ -24,6 +36,7 @@ def main():
     parser.add_argument('--folder', default='EVV-QuickScout-V8-RC')
     args = parser.parse_args()
     assert args.folder and all(c.isalnum() or c in '-_' for c in args.folder), 'Invalid package folder'
+    subprocess.run(['python3', str(ROOT / 'scripts/build-master-formations.py'), '--check'], check=True)
     report = json.loads((ROOT / 'artifacts/release-candidate.json').read_text())
     assert report['run']['node']['exitCode'] == report['run']['browser']['exitCode'] == 0, 'QA process failed'
     assert report['node']['failed'] == report['node']['cancelled'] == report['node']['skipped'] == 0, 'Node gate not green'
@@ -58,8 +71,11 @@ def main():
             (stage / 'DEFENSE_SYSTEM.md').write_bytes((ROOT / 'docs/DEFENSE_SYSTEM.md').read_bytes())
         if (ROOT / 'docs/MATCHPLAN_SYSTEM.md').is_file():
             (stage / 'MATCHPLAN_SYSTEM.md').write_bytes((ROOT / 'docs/MATCHPLAN_SYSTEM.md').read_bytes())
+        for source, target in [('docs/V8_MASTER_SYSTEM.md', 'V8_MASTER_SYSTEM.md'), ('docs/THIRD_PARTY_NOTICES.md', 'THIRD_PARTY_NOTICES.md'), ('ABNAHME.md', 'ABNAHME.md'), ('data/formationen_5_1.json', 'formationen_5_1.json'), ('data/formationen_5_1.seed.json', 'formationen_5_1.seed.json')]:
+            if (ROOT / source).is_file():
+                (stage / target).write_text(review_links((ROOT / source).read_text(), '', build['branch'])) if source == 'ABNAHME.md' else (stage / target).write_bytes((ROOT / source).read_bytes())
         acceptance = (ROOT / 'docs/FINAL_RELEASE_REPORT.md').read_text().replace('screenshots/cockpit/README.md', 'https://github.com/LehrerOldewurtel/evv-quickscout/blob/dev/v8-trainer-cockpit/docs/screenshots/cockpit/README.md')
-        (stage / 'RELEASE_ABNAHME.md').write_text(acceptance)
+        (stage / 'RELEASE_ABNAHME.md').write_text(review_links(acceptance, 'docs', build['branch']))
         (stage / 'CHECKSUMS.sha256').write_text(''.join(f'{digest(p)}  {p.name}\n' for p in sorted(stage.iterdir())))
         with zipfile.ZipFile(args.output, 'w', zipfile.ZIP_DEFLATED) as archive:
             for file in sorted(stage.iterdir()):

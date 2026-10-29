@@ -1,0 +1,433 @@
+{
+  "generatedAt": "2026-10-29T14:51:29.377Z",
+  "origin": "http://127.0.0.1:4193",
+  "browser": "Linux Chromium",
+  "syntheticOnly": true,
+  "hardwareTest": false,
+  "assets": {
+    "index.html": "b9f3b4f805ff359f064fbf264adcd14f540e7d99cc88bce69f6158fcf7d99401",
+    "app.js": "aa340f4656b65972f1fef61d09644c620c4eb8f526f5f85501876d360a74c869",
+    "compact.js": "c04c5b4b3d86149884f12b62eba6c19fcc4ee8cdf8df47e9354fb8eeead9606f",
+    "styles.css": "28bcfbc1839456138a4e27c39fd5813ffecc3ed4915a9afa9cc4152f32edadf2",
+    "version.js": "3679861e69d520cb6c441990573eb057638a4868e9c7bbb5b308dd922e4929a1",
+    "sw.js": "d0a470767b8b04bca92c11ffd6c2856875fd292b8d3f723d9b18c98872dd0d24",
+    "manifest.webmanifest": "d0969adf8316c5023195181bd5b31dd218a16430e9ffab6396e37eee6573422c"
+  },
+  "captures": [
+    {
+      "file": "live-ipad-landscape.png",
+      "caption": "Quick: zwölf Kreise, alle Rallyeaktionen oberhalb der Navigation",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "opponent-lineup.png",
+      "caption": "Gegner: einmalige Startsechs und zwei registrierte Liberos",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "k1-r1-base.png",
+      "caption": "EVV R1, I: legale Aufschlagkontakt-Ausgangsstellung",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r1-tactical.png",
+      "caption": "EVV R1, I: freie taktische Stellung mit Wegen",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r2-base.png",
+      "caption": "EVV R2, VI: legale Aufschlagkontakt-Ausgangsstellung",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r2-tactical.png",
+      "caption": "EVV R2, VI: freie taktische Stellung mit Wegen",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r3-base.png",
+      "caption": "EVV R3, V: legale Aufschlagkontakt-Ausgangsstellung",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r3-tactical.png",
+      "caption": "EVV R3, V: freie taktische Stellung mit Wegen",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r4-base.png",
+      "caption": "EVV R4, IV: legale Aufschlagkontakt-Ausgangsstellung",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r4-tactical.png",
+      "caption": "EVV R4, IV: freie taktische Stellung mit Wegen",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r5-base.png",
+      "caption": "EVV R5, III: legale Aufschlagkontakt-Ausgangsstellung",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r5-tactical.png",
+      "caption": "EVV R5, III: freie taktische Stellung mit Wegen",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r6-base.png",
+      "caption": "EVV R6, II: legale Aufschlagkontakt-Ausgangsstellung",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "k1-r6-tactical.png",
+      "caption": "EVV R6, II: freie taktische Stellung mit Wegen",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "defense-IV.png",
+      "caption": "EVV defense-IV mit Aufgaben; Gegner-K1 automatisch passend zur Phase",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "defense-III.png",
+      "caption": "EVV defense-III mit Aufgaben; Gegner-K1 automatisch passend zur Phase",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "defense-II.png",
+      "caption": "EVV defense-II mit Aufgaben; Gegner-K1 automatisch passend zur Phase",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "defense-I.png",
+      "caption": "EVV defense-I mit Aufgaben; Gegner-K1 automatisch passend zur Phase",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "opponent-k1-r1.png",
+      "caption": "Gegner R1: legale K1-Ausgangsstellung bei eigenem K2",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "opponent-k1-r2.png",
+      "caption": "Gegner R2: legale K1-Ausgangsstellung bei eigenem K2",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "opponent-k1-r3.png",
+      "caption": "Gegner R3: legale K1-Ausgangsstellung bei eigenem K2",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "opponent-k1-r4.png",
+      "caption": "Gegner R4: legale K1-Ausgangsstellung bei eigenem K2",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "opponent-k1-r5.png",
+      "caption": "Gegner R5: legale K1-Ausgangsstellung bei eigenem K2",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "opponent-k1-r6.png",
+      "caption": "Gegner R6: legale K1-Ausgangsstellung bei eigenem K2",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "timeout-k2.png",
+      "caption": "Bildschirmfüllender gemeinsamer Renderer, Spielbetrieb gegen versehentliche Positionsänderung geschützt",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "opponent-profile.png",
+      "caption": "Gegnerkreis: Nummer und aktive Rolle direkt bearbeiten",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "five-arrows.png",
+      "caption": "Fünf zusätzliche, einzeln gespeicherte Pfeile; a-3 mit sichtbaren Start-/Endgriffen",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#formationSvg"
+    },
+    {
+      "file": "live-filled.png",
+      "caption": "Synthetisches 20:15, abgeschlossene Rallyes und Live-Spielstand",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "analysis.png",
+      "caption": "LIVE-Analyse: sechs Kennzahlen und getrennte abgeschlossene Rallyes",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "matchplan.png",
+      "caption": "Matchplan: 20:15 gegenüber Soll 18, Live-Pacer +2",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "middle-pacer.png",
+      "caption": "Mitte-Pacer aus fünf tatsächlich erfassten A+-Zuspielen, keine technische Zuspielnote",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "[data-middle-pacer]"
+    },
+    {
+      "file": "setter-cockpit.png",
+      "caption": "Zuspielverteilung: drei Mitte- und zwei Außen-Ziele, echte Nenner",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "libero-l1.png",
+      "caption": "Reale EVV-L1-Ersetzung, genau sechs aktive Spieler",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "libero-l2.png",
+      "caption": "Reale EVV-L2-Ersetzung nach einer abgeschlossenen Rallye",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "opponent-libero-l1.png",
+      "caption": "Reale Gegner-L1-Ersetzung mit stabilem MB-Partner",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "analysis-turnaround.png",
+      "caption": "Zwei echte Transition-Chancen und zwei Angriffe, ein Kill, eine abgeschlossene Rallye",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "opponent-libero-l2.png",
+      "caption": "Reale Gegner-L2-Ersetzung nach abgeschlossener Rallye",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "capture": "#matchCourt"
+    },
+    {
+      "file": "live-820.png",
+      "caption": "Gemeinsame Quick-Ansicht 820×1180",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "analysis-820.png",
+      "caption": "Analyse 820×1180, Details optional scrollbar",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "tactics-820.png",
+      "caption": "Taktik-Präsentation 820×1180",
+      "viewport": {
+        "width": 820,
+        "height": 1180
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "live-390.png",
+      "caption": "Gemeinsame Quick-Ansicht 390×844",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "analysis-390.png",
+      "caption": "Analyse 390×844, Details optional scrollbar",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "tactics-390.png",
+      "caption": "Taktik-Präsentation 390×844",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "live-1440.png",
+      "caption": "Gemeinsame Quick-Ansicht 1440×1000",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "analysis-1440.png",
+      "caption": "Analyse 1440×1000, Details optional scrollbar",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "viewport"
+    },
+    {
+      "file": "tactics-1440.png",
+      "caption": "Taktik-Präsentation 1440×1000",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "capture": "viewport"
+    }
+  ],
+  "errors": []
+}

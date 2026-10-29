@@ -1,101 +1,33 @@
-# EVV QuickScout V8 · Matchplan & Live-Pacer
+# V8 Master Playbook – Abnahme des Entwicklungskandidaten
 
-Stand: 28.10.2026. Branch `dev/v8-matchplan-pacer`, geprüfter App-Code
-`b5780be`. Produktkennung unverändert
-`7.19.0-k1-auto-mb`. Entwicklungskandidat zur praktischen Abnahme, kein Merge und
-keine produktive Veröffentlichung.
+Stand: 2026-10-29T15:08:31.447580+00:00. Quell-QA erzeugt: 2026-10-29T15:01:05.456Z. Branch `dev/v8-master-playbook`, geprüfter Quellstand `eaac8beb3cb21dde181ae557f4b653618aad91de`. V8-RC, Produktkennung bleibt 7.19.0-k1-auto-mb. Kein Merge/Produktivdeployment.
 
-## Geliefert
+| Anforderung | Status | Beleg |
+|---|---|---|
+| Ursachenanalyse vor Umsetzung; vorhandene Regression zuerst | PASS | [Systembericht](V8_MASTER_SYSTEM.md), [Ausgangslauf](qa/master-baseline/qa-run.json), fehlgeschlagene P0-Reproduktionen daneben |
+| Sechs K1-Läufer, tatsächliches Zuspieler-Mapping, beide Teams, legaler Aufschlagkontakt und freie Ziele | PASS | `tests/master-playbook.test.cjs`, `data/formationen_5_1.json`, [alle sechs Läufer](screenshots/master/README.md) |
+| Stabile Identitäten, unabhängige Rotation, Startsechs/Rollen/Nummern, reguläre Wechsel/Rückwechsel/Undo | PASS | Node + Master-/Rotations-/Matchday-Browserfälle, [unveränderte 100 Match-Digests](qa/master/ledger-comparison.json) |
+| Echte L1/L2 beider Teams, beide MB über R1–R6, Rückkehr, Rallye-Abstand, keine Vorschauwechsel | PASS | Master-Node und Master-/Practice-Fixes-Browserfälle; Screenshots `libero-*` und `opponent-libero-*` |
+| Ein gemeinsames Board, geschützter Spielbetrieb, Editor/Timeout, zwölf nummerierte Kreise | PASS | Master-/Defense-/Practice-Browserfälle, [Screenshots](screenshots/master/README.md) |
+| Fünf Pfeile, Körper und beide Enden, Maus/Touch, Undo/Redo, Reload/Export/Import | PASS | `master-playbook.spec.cjs`, tatsächliche Chromium-CDP-Touchgesten in `master-touch.spec.cjs`, `five-arrows.png` |
+| Vier K2-Systeme; IV/II spiegelbildlich, III Einerblock, Hinterfeld I P3/P4 + P2 Nahsicherung | PASS | Defense-/Master-Node, Defense-Browser, vier Screenshots |
+| Stammdaten und Mehrfachrollen ohne doppelte IDs | PASS | Master-Node, EVV-Nummern-/Rollen-UI, Altbestände beibehalten |
+| Zuspiel-, A+-Mitte-, Angriffserfolg und Dankeballstatistik mit echten Nennern | PASS | unabhängige Sollwerte in `matchplan.test.cjs`; Matchplan-Browser, `setter-cockpit.png` |
+| Matchplan-Ziele, Punktestand-Pacer, Deuce, Mitte-Soll/Ist, kleine Stichprobe | PASS | Matchplan-Node/Browser, `matchplan.png`, `middle-pacer.png` |
+| Transition → Spieler → Kill, keine erfundenen/doppelten Ereignisse | PASS | 2 gemessene Browserfälle mit genau drei Eingaben, Spielerzuordnung im Hybrid-/Master-Test |
+| Dark Glass, fünf Lucide-Zugänge, responsive, Fokus/Touch/Reduzierte Bewegung | PASS | vier Viewports, Kontrastregression, [46 Screenshots](screenshots/master/README.md); native Geräte separat offen |
+| Speicherung, alte Daten, Export/Import, Satzwechsel, Offline/Reload | PASS | vollständige Node-/Chromium- und zusätzliche WebKit-Auswahl; 100 alte Kontakt-/Score-Digests unverändert |
+| Automatisierte Regression tatsächlich vollständig ausgeführt | PASS | Node 221, Chromium 174, zusätzliche WebKit-Auswahl 116; jeweils 0 Fehler/0 übersprungen/0 flaky; [Rohdaten](qa/master/release-candidate.json) |
+| Startbares Test-ZIP mit getrennten Testablagen | PASS | Vorab-ZIP tatsächlich entpackt/gestartet: acht frische Chromium-/WebKit-Kontexte, [Protokoll](qa/master/preflight-package.json). Finale Datei wird separat geprüft: `downloads/v8-master/EVV-QuickScout-V8-Master.verification.json` und `DOWNLOAD_VERIFIED.json` |
+| Draft-Pull-Request | FAIL – externer Zugriffsblocker | aktive Cloud-Policy verweigert `api.github.com`; Git funktioniert. Konkreter PR-Text: [PR_MASTER_V8.md](PR_MASTER_V8.md) |
+| GitHub-Actions-Ergebnis am endgültigen Remote-HEAD | NICHT GETESTET | API-Zugriff blockiert; lokale vollständige Regression oben nachgewiesen |
+| Physischer Mac, iPad Safari, Hallenlicht, WLAN und Native-/Store-Abnahme | NICHT GETESTET | keine physischen Apple-Geräte verfügbar; Linux-WebKit ist kein iPad-Nachweis |
+| Exakte Übereinstimmung mit früheren Lehrbildern | NICHT GETESTET | Bilder nicht im Upload; ausdrücklich eigenständige Vorschläge, keine Bildrekonstruktion |
 
-- Editierbarer Matchplan pro Spiel, wiederverwendbare benannte Vorlagen und
-  sechs Direktzugänge im Coach-Cockpit. Live bleibt beim kleinen PACER-Zugang.
-- Satz-Pacer mit nachvollziehbarer linearer Zielkurve, Sollstand, Delta, Farbe
-  und Fortschritt; eigene Kurve für Satz 5. 20:15 ergibt bei Standardkurve +2.
-- Höchstens ein kurzer datenbasierter Auftakthinweis im ersten Satz.
-- Zuspieler-Cockpit für Johann und weitere dokumentierte Zuspieler, Verteilung
-  IV/III/II/Hinterfeld, Mitte nach A+/A~/A−, Angriffspunkt-/Fehlerquoten und
-  K1-/K2-Vergleich. Automatische aktuelle Zuordnung nur bei Eindeutigkeit;
-  ansonsten optionale Kontextauswahl. Keine zusätzliche Pflichtmaske.
-- Explizite Dankeball-Erfassung, organisierter erster Angriff, direkter Kill und
-  späterer Rallyesieg getrennt. Mehrfachchancen, unbekannte Sequenzen und aktuelle
-  Rallye werden sichtbar getrennt; alle Quoten mit Zähler/Nenner und Stichprobe.
-- Vorhandene Live-Erfassung, Turnaround, Statistiken, Vier-System-Abwehrbibliothek,
-  Rollen-/Wechsel-/Libero-Zuordnung und gespeicherte Altdaten bleiben erhalten.
+100 detaillierte synthetische Matches: 400 Sätze, 17213 Rallyes, 271405 Kontakte, 1220 Undo/Wiederholungen, 800 reguläre Wechsel/Rückwechsel. Hinzu kommen 100 Quick-Matches, 100 isolierte Kontaktketten und komplette Browser-Matches. Originale Match-Oracles wurden nicht abgeschwächt.
 
-Bestehende Kontaktobjekte werden nicht umgeschrieben. Neue optionale Metadaten
-werden validiert, gespeichert und mit Undo zurückgenommen. Unbekannte historische
-Zuspieler werden nicht aus der heutigen Aufstellung rekonstruiert. Ein Set mit
-anschließendem Angriff zählt einmal. A0 und gegnerische Annahme sind keine eigene
-A+-Annahme. Dankeball-Punktquote zählt eine Rallye auch bei mehreren Chancen einmal;
-die direkte Killquote verwendet nur Chancen mit bekanntem direktem Ausgang.
-Ausführliche Ereignis- und Nennerdefinitionen: MATCHPLAN_SYSTEM.md.
+Der abschließende Lauf startet `npm test` und `npm run test:e2e` parallel; beide Kommandos und Exitcodes sind vollständig in `qa-run.json` erfasst, der tatsächliche Runner liegt daneben als `run-parallel.cjs`.
 
-## Tatsächlich ausgeführte Prüfungen
+Chromium führt die gesamte Suite einschließlich Maus und CDP-Touch aus. WebKit ist eine zusätzliche Auswahl: matchplan, defense, practice-fixes, cockpit, practice, release, hybrid, matchday und master-playbook; jeweils .spec.cjs, Chromium-Neustart ausgeschlossen. Unter paralleler Last gab es zuvor drei Überschreitungen des 30-Sekunden-Gesamtbudgets bei langen WebKit-Sequenzen; Ablaufspuren zeigten erreichte Bedienelemente ohne fachlichen Assert-Fehler. Diese abgebrochene Diagnoserunde bleibt in `webkit-load-timeouts.log` erhalten. Die vollständige endgültige WebKit-Auswahl verwendet 60 Sekunden je Test, einen Worker und unveränderte Assertions. Nicht ausgewählte Chromium-spezifische Fälle zählen nicht als WebKit-Pass und wurden nicht als übersprungene Tests versteckt.
 
-| Prüfung | Bestanden | Fehlgeschlagen | Übersprungen |
-|---|---:|---:|---:|
-| Vollständige Node-Regression | 197 | 0 | 0 |
-| Vollständige Chromium-Regression | 158 | 0 | 0 |
-| WebKit-Auswahl einschließlich aller neuen Matchplan-Fälle | 101 | 0 | 0 |
-
-18 neue Berechnungstests und 16 neue echte Browserfälle decken Verteilung,
-Qualitäts-/Phasennenner, tatsächlichen Zuspielerwechsel, unbekannte Altwerte,
-Dankeball direkt/später, mehrere Chancen, Quick→Detail, Interpolation/Konfiguration,
-Satzwechsel, Undo, Importvalidierung, Vorlagen, Reload und vier Viewports ab.
-Der gefüllte Coach-Screen sichert den korrigierten Textumbruch ab. Ein weiterer
-Browserfall prüft mindestens 4,5:1 Textkontrast für grüne, gelbe und rote neue
-Statuswerte im dunklen sowie automatischen Farbschema.
-Bestehende Chromium-Tests prüfen Maus und Touch; die WebKit-Auswahl prüft auch
-Maus-Drag und Touch-Auswahl. Chromium-spezifische CDP-Fälle sind nicht als WebKit-
-Tests ausgegeben. Keine Flaky-Wiederholungen als Erfolg: Chromium 0, WebKit 0.
-
-Detaillierte unabhängige Matchsimulation: 100 Spiele, 400 Sätze,
-17213 Rallyes, 271405 Kontakte, 1220 Undo/Wiederholungen,
-800 Wechsel/Rückwechsel und 331 Speicherneustarts.
-**100/100 Matchdigests entsprechen dem vorherigen Abwehrkandidaten**: Original-
-Kontaktketten und Spielresultate bleiben gleich. Ergänzend 100 Quick-
-Simulationen und 100 isolierte Kontaktketten.
-Die Browser-Generalproben spielen pro Engine drei vollständige Matches über die
-Oberfläche. Transition → Spieler → Kill bleibt bei drei Eingaben.
-
-Rohlogs, Start-/Endzeiten, Kommandos, Asset-Hashes, Vorher-Fehler und unabhängiger
-Digestvergleich: `docs/qa/matchplan/`. Zwei vorläufige Gesamtläufe wurden für die
-visuell gefundene Textumbruchkorrektur beendet und nicht als bestandene Läufe gezählt.
-Der finale Bericht verwendet ausschließlich anschließend vollständig ausgeführte
-Prüfungen derselben finalen App-Assets.
-
-## Screenshots und Testpaket
-
-32 über sichtbare UI erstellte Screenshots: Mac (1440), iPad quer (1024),
-iPad hoch (820), iPhone (390), jeweils Live, Coach, Pacer, Zuspieler, Dankeball,
-Plan-Editor sowie Coach/Pacer im Dunkelmodus. Ausschließlich synthetisches TEST-Match.
-
-[Galerie](https://github.com/LehrerOldewurtel/evv-quickscout/blob/dev/v8-matchplan-pacer/docs/screenshots/matchplan/README.md)
-
-Testpaket: `EVV-QuickScout-V8-Matchplan.zip`, eigener Ordner und empfohlener Port
-18767. Nach Entpacken auf dem Mac:
-
-```sh
-python3 "$HOME/Downloads/EVV-QuickScout-V8-Matchplan/TEST_START.py" --lan --port 18767
-```
-
-Die ausgegebene Mac-Adresse öffnen. Für das iPad die ausgegebene WLAN-Adresse
-verwenden; beide Geräte im selben vertrauten WLAN, Terminal geöffnet lassen.
-Der Starter nutzt eigene Testablagen und einen eigenen Cache-Namensraum.
-Keine echten Backups importieren. Mac und iPad synchronisieren nicht automatisch.
-ZIP-CRC, SHA-256, innere Prüfsummen und tatsächlicher Start des entpackten Pakets
-werden separat in der mitgelieferten `.verification.json` dokumentiert; der
-GitHub-Download wird anschließend erneut auf Bytegleichheit geprüft.
-
-## Grenzen
-
-Linux-Chromium/WebKit und emulierte Touch-/Viewport-Bedienung ersetzen keine
-physische Mac-/iPad-/Safari-/Pencil-Abnahme. WLAN-HTTP garantiert auf dem iPad
-keinen Offline-/Mikrofonbetrieb. Historische fehlende Zuspieler und reine Sprach-/
-Legacy-Zusammenfassungen ohne passenden Kontaktkontext bleiben gekennzeichnete
-Datenlücken. Unvollständige Dankeballbeobachtungen verkleinern den jeweiligen
-Nenner; es wird keine Genauigkeit erfunden. Ziele und Pacer sind bearbeitbare
-Trainerorientierungen, keine Leistungsnormen oder Siegprognosen. Lange optionale
-Details und kleine Telefonansichten dürfen scrollen.
-
-`main`, Release-Branch und produktive GitHub-Pages-Webseite bleiben unverändert.
+Einschränkungen: [Systembericht](V8_MASTER_SYSTEM.md) und [Paketgrenzen](../release/KNOWN_LIMITATIONS.txt). Positionsvalidierung prüft relative Symbolmittelpunkte; echte Fußstellungen und Schiedsrichterentscheidungen sind davon nicht erfasst. Unbekannte alte Zuspiel-/Gegnerdaten bleiben unbekannt. Kein Produktivbackup wurde verwendet. Keine öffentliche Test-URL eingerichtet; separater Mac-Teststarter ist die sichere Alternative.

@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+(node:376715) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:376715) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/master-playbook.spec.cjs:10:1 › Master: fünf Pfeile zeichnen, Start/Ende und Körper bewegen, löschen, Undo/Redo, Reload und Export/Import (19.9s)
+
+
+  1) tests/e2e/master-playbook.spec.cjs:10:1 › Master: fünf Pfeile zeichnen, Start/Ende und Körper bewegen, löschen, Undo/Redo, Reload und Export/Import 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32mtrue[39m
+    Received: [31mfalse[39m
+
+      12 |  for(let i=0;i<5;i++){const svg=page.locator('#formationSvg');await svg.scrollIntoViewIfNeeded();const b=await svg.boundingBox(),x=.08+i*.15;await page.mouse.move(b.x+b.width*x,b.y+b.height*.60);await page.mouse.down();await page.mouse.move(b.x+b.width*(x+.07),b.y+b.height*.40,{steps:6});await page.mouse.up()}
+      13 |  await expect(page.locator('#formationSvg polyline[data-arrow-id]')).toHaveCount(baseline+5);await expect(page.locator('#formTool')).toHaveValue('ball');await page.locator('#formArrowSelect').selectOption('a-3');const line=()=>page.locator('#formationSvg polyline[data-arrow-id="a-3"]');const original=await line().getAttribute('points');await drag(page,page.locator('[data-arrow-id="a-3"][data-arrow-handle="start"]'),15,10);expect(await line().getAttribute('points')).not.toBe(original);const afterStart=await line().getAttribute('points');await drag(page,page.locator('[data-arrow-id="a-3"][data-arrow-handle="end"]'),-12,-12);expect(await line().getAttribute('points')).not.toBe(afterStart);await page.locator('[data-arrow-id="a-3"][data-arrow-handle="end"]').focus();const beforeKey=await line().getAttribute('points');await page.keyboard.press('ArrowRight');expect(await line().getAttribute('points')).not.toBe(beforeKey);const afterEnd=await line().getAttribute('points');await drag(page,line(),10,10);expect(await line().getAttribute('points')).not.toBe(afterEnd);await page.locator('#formDeleteArrow').click();await expect(line()).toHaveCount(0);await page.locator('#formUndo').click();await expect(line()).toHaveCount(1);await page.locator('#formRedo').click();await expect(line()).toHaveCount(0);await page.locator('#formUndo').click();await page.locator('#formSave').click();const saved=await page.evaluate(()=>EVV_QS_TEST.state().formationBook['1:receive']);expect(saved.arrows.filter(a=>a.id.startsWith('a-'))).toHaveLength(5);await page.locator('#formClose').click();await page.reload();expect(await page.evaluate(()=>EVV_QS_TEST.state().formationBook['1:receive'])).toEqual(saved);
+    > 14 |  await page.locator('#matchTactics').click();const arrowheads=await page.locator('[data-board-arrow]').evaluateAll(els=>els.map(el=>{const ref=el.getAttribute('marker-end');return !!ref&&!!el.ownerSVGElement.querySelector(ref.slice(4,-1))}));expect(arrowheads.length).toBeGreaterThanOrEqual(5);expect(arrowheads.every(Boolean)).toBe(true);await page.locator('#tacticsClose').click();
+         |                                                                                                                                                                                                                                                                                                                                         ^
+      15 |  await page.locator('#moreActions').click();const downloadPromise=page.waitForEvent('download');await revealAction(page,'#exportData');await page.locator('#exportData').click();const d=await downloadPromise,path=info.outputPath('synthetic-master.json');await d.saveAs(path);const backup=JSON.parse(fs.readFileSync(path));expect(backup.match.formationBook['1:receive']).toEqual(saved);const chooserPromise=page.waitForEvent('filechooser');await revealAction(page,'#importData');await page.locator('#importData').click();page.once('dialog',d=>d.accept());await (await chooserPromise).setFiles(path);await expect(page.locator('#toast')).toContainText('übernommen');expect(await page.evaluate(()=>EVV_QS_TEST.state().formationBook['1:receive'])).toEqual(saved);
+      16 | });
+      17 | for(const [width,height]of [[1024,768],[820,1180],[390,844],[1440,1000]])test(`Master ${width}x${height}: zwölf echte Kreise und schnelle Transition mit Touch`,async({page})=>{await page.setViewportSize({width,height});await start(page);await page.evaluate(()=>scrollTo(0,0));const dock=await page.locator('.bottom').boundingBox();for(const selector of ['#quickTransition','#quickUndo']){const r=await page.locator(selector).boundingBox();expect(r.y+r.height).toBeLessThanOrEqual(dock.y)}for(const b of await page.locator('#flow .courtAthlete').all()){const box=await b.boundingBox();expect(box.width).toBeGreaterThanOrEqual(44);expect(box.height).toBeGreaterThanOrEqual(44)}await page.locator('#quickTransition').tap();await page.locator('[data-quick-player="janik"]').tap();await page.locator('[data-quick="kill"]').tap();expect(await page.evaluate(()=>EVV_QS_TEST.state().rallies[0].turnaround)).toEqual({attacks:1,transitions:1});expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBe(width)});
+        at /workspace/evv-quickscout/tests/e2e/master-playbook.spec.cjs:14:329
+
+    Error Context: ../../tmp/evv-master-browser-results/master-playbook-Master-fün-c659d-do-Reload-und-Export-Import/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-master-browser-results/master-playbook-Master-fün-c659d-do-Reload-und-Export-Import/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-master-browser-results/master-playbook-Master-fün-c659d-do-Reload-und-Export-Import/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/master-playbook.spec.cjs:10:1 › Master: fünf Pfeile zeichnen, Start/Ende und Körper bewegen, löschen, Undo/Redo, Reload und Export/Import 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

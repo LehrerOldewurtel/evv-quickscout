@@ -1,0 +1,14 @@
+{
+  "matches": 100,
+  "comparedKeys": [
+    "digest",
+    "scores",
+    "rallies",
+    "contacts",
+    "transitions",
+    "wins"
+  ],
+  "baseline": "docs/qa/matchplan/100-matchdays.json",
+  "equal": true,
+  "historicalMatchesNotRewritten": true
+}

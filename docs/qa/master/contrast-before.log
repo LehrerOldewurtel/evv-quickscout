@@ -1,0 +1,43 @@
+
+Running 1 test using 1 worker
+
+(node:360771) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:360771) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/master-playbook.spec.cjs:20:1 › Master: aktive Modus- und Aufstellungstasten behalten lesbaren Text im Dunkelmodus (1.0s)
+
+
+  1) tests/e2e/master-playbook.spec.cjs:20:1 › Master: aktive Modus- und Aufstellungstasten behalten lesbaren Text im Dunkelmodus 
+
+    Error: #modeQuick
+
+    [2mexpect([22m[31mreceived[39m[2m).[22mtoBeGreaterThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: >= [32m4.5[39m
+    Received:    [31m1.05801979177884[39m
+
+      18 | test('Master: einmal gespeicherter Teamstandard bleibt nach neuem Match und Reload erhalten',async({page})=>{await start(page);await page.locator('#formationEditor').click();await page.locator('[data-form-slot="1"]').click();const svg=page.locator('#formationSvg');await svg.scrollIntoViewIfNeeded();const b=await svg.boundingBox();await svg.click({position:{x:b.width*.84,y:b.height*.83}});await page.locator('#formSaveTeam').click();await page.locator('#formClose').click();await revealAction(page,'#newMatch');await page.locator('#newMatch').click();await page.locator('#nmConfirm').click();await page.locator('#startReceive').click();await page.locator('#matchTactics').click();await expect(page.locator('#tacticsContext')).toContainText('Teamstandard');expect(await page.evaluate(()=>EVV_QS_TEST.formationFor(1,'receive').targets[1][0])).toBeCloseTo(84,0);await page.reload();expect(await page.evaluate(()=>EVV_QS_TEST.formationFor(1,'receive').targets[1][0])).toBeCloseTo(84,0)});
+      19 | test('Master: Timeout und Tastaturnavigation verwenden denselben geschützten Renderer',async({page})=>{await start(page);const before=await page.evaluate(()=>EVV_QS_TEST.state());await page.locator('#timeout').click();await page.locator('#toCourt').click();await expect(page.locator('#modalBox')).toHaveClass(/presentation/);await expect(page.locator('#matchCourt [data-board-engine="canonical-v8"]')).toHaveCount(1);await page.keyboard.press('Tab');expect(await page.evaluate(()=>document.getElementById('modalBox').contains(document.activeElement))).toBe(true);await page.keyboard.press('Escape');await expect(page.locator('#modal')).toBeHidden();expect(await page.evaluate(()=>EVV_QS_TEST.state())).toEqual(before);await page.locator('#matchPlanLive').click();await expect(page.locator('[data-middle-pacer]')).toContainText('Ist 0 · Soll 0');await expect(page.locator('[data-middle-pacer]')).toContainText('wenig Daten');await expect(page.locator('[data-middle-pacer]')).toContainText('keine technische Zuspielnote')});
+    > 20 | test('Master: aktive Modus- und Aufstellungstasten behalten lesbaren Text im Dunkelmodus',async({page})=>{await start(page);for(const selector of ['#modeQuick','#showLineups']){const el=page.locator(selector);if(await el.count()===0)continue;const colors=await el.evaluate(el=>{const s=getComputedStyle(el);return {ink:s.color,bg:s.backgroundColor}});const luminance=s=>{const c=s.match(/[\d.]+/g).slice(0,3).map(Number).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4});return c[0]*.2126+c[1]*.7152+c[2]*.0722},a=luminance(colors.ink),b=luminance(colors.bg);expect((Math.max(a,b)+.05)/(Math.min(a,b)+.05),selector).toBeGreaterThanOrEqual(4.5)}});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+      21 |
+        at /workspace/evv-quickscout/tests/e2e/master-playbook.spec.cjs:20:631
+
+    Error Context: ../../tmp/evv-master-browser-results/master-playbook-Master-akt-ef667-esbaren-Text-im-Dunkelmodus/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../../tmp/evv-master-browser-results/master-playbook-Master-akt-ef667-esbaren-Text-im-Dunkelmodus/trace.zip
+    Usage:
+
+        npx playwright show-trace ../../tmp/evv-master-browser-results/master-playbook-Master-akt-ef667-esbaren-Text-im-Dunkelmodus/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/master-playbook.spec.cjs:20:1 › Master: aktive Modus- und Aufstellungstasten behalten lesbaren Text im Dunkelmodus 
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

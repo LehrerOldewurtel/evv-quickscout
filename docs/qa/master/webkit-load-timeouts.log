@@ -1,0 +1,187 @@
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:49:59] "GET / HTTP/1.1" 200 -
+
+Running 116 tests using 1 worker
+
+(node:377927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:377927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:03] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:03] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:03] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:03] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:03] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:03] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:04] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✘    1 tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 1024x768: Live, Analyse, beide Teams und Vorschau ohne Mutation (30.8s)
+(node:378570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:378570) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:36] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:36] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:36] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:36] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:36] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:36] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:36] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:50:37] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✘    2 tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 820x1180: Live, Analyse, beide Teams und Vorschau ohne Mutation (31.0s)
+(node:379012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:379012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:11] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:11] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:11] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:11] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:11] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:11] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:12] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:30] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:30] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:30] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:30] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:30] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:30] "GET /app.js?v=7180 HTTP/1.1" 200 -
+  ✓    3 tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 390x844: Live, Analyse, beide Teams und Vorschau ohne Mutation (20.6s)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:31] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:51:32] "GET /app.js HTTP/1.1" 200 -
+  ✘    4 tests/e2e/cockpit.spec.cjs:5:75 › Cockpit 1440x1000: Live, Analyse, beide Teams und Vorschau ohne Mutation (30.8s)
+(node:379834) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:379834) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:04] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:04] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:04] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:04] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:04] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:04] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:04] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:05] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:17] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:17] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:17] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:17] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:17] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:17] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+  ✓    5 tests/e2e/cockpit.spec.cjs:15:1 › Editor speichert Ziel, Laufweg, Ballweg und Angriffsroute; Spielbetrieb ist gesperrt (14.0s)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:18] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:19] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:27] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:27] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:27] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:27] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:27] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:27] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:28] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+  ✓    6 tests/e2e/cockpit.spec.cjs:21:1 › Ampel: konfigurierbare getrennte Phasen, stabiles Signal, Undo und dunkle Darstellung (10.5s)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:28] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:29] "GET /version.js HTTP/1.1" 200 -
+  ✓    7 tests/e2e/cockpit.spec.cjs:24:1 › Spielerwechsel und Libero erscheinen im taktischen Livefeld ohne Änderung der Regelpositionen (6.7s)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:36] "GET /manifest.webmanifest HTTP/1.1" 200 -
+  ✓    8 tests/e2e/cockpit.spec.cjs:27:1 › Neue Dialoge öffnen oben; explizites Speichern richtet alle sichtbaren Feldpositionen ein (5.9s)
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:41] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:41] "GET /styles.css?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:41] "GET /version.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:41] "GET /app.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:41] "GET /compact.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:41] "GET /manifest.webmanifest HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /sw.js?v=7180 HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET / HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /index.html HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /styles.css HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /version.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /app.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /compact.js HTTP/1.1" 200 -
+[2m[WebServer] [22m127.0.0.1 - - [29/Oct/2026 14:52:43] "GET /manifest.webmanifest HTTP/1.1" 200 -
